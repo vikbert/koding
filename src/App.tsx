@@ -12,7 +12,7 @@ const App = () => {
                   <ul id="menu">
                     <a href="#t1">
                       <li className='icon' id="uno">
-                        <span className="iconify" data-icon="carbon:keyboard" data-inline="false"></span>
+                        <span className="iconify" data-icon="fluent:home-12-regular" data-inline="false"></span>
                       </li>
                     </a>
                     <a href="#t2">

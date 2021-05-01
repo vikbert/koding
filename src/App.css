@@ -27,11 +27,11 @@ html, body, .page {
   left: 200%;
 }
 
-#p1 { background: darkslateblue; }
-#p2 { background: tomato; }
-#p3 { background: gold; }
-#p4 { background: deeppink; }
-#p5 { background: rebeccapurple; }
+#p1 { background: #434242; }
+#p2 { background: #BC986A; }
+#p3 { background: #DAAD86; }
+#p4 { background: #659DBD; }
+#p5 { background: #8D8741; }
 
 #t2:target #p2,
 #t3:target #p3,
@@ -178,7 +178,7 @@ a {
 }
 
 .page#p1 .icon {
-  transform: translateX(10%) !important;
+  transform: translateX(0%) !important;
 }
 
 #t2:target .page#p2 .icon,
