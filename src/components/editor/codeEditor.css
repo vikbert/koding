@@ -1,0 +1,23 @@
+
+.editor-wrapper {
+  margin: 4px;
+  padding: 1rem;
+  background: rgb(40, 44, 52);
+  border-radius: 1rem;
+  position: relative;
+}
+.editor-label {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
+  font-family: Arial, serif;
+  color: #a49a8d;
+}
+.npm__react-simple-code-editor__textarea {
+  color: white !important;
+}
+.npm__react-simple-code-editor__textarea:focus {
+  outline: none !important;
+  border: none !important
+}

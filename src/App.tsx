@@ -1,54 +1,76 @@
-import React, { useState } from 'react'
+import React from 'react';
 import './App.css';
-import Editor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism-tomorrow.css"; //Example style, you can use another
 
-
-function App() {
-  const [value, setValue] = useState(`<?php
-
-  declare(strict_types = 1);
-
-  namespace Vertriebsportal\Application\Service\Export\OnSale;
-
-  use Vertriebsportal\Application\Service\Export\BaseCsvEncoder;
-  use Vertriebsportal\Domain\Model\DistributionChannel;
-
-  final class Encoder extends BaseCsvEncoder
-  {
-      private $dataProvider;
-
-      public function __construct(DataProvider $dataProvider)
-      {
-          $this->dataProvider = $dataProvider;
-      }
-
-      public function encode(DistributionChannel $distributionChannel, string $sort, string $order): string
-      {
-          $dtos = $this->dataProvider->dtosForDistributionChannel($distributionChannel, $sort, $order);
-
-          return $this->encodeItems($dtos);
-      }
-  }
-  `)
+const App = () => {
   return (
-    <div className="app">
-      <Editor
-        value={value}
-        onValueChange={(code) => setValue(code)}
-        highlight={(code) => highlight(code, languages.js)}
-        padding={10}
-        style={{
-          fontFamily: '"Fira code", "Fira Mono", monospace',
-          fontSize: 14,
-          color: 'rgb(169 208 247)',
-        }}
-      />
-    </div>
+      <>
+        <div className="ct" id="t1">
+          <div className="ct" id="t2">
+            <div className="ct" id="t3">
+              <div className="ct" id="t4">
+                <div className="ct" id="t5">
+                  <ul id="menu">
+                    <a href="#t1">
+                      <li className='icon' id="uno">
+                        <span className="iconify" data-icon="carbon:keyboard" data-inline="false"></span>
+                      </li>
+                    </a>
+                    <a href="#t2">
+                      <li className='icon' id="dos">
+                        <span className="iconify" data-icon="clarity:favorite-line" data-inline="false"></span>
+                      </li>
+                    </a>
+                    <a href="#t3">
+                      <li className='icon' id="tres">
+                        <span className="iconify" data-icon="carbon:add-alt" data-inline="false"></span>
+                      </li>
+                    </a>
+                    <a href="#t4">
+                      <li className='icon' id="cuatro">
+                        <span className="iconify" data-icon="ic:outline-thumb-up-off-alt" data-inline="false"></span>
+                      </li>
+                    </a>
+                    <a href="#t5">
+                      <li className='icon' id="cinco">
+                        <span className="iconify" data-icon="ic:outline-thumb-down-off-alt" data-inline="false"></span>
+                      </li>
+                    </a>
+                  </ul>
+                  <div className="page" id="p1">
+                    <section className="icon fa fa-bolt"><span className="title">Bolt</span><span className="hint">Like this pen to see the magic!... Just kidding, it won't happen anything but I'll be really happy If you do so.</span>
+                    </section>
+                  </div>
+                  <div className="page" id="p2">
+                    <section className="icon fa fa-keyboard-o"><span className="title">Type</span></section>
+                  </div>
+                  <div className="page" id="p3">
+                    <section className="icon fa fa-rocket"><span className="title">Rocket</span></section>
+                  </div>
+                  <div className="page" id="p4">
+                    <section className="icon fa fa-dribbble">
+                      <span className="title">Dribbble</span>
+                      <p className="hint">
+                        <a href="https://dribbble.com/albertohartzet" target="_blank">Im ready to play, <span className="hint line-trough">invite me </span> find me</a>
+                      </p>
+                      <p className="hint">Already invited by <a href="http://www.dribbble.com/mrpeters" target="_blank">Stan Peters</a></p>
+                    </section>
+                  </div>
+                  <div className="page" id="p5">
+                    <section className="icon fa fa-plus-circle">
+                      <span className="title">More</span>
+                      <p className="hint">
+                        <span>You love one page & CSS only stuff? </span><br/>
+                        <a href="https://codepen.io/hrtzt/details/pgXMYb/" target="_blank">check this pen "Pure CSS One page vertical navigation"</a>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
   );
-}
+};
 
 export default App;
