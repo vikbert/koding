@@ -1,25 +1,27 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/prismjs': ^1.16.5
   '@types/react': ^17.0.0
   '@types/react-dom': ^17.0.0
-  '@types/react-highlight.js': ^1.0.0
+  prismjs: ^1.23.0
   react: ^17.0.0
   react-dom: ^17.0.0
-  react-highlight.js: ^1.0.7
+  react-simple-code-editor: ^0.11.0
   typescript: ^4.1.2
   vite: ^1.0.0-rc.13
   vite-plugin-react: ^4.0.0
 
 dependencies:
+  prismjs: 1.23.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
-  react-highlight.js: 1.0.7_react-dom@17.0.2+react@17.0.2
+  react-simple-code-editor: 0.11.0_react-dom@17.0.2+react@17.0.2
 
 devDependencies:
+  '@types/prismjs': 1.16.5
   '@types/react': 17.0.4
   '@types/react-dom': 17.0.3
-  '@types/react-highlight.js': 1.0.0
   typescript: 4.2.4
   vite: 1.0.0-rc.13
   vite-plugin-react: 4.0.1_vite@1.0.0-rc.13
@@ -425,6 +427,10 @@ packages:
     resolution: {integrity: sha1-L4u0QUNNFjs1+4/9zNcTiSf/uMA=}
     dev: true
 
+  /@types/prismjs/1.16.5:
+    resolution: {integrity: sha1-N49JH/AjBM5QkksFKDER1KKG7Lo=}
+    dev: true
+
   /@types/prop-types/15.7.3:
     resolution: {integrity: sha1-KrDV2i5YFflLC51LldHl8kOrLKc=}
     dev: true
@@ -439,12 +445,6 @@ packages:
 
   /@types/react-dom/17.0.3:
     resolution: {integrity: sha1-f983uK+dbUAScTeGW7P/+IcdfuE=}
-    dependencies:
-      '@types/react': 17.0.4
-    dev: true
-
-  /@types/react-highlight.js/1.0.0:
-    resolution: {integrity: sha1-1eBkXuBC1PRKcw83JumXFY6jmnw=}
     dependencies:
       '@types/react': 17.0.4
     dev: true
@@ -752,6 +752,15 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /clipboard/2.0.8:
+    resolution: {integrity: sha1-/8bBA90pZ6gwBfP2GXaqRlWkzbo=}
+    dependencies:
+      good-listener: 1.2.2
+      select: 1.1.2
+      tiny-emitter: 2.1.0
+    dev: false
+    optional: true
+
   /clone/1.0.4:
     resolution: {integrity: sha1-2jCcwmPfFZlMaIypAheco8fNfH4=}
     engines: {node: '>=0.8'}
@@ -904,6 +913,11 @@ packages:
     dependencies:
       clone: 1.0.4
     dev: true
+
+  /delegate/3.2.0:
+    resolution: {integrity: sha1-tmtxwxWFIuirV0T3INjKDCr1kWY=}
+    dev: false
+    optional: true
 
   /delegates/1.0.0:
     resolution: {integrity: sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=}
@@ -1153,6 +1167,13 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /good-listener/1.2.2:
+    resolution: {integrity: sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=}
+    dependencies:
+      delegate: 3.2.0
+    dev: false
+    optional: true
+
   /graceful-fs/4.2.6:
     resolution: {integrity: sha1-/wQLKwhTsjw9MQJ1I3BvGIXXa+4=}
     dev: true
@@ -1177,12 +1198,6 @@ packages:
   /hash-sum/2.0.0:
     resolution: {integrity: sha1-gdAbtd6OpKIUrV1urRtSNGCwtFo=}
     dev: true
-
-  /highlight.js/9.18.5:
-    resolution: {integrity: sha1-0Yo1mGfzeME41oGe38KorNXymCU=}
-    deprecated: Support has ended for 9.x series. Upgrade to @latest
-    requiresBuild: true
-    dev: false
 
   /http-assert/1.4.1:
     resolution: {integrity: sha1-xfcl1neqfoc+9zYZm4lobM6zeHg=}
@@ -1936,12 +1951,10 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /prop-types/15.7.2:
-    resolution: {integrity: sha1-UsQedbjIfnK52TYOAga5ncv/psU=}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react-is: 16.13.1
+  /prismjs/1.23.0:
+    resolution: {integrity: sha1-07OWf31yRAaQSXZSqdQP8EYGfzM=}
+    optionalDependencies:
+      clipboard: 2.0.8
     dev: false
 
   /pump/3.0.0:
@@ -1972,26 +1985,20 @@ packages:
       scheduler: 0.20.2
     dev: false
 
-  /react-highlight.js/1.0.7_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha1-64g1b0FaxNNZDCCptSwdx/UaSGE=}
-    peerDependencies:
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0
-      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      highlight.js: 9.18.5
-      prop-types: 15.7.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: false
-
-  /react-is/16.13.1:
-    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=}
-    dev: false
-
   /react-refresh/0.8.3:
     resolution: {integrity: sha1-ch1GV2ctQAxePHXQY8SoX7LV1o8=}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-simple-code-editor/0.11.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-u1fHwptXDyqyKYclmerBhPW8Zzw=}
+    peerDependencies:
+      react: ^16.0.0
+      react-dom: ^16.0.0
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
 
   /react/17.0.2:
     resolution: {integrity: sha1-0LXMUW0p6z7uOD91tihkz7aAADc=}
@@ -2144,6 +2151,11 @@ packages:
       object-assign: 4.1.1
     dev: false
 
+  /select/1.1.2:
+    resolution: {integrity: sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=}
+    dev: false
+    optional: true
+
   /selfsigned/1.10.8:
     resolution: {integrity: sha1-DRcgi30Swz+OrIXEGDXyf8PYGjA=}
     dependencies:
@@ -2277,6 +2289,11 @@ packages:
       source-map: 0.7.3
       source-map-support: 0.5.19
     dev: true
+
+  /tiny-emitter/2.1.0:
+    resolution: {integrity: sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=}
+    dev: false
+    optional: true
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}

@@ -31,6 +31,10 @@ pnpm run dev
 pnpm run build 
 ```
 
+## bundle size change log
+- 127 kb init
+- 144 kb editor demo
+
 ## licence
 
 [MIT](./LICENSE) License © 2021 [@vikbert](https://vikbert.github.io/)
