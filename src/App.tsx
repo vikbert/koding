@@ -1,10 +1,14 @@
-import React from 'react'
-import './app.css'
-import CodeEditor from './components/editor/CodeEditor';
+import React, { useState } from 'react'
+import './App.css';
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism-tomorrow.css"; //Example style, you can use another
+
 
 function App() {
-  const [editorLanguage, setEditorLanguage] = React.useState("js");
-  const code = `<?php
+  const [value, setValue] = useState(`<?php
 
   declare(strict_types = 1);
 
@@ -29,12 +33,22 @@ function App() {
           return $this->encodeItems($dtos);
       }
   }
-  `
+  `)
   return (
     <div className="app">
-      <CodeEditor language={editorLanguage} content={code}/>
+      <Editor
+        value={value}
+        onValueChange={(code) => setValue(code)}
+        highlight={(code) => highlight(code, languages.js)}
+        padding={10}
+        style={{
+          fontFamily: '"Fira code", "Fira Mono", monospace',
+          fontSize: 14,
+          color: 'rgb(169 208 247)',
+        }}
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

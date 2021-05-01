@@ -1,4 +1,14 @@
 
 .app {
-  padding: 2rem;
+  padding: 1rem;
+  background: rgb(40, 44, 52);
+  border-radius: 1rem;
+}
+.npm__react-simple-code-editor__textarea {
+  font-size: 4px !important;
+  color: white !important;
+}
+.npm__react-simple-code-editor__textarea:focus {
+  outline: none !important;
+  border: none !important
 }

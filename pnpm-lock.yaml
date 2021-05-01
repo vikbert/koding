@@ -753,7 +753,7 @@ packages:
     dev: true
 
   /clipboard/2.0.8:
-    resolution: {integrity: sha1-/8bBA90pZ6gwBfP2GXaqRlWkzbo=}
+    resolution: {integrity: sha512-Y6WO0unAIQp5bLmk1zdThRhgJt/x3ks6f30s3oE3H1mgIEU33XyQjEf8gsf6DxC7NPX8Y1SsNWjUjL/ywLnnbQ==}
     dependencies:
       good-listener: 1.2.2
       select: 1.1.2
@@ -915,7 +915,7 @@ packages:
     dev: true
 
   /delegate/3.2.0:
-    resolution: {integrity: sha1-tmtxwxWFIuirV0T3INjKDCr1kWY=}
+    resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
     dev: false
     optional: true
 
@@ -1952,7 +1952,7 @@ packages:
     dev: true
 
   /prismjs/1.23.0:
-    resolution: {integrity: sha1-07OWf31yRAaQSXZSqdQP8EYGfzM=}
+    resolution: {integrity: sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==}
     optionalDependencies:
       clipboard: 2.0.8
     dev: false
@@ -1991,7 +1991,7 @@ packages:
     dev: true
 
   /react-simple-code-editor/0.11.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha1-u1fHwptXDyqyKYclmerBhPW8Zzw=}
+    resolution: {integrity: sha512-xGfX7wAzspl113ocfKQAR8lWPhavGWHL3xSzNLeseDRHysT+jzRBi/ExdUqevSMos+7ZtdfeuBOXtgk9HTwsrw==}
     peerDependencies:
       react: ^16.0.0
       react-dom: ^16.0.0
@@ -2291,7 +2291,7 @@ packages:
     dev: true
 
   /tiny-emitter/2.1.0:
-    resolution: {integrity: sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=}
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
     dev: false
     optional: true
 
