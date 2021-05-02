@@ -16,9 +16,6 @@ export default function CodeEditor(props: any) {
     setValue(codeString);
     dispatch(codeChanged(codeString))
   }
-  useEffect(() => {
-    console.log('editor updated', value);
-  }, [value])
 
   return (
       <div className="editor-wrapper">
@@ -30,7 +27,6 @@ export default function CodeEditor(props: any) {
             padding={10}
             style={{
               fontFamily: '"Fira code", "Fira Mono", monospace',
-              fontSize: 14,
               minHeight: '200px',
               maxHeight: '700px',
               overflow: 'scroll',
