@@ -7,7 +7,9 @@ specifiers:
   prismjs: ^1.23.0
   react: ^17.0.0
   react-dom: ^17.0.0
+  react-redux: ^7.2.4
   react-simple-code-editor: ^0.11.0
+  redux: ^4.1.0
   serve: ^11.3.2
   typescript: ^4.1.2
   vite: ^1.0.0-rc.13
@@ -17,7 +19,9 @@ dependencies:
   prismjs: 1.23.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-redux: 7.2.4_react-dom@17.0.2+react@17.0.2
   react-simple-code-editor: 0.11.0_react-dom@17.0.2+react@17.0.2
+  redux: 4.1.0
 
 devDependencies:
   '@types/prismjs': 1.16.5
@@ -201,6 +205,12 @@ packages:
       '@babel/core': 7.13.16
       '@babel/helper-plugin-utils': 7.13.0
     dev: true
+
+  /@babel/runtime/7.14.0:
+    resolution: {integrity: sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==}
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: false
 
   /@babel/template/7.12.13:
     resolution: {integrity: sha1-UwJlvooliduzdSOETFvLVZR/syc=}
@@ -387,6 +397,13 @@ packages:
       '@types/serve-static': 1.13.9
     dev: true
 
+  /@types/hoist-non-react-statics/3.3.1:
+    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
+    dependencies:
+      '@types/react': 17.0.4
+      hoist-non-react-statics: 3.3.2
+    dev: false
+
   /@types/http-assert/1.5.1:
     resolution: {integrity: sha1-13XpNjDCRpwvmA/CfjFDJAM12zs=}
     dev: true
@@ -446,7 +463,6 @@ packages:
 
   /@types/prop-types/15.7.3:
     resolution: {integrity: sha1-KrDV2i5YFflLC51LldHl8kOrLKc=}
-    dev: true
 
   /@types/qs/6.9.6:
     resolution: {integrity: sha1-35w8izGiR+wxXmmWVmvjFx30s7E=}
@@ -462,13 +478,21 @@ packages:
       '@types/react': 17.0.4
     dev: true
 
+  /@types/react-redux/7.1.16:
+    resolution: {integrity: sha512-f/FKzIrZwZk7YEO9E1yoxIuDNRiDducxkFlkw/GNMGEnK9n4K8wJzlJBghpSuOVDgEUHoDkDF7Gi9lHNQR4siw==}
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.1
+      '@types/react': 17.0.4
+      hoist-non-react-statics: 3.3.2
+      redux: 4.1.0
+    dev: false
+
   /@types/react/17.0.4:
     resolution: {integrity: sha1-pnxvekYNJmDpUNnMwcLxhSXCgiA=}
     dependencies:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
-    dev: true
 
   /@types/resolve/1.17.1:
     resolution: {integrity: sha1-Ov1q2JZ8d+Q3bFmKgt3Vj0bsRdY=}
@@ -478,7 +502,6 @@ packages:
 
   /@types/scheduler/0.16.1:
     resolution: {integrity: sha1-GIRSBehv8AOFF6q3oYpiprn3EnU=}
-    dev: true
 
   /@types/serve-static/1.13.9:
     resolution: {integrity: sha1-qs8oqFoF7imhH7fD6tk1rFbzPk4=}
@@ -996,7 +1019,6 @@ packages:
 
   /csstype/3.0.8:
     resolution: {integrity: sha1-0iZqeScp+yJ80hb7Vy9Dco4a00A=}
-    dev: true
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -1377,6 +1399,12 @@ packages:
   /hash-sum/2.0.0:
     resolution: {integrity: sha1-gdAbtd6OpKIUrV1urRtSNGCwtFo=}
     dev: true
+
+  /hoist-non-react-statics/3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+    dependencies:
+      react-is: 16.13.1
+    dev: false
 
   /http-assert/1.4.1:
     resolution: {integrity: sha1-xfcl1neqfoc+9zYZm4lobM6zeHg=}
@@ -2203,6 +2231,14 @@ packages:
       clipboard: 2.0.8
     dev: false
 
+  /prop-types/15.7.2:
+    resolution: {integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /pseudomap/1.0.2:
     resolution: {integrity: sha1-8FKijacOYYkX7wqKw0wa5aaChrM=}
     dev: true
@@ -2259,6 +2295,32 @@ packages:
       scheduler: 0.20.2
     dev: false
 
+  /react-is/16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-redux/7.2.4_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA==}
+    peerDependencies:
+      react: ^16.8.3 || ^17
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.14.0
+      '@types/react-redux': 7.1.16
+      hoist-non-react-statics: 3.3.2
+      loose-envify: 1.4.0
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-is: 16.13.1
+    dev: false
+
   /react-refresh/0.8.3:
     resolution: {integrity: sha1-ch1GV2ctQAxePHXQY8SoX7LV1o8=}
     engines: {node: '>=0.10.0'}
@@ -2303,6 +2365,16 @@ packages:
     dependencies:
       picomatch: 2.2.3
     dev: true
+
+  /redux/4.1.0:
+    resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
+    dependencies:
+      '@babel/runtime': 7.14.0
+    dev: false
+
+  /regenerator-runtime/0.13.7:
+    resolution: {integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==}
+    dev: false
 
   /registry-auth-token/3.3.2:
     resolution: {integrity: sha512-JL39c60XlzCVgNrO+qq68FoNb56w/m7JYvGR2jT5iR1xBrUA3Mfx5Twk5rqTThPmQKMWydGmq8oFtDlxfrmxnQ==}

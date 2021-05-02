@@ -1,4 +1,5 @@
 import React from 'react';
+import {Provider as ReduxProvider} from 'react-redux';
 import './App.css';
 import useLocalStorage from "./hooks/useLocalStorage";
 import Bad from "./pages/Bad";
@@ -13,6 +14,11 @@ const STORAGE_DATA = {
   currentPage: 'insert',
 }
 
+// @ts-ignore
+import configureStore from './redux/configureStore';
+
+const store = configureStore();
+
 const App = () => {
   const [storedValue, setValue] = useLocalStorage(STORAGE_KEY, STORAGE_DATA)
 
@@ -22,22 +28,24 @@ const App = () => {
 
   return (
       <>
-        <div className="ct" id="home">
-          <div className="ct" id="play">
-            <div className="ct" id="insert">
-              <div className="ct" id="good">
-                <div className="ct" id="bad">
-                  <Navigation/>
-                  <Home/>
-                  <Play/>
-                  <Insert/>
-                  <Good/>
-                  <Bad/>
+        <ReduxProvider store={store}>
+          <div className="ct" id="home">
+            <div className="ct" id="play">
+              <div className="ct" id="insert">
+                <div className="ct" id="good">
+                  <div className="ct" id="bad">
+                    <Navigation/>
+                    <Home/>
+                    <Play/>
+                    <Insert/>
+                    <Good/>
+                    <Bad/>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </ReduxProvider>
       </>
   );
 };
