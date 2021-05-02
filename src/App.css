@@ -152,6 +152,7 @@ a {
 }
 .page .icon svg {
   margin: 20px 0;
+  cursor: pointer;
 }
 
 .page#page-home .icon {
