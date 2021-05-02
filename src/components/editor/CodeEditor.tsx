@@ -20,6 +20,9 @@ export default function CodeEditor(props: any) {
                 style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
                     fontSize: 14,
+                    minHeight: '200px',
+                    maxHeight: '700px',
+                    overflow: 'scroll',
                     color: 'rgb(169 208 247)',
                 }}
             />

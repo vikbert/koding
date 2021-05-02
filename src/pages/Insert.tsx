@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import CodeEditor from "../components/editor/CodeEditor";
-import DemoEditor from "../components/editor/DemoEditor";
 
 const Insert = () => {
   useEffect(() => {
