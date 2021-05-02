@@ -1,10 +1,13 @@
 
 .editor-wrapper {
-  margin: 4px;
-  padding: 1rem;
+  margin: .8rem;
+  padding: .8rem;
   background: rgb(40, 44, 52);
-  border-radius: 1rem;
+  border-radius: .6rem;
   position: relative;
+  -webkit-box-shadow: 7px -3px 42px -12px rgba(10,10,10,1);
+  -moz-box-shadow: 7px -3px 42px -12px rgba(10,10,10,1);
+  box-shadow: 7px -3px 42px -12px rgba(10,10,10,1);
 }
 .editor-label {
   position: absolute;
