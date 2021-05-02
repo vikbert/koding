@@ -2,12 +2,15 @@ import {highlight, languages} from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Editor from "react-simple-code-editor";
 import "./codeEditor.css";
 
 export default function CodeEditor(props: any) {
     const [value, setValue] = useState(props.code);
+    useEffect(() => {
+      console.log('editor updated', value);
+    }, [value])
 
     return (
         <div className="editor-wrapper">
