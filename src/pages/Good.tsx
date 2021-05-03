@@ -1,11 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import DemoEditor from "../components/editor/DemoEditor";
 
 const Good = () => {
-  useEffect(() => {
-    console.log('Page Good');
-  })
-
   return (
       <div className="page" id="page-good">
         <section className="icon">

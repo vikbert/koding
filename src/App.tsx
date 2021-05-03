@@ -1,6 +1,7 @@
 import React from 'react';
 import {Provider as ReduxProvider} from 'react-redux';
-import './App.css';
+import './app.css';
+import './utilities.css';
 import useLocalStorage from "./hooks/useLocalStorage";
 import Bad from "./pages/Bad";
 import Good from "./pages/Good";

@@ -1,11 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import DemoEditor from "../components/editor/DemoEditor";
 
 const Home = () => {
-  useEffect(() => {
-    console.log('Page Home');
-  })
-
   return (
       <div className="page" id="page-home">
         <section className="icon">

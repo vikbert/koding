@@ -8,7 +8,7 @@ const allReducers = combineReducers({
 });
 
 export const rootState = {
-    reduxBook: codeState,
+    reduxCode: codeState,
     reduxEditor: editorState,
 };
 

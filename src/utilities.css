@@ -1,0 +1,5 @@
+.transparent-bg {
+  border-radius: 6px;
+  padding: 8px;
+  background-color: rgb(38 73 103 / 50%);
+}

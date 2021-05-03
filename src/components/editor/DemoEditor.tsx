@@ -1,6 +1,7 @@
 import React from 'react'
 import CodeEditor from "./CodeEditor";
 
+const loop = [1, 2, 3, 4];
 const root = {
     display: 'flex',
     flexWrap: 'wrap',
@@ -9,10 +10,9 @@ const root = {
 export default function DemoEditor() {
     // @ts-ignore
     return <div className="demo-container" style={root}>
-        <CodeEditor code={demoCode} language={'php'}/>
-        <CodeEditor code={demoCode} language={'php'}/>
-        <CodeEditor code={demoCode} language={'php'}/>
-        <CodeEditor code={demoCode} language={'php'}/>
+        {loop.map((item, index) => (
+            <CodeEditor key={index} code={demoCode} lang={'php'}/>
+        ))}
     </div>;
 }
 
