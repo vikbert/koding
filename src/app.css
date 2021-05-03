@@ -1,4 +1,4 @@
-html, body, .page {
+html, body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -8,15 +8,32 @@ html, body, .page {
   /*-moz-transition: all .6s cubic-bezier(.5, .2, .2, .1);*/
   /*-o-transition: all .6s cubic-bezier(.5, .2, .2, .1);*/
   color: #fff;
-  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80");
+  overflow: scroll;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 * {
   font-family: 'open sans', 'lato', 'helvetica', sans-serif;
 }
 
-.page {
-  position: absolute;
+#menu {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  background-color: rgb(38 73 103 / 51%);
+  margin: 0 auto;
+}
+#menu .icon {
+  margin: 8px 0;
+  transition: all .5s ease-out !important;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+}
+a {
+  text-decoration: none;
 }
 
 #page-home {
@@ -106,27 +123,12 @@ ul {
   position: fixed;
   z-index: 1;
   bottom: 0;
-  margin: auto;
+  right: 0;
   width: 100%;
   padding: 0;
   text-align: center;
 }
-#menu {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  background-color: rgb(38 73 103 / 51%);
-}
-#menu .icon {
-  margin: 8px 0;
-  transition: all .5s ease-out !important;
-  -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
-}
-a {
-  text-decoration: none;
-}
+
 
 .title {
   display: block;
@@ -143,21 +145,16 @@ a {
 .line-trough {
   text-decoration: line-through;
 }
-.page {
-  overflow: scroll;
-  background-image: url("https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 .page .icon {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  bottom: 48px;
-  font-size: 2.5rem;
-  background-color: rgb(38 73 103 / 28%);
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: space-between;*/
+  /*position: absolute;*/
+  /*width: 100%;*/
+  /*bottom: 48px;*/
+  /*font-size: 2.5rem;*/
+  /*background-color: rgb(38 73 103 / 28%);*/
 }
 .page .action-title {
   font-family: 'Gruppo', cursive;
