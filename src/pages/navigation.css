@@ -1,0 +1,36 @@
+#menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  background-color: rgb(38 73 103 / 86%);
+  margin: 0 auto;
+  height: 48px;
+  color: rgb(146 146 144 / 63%);
+}
+#menu .icon {
+  margin: 8px 0;
+  transition: all .5s ease-out !important;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  cursor: pointer;
+  font-size: 35px;
+  line-height: 25px;
+  display: block;
+}
+.icon.active {
+  color: #ffffff;
+}
+ul {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}

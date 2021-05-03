@@ -1,38 +1,26 @@
 import React from 'react';
-import {Provider as ReduxProvider} from 'react-redux';
-import {Route} from 'wouter';
-import './app.css';
-import './utilities.css';
+import {Route, Switch} from 'wouter';
 import Good from "./pages/Good";
 import Home from "./pages/Home";
 import Insert from "./pages/Insert";
 import Navigation from "./pages/Navigation";
 import Play from "./pages/Play";
-
-// @ts-ignore
-import configureStore from './redux/configureStore';
-const store = configureStore();
+import './assets/css/app.css'
 
 const App = () => {
   return (
       <>
-        <ReduxProvider store={store}>
-          <div className="main">
-            <Route path={'/'}>
-              <Home/>
-            </Route>
-            <Route path={'/play'}>
-              <Play/>
-            </Route>
-            <Route path={'/insert'}>
-              <Insert/>
-            </Route>
-            <Route path={'/good'}>
-              <Good/>
-            </Route>
-            <Navigation/>
-          </div>
-        </ReduxProvider>
+        <main>
+          <Switch>
+            <Route path={'/'} component={Home}/>
+            <Route path={'/play'} component={Play}/>
+            <Route path={'/insert'} component={Insert}/>
+            <Route path={'/good'} component={Good}/>
+          </Switch>
+        </main>
+        <footer>
+          <Navigation/>
+        </footer>
       </>
   );
 };

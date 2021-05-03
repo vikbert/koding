@@ -8,7 +8,7 @@ const Home = () => {
           <span className="iconify" data-icon="fluent:home-12-regular" data-inline="false"/>
         </section>
         <section className="content">
-          <DemoEditor/>
+          <h1 className={'font-gruppo action-title bg-transparent'}>Home page</h1>
         </section>
       </div>
   );
