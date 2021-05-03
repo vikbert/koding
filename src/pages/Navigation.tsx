@@ -11,13 +11,13 @@ const Navigation = () => {
   }
 
   const LinkItem = (props: any) => {
-    return (<>
-      <Link href={props.linkName} onClick={() => setActive(props.linkName)}>
-        <li className={classNames("icon", {'active': current === props.linkName})}>
-          {props.children}
-        </li>
-      </Link>
-    </>);
+    return (
+        <Link href={props.linkName} onClick={() => setActive(props.linkName)}>
+          <li className={classNames("icon", {'active': current === props.linkName})}>
+            {props.children}
+          </li>
+        </Link>
+    );
   }
 
   return (
