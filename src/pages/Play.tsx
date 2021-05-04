@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {fetchSnippetsDone} from "../components/code/codeAction";
+import {fetchSnippetsDone} from "../components/code/snippetAction";
 import CodeEditor from "../components/editor/CodeEditor";
 import LocalStorageClient from "../services/LocalStorageClient";
+import {Snippet} from "../types/Snippet";
 
 const Play = () => {
   const client = new LocalStorageClient();
   const dispatch = useDispatch();
-  const snippets = useSelector((state: any) => state.reduxCode);
+  const snippets = useSelector((state: any) => state.reduxSnippet);
+  console.log(snippets);
 
   const [items, setItems] = React.useState([]);
 
@@ -20,14 +22,14 @@ const Play = () => {
 
   return (
       <div className="page" id="page-play">
-        <section className="icon">
-          <span className="iconify" data-icon="ant-design:play-circle-outlined" data-inline="false"/>
+        <section className="header">
+          <div className="action-title">Play Snippets</div>
         </section>
         <section className="content">
-          {snippets.map((item: string, index: string) => (
-              <CodeEditor key={index} code={item}>
+          {snippets.map((item: Snippet, index: string) => (
+              <CodeEditor key={item.id} code={item.body} disabled={true}>
                 <div className="editor-options">
-                  <span className="option-lang">php</span>
+                  <span className="option-lang">{item.lang}</span>
                 </div>
               </CodeEditor>
           ))}

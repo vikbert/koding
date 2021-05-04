@@ -4,11 +4,10 @@ import DemoEditor from "../components/editor/DemoEditor";
 const Home = () => {
   return (
       <div className="page" id="page-home">
-        <section className="icon">
-          <span className="iconify" data-icon="fluent:home-12-regular" data-inline="false"/>
+        <section className="header">
+          <div className="action-title">Home</div>
         </section>
         <section className="content">
-          <h1 className={'font-gruppo action-title bg-transparent'}>Home page</h1>
         </section>
       </div>
   );

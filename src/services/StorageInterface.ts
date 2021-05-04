@@ -1,7 +1,7 @@
-import {Code} from "../types/Code";
+import {Snippet} from "../types/Snippet";
 import {Criteria} from "../types/Criteria";
 
 export interface StorageInterface {
-  addCode: (code: Code) => void
-  list: (criteria?: Criteria) => Code[]
+  saveSnippet: (code: Snippet) => void
+  list: (criteria?: Criteria) => Snippet[]
 }

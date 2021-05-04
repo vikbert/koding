@@ -4,8 +4,8 @@ import DemoEditor from "../components/editor/DemoEditor";
 const Bad = () => {
   return (
       <div className="page" id="page-bad">
-        <section className="icon">
-          <span className="iconify" data-icon="ic:outline-thumb-down-off-alt" data-inline="false"/>
+        <section className="header">
+          <div className="action-title">Bad Snippets</div>
         </section>
         <section className="content">
           <DemoEditor/>

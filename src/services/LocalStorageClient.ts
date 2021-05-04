@@ -1,15 +1,15 @@
-import {Code} from "../types/Code";
+import {Snippet} from "../types/Snippet";
 import {Criteria} from "../types/Criteria";
 import {StorageInterface} from "./StorageInterface";
 
 class LocalStorageClient implements StorageInterface {
   readonly KEY_CODE_LIST = 'RATE-CODE-LIST';
 
-  setValue(value: Code[]): void {
+  setValue(value: Snippet[]): void {
     window.localStorage.setItem(this.KEY_CODE_LIST, JSON.stringify(value));
   }
 
-  addCode(code: Code): void {
+  saveSnippet(code: Snippet): void {
     try {
       const list = this.list();
       this.setValue([code, ...list])
@@ -18,7 +18,7 @@ class LocalStorageClient implements StorageInterface {
     }
   }
 
-  list(criteria?: Criteria): Code[] {
+  list(criteria?: Criteria): Snippet[] {
     try {
       const item = window.localStorage.getItem(this.KEY_CODE_LIST);
       // Parse stored json or if none return initialValue

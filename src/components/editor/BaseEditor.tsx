@@ -7,7 +7,12 @@ import {useDispatch} from 'react-redux';
 import Editor from "react-simple-code-editor";
 import "./codeEditor.css";
 import {codeChanged} from "./editorAction";
+import EditorHeader from "./EditorHeader";
 
+interface IProps {
+  code: string,
+  disabled?: boolean,
+}
 export default function BaseEditor(props: any) {
   const [value, setValue] = useState(props.code);
   const dispatch = useDispatch();
@@ -19,14 +24,11 @@ export default function BaseEditor(props: any) {
 
   return (
       <>
-        <div className="editor-header">
-          <div className={'red'}></div>
-          <div className={'yellow'}></div>
-          <div className={'green'}></div>
-        </div>
+        <EditorHeader/>
         <Editor
+            disabled={props.disabled || false}
             value={value}
-            placeholder={'Enter your new snippet, then click on 💾 to save the code.'}
+            placeholder={props.placeholder || 'Enter your new snippet'}
             onValueChange={(codeString) => handleOnChange(codeString)}
             highlight={(codeString) => highlight(codeString, languages.js)}
             padding={10}

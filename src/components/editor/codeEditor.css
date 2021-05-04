@@ -28,32 +28,31 @@
   border-radius: 50%;
   margin: 0 .3rem;
 }
-div.red {
+.red{
   background: #d63c15;
 }
-div.yellow {
+.yellow {
   background: #e0bd0e;
 }
-div.green {
+.green {
   background: #84cb2a;
 }
 .editor-options {
   width: 100%;
   height: 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  /*font-family: Arial, serif;*/
-  font-size: 30px;
   border-top: 1px solid rgb(78 72 72 / 31%);
 }
 .editor-options svg {
   margin: 0 .8rem;
+  font-size: 30px;
+  opacity: 75%;
 }
 .option-lang {
-  position: absolute;
-  left: 1rem;
   font-size: 14px;
+  padding-left: .6rem;
   opacity: 50%;
 }
 .npm__react-simple-code-editor__textarea {

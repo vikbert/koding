@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
-import {codeReducer, codeState} from '../components/code/codeReducer';
+import {snippetReducer, codeState} from '../components/code/snippetReducer';
 import {editorReducer, editorState} from '../components/editor/editorReducer';
 
 const allReducers = combineReducers({
-    reduxCode: codeReducer,
+    reduxSnippet: snippetReducer,
     reduxEditor: editorReducer,
 });
 
 export const rootState = {
-    reduxCode: codeState,
+    reduxSnippet: codeState,
     reduxEditor: editorState,
 };
 

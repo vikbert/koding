@@ -4,8 +4,8 @@ import DemoEditor from "../components/editor/DemoEditor";
 const Good = () => {
   return (
       <div className="page" id="page-good">
-        <section className="icon">
-          <span className="iconify" data-icon="ic:outline-thumb-up-off-alt" data-inline="false"/>
+        <section className="header">
+          <div className="action-title">Favorite Snippets</div>
         </section>
         <section className="content">
           <DemoEditor/>

@@ -31,7 +31,10 @@ const Navigation = () => {
         <LinkItem linkName={'/insert'}>
           <span className="iconify" data-icon="carbon:add-alt" data-inline="false"/>
         </LinkItem>
-        <LinkItem linkName={'/good'}>
+        <LinkItem linkName={'/favorite'}>
+          <span className="iconify" data-icon="bx:bxs-bookmark-star" data-inline="false"></span>
+        </LinkItem>
+        <LinkItem linkName={'/bad'}>
           <span className="iconify" data-icon="ic:outline-thumb-up-off-alt" data-inline="false"/>
         </LinkItem>
       </ul>
