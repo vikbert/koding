@@ -1,5 +1,5 @@
 import React from 'react';
-import DemoEditor from "../components/editor/DemoEditor";
+import {Toast} from "../components/toast";
 
 const Home = () => {
   return (
@@ -8,6 +8,11 @@ const Home = () => {
           <div className="action-title">Home</div>
         </section>
         <section className="content">
+          <Toast
+              type={'success'}
+              title={'info title'}
+              description={'my desc another description'}
+          />
         </section>
       </div>
   );
