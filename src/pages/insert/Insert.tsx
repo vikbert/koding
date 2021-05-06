@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {addSnippetDone} from "../components/code/snippetAction";
-import CodeEditor from "../components/editor/CodeEditor";
-import {codeChanged} from "../components/editor/editorAction";
-import LocalStorageClient from "../services/LocalStorageClient";
-import Thumb from "../components/editor/Thumb";
-import {Snippet} from "../types/Snippet";
+import {addSnippetDone} from "../../components/code/snippetAction";
+import CodeEditor from "../../components/editor/CodeEditor";
+import {codeChanged} from "../../components/editor/editorAction";
+import LocalStorageClient from "../../services/LocalStorageClient";
+import Thumb from "../../components/editor/Thumb";
+import {Snippet} from "../../types/Snippet";
 import {nanoid} from "nanoid";
-import Toast from "../components/toast";
-import {Config} from "../hooks/useToast";
+import Toast from "../../components/toast";
+import {Config} from "../../hooks/useToast";
+import InsertConvention from "../../components/Convention/InsertConvention";
 
-const Insert = () => {
+export default function Insert () {
   const dispatch = useDispatch();
   const editorState = useSelector((state: any) => state.reduxEditor);
   const [visible, setVisible] = useState(false);
@@ -27,11 +28,11 @@ const Insert = () => {
     lang: 'php',
   }
 
-  const resetEditor = () => {
+  function resetEditor() {
     dispatch(codeChanged(''));
   }
 
-  const handleSave = () => {
+  function handleSave() {
     const localStorageClient = new LocalStorageClient();
     localStorageClient.saveSnippet(newSnippet);
 
@@ -40,6 +41,7 @@ const Insert = () => {
     setVisible(true)
   }
 
+
   useEffect(() => {
     newSnippet = {
       ...newSnippet,
@@ -47,13 +49,9 @@ const Insert = () => {
     }
   }, [editorState])
 
-  return (
-      <div className={'page'}>
-        {visible && <Toast type={config.type} title={config.title} description={''}/>}
-        <section className="header">
-          <span className="title">Add new snippets</span>
-        </section>
-        <section className="content">
+  function InsertSnippets() {
+    return (
+        <>
           <CodeEditor code={editorState.content}>
             <div className="editor-options">
               <span className="option-lang">php</span>
@@ -73,9 +71,20 @@ const Insert = () => {
               <span className="iconify" data-icon="fluent:save-20-regular" data-inline="false"/>
             </div>
           </div>
+        </>
+    );
+  }
+
+
+  return (
+      <div className={'page page__insert'}>
+        {visible && <Toast type={config.type} title={config.title} description={''}/>}
+        {/*<section className="header">*/}
+        {/*  <span className="title">Add new snippets</span>*/}
+        {/*</section>*/}
+        <section className="content">
+          <InsertConvention/>
         </section>
       </div>
   );
 }
-
-export default Insert;

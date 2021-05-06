@@ -1,0 +1,19 @@
+.page__insert .content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page__insert form {
+  width: 100%;
+}
+.page__insert input {
+  width: inherit;
+  line-height: 2rem;
+  padding: .4rem 1rem;
+  border-radius: .4rem;
+  color: #282c34;
+}
+.page__insert input:focus {
+  outline: none;
+}

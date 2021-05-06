@@ -3,7 +3,7 @@ import {Route, Switch} from 'wouter';
 import Good from "./pages/Good";
 import Bad from "./pages/Bad";
 import Home from "./pages/Home";
-import Insert from "./pages/Insert";
+import Insert from "./pages/insert/Insert";
 import Navigation from "./pages/Navigation";
 import Play from "./pages/Play";
 import './assets/css/page.css'

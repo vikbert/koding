@@ -84,9 +84,11 @@ const Toast = ({type, title, description, position = 'topdown', duration = 2500,
                 </div>
                 <div>
                   <p className={`${Style.toasttitle}`}>{toast.title}</p>
-                  <p className={`${Style.toastdescription}`}>
-                    {toast.description}
-                  </p>
+                  {toast.description.length > 0 && (
+                      <p className={`${Style.toastdescription}`}>
+                        {toast.description}
+                      </p>
+                  )}
                 </div>
               </div>
           )

@@ -1,3 +1,5 @@
+@import './insert-page.css';
+
 :root {
   --header-height: 2.5rem;
   --footer-height: 3rem;
@@ -35,7 +37,7 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  padding-top: var(--header-height);
+  padding: var(--header-height) 1rem 0 1rem;
 }
 .action-save {
   font-size: 2rem;
@@ -53,5 +55,3 @@
 .page .icon svg {
   cursor: pointer;
 }
-
-@import './insert-page.css';
