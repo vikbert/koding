@@ -6,9 +6,10 @@ import './assets/css/index.css'
 
 // @ts-ignore
 import configureStore from './redux/configureStore';
+const store = configureStore();
 
 ReactDOM.render(
-    <ReduxProvider store={configureStore()}>
+    <ReduxProvider store={store}>
       <React.StrictMode>
         <App/>
       </React.StrictMode>

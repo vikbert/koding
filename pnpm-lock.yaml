@@ -6,7 +6,6 @@ specifiers:
   '@types/react-dom': ^17.0.3
   autoprefixer: ^10.2.5
   classnames: ^2.3.1
-  history: ^5.0.0
   nanoid: ^3.1.22
   postcss: ^8.2.14
   prismjs: ^1.23.0
@@ -25,7 +24,6 @@ specifiers:
 
 dependencies:
   classnames: 2.3.1
-  history: 5.0.0
   nanoid: 3.1.22
   prismjs: 1.23.0
   react: 17.0.2
@@ -1522,12 +1520,6 @@ packages:
   /hash-sum/2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
     dev: true
-
-  /history/5.0.0:
-    resolution: {integrity: sha512-3NyRMKIiFSJmIPdq7FxkNMJkQ7ZEtVblOQ38VtKaA0zZMW1Eo6Q6W8oDKEflr1kNNTItSnk4JMCO1deeSgbLLg==}
-    dependencies:
-      '@babel/runtime': 7.14.0
-    dev: false
 
   /hoist-non-react-statics/3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
