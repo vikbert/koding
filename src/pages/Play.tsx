@@ -23,7 +23,7 @@ const Play = () => {
   return (
       <div className="page" id="page-play">
         <section className="header">
-          <div className="action-title">Play Snippets</div>
+          <div className="title">Play Snippets</div>
         </section>
         <section className="content">
           {snippets.map((item: Snippet, index: string) => (

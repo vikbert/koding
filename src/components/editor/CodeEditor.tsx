@@ -1,6 +1,6 @@
-import React from 'react';
-import BaseEditor from "./BaseEditor";
+import React, {useState} from 'react';
 import "./codeEditor.css";
+import EditorHeader from "./EditorHeader";
 
 interface IProps {
   code: string,
@@ -9,9 +9,20 @@ interface IProps {
 }
 
 export default function CodeEditor(props: IProps) {
+  const [value, setValue] = useState('');
+  const handleOnChange = (event: any) => {
+    setValue(event.target.value);
+  }
+
   return (
       <div className="editor-wrapper">
-        <BaseEditor code={props.code} disabled={props.disabled}/>
+        <EditorHeader/>
+        <textarea
+            rows={15}
+            style={{fontFamily: ''}}
+            value={value}
+            placeholder={'enter here your snippet'}
+            onChange={handleOnChange}/>
         {props.children}
       </div>
   );

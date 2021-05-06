@@ -10,7 +10,6 @@ export const editorReducer = (state = editorState, action: any) => {
   if (type === CODE_CHANGED) {
     return {...state, content};
   } else if (type === SNIPPET_ADDED) {
-    window.location.reload();
     return {...state, content: ''};
   }
 

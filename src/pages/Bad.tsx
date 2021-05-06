@@ -5,7 +5,7 @@ const Bad = () => {
   return (
       <div className="page" id="page-bad">
         <section className="header">
-          <div className="action-title">Bad Snippets</div>
+          <div className="title">Bad Snippets</div>
         </section>
         <section className="content">
           <DemoEditor/>

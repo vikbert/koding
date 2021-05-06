@@ -24,7 +24,6 @@ export default function BaseEditor(props: any) {
 
   return (
       <>
-        <EditorHeader/>
         <Editor
             disabled={props.disabled || false}
             value={value}

@@ -22,8 +22,7 @@ interface ToastProps {
   icon: string
 }
 
-
-export const Toast = ({type, title, description, position = 'topdown', duration = 2500, closeButton = false}: Props): JSX.Element => {
+const Toast = ({type, title, description, position = 'topdown', duration = 2500, closeButton = false}: Props): JSX.Element => {
   const [toast, setToast] = useState<ToastProps[]>([])
 
   useEffect(() => {
@@ -96,5 +95,6 @@ export const Toast = ({type, title, description, position = 'topdown', duration 
   );
 }
 
+export default Toast;
 
 

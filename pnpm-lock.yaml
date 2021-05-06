@@ -6,6 +6,7 @@ specifiers:
   '@types/react-dom': ^17.0.0
   autoprefixer: ^10.2.5
   classnames: ^2.3.1
+  history: ^5.0.0
   nanoid: ^3.1.22
   postcss: ^8.2.13
   prismjs: ^1.23.0
@@ -14,6 +15,7 @@ specifiers:
   react-redux: ^7.2.4
   react-simple-code-editor: ^0.11.0
   redux: ^4.1.0
+  redux-thunk: ^2.3.0
   serve: ^11.3.2
   tailwindcss: ^2.1.2
   typescript: ^4.1.2
@@ -23,6 +25,7 @@ specifiers:
 
 dependencies:
   classnames: 2.3.1
+  history: 5.0.0
   nanoid: 3.1.22
   prismjs: 1.23.0
   react: 17.0.2
@@ -30,6 +33,7 @@ dependencies:
   react-redux: 7.2.4_react-dom@17.0.2+react@17.0.2
   react-simple-code-editor: 0.11.0_react-dom@17.0.2+react@17.0.2
   redux: 4.1.0
+  redux-thunk: 2.3.0
   wouter: 2.7.4_react@17.0.2
 
 devDependencies:
@@ -1133,7 +1137,7 @@ packages:
     dev: true
 
   /debug/3.1.0:
-    resolution: {integrity: sha1-W7WgZyYotkFJVmuhaBnmFRjGcmE=}
+    resolution: {integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==}
     dependencies:
       ms: 2.0.0
     dev: true
@@ -1549,6 +1553,12 @@ packages:
   /hash-sum/2.0.0:
     resolution: {integrity: sha1-gdAbtd6OpKIUrV1urRtSNGCwtFo=}
     dev: true
+
+  /history/5.0.0:
+    resolution: {integrity: sha512-3NyRMKIiFSJmIPdq7FxkNMJkQ7ZEtVblOQ38VtKaA0zZMW1Eo6Q6W8oDKEflr1kNNTItSnk4JMCO1deeSgbLLg==}
+    dependencies:
+      '@babel/runtime': 7.14.0
+    dev: false
 
   /hoist-non-react-statics/3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
@@ -2645,6 +2655,10 @@ packages:
       css-unit-converter: 1.1.2
       postcss-value-parser: 3.3.1
     dev: true
+
+  /redux-thunk/2.3.0:
+    resolution: {integrity: sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==}
+    dev: false
 
   /redux/4.1.0:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}

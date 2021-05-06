@@ -11,7 +11,8 @@ export default function DemoEditor() {
     // @ts-ignore
     return <div className="demo-container" style={root}>
         {loop.map((item, index) => (
-            <CodeEditor key={index} code={demoCode} lang={'php'}/>
+            <CodeEditor key={index} code={demoCode}>
+            </CodeEditor>
         ))}
     </div>;
 }

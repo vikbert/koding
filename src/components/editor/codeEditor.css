@@ -8,12 +8,25 @@
   -moz-box-shadow: 0px 2px 20px 3px rgba(0,0,0,0.75);
   min-width: 500px;
   background: rgb(40, 44, 52);
+  padding: 2px;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 500px) {
   .editor-wrapper {
     min-width: 90%;
   }
+}
+textarea {
+  resize: none;
+  width: 100%;
+  background: rgb(40, 44, 52) !important;
+  color: #c18109 !important;
+  font-family: 'Fira Code', Helvetica, Arial !important;
+  padding: 1rem !important;
+}
+textarea:focus {
+  outline: none;
 }
 .editor-header {
   height: 2rem;
@@ -43,11 +56,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgb(78 72 72 / 31%);
+  /*border-top: 1px solid rgb(78 72 72 / 31%);*/
 }
 .editor-options svg {
   margin: 0 .8rem;
-  font-size: 30px;
+  font-size: 35px;
   opacity: 75%;
 }
 .option-lang {

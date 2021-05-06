@@ -1,6 +1,9 @@
 :root {
-  --header-height: 2rem;
+  --header-height: 2.5rem;
   --footer-height: 3rem;
+}
+.page {
+  padding-bottom: var(--footer-height);
 }
 .page .header {
   position: fixed;
@@ -9,21 +12,18 @@
   z-index: 1;
   height: var(--header-height);
   width: 100%;
-  padding: 0;
   text-align: center;
-  color: black;
-  /*background-color: rgb(38 73 103 / 50%);*/
+  color: white;
+  font-weight: bolder;
+  background-color: rgb(38 73 103 / 50%);
 }
-.page .content {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  padding-top: var(--header-height);
+.header .back-to {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 1.8rem;
 }
-#page-insert .content {
-  margin: 3rem auto 0;
-}
-.page .action-title {
+.page .title {
   font-family: 'Gruppo', cursive;
   display: flex;
   flex-direction: column;
@@ -31,12 +31,27 @@
   font-size: 1.6rem;
   padding: 0 1rem;
 }
-.page .action-icons {
+.page .content {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  overflow: scroll;
+  padding-top: var(--header-height);
+}
+.action-save {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 5rem;
+  right: 1rem;
+  border-radius: 50%;
+  background: #474545;
+  padding: 1rem;
+  opacity: 75%;
+}
+.action-save:hover {
+  background: #969393;
 }
 .page .icon svg {
-  margin: 20px;
   cursor: pointer;
 }
+
+@import './insert-page.css';
