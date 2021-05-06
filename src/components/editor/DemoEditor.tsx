@@ -1,5 +1,5 @@
 import React from 'react'
-import CodeEditor from "./CodeEditor";
+import ReadOnlyEditor from "./ReadOnlyEditor";
 
 const loop = [1, 2, 3, 4, 8, 9, 9, 9];
 const root = {
@@ -11,8 +11,8 @@ export default function DemoEditor() {
     // @ts-ignore
     return <div className="demo-container" style={root}>
         {loop.map((item, index) => (
-            <CodeEditor key={index} code={demoCode}>
-            </CodeEditor>
+            <ReadOnlyEditor key={index} code={demoCode} disabled={true}>
+            </ReadOnlyEditor>
         ))}
     </div>;
 }

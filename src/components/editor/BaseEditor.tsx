@@ -13,6 +13,8 @@ interface IProps {
 }
 export default function BaseEditor(props: any) {
   const [value, setValue] = useState(props.code);
+
+  // remove dispatch code, if this is only used for ReadOnlyEditor
   const dispatch = useDispatch();
 
   const handleOnChange = (codeString: string) => {
