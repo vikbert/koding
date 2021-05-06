@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import "./codeEditor.css";
+import "./editor.css";
 import EditorHeader from "./EditorHeader";
+import BaseEditor from "./BaseEditor";
 
 interface IProps {
   code: string,
@@ -17,12 +18,13 @@ export default function CodeEditor(props: IProps) {
   return (
       <div className="editor-wrapper">
         <EditorHeader/>
-        <textarea
-            rows={15}
-            style={{fontFamily: ''}}
-            value={value}
-            placeholder={'enter here your snippet'}
-            onChange={handleOnChange}/>
+        <BaseEditor code={props.code} disabled={props.disabled}/>
+        {/*<textarea*/}
+        {/*    rows={15}*/}
+        {/*    style={{fontFamily: ''}}*/}
+        {/*    value={value}*/}
+        {/*    placeholder={'enter here your snippet'}*/}
+        {/*    onChange={handleOnChange}/>*/}
         {props.children}
       </div>
   );

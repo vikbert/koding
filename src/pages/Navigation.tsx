@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'wouter'
 import classNames from 'classnames'
-import './navigation.css'
+import '../assets/css/navigation.css'
 
 const Navigation = () => {
   const [current, setCurrent] = useState('');

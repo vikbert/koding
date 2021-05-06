@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Insert from "./pages/insert/Insert";
 import Navigation from "./pages/Navigation";
 import Play from "./pages/Play";
-import './assets/css/page.css'
 
 const App = () => {
   return (

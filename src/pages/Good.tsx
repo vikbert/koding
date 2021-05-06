@@ -5,7 +5,7 @@ const Good = () => {
   return (
       <div className="page" id="page-good">
         <section className="header">
-          <div className="title">Favorite Snippets</div>
+          <h5>Favorite Snippets</h5>
         </section>
         <section className="content">
           <DemoEditor/>

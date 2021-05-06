@@ -5,9 +5,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Editor from "react-simple-code-editor";
-import "./codeEditor.css";
 import {codeChanged} from "./editorAction";
-import EditorHeader from "./EditorHeader";
 
 interface IProps {
   code: string,

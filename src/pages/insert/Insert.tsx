@@ -79,11 +79,23 @@ export default function Insert () {
   return (
       <div className={'page page__insert'}>
         {visible && <Toast type={config.type} title={config.title} description={''}/>}
-        {/*<section className="header">*/}
-        {/*  <span className="title">Add new snippets</span>*/}
-        {/*</section>*/}
+        <section className="header">
+          <h5>Add new snippets</h5>
+        </section>
         <section className="content">
-          <InsertConvention/>
+          {/*<InsertConvention/>*/}
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
+          <InsertSnippets/>
         </section>
       </div>
   );

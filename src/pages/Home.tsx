@@ -2,11 +2,12 @@ import React from 'react';
 
 const Home = () => {
   return (
-      <div className="page" id="page-home">
+      <div className="page">
         <section className="header">
-          <div className="title">Home</div>
+          <h5>Home</h5>
         </section>
         <section className="content">
+          <button className="button is-primary is-rounded">submit</button>
         </section>
       </div>
   );
