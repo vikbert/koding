@@ -26,6 +26,9 @@
 .icon.active {
   color: #ffffff;
 }
+.icon:hover {
+  color: #cac8c8;
+}
 ul {
   position: fixed;
   z-index: 1;
@@ -34,7 +37,4 @@ ul {
   width: 100%;
   padding: 0;
   text-align: center;
-}
-a {
-  text-decoration: none;
 }

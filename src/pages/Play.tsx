@@ -14,7 +14,7 @@ const Play = () => {
   const [items, setItems] = React.useState([]);
 
   useEffect(() => {
-    const snippets = client.list();
+    const snippets = client.listSnippets();
     // @ts-ignore
     setItems(snippets);
     dispatch(fetchSnippetsDone(snippets));

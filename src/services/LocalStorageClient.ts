@@ -1,26 +1,17 @@
 import {Snippet} from "../types/Snippet";
-import {Criteria} from "../types/Criteria";
-import {StorageInterface} from "./StorageInterface";
+import {Rule} from "../types/Rule";
 
-class LocalStorageClient implements StorageInterface {
-  readonly KEY_CODE_LIST = 'RATE-CODE-LIST';
+class LocalStorageClient {
+  readonly KEY_SNIPPETS = 'APP_SNIPPETS';
+  readonly KEY_RULES = 'APP_RULES';
 
-  setValue(value: Snippet[]): void {
-    window.localStorage.setItem(this.KEY_CODE_LIST, JSON.stringify(value));
+  _setValue(key: string, value: Snippet[]): void {
+    window.localStorage.setItem(key, JSON.stringify(value));
   }
 
-  saveSnippet(code: Snippet): void {
+  _list(key: string): any {
     try {
-      const list = this.list();
-      this.setValue([code, ...list])
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  list(criteria?: Criteria): Snippet[] {
-    try {
-      const item = window.localStorage.getItem(this.KEY_CODE_LIST);
+      const item = window.localStorage.getItem(key);
       // Parse stored json or if none return initialValue
       return item ? JSON.parse(item) : [];
     } catch (error) {
@@ -30,6 +21,31 @@ class LocalStorageClient implements StorageInterface {
     }
   }
 
+  saveSnippet(code: Snippet): void {
+    try {
+      const list = this._list(this.KEY_SNIPPETS);
+      this._setValue(this.KEY_SNIPPETS, [code, ...list])
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  saveRule(rule: Rule): void {
+    try {
+      const list = this._list(this.KEY_RULES);
+      this._setValue(this.KEY_RULES, [rule, ...list])
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  listSnippets(): any {
+    return this._list(this.KEY_SNIPPETS);
+  }
+
+  listRules(): any {
+    return this._list(this.KEY_RULES);
+  }
 }
 
 export default LocalStorageClient;

@@ -46,7 +46,7 @@ const Toast = ({type, title, description, position = 'topdown', duration = 2500,
   const setToastType = (type: string) => {
     switch (type) {
       case 'success':
-        setToast([...toast, {title, description, backgroundColor: '#2ea05d', icon: done}])
+        setToast([...toast, {title, description, backgroundColor: '#666565', icon: done}])
         break;
       case 'error':
         setToast([...toast, {title, description, backgroundColor: '#E53E3E', icon: error}])

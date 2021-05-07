@@ -9,11 +9,15 @@ import {Snippet} from "../../types/Snippet";
 import {nanoid} from "nanoid";
 import Toast from "../../components/toast";
 import {Config} from "../../hooks/useToast";
-import InsertConvention from "../../components/Convention/InsertConvention";
+import InsertRule from "../../components/Rule/InsertRule";
+import RulesWrapper from "../../components/Rule/RulesWrapper";
+import Logo from '../../assets/img/logo.png'
+import {hideRules, showRules} from "../../components/Rule/ruleAction";
 
-export default function Insert () {
+export default function Insert() {
   const dispatch = useDispatch();
   const editorState = useSelector((state: any) => state.reduxEditor);
+  const ruleState = useSelector((state: any) => state.reduxRule);
   const [visible, setVisible] = useState(false);
   const config: Config = {
     type: 'success',
@@ -75,27 +79,26 @@ export default function Insert () {
     );
   }
 
+  function handleToggleRulesWrapper() {
+    dispatch(ruleState.show ? hideRules() : showRules())
+  }
 
   return (
       <div className={'page page__insert'}>
         {visible && <Toast type={config.type} title={config.title} description={''}/>}
-        <section className="header">
-          <h5>Add new snippets</h5>
+        <section className="header space-between px-2">
+          <a href="/">
+            <img className="logo" src={Logo} alt=""/>
+          </a>
+          <span className={'title'}>Add new snippets</span>
+          <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
+            <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
+          </div>
         </section>
         <section className="content">
-          {/*<InsertConvention/>*/}
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
-          <InsertSnippets/>
+          <InsertRule/>
+          {/*<InsertSnippets/>*/}
+          {ruleState.show && (<RulesWrapper/>)}
         </section>
       </div>
   );
