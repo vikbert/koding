@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
-import {useSelector} from "react-redux";
+import React from 'react';
+import {useSelector, useDispatch} from "react-redux";
 import {Rule} from '../../types/Rule'
 import './rulesWrapper.css';
 import RuleBubble from "./RuleBubble";
 import ExtendedInput from "../base/ExtendedInput";
+import {showPopup} from "./ruleAction";
 
 const RulesWrapper = () => {
   const [filter, setFilter] = React.useState('');
   const ruleState = useSelector((state: any) => state.reduxRule)
+  const dispatch = useDispatch();
 
   const handleOnChange = (userInput: string) => {
     setFilter(userInput);
@@ -21,6 +23,10 @@ const RulesWrapper = () => {
     return ruleState.rules.filter((rule: Rule) => rule.body.toLowerCase().includes(filter.toLowerCase()))
   }
 
+  const handleOpenRulePopup = (rule: Rule) => {
+    dispatch(showPopup(rule));
+  }
+
   return (
       <div className={'rules_wrapper slide-left'}>
         <ExtendedInput
@@ -29,7 +35,9 @@ const RulesWrapper = () => {
             handleOnChange={handleOnChange}/>
 
         {filterRules().map((rule: Rule, index: number) => (
-            <RuleBubble key={index} ruleText={rule.body}/>
+            <div key={index} onClick={() => handleOpenRulePopup(rule)}>
+              <RuleBubble ruleText={rule.body}/>
+            </div>
         ))}
 
         {filterRules().length === 0 && (

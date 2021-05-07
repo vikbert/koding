@@ -2,12 +2,20 @@ import LocalStorageClient from "../../services/LocalStorageClient";
 import {Rule} from "../../types/Rule";
 
 export const RULE_ADDED = 'rule.rule_added'
-export const RULES_RECEIVED = 'rule.rules_RECEIVED'
-export const SHOW_RULES = 'rule.SHOW'
-export const HIDE_RULES = 'rule.HIDE'
+export const RULE_UPDATED = 'rule.rule_updated'
+export const RULES_RECEIVED = 'rule.rules_received'
+export const SHOW_RULES = 'rule.show_wrapper'
+export const HIDE_RULES = 'rule.hide_wrapper'
+export const SHOW_POPUP = 'rule.show_popup'
+export const HIDE_POPUP = 'rule.hide_popup'
 
 export const ruleAdded = (rule: Rule) => ({
   type: RULE_ADDED,
+  rule,
+})
+
+export const ruleUpdated = (rule: Rule) => ({
+  type: RULE_UPDATED,
   rule,
 })
 
@@ -18,10 +26,19 @@ export const rulesReceived = (rules: string[]) => ({
 
 export const addRule = (rule: Rule) => {
   const client = new LocalStorageClient();
-  client.saveRule(rule);
+  client.insertRule(rule);
 
   return function(dispatch: any) {
     dispatch(ruleAdded(rule));
+  };
+}
+
+export const updateRule = (rule: Rule) => {
+  const client = new LocalStorageClient();
+  client.updateRule(rule);
+
+  return function(dispatch: any) {
+    dispatch(ruleUpdated(rule));
   };
 }
 
@@ -40,4 +57,13 @@ export const showRules = () => ({
 
 export const hideRules = () => ({
   type: HIDE_RULES,
+})
+
+export const showPopup = (targetRule: Rule) => ({
+  type: SHOW_POPUP,
+  targetRule,
+})
+
+export const hidePopup = () => ({
+  type: HIDE_POPUP,
 })

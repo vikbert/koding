@@ -4,12 +4,13 @@ import {fetchSnippetsDone} from "../components/code/snippetAction";
 import CodeEditor from "../components/editor/CodeEditor";
 import LocalStorageClient from "../services/LocalStorageClient";
 import {Snippet} from "../types/Snippet";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Play = () => {
+  useDocumentTitle('Play snippets')
   const client = new LocalStorageClient();
   const dispatch = useDispatch();
   const snippets = useSelector((state: any) => state.reduxSnippet);
-  console.log(snippets);
 
   const [items, setItems] = React.useState([]);
 
@@ -25,7 +26,7 @@ const Play = () => {
         <section className="header">
           <h5>Play Snippets</h5>
         </section>
-        <section className="content">
+        <section className="page-content">
           {snippets.map((item: Snippet, index: string) => (
               <CodeEditor key={item.id} code={item.body} disabled={true}>
                 <div className="editor-options">

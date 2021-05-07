@@ -30,10 +30,22 @@ class LocalStorageClient {
     }
   }
 
-  saveRule(rule: Rule): void {
+  insertRule(rule: Rule): void {
     try {
       const list = this._list(this.KEY_RULES);
       this._setValue(this.KEY_RULES, [rule, ...list])
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  updateRule(rule: Rule): void {
+    try {
+      const list = this._list(this.KEY_RULES);
+
+      this._setValue(this.KEY_RULES, list.map((item: Rule, index: number) => {
+        return item.id === rule.id ? rule : item;
+      }))
     } catch (error) {
       console.log(error);
     }

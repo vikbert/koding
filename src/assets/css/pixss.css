@@ -778,8 +778,7 @@ input[type="checkbox"], input[type="radio"] {
   position: relative;
   display: grid;
   grid-template-rows:auto 1fr auto;
-  min-width: 42rem;
-  max-width: 56.8rem;
+  min-width: 32rem;
   min-height: 100px;
   border-radius: .8rem;
   background-color: #fff;

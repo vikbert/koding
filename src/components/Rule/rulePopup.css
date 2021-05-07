@@ -1,0 +1,14 @@
+.rule-popup .title {
+  color: var(--color-primary);
+}
+.rule-popup textarea {
+  height: 20rem;
+  width: 80rem;
+  border-radius: .4rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .rule-popup textarea {
+    width: 100%;
+  }
+}

@@ -10,6 +10,12 @@
   padding-bottom: var(--footer-height);
   background-color: #8e8888bf;
 }
+
+@media only screen and (max-width: 321px) {
+  .rules_wrapper {
+    width: 320px;
+  }
+}
 .rules_wrapper h1 {
   margin-top: 50px;
   margin-bottom: 50px;

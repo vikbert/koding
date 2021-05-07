@@ -13,8 +13,11 @@ import InsertRule from "../../components/Rule/InsertRule";
 import RulesWrapper from "../../components/Rule/RulesWrapper";
 import Logo from '../../assets/img/logo.png'
 import {hideRules, showRules} from "../../components/Rule/ruleAction";
+import RulePopup from "../../components/Rule/RulePopup";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 export default function Insert() {
+  useDocumentTitle('Insert snippet and convention');
   const dispatch = useDispatch();
   const editorState = useSelector((state: any) => state.reduxEditor);
   const ruleState = useSelector((state: any) => state.reduxRule);
@@ -80,13 +83,18 @@ export default function Insert() {
   }
 
   function handleToggleRulesWrapper() {
-    dispatch(ruleState.show ? hideRules() : showRules())
+    dispatch(ruleState.showWrapper ? hideRules() : showRules())
   }
 
   return (
       <div className={'page page__insert'}>
+        {ruleState.showPopup && (
+            <RulePopup rule={ruleState.targetRule}/>
+        )}
+
         {visible && <Toast type={config.type} title={config.title} description={''}/>}
-        <section className="header space-between px-2">
+
+        <section className="header space-between px-1">
           <a href="/">
             <img className="logo" src={Logo} alt=""/>
           </a>
@@ -95,10 +103,10 @@ export default function Insert() {
             <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
           </div>
         </section>
-        <section className="content">
+        <section className="page-content">
           <InsertRule/>
           {/*<InsertSnippets/>*/}
-          {ruleState.show && (<RulesWrapper/>)}
+          {ruleState.showWrapper && (<RulesWrapper/>)}
         </section>
       </div>
   );
