@@ -15,6 +15,7 @@ import {hideRules, showRules} from "../../components/Rule/ruleAction";
 import RulePopup from "../../components/Rule/RulePopup";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Header from "../../components/base/Header";
+import './insert.css'
 
 export default function Insert() {
   useDocumentTitle('Insert snippet and convention');
@@ -73,17 +74,16 @@ export default function Insert() {
               <span></span>
             </div>
           </CodeEditor>
-          <div className={'action-save'} onClick={handleSave}>
-            <div className="bg-black rounded-md">
-              <span className="iconify" data-icon="fluent:save-20-regular" data-inline="false"/>
-            </div>
-          </div>
         </>
     );
   }
 
   function handleToggleRulesWrapper() {
     dispatch(ruleState.showWrapper ? hideRules() : showRules())
+  }
+
+  function handleOnSubmit(event: any) {
+    console.log(event.currentTarget);
   }
 
   return (
@@ -94,15 +94,25 @@ export default function Insert() {
 
         {visible && <Toast type={config.type} title={config.title} description={''}/>}
 
-        <Header title={'Add Snippets and convention'}>
+        <Header title={'Add Snippets'}>
           <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
             <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
           </div>
         </Header>
 
         <section className="page-content">
-          <InsertRule/>
-          {/*<InsertSnippets/>*/}
+          <div className="container">
+            <form onSubmit={handleOnSubmit}>
+              <div className="row space-between my-2">
+                <InsertSnippets/>
+              </div>
+              <div className="centered-xy">
+                <button className={'is-warning is-rounded box-shadow'} onClick={handleSave}>
+                  save the snippets
+                </button>
+              </div>
+            </form>
+          </div>
           {ruleState.showWrapper && (<RulesList/>)}
         </section>
       </div>

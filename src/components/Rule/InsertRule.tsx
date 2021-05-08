@@ -32,7 +32,7 @@ const InsertRule = () => {
   }, [])
 
   return (
-      <div className="container">
+      <>
         <form className={'py-2'} onSubmit={handleSubmit} id={'snippet-form'}>
           {visible && <Toast type={'success'} title={"It's done."} description={''}/>}
           <ExtendedInput
@@ -41,8 +41,11 @@ const InsertRule = () => {
               placeHolderText={'Enter a new coding convention'}
               handleOnChange={(userInput) => handleRuleChange(userInput)}
           />
+          <div className="rule_bubble rule_preview space-between">
+            <p>{rule.body}</p>
+          </div>
         </form>
-      </div>
+      </>
   );
 };
 

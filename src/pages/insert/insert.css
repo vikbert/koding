@@ -7,3 +7,6 @@
 .page__insert form {
   width: 100%;
 }
+.page__insert textarea {
+  min-height: 35rem;
+}

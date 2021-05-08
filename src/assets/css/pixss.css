@@ -587,7 +587,8 @@ input[type='checkbox'], input[type='radio'] {
 }
 
 button {
-  background-color: #b5b5b5
+  background-color: #b5b5b5;
+  font-family: Gruppo, cursive;
 }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {

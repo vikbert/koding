@@ -2,8 +2,13 @@
 /*@import 'tailwindcss/components';*/
 /*@import 'tailwindcss/utilities';*/
 
-@import "./pixss.css";
 @import './app.css';
+@import "./pixss.css";
 @import './navigation.css';
 @import "./animation.css";
-@import './insert-page.css';
+
+:root {
+  --header-height: 3.5rem;
+  --footer-height: 4.8rem;
+  --color-primary: #4B4B4B;
+}

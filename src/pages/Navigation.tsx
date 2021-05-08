@@ -34,6 +34,9 @@ const Navigation = () => {
         <LinkItem linkName={'/favorite'}>
           <span className="iconify" data-icon="bx:bxs-bookmark-star" data-inline="false"/>
         </LinkItem>
+        <LinkItem linkName={'/rules'}>
+          <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"/>
+        </LinkItem>
       </ul>
   );
 };

@@ -2,33 +2,23 @@ import {highlight, languages} from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React from 'react';
 import Editor from "react-simple-code-editor";
-import {codeChanged} from "./editorAction";
 
 interface IProps {
   code: string,
+  placeholder: string,
   disabled?: boolean,
 }
-export default function BaseEditor(props: any) {
-  const [value, setValue] = useState(props.code);
 
-  // remove dispatch code, if this is only used for ReadOnlyEditor
-  const dispatch = useDispatch();
-
-  const handleOnChange = (codeString: string) => {
-    setValue(codeString);
-    dispatch(codeChanged(codeString))
-  }
-
+export default function BaseEditor(props: IProps) {
   return (
       <>
         <Editor
             disabled={props.disabled || false}
-            value={value}
+            value={props.code}
             placeholder={props.placeholder || 'Enter your new snippet'}
-            onValueChange={(codeString) => handleOnChange(codeString)}
+            onValueChange={() => null}
             highlight={(codeString) => highlight(codeString, languages.js)}
             padding={10}
             style={{

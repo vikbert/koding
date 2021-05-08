@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./editor.css";
 import EditorHeader from "./EditorHeader";
 import BaseEditor from "./BaseEditor";
@@ -13,7 +13,7 @@ export default function ReadOnlyEditor(props: IProps) {
   return (
       <div className="editor-wrapper">
         <EditorHeader/>
-        <BaseEditor code={props.code} disabled={true}/>
+        <BaseEditor code={props.code} disabled={true} placeholder={''}/>
         {props.children}
       </div>
   );
