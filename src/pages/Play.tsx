@@ -5,6 +5,7 @@ import CodeEditor from "../components/editor/CodeEditor";
 import LocalStorageClient from "../services/LocalStorageClient";
 import {Snippet} from "../types/Snippet";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import Header from "../components/base/Header";
 
 const Play = () => {
   useDocumentTitle('Play snippets')
@@ -23,9 +24,11 @@ const Play = () => {
 
   return (
       <div className="page" id="page-play">
-        <section className="header">
-          <h5>Play Snippets</h5>
-        </section>
+        <Header title={'Review Snippets'}>
+          <div className={'menu-icon'} onClick={() => {}}>
+            <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
+          </div>
+        </Header>
         <section className="page-content">
           {snippets.map((item: Snippet, index: string) => (
               <CodeEditor key={item.id} code={item.body} disabled={true}>

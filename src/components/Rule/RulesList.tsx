@@ -1,12 +1,11 @@
 import React from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {Rule} from '../../types/Rule'
-import './rulesWrapper.css';
-import RuleBubble from "./RuleBubble";
+import './rule.css';
 import ExtendedInput from "../base/ExtendedInput";
 import {showPopup} from "./ruleAction";
 
-const RulesWrapper = () => {
+const RulesList = () => {
   const [filter, setFilter] = React.useState('');
   const ruleState = useSelector((state: any) => state.reduxRule)
   const dispatch = useDispatch();
@@ -31,12 +30,15 @@ const RulesWrapper = () => {
       <div className={'rules_wrapper slide-left'}>
         <ExtendedInput
             type={'search'}
+            initValue={''}
             placeHolderText={'Type to filter the conventions'}
             handleOnChange={handleOnChange}/>
 
         {filterRules().map((rule: Rule, index: number) => (
-            <div key={index} onClick={() => handleOpenRulePopup(rule)}>
-              <RuleBubble ruleText={rule.body}/>
+            <div className="rule_bubble"
+                 key={index}
+                 onClick={() => handleOpenRulePopup(rule)}>
+              <p>{rule.body}</p>
             </div>
         ))}
 
@@ -49,4 +51,4 @@ const RulesWrapper = () => {
   );
 };
 
-export default RulesWrapper;
+export default RulesList;

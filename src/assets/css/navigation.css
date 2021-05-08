@@ -1,10 +1,9 @@
 #menu {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   align-items: center;
-  /*background-color: rgb(38 73 103 / 86%);*/
-  background-color: var(--color-primary);
+  background-color: rgba(75, 75, 75, 0.72);
   box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);
   -webkit-box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px -1px 6px 0px rgba(0,0,0,0.75);

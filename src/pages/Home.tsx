@@ -1,15 +1,20 @@
 import React from 'react';
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import Header from "../components/base/Header";
 
 const Home = () => {
   useDocumentTitle('Home')
   return (
       <div className="page">
-        <section className="header">
-          <h5>Home</h5>
-        </section>
-        <section className="page-content">
-          <button className="button is-primary is-rounded">submit</button>
+        <Header title={'Home'}>
+          <div className={'menu-icon'} onClick={() => {}}>
+            <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
+          </div>
+        </Header>
+        <section className="page-content centered-xy">
+          <div className="container">
+            <h1>home</h1>
+          </div>
         </section>
       </div>
   );

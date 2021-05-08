@@ -10,11 +10,11 @@ import {nanoid} from "nanoid";
 import Toast from "../../components/toast";
 import {Config} from "../../hooks/useToast";
 import InsertRule from "../../components/Rule/InsertRule";
-import RulesWrapper from "../../components/Rule/RulesWrapper";
-import Logo from '../../assets/img/logo.png'
+import RulesList from "../../components/Rule/RulesList";
 import {hideRules, showRules} from "../../components/Rule/ruleAction";
 import RulePopup from "../../components/Rule/RulePopup";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import Header from "../../components/base/Header";
 
 export default function Insert() {
   useDocumentTitle('Insert snippet and convention');
@@ -94,19 +94,16 @@ export default function Insert() {
 
         {visible && <Toast type={config.type} title={config.title} description={''}/>}
 
-        <section className="header space-between px-1">
-          <a href="/">
-            <img className="logo" src={Logo} alt=""/>
-          </a>
-          <span className={'title'}>Add new snippets</span>
+        <Header title={'Add Snippets and convention'}>
           <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
             <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
           </div>
-        </section>
+        </Header>
+
         <section className="page-content">
           <InsertRule/>
           {/*<InsertSnippets/>*/}
-          {ruleState.showWrapper && (<RulesWrapper/>)}
+          {ruleState.showWrapper && (<RulesList/>)}
         </section>
       </div>
   );

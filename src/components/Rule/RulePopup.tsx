@@ -1,7 +1,6 @@
 import React from 'react';
 import {Rule} from "../../types/Rule";
 import {useDispatch} from "react-redux";
-import './rulePopup.css'
 import {hidePopup, updateRule} from "./ruleAction";
 
 interface IProps {

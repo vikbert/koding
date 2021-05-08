@@ -4,6 +4,7 @@ import Toast from "../toast";
 import {useDispatch} from "react-redux";
 import {addRule, fetchRules, showRules} from "./ruleAction";
 import {nanoid} from "nanoid";
+import ExtendedInput from "../base/ExtendedInput";
 
 const initRule = {body: ''}
 const InsertRule = () => {
@@ -11,8 +12,8 @@ const InsertRule = () => {
   const {visible, show} = useVisibility();
   const dispatch = useDispatch();
 
-  function handleRuleChange(event: any) {
-    setRule({...rule, body: event.target.value})
+  function handleRuleChange(userInput: any) {
+    setRule({...rule, body: userInput})
   }
 
   function handleSubmit(event: any) {
@@ -20,8 +21,6 @@ const InsertRule = () => {
     dispatch(addRule({...rule, id: nanoid()}))
     dispatch(showRules())
     showToast();
-
-    setRule(initRule);
   }
 
   function showToast() {
@@ -34,13 +33,14 @@ const InsertRule = () => {
 
   return (
       <div className="container">
-        <form className={'py-2'} onSubmit={handleSubmit}>
+        <form className={'py-2'} onSubmit={handleSubmit} id={'snippet-form'}>
           {visible && <Toast type={'success'} title={"It's done."} description={''}/>}
-          <input
-              type="text"
-              value={rule.body}
-              onChange={handleRuleChange}
-              placeholder={'Enter a new coding convention'}/>
+          <ExtendedInput
+              type={'add'}
+              initValue={rule.body}
+              placeHolderText={'Enter a new coding convention'}
+              handleOnChange={(userInput) => handleRuleChange(userInput)}
+          />
         </form>
       </div>
   );

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'wouter'
 import classNames from 'classnames'
 import '../assets/css/navigation.css'
@@ -32,10 +32,7 @@ const Navigation = () => {
           <span className="iconify" data-icon="carbon:add-alt" data-inline="false"/>
         </LinkItem>
         <LinkItem linkName={'/favorite'}>
-          <span className="iconify" data-icon="bx:bxs-bookmark-star" data-inline="false"></span>
-        </LinkItem>
-        <LinkItem linkName={'/bad'}>
-          <span className="iconify" data-icon="ic:outline-thumb-up-off-alt" data-inline="false"/>
+          <span className="iconify" data-icon="bx:bxs-bookmark-star" data-inline="false"/>
         </LinkItem>
       </ul>
   );
