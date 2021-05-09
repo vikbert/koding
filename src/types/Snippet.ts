@@ -4,4 +4,5 @@ export type Snippet = {
   isBad: boolean,
   lang?: string,
   suggestion?: string,
+  rules?: string[],
 }
