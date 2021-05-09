@@ -24,11 +24,15 @@ export default function RulePopup(props: RulePopupProps) {
     dispatch(hidePopup());
   }
 
+  React.useEffect(() => {
+  	console.log(rule);
+  }, [])
+
   return props.rule && (
       <div className="overlay open">
         <div className="popup rule-popup">
           <div className="title">
-            <span>Edit or assign this Convention</span>
+            <h4>Edit or assign this Convention</h4>
           </div>
           <div className="content">
             <textarea value={rule.body} onChange={handleOnChange}/>

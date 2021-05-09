@@ -6,6 +6,7 @@
 @import "./pixss.css";
 @import './navigation.css';
 @import "./animation.css";
+@import "./flip.css";
 
 :root {
   --header-height: 3.5rem;

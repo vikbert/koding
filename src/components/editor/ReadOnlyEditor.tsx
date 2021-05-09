@@ -11,7 +11,7 @@ type ReadOnlyEditorProps = {
 
 export default function ReadOnlyEditor(props: ReadOnlyEditorProps) {
   return (
-      <div className="editor-wrapper">
+      <div className={"editor-wrapper"}>
         <EditorHeader/>
         <BaseEditor code={props.code} disabled={true} placeholder={''}/>
         {props.children}

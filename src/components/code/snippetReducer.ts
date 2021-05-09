@@ -1,13 +1,14 @@
 import {SNIPPETS_RECEIVED, SNIPPET_ADDED} from './snippetAction';
 
-export const codeState = []
+export const snippetState = []
 
-export const snippetReducer = (state = codeState, action: any) => {
-  if (action.type === SNIPPETS_RECEIVED) {
-    return action.snippets;
-  } else if(action.type === SNIPPET_ADDED) {
-    return [action.snippet, ...state];
+export const snippetReducer = (state = snippetState, action: any) => {
+  switch (action.type) {
+    case SNIPPETS_RECEIVED:
+      return action.snippets;
+    case SNIPPET_ADDED:
+      return [action.snippet, ...state];
+    default:
+      return state;
   }
-
-  return state;
 }

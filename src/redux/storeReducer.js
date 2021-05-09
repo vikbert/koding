@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {snippetReducer, codeState} from '../components/code/snippetReducer';
+import {snippetReducer, snippetState} from '../components/code/snippetReducer';
 import {editorReducer, editorState} from '../components/editor/editorReducer';
 import {ruleReducer, ruleState} from '../components/Rule/ruleReducer';
 
@@ -10,7 +10,7 @@ const allReducers = combineReducers({
 });
 
 export const rootState = {
-    reduxSnippet: codeState,
+    reduxSnippet: snippetState,
     reduxEditor: editorState,
     reduxRule: ruleState,
 };

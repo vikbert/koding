@@ -22,7 +22,7 @@ export default function BaseEditor(props: BaseEditorProps) {
           padding={10}
           style={{
             fontFamily: '"Fira code", "Fira Mono", monospace',
-            minHeight: '200px',
+            minHeight: '100px',
             maxHeight: '700px',
             overflow: 'scroll',
             color: 'rgb(169 208 247)',

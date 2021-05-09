@@ -1,28 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./editor.css";
 import EditorHeader from "./EditorHeader";
 
 type CodeEditorProps = {
+  fieldName: string,
   code: string,
   disabled?: boolean,
   children: any,
 }
 
 export default function CodeEditor(props: CodeEditorProps) {
-  const [value, setValue] = useState('');
-  const handleOnChange = (event: any) => {
-    setValue(event.target.value);
-  }
-
   return (
       <div className="editor-wrapper">
         <EditorHeader/>
         <textarea
+            name={props.fieldName}
             rows={15}
-            style={{fontFamily: ''}}
-            value={value}
-            placeholder={'enter here your snippet'}
-            onChange={handleOnChange}/>
+            placeholder={'enter here your snippet'}/>
         {props.children}
       </div>
   );

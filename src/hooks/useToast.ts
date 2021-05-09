@@ -1,30 +1,17 @@
-import {useState} from "react";
+import nativeToast, {ToastOptions} from 'native-toast';
 
-export interface Config {
-  type: string,
-  title: string,
-  description?: string,
-}
-
-interface ToastUtilities {
-  visible: boolean,
-  config: Config,
-  notify: any,
-}
-
-
-const useToast = (initConfig: Config): ToastUtilities => {
-  const [visible, setVisible] = useState<boolean>(false);
-  const [config, setConfig] = useState<Config>(initConfig)
-
-  const notify = (newConfig: Config) => {
-    if (null !== newConfig) {
-      setConfig(newConfig);
-    }
-    setVisible(true);
+const useNotify = () => {
+  const notify = (options: ToastOptions) => {
+    nativeToast({
+      type: options.type,
+      message: options.message,
+      position: 'north',
+      timeout: 3000,
+      edge: true,
+    })
   }
 
-  return {visible, config, notify};
+  return notify;
 }
 
-export default useToast;
+export default useNotify;

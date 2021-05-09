@@ -21,7 +21,7 @@ class LocalStorageClient {
     }
   }
 
-  saveSnippet(code: Snippet): void {
+  insertSnippet(code: Snippet): void {
     try {
       const list = this._list(this.KEY_SNIPPETS);
       this._setValue(this.KEY_SNIPPETS, [code, ...list])

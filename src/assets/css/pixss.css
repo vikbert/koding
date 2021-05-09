@@ -871,6 +871,12 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between
 }
+.grid-row {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
 
 .is-rounded {
   border-radius: .4rem

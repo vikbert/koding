@@ -1,89 +1,75 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {addSnippetDone} from "../../components/code/snippetAction";
-import CodeEditor from "../../components/editor/CodeEditor";
-import {codeChanged} from "../../components/editor/editorAction";
-import LocalStorageClient from "../../services/LocalStorageClient";
+import {addSnippet} from "../../components/code/snippetAction";
 import Thumb from "../../components/editor/Thumb";
-import {Snippet} from "../../types/Snippet";
 import {nanoid} from "nanoid";
-import Toast from "../../components/toast";
-import {Config} from "../../hooks/useToast";
-import InsertRule from "../../components/Rule/InsertRule";
+import useNotify from "../../hooks/useToast";
 import RulesList from "../../components/Rule/RulesList";
-import {hideRules, showRules} from "../../components/Rule/ruleAction";
+import {hideRules, showRules, fetchRules} from "../../components/Rule/ruleAction";
 import RulePopup from "../../components/Rule/RulePopup";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Header from "../../components/base/Header";
 import './insert.css'
+import EditorHeader from "../../components/editor/EditorHeader";
 
+const initState = {bad: '', good: ''};
 export default function Insert() {
   useDocumentTitle('Insert snippet and convention');
-  const dispatch = useDispatch();
-  const editorState = useSelector((state: any) => state.reduxEditor);
-  const ruleState = useSelector((state: any) => state.reduxRule);
-  const [visible, setVisible] = useState(false);
-  const config: Config = {
-    type: 'success',
-    title: 'Saving snippet done',
-    description: ''
-  }
 
-  let newSnippet: Snippet = {
-    id: nanoid(),
-    isBad: true,
-    body: editorState.content,
-    lang: 'php',
-  }
+  const dispatch = useDispatch();
+  const notify = useNotify();
+  const ruleState = useSelector((state: any) => state.reduxRule);
+  const [editorState, setEditorState] = React.useState(initState);
 
   function resetEditor() {
-    dispatch(codeChanged(''));
-  }
-
-  function handleSave() {
-    const localStorageClient = new LocalStorageClient();
-    localStorageClient.saveSnippet(newSnippet);
-
-    dispatch(addSnippetDone());
-    resetEditor();
-    setVisible(true)
-  }
-
-
-  useEffect(() => {
-    newSnippet = {
-      ...newSnippet,
-      body: editorState.content,
-    }
-  }, [editorState])
-
-  function InsertSnippets() {
-    return (
-        <>
-          <CodeEditor code={editorState.content}>
-            <div className="editor-options">
-              <span className="option-lang">php</span>
-              <Thumb bad={true}/>
-              <span></span>
-            </div>
-          </CodeEditor>
-          <CodeEditor code={editorState.content}>
-            <div className="editor-options">
-              <span className="option-lang">php</span>
-              <Thumb bad={false}/>
-              <span></span>
-            </div>
-          </CodeEditor>
-        </>
-    );
+    setEditorState(initState)
   }
 
   function handleToggleRulesWrapper() {
     dispatch(ruleState.showWrapper ? hideRules() : showRules())
   }
 
+  function insertCode(code: string, isBad: boolean) {
+    dispatch(addSnippet({
+      id: nanoid(),
+      body: code,
+      isBad,
+      lang: 'php'
+    }))
+  }
+
   function handleOnSubmit(event: any) {
-    console.log(event.currentTarget);
+    event.preventDefault();
+
+    if (editorState.bad.length === 0 || editorState.good.length === 0) {
+      notify({type: 'warning', message: 'Both Code snippets should not be empty!'});
+      return;
+    }
+
+    insertCode(editorState.bad, true);
+    insertCode(editorState.good, false);
+    resetEditor();
+    notify({type: 'success', message: 'Both Code snippets are added!'});
+
+  }
+
+  React.useEffect(() => {
+    dispatch(fetchRules());
+  }, [])
+
+
+  function handleOnChangeBad(event: any) {
+    setEditorState({
+      ...editorState,
+      bad: event.target.value,
+    })
+  }
+
+  function handleOnChangeGood(event: any) {
+    setEditorState({
+      ...editorState,
+      good: event.target.value,
+    })
   }
 
   return (
@@ -91,8 +77,6 @@ export default function Insert() {
         {ruleState.showPopup && (
             <RulePopup rule={ruleState.targetRule}/>
         )}
-
-        {visible && <Toast type={config.type} title={config.title} description={''}/>}
 
         <Header title={'Add Snippets'}>
           <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
@@ -104,10 +88,37 @@ export default function Insert() {
           <div className="container">
             <form onSubmit={handleOnSubmit}>
               <div className="row space-between my-2">
-                <InsertSnippets/>
+                <div className="editor-wrapper">
+                  <EditorHeader/>
+                  <textarea
+                      name={'bad'}
+                      rows={15}
+                      placeholder={'Bad snippet'}
+                      value={editorState.bad}
+                      onChange={handleOnChangeBad}/>
+                  <div className="editor-options">
+                    <span className="option-lang">php</span>
+                    <Thumb bad={true}/>
+                    <span></span>
+                  </div>
+                </div>
+                <div className="editor-wrapper">
+                  <EditorHeader/>
+                  <textarea
+                      name={'good'}
+                      rows={15}
+                      placeholder={'Good snippet'}
+                      value={editorState.good}
+                      onChange={handleOnChangeGood}/>
+                  <div className="editor-options">
+                    <span className="option-lang">php</span>
+                    <Thumb bad={false}/>
+                    <span></span>
+                  </div>
+                </div>
               </div>
               <div className="centered-xy">
-                <button className={'is-warning is-rounded box-shadow'} onClick={handleSave}>
+                <button type="submit" className={'is-warning is-rounded box-shadow'}>
                   save the snippets
                 </button>
               </div>

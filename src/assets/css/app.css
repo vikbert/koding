@@ -27,9 +27,6 @@ textarea {
   outline: none;
   border: none;
 }
-.page {
-  padding-top: var(--header-height)
-}
 .page .header {
   display: flex;
   justify-content: space-between;
