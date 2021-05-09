@@ -61,11 +61,6 @@ export default function Insert() {
 
   }
 
-  React.useEffect(() => {
-    dispatch(fetchRules());
-  }, [])
-
-
   function handleOnChangeBad(event: any) {
     setEditorState({
       ...editorState,
@@ -79,6 +74,10 @@ export default function Insert() {
       good: event.target.value,
     })
   }
+
+  React.useEffect(() => {
+    dispatch(fetchRules());
+  }, [])
 
   return (
       <div className={'page page__insert'}>
@@ -110,7 +109,7 @@ export default function Insert() {
                       onChange={handleOnChangeBad}/>
                   <div className="editor-options">
                     <Thumb bad={true}/>
-                    <span></span>
+                    <span/>
                   </div>
                 </div>
                 <div className="editor-wrapper mx-1">
@@ -123,7 +122,7 @@ export default function Insert() {
                       onChange={handleOnChangeGood}/>
                   <div className="editor-options">
                     <Thumb bad={false}/>
-                    <span></span>
+                    <span/>
                   </div>
                 </div>
               </div>
