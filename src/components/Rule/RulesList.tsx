@@ -5,7 +5,7 @@ import './rule.css';
 import ExtendedInput from "../base/ExtendedInput";
 import {showPopup} from "./ruleAction";
 
-const RulesList = () => {
+export default function RulesList() {
   const [filter, setFilter] = React.useState('');
   const ruleState = useSelector((state: any) => state.reduxRule)
   const dispatch = useDispatch();
@@ -50,5 +50,3 @@ const RulesList = () => {
       </div>
   );
 };
-
-export default RulesList;

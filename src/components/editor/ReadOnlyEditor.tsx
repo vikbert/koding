@@ -3,13 +3,13 @@ import "./editor.css";
 import EditorHeader from "./EditorHeader";
 import BaseEditor from "./BaseEditor";
 
-interface IProps {
+type ReadOnlyEditorProps = {
   code: string,
   disabled?: boolean,
   children: any,
 }
 
-export default function ReadOnlyEditor(props: IProps) {
+export default function ReadOnlyEditor(props: ReadOnlyEditorProps) {
   return (
       <div className="editor-wrapper">
         <EditorHeader/>

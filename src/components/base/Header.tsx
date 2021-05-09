@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from "../../assets/img/logo.png";
 
-interface IProps {
+type HeaderProps = {
   title: string,
   children: any,
-}
+};
 
-const Header = (props: IProps) => {
+export default function Header(props: HeaderProps): JSX.Element {
   return (
       <section className="header space-between px-1">
         <a href="/">
@@ -18,4 +18,3 @@ const Header = (props: IProps) => {
   );
 };
 
-export default Header;

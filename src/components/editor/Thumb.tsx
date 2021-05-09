@@ -1,26 +1,18 @@
 import React from 'react';
 
-interface IProps {
+type ThumbProps = {
   bad: boolean,
 }
 
-const Thumb = (props: IProps) => {
+export default function Thumb(props: ThumbProps) {
+  const config = props.bad
+      ? {color: 'red', icon: 'mdi:thumb-down'}
+      : {color: 'green', icon: 'mdi:thumb-up'}
 
-  const ThumbDown = () => (
-      <div style={{color: 'red'}}>
-        {/*<span className="iconify" data-icon="mdi:thumb-down-outline" data-inline="false"/>*/}
-        <span className="iconify" data-icon="mdi:thumb-down" data-inline="false"/>
+  return (
+      <div style={{color: config.color}}>
+        <span className="iconify" data-icon={config.icon} data-inline="false"/>
       </div>
-  )
-
-  const ThumbUp = () => (
-      <div style={{color: 'green' }}>
-        {/*<span className="iconify" data-icon="mdi:thumb-up-outline" data-inline="false"/>*/}
-        <span className="iconify" data-icon="mdi:thumb-up" data-inline="false"/>
-      </div>
-  )
-
-  return props.bad ? <ThumbDown/> : <ThumbUp/>;
+  );
 };
 
-export default Thumb;

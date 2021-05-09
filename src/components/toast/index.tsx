@@ -6,7 +6,7 @@ import warning from './svg/warning.svg'
 import close from './svg/close.svg'
 import Style from './styles.module.css'
 
-type Props = {
+type ComponentProps = {
   type: string,
   title: string,
   description: string,
@@ -15,15 +15,16 @@ type Props = {
   closeButton?: boolean
 }
 
-interface ToastProps {
+type StateProps = {
   title: string,
   description: string,
   backgroundColor: string,
   icon: string
 }
 
-const Toast = ({type, title, description, position = 'topdown', duration = 2500, closeButton = false}: Props): JSX.Element => {
-  const [toast, setToast] = useState<ToastProps[]>([])
+const Toast = (props: ComponentProps): JSX.Element => {
+  const {type, title, description, position = 'topdown', duration = 2500, closeButton = false} = props;
+  const [toast, setToast] = useState<StateProps[]>([])
 
   useEffect(() => {
     setToastType(type)

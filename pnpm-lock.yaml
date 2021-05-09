@@ -295,7 +295,7 @@ packages:
       '@rollup/pluginutils': 3.1.0_rollup@2.47.0
       commondir: 1.0.1
       estree-walker: 2.0.2
-      glob: 7.1.6
+      glob: 7.1.7
       is-reference: 1.2.1
       magic-string: 0.25.7
       resolve: 1.20.0
@@ -1461,8 +1461,8 @@ packages:
       is-glob: 4.0.1
     dev: true
 
-  /glob/7.1.6:
-    resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+  /glob/7.1.7:
+    resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==}
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -2307,7 +2307,7 @@ packages:
   /postcss-functions/3.0.0:
     resolution: {integrity: sha1-DpTQFERwCkgd4g3k1V+yZAVkJQ4=}
     dependencies:
-      glob: 7.1.6
+      glob: 7.1.7
       object-assign: 4.1.1
       postcss: 6.0.23
       postcss-value-parser: 3.3.1
@@ -2493,7 +2493,7 @@ packages:
     hasBin: true
     dependencies:
       commander: 6.2.1
-      glob: 7.1.6
+      glob: 7.1.7
       postcss: 8.2.14
       postcss-selector-parser: 6.0.5
     dev: true

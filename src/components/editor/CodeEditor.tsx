@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import "./editor.css";
 import EditorHeader from "./EditorHeader";
 
-interface IProps {
+type CodeEditorProps = {
   code: string,
   disabled?: boolean,
   children: any,
 }
 
-export default function CodeEditor(props: IProps) {
+export default function CodeEditor(props: CodeEditorProps) {
   const [value, setValue] = useState('');
   const handleOnChange = (event: any) => {
     setValue(event.target.value);

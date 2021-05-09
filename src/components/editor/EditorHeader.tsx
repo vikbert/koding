@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditorHeader = () => {
+export default function EditorHeader() {
   return (
       <div className="editor-header">
         <div className={'red'}/>
@@ -10,4 +10,3 @@ const EditorHeader = () => {
   );
 };
 
-export default EditorHeader;

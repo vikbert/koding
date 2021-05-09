@@ -7,7 +7,8 @@ import {nanoid} from "nanoid";
 import ExtendedInput from "../base/ExtendedInput";
 
 const initRule = {body: ''}
-const InsertRule = () => {
+
+export default function InsertRule() {
   const [rule, setRule] = useState(initRule)
   const {visible, show} = useVisibility();
   const dispatch = useDispatch();
@@ -48,5 +49,3 @@ const InsertRule = () => {
       </form>
   );
 };
-
-export default InsertRule

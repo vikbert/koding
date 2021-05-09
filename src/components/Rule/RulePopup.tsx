@@ -3,11 +3,11 @@ import {Rule} from "../../types/Rule";
 import {useDispatch} from "react-redux";
 import {hidePopup, updateRule} from "./ruleAction";
 
-interface IProps {
+type RulePopupProps = {
   rule: Rule | null,
 }
 
-const RulePopup = (props: IProps) => {
+export default function RulePopup(props: RulePopupProps) {
   const dispatch = useDispatch();
   const [rule, setRule] = React.useState<any>(props.rule);
 
@@ -41,5 +41,3 @@ const RulePopup = (props: IProps) => {
       </div>
   );
 };
-
-export default RulePopup;
