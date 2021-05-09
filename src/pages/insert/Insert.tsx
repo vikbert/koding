@@ -11,6 +11,8 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Header from "../../components/base/Header";
 import './insert.css'
 import EditorHeader from "../../components/editor/EditorHeader";
+import {Snippet} from "../../types/Snippet";
+import NotificationIcon from "../../components/base/NotificationIcon";
 
 const initState = {bad: '', good: ''};
 export default function Insert() {
@@ -29,25 +31,31 @@ export default function Insert() {
     dispatch(ruleState.showWrapper ? hideRules() : showRules())
   }
 
-  function insertCode(code: string, isBad: boolean) {
-    dispatch(addSnippet({
-      id: nanoid(),
-      body: code,
-      isBad,
-      lang: 'php'
-    }))
-  }
-
   function handleOnSubmit(event: any) {
     event.preventDefault();
 
     if (editorState.bad.length === 0 || editorState.good.length === 0) {
-      notify({type: 'warning', message: 'Both Code snippets should not be empty!'});
+      notify({type: 'error', message: 'Both Code snippets should not be empty!'});
       return;
     }
 
-    insertCode(editorState.bad, true);
-    insertCode(editorState.good, false);
+    const goodSnippet = {
+      id: nanoid(),
+      body: editorState.good,
+      isBad: false,
+      lang: 'php'
+    }
+
+    const badSnippet: Snippet = {
+      id: nanoid(),
+      body: editorState.bad,
+      isBad: true,
+      lang: 'php',
+      suggestion: goodSnippet.id,
+    }
+
+    dispatch(addSnippet(goodSnippet));
+    dispatch(addSnippet(badSnippet));
     resetEditor();
     notify({type: 'success', message: 'Both Code snippets are added!'});
 
@@ -80,15 +88,19 @@ export default function Insert() {
 
         <Header title={'Add Snippets'}>
           <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
-            <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
+            <NotificationIcon/>
           </div>
         </Header>
 
         <section className="page-content">
+          <div className="container text-centered">
+            <h1>insert new snippets</h1>
+            <h3>Assign the coding conventions to the snippets</h3>
+          </div>
           <div className="container">
             <form onSubmit={handleOnSubmit}>
               <div className="row space-between my-2">
-                <div className="editor-wrapper">
+                <div className="editor-wrapper mx-1">
                   <EditorHeader/>
                   <textarea
                       name={'bad'}
@@ -97,12 +109,11 @@ export default function Insert() {
                       value={editorState.bad}
                       onChange={handleOnChangeBad}/>
                   <div className="editor-options">
-                    <span className="option-lang">php</span>
                     <Thumb bad={true}/>
                     <span></span>
                   </div>
                 </div>
-                <div className="editor-wrapper">
+                <div className="editor-wrapper mx-1">
                   <EditorHeader/>
                   <textarea
                       name={'good'}
@@ -111,7 +122,6 @@ export default function Insert() {
                       value={editorState.good}
                       onChange={handleOnChangeGood}/>
                   <div className="editor-options">
-                    <span className="option-lang">php</span>
                     <Thumb bad={false}/>
                     <span></span>
                   </div>

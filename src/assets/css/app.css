@@ -57,9 +57,13 @@ textarea {
   display: flex;
 }
 .page .page-content {
+  color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   padding: var(--header-height) 1rem var(--footer-height) 1rem;
+}
+.page .page-content h1, h2, h3. h4, h5, h6 {
+  color: #ffffff;
 }
 .action-save {
   font-size: 2rem;

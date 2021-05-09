@@ -871,6 +871,10 @@ input[type="checkbox"], input[type="radio"] {
   display: flex;
   justify-content: space-between
 }
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
 .grid-row {
   display: flex;
   justify-content: space-evenly;
@@ -914,6 +918,10 @@ input[type="checkbox"], input[type="radio"] {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content
+}
+
+.opacity-10 {
+  opacity: .10
 }
 
 .opacity-25 {

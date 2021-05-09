@@ -4,6 +4,7 @@ import Header from "../components/base/Header";
 import RulePopup from "../components/Rule/RulePopup";
 import {useSelector} from "react-redux";
 import InsertRule from "../components/Rule/InsertRule";
+import NotificationIcon from "../components/base/NotificationIcon";
 
 const Rule = () => {
   useDocumentTitle('Bad snippets')
@@ -22,7 +23,7 @@ const Rule = () => {
         <div className="page" id="page-bad">
           <Header title={'Coding Conventions'}>
             <div className={'menu-icon'} onClick={handleOnClick}>
-              <span className="iconify" data-icon="carbon:rule" data-inline="false"/>
+              <NotificationIcon/>
             </div>
           </Header>
           <section className="page-content">
