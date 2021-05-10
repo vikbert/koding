@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'wouter'
 import classNames from 'classnames'
 import '../assets/css/navigation.css'
+import IconNotification from "../components/base/icons/IconNotification";
 
 const Navigation = () => {
   const [current, setCurrent] = useState('');
@@ -22,8 +23,8 @@ const Navigation = () => {
 
   return (
       <ul id={'menu'}>
-        <LinkItem linkName={'/'}>
-          <span className="iconify" data-icon="fluent:home-12-regular" data-inline="false"/>
+        <LinkItem linkName={'/rules'}>
+          <IconNotification/>
         </LinkItem>
         <LinkItem linkName={'/play'}>
           <span className="iconify" data-icon="ant-design:play-circle-outlined" data-inline="false"/>
@@ -33,9 +34,6 @@ const Navigation = () => {
         </LinkItem>
         <LinkItem linkName={'/favorite'}>
           <span className="iconify" data-icon="bx:bxs-bookmark-star" data-inline="false"/>
-        </LinkItem>
-        <LinkItem linkName={'/rules'}>
-          <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false"/>
         </LinkItem>
       </ul>
   );

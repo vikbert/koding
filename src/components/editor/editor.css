@@ -2,11 +2,9 @@
   margin: 1rem 0;
   border-radius: .5rem;
   position: relative;
-
-  box-shadow: 4px 6px 12px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 4px 6px 12px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 4px 6px 12px 0px rgba(0,0,0,0.75);
-
+  box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.75);
   width: 100%;
   min-height: 100px;
   background: rgb(40, 44, 52);
@@ -17,6 +15,11 @@
 @media only screen and (max-width: 500px) {
   .editor-wrapper {
     min-width: 90%;
+  }
+}
+@media only screen and (min-width: 652px) {
+  .editor-wrapper {
+    margin: 5px 1px;
   }
 }
 textarea {

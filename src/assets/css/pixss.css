@@ -588,7 +588,7 @@ input[type='checkbox'], input[type='radio'] {
 
 button {
   background-color: #b5b5b5;
-  font-family: Gruppo, cursive;
+  /*font-family: Gruppo, cursive;*/
 }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
@@ -873,6 +873,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 .space-evenly {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .grid-row {

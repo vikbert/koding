@@ -13,11 +13,10 @@ const App = () => {
       <>
         <main>
           <Switch>
-            <Route path={'/'} component={Home}/>
+            <Route path={'/rules'} component={Rule}/>
             <Route path={'/play'} component={Play}/>
             <Route path={'/insert'} component={Insert}/>
             <Route path={'/favorite'} component={Good}/>
-            <Route path={'/rules'} component={Rule}/>
           </Switch>
         </main>
         <footer>

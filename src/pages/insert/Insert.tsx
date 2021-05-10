@@ -105,13 +105,12 @@ export default function Insert() {
 
         <section className="page-content">
           <div className="container text-centered">
-            <h2>insert new snippets</h2>
-            <h3>Assign the coding conventions to the snippets</h3>
+            <h2>New snippets</h2>
           </div>
           <div className="container">
             <form onSubmit={handleOnSubmit}>
-              <div className="row space-between my-2">
-                <div className="editor-wrapper mx-1">
+              <div className="row space-between my-1">
+                <div className="editor-wrapper">
                   <EditorHeader/>
                   <textarea
                       name={'bad'}
@@ -124,7 +123,7 @@ export default function Insert() {
                     <span/>
                   </div>
                 </div>
-                <div className="editor-wrapper mx-1">
+                <div className="editor-wrapper  ">
                   <EditorHeader/>
                   <textarea
                       name={'good'}

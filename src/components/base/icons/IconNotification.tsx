@@ -8,7 +8,7 @@ type PropsType = {
 export default function IconNotification(props: PropsType): JSX.Element {
   const inlineStyle = {
     fontSize: props.size || '28px',
-    opacity: props.opacity || '75%'
+    opacity: props.opacity || '100%'
   };
 
   return (

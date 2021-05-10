@@ -8,12 +8,12 @@
   margin: 1.5rem auto 0;
   padding-bottom: 5rem;
   padding-top: 4.7rem;
-  background-color: #8e8888bf;
+  background-color: rgb(142 136 136);
 }
 
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 379px) {
   .rules_wrapper {
-    width: 320px;
+    width: 100%;
   }
 }
 .rule_bubble {

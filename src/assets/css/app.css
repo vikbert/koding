@@ -32,6 +32,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   padding: var(--header-height) 1rem var(--footer-height) 1rem;
+  min-width: 32rem;
 }
 .page .page-content h1, h2, h3. h4, h5, h6 {
   color: #ffffff;
@@ -56,11 +57,12 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 2px;
   padding: .6rem 1.2rem;
   border-top: 1px solid #1d1c1c;
   border-bottom: 1px solid #d4d0d0a8;
   border-radius: 6px;
-  background-color: #844e2647;
+  background-color: #844e26;
   font-size: 2.5rem;
   color: #ffffff4f;
   line-height: 3rem;
@@ -80,5 +82,4 @@ textarea {
 }
 .extended-input input:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: transparent;
-  font-family: Gruppo, cursive;
 }
