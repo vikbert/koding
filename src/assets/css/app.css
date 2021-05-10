@@ -27,35 +27,6 @@ textarea {
   outline: none;
   border: none;
 }
-.page .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  height: var(--header-height);
-  width: 100%;
-  color: white;
-  font-weight: bolder;
-  background-color: #4b4b4bad;
-  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.75);
-}
-.header .title{
-  font-family: 'Gruppo', cursive;
-  font-size: 1.8rem;
-}
-.header .logo {
-  height: 2.5rem;
-  margin-top: 5px;
-}
-.header .menu-icon {
-  font-size: 2.5rem;
-  display: flex;
-}
 .page .page-content {
   color: #ffffff;
   display: flex;

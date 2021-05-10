@@ -12,7 +12,7 @@ import Header from "../../components/base/Header";
 import './insert.css'
 import EditorHeader from "../../components/editor/EditorHeader";
 import {Snippet} from "../../types/Snippet";
-import NotificationIcon from "../../components/base/NotificationIcon";
+import IconNotification from "../../components/base/icons/IconNotification";
 import {updateSnippetId} from "../../components/editor/editorAction";
 
 const initState = {bad: '', good: '', id: nanoid()};
@@ -99,13 +99,13 @@ export default function Insert() {
 
         <Header title={'Add Snippets'}>
           <div className={'menu-icon'} onClick={handleToggleRulesWrapper}>
-            <NotificationIcon/>
+            <IconNotification/>
           </div>
         </Header>
 
         <section className="page-content">
           <div className="container text-centered">
-            <h1>insert new snippets</h1>
+            <h2>insert new snippets</h2>
             <h3>Assign the coding conventions to the snippets</h3>
           </div>
           <div className="container">
@@ -143,7 +143,7 @@ export default function Insert() {
                     type={'button'}
                     className={'is-warning is-rounded box-shadow mx-1'}
                     onClick={handleAssignConvention}>
-                  <NotificationIcon/>&nbsp;&nbsp;
+                  <IconNotification/>&nbsp;&nbsp;
                   assign coding convention
                 </button>
                 <button

@@ -2,7 +2,7 @@ import React from 'react';
 import DemoEditor from "../components/editor/DemoEditor";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import Header from "../components/base/Header";
-import NotificationIcon from "../components/base/NotificationIcon";
+import IconNotification from "../components/base/icons/IconNotification";
 
 const Good = () => {
   useDocumentTitle('good snippets')
@@ -10,7 +10,7 @@ const Good = () => {
       <div className="page" id="page-good">
         <Header title={'My favorite snippets'}>
           <div className={'menu-icon'} onClick={() => {}}>
-            <NotificationIcon/>
+            <IconNotification/>
           </div>
         </Header>
         <section className="page-content">

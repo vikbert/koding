@@ -40,10 +40,6 @@ export default function RulePopup(props: RulePopupProps) {
     notify({type: 'success', message: 'snippet added!'})
   }
 
-  React.useEffect(() => {
-    console.info(editorState);
-  }, [])
-
   return props.rule && (
       <div className="overlay open">
         <div className="popup rule-popup">
@@ -51,9 +47,7 @@ export default function RulePopup(props: RulePopupProps) {
             <h4>Edit or assign this Convention</h4>
           </div>
           <div className="content">
-            <div className="row">
-              <textarea value={rule.body} onChange={handleOnChange}/>
-            </div>
+            <textarea value={rule.body} onChange={handleOnChange}/>
             {rule.snippets && (
                 <div className="container my-2">
                   <h5 style={{marginBottom: '0'}}>Code Snippets:</h5>

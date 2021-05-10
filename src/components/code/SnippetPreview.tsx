@@ -4,6 +4,7 @@ import {Snippet} from "../../types/Snippet";
 import {useSelector} from "react-redux";
 import Thumb from "../editor/Thumb";
 import classNames from "classnames";
+import IconNotification from "../base/icons/IconNotification";
 
 type PropsType = {
   snippet: Snippet,
@@ -13,6 +14,9 @@ export default function SnippetPreview(props: PropsType) {
   const [targetSnippet, setTargetSnippet] = React.useState(props.snippet);
   const goodSnippet = snippetState.find((element: Snippet) => element.id === props.snippet.suggestion);
 
+  function handleOpenSnippetRules() {
+    // open a new popup with rules defined
+  }
   // @ts-ignore
   return (
       <>
@@ -24,8 +28,8 @@ export default function SnippetPreview(props: PropsType) {
             <div onClick={() => setTargetSnippet(goodSnippet)} className={classNames({'opacity-25': targetSnippet.isBad})}>
               <Thumb bad={false}/>
             </div>
-            <div>
-              <span className="iconify" data-icon="ant-design:notification-outlined" data-inline="false" style={{fontSize: '32px', opacity: '25%'}}/>
+            <div onClick={handleOpenSnippetRules}>
+              <IconNotification size={'32px'} opacity={'25%'}/>
             </div>
           </div>
         </ReadOnlyEditor>

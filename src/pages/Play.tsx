@@ -7,13 +7,29 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import Header from "../components/base/Header";
 import './play.css'
 import SnippetPreview from "../components/code/SnippetPreview";
-import NotificationIcon from "../components/base/NotificationIcon";
+import IconNotification from "../components/base/icons/IconNotification";
 
 const Play = () => {
   useDocumentTitle('Play snippets')
   const client = new LocalStorageClient();
   const dispatch = useDispatch();
   const snippets = useSelector((state: any) => state.reduxSnippet);
+
+  type ShowCaseProps = {
+    title: string,
+    children: any,
+  }
+
+  const ShowCase = (props: ShowCaseProps) => {
+    return (
+        <div className="showcase">
+          <div className="figure">
+            {props.children}
+          </div>
+          <h3 style={{color: '#fff', lineHeight: '1.6', marginBottom: '0'}}>{props.title}</h3>
+        </div>
+    );
+  };
 
   useEffect(() => {
     const snippets = client.listSnippets();
@@ -24,27 +40,19 @@ const Play = () => {
       <div className="page" id="page-play">
         <Header title={'Review Snippets'}>
           <div className={'menu-icon'} onClick={() => null}>
-            <NotificationIcon/>
+            <IconNotification/>
           </div>
         </Header>
         <section className="page-content">
-          <div className="container my-2 space-evenly">
-            <div className="showcase">
-              <div className="figure">
-                <span className="iconify" data-icon="ic:outline-gpp-bad" data-inline="false"></span>
-              </div>
-              <h3 style={{color: '#fff'}}>Bad</h3>
-            </div>
-            <div className="showcase">
-              <div className="figure">
-                <span className="iconify" data-icon="ic:outline-gpp-good" data-inline="false"></span>
-              </div>
-              <div className="content">
-                <h3 style={{color: '#fff'}}>Good</h3>
-              </div>
-            </div>
+          <div className="container space-evenly">
+            <ShowCase title={'Bad'}>
+              <span className="iconify" data-icon="ic:outline-gpp-bad" data-inline="false"/>
+            </ShowCase>
+            <ShowCase title={'Good'}>
+              <span className="iconify" data-icon="ic:outline-gpp-good" data-inline="false"/>
+            </ShowCase>
           </div>
-          <div className="container centered-xy my-2 ">
+          <div className="container centered-xy">
             {snippets
                 .filter((item: Snippet) => item.isBad).map((item: Snippet, index: string) => (
                     <SnippetPreview snippet={item} key={index}/>

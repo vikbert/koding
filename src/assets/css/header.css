@@ -1,0 +1,25 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  height: var(--header-height);
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  background-color: transparent;
+}
+#header .title{
+  font-family: 'Gruppo', cursive;
+  font-size: 1.8rem;
+}
+#header .logo {
+  height: 2.5rem;
+  margin-top: 5px;
+}
+#header .menu-icon {
+  font-size: 2.5rem;
+  display: flex;
+}

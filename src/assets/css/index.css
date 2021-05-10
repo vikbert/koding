@@ -3,6 +3,7 @@
 /*@import 'tailwindcss/utilities';*/
 
 @import './app.css';
+@import './header.css';
 @import "./pixss.css";
 @import './navigation.css';
 @import "./animation.css";
