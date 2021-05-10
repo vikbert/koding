@@ -28,7 +28,7 @@ const Play = () => {
           </div>
         </Header>
         <section className="page-content">
-          <div className="container space-evenly">
+          <div className="container my-2 space-evenly">
             <div className="showcase">
               <div className="figure">
                 <span className="iconify" data-icon="ic:outline-gpp-bad" data-inline="false"></span>
@@ -50,7 +50,6 @@ const Play = () => {
                     <SnippetPreview snippet={item} key={index}/>
                 ))}
           </div>
-
         </section>
       </div>
   );

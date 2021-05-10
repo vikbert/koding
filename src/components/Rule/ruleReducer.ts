@@ -1,4 +1,4 @@
-import {RULE_ADDED, RULES_RECEIVED, SHOW_RULES, HIDE_RULES, SHOW_POPUP, HIDE_POPUP, RULE_UPDATED} from "./ruleAction";
+import {RULE_ADDED, RULES_RECEIVED, SHOW_RULES, HIDE_RULES, SHOW_POPUP, HIDE_POPUP, RULE_UPDATED, RULE_DELETED} from "./ruleAction";
 import {Rule} from "../../types/Rule";
 
 export const ruleState = {showWrapper: false, showPopup: false, rules: [], targetRule: null}
@@ -12,6 +12,11 @@ export const ruleReducer = (state = ruleState, action: any) => {
         return item.id === action.rule.id ? action.rule : item;
       });
       return {...state, rules: updatedRules};
+    case RULE_DELETED:
+      const reducedRules = state.rules.filter((item: Rule, index: number) => {
+        return item.id !== action.rule.id;
+      });
+      return {...state, rules: reducedRules};
     case RULES_RECEIVED:
       return {...state, rules: action.rules};
     case SHOW_RULES:

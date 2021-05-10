@@ -1,16 +1,13 @@
 import {CODE_CHANGED} from './editorAction';
-import {SNIPPET_ADDED} from "../code/snippetAction";
 
 export const editorState = {
-  content: '',
+  snippetId: '',
 }
 
 export const editorReducer = (state = editorState, action: any) => {
-  const {content, type} = action;
+  const {snippetId, type} = action;
   if (type === CODE_CHANGED) {
-    return {...state, content};
-  } else if (type === SNIPPET_ADDED) {
-    return {...state, content: ''};
+    return {...state, snippetId};
   }
 
   return state;

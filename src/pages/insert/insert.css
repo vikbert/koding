@@ -10,3 +10,8 @@
 .page__insert textarea {
   min-height: 35rem;
 }
+.page__insert button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

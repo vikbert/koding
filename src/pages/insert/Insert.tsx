@@ -5,7 +5,7 @@ import Thumb from "../../components/editor/Thumb";
 import {nanoid} from "nanoid";
 import useNotify from "../../hooks/useToast";
 import RulesList from "../../components/Rule/RulesList";
-import {hideRules, showRules, fetchRules} from "../../components/Rule/ruleAction";
+import {hideRules, showRules, receiveRules} from "../../components/Rule/ruleAction";
 import RulePopup from "../../components/Rule/RulePopup";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Header from "../../components/base/Header";
@@ -16,12 +16,16 @@ import NotificationIcon from "../../components/base/NotificationIcon";
 
 const initState = {bad: '', good: ''};
 export default function Insert() {
-  useDocumentTitle('Insert snippet and convention');
+  useDocumentTitle('new snippet and convention');
 
   const dispatch = useDispatch();
   const notify = useNotify();
   const ruleState = useSelector((state: any) => state.reduxRule);
   const [editorState, setEditorState] = React.useState(initState);
+
+  React.useEffect(() => {
+    dispatch(receiveRules());
+  }, [])
 
   function resetEditor() {
     setEditorState(initState)
@@ -69,15 +73,16 @@ export default function Insert() {
   }
 
   function handleOnChangeGood(event: any) {
+    event.preventDefault();
     setEditorState({
       ...editorState,
       good: event.target.value,
     })
   }
 
-  React.useEffect(() => {
-    dispatch(fetchRules());
-  }, [])
+  function handleAssignConvention() {
+    dispatch(showRules());
+  }
 
   return (
       <div className={'page page__insert'}>
@@ -126,8 +131,18 @@ export default function Insert() {
                   </div>
                 </div>
               </div>
-              <div className="centered-xy">
-                <button type="submit" className={'is-warning is-rounded box-shadow'}>
+              <div className="space-evenly">
+                <button
+                    type={'button'}
+                    className={'is-warning is-rounded box-shadow mx-1'}
+                    onClick={handleAssignConvention}>
+                  <NotificationIcon/>&nbsp;&nbsp;
+                  assign coding convention
+                </button>
+                <button
+                    type="submit"
+                    className={'is-warning is-rounded box-shadow mx-1'}>
+                  <span className="iconify" data-icon="codicon:save" style={{fontSize: '25px'}}/>&nbsp;&nbsp;
                   save the snippets
                 </button>
               </div>

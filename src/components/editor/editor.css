@@ -35,11 +35,12 @@ textarea:focus {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 1rem;
+  padding: 1rem;
+  margin: 6px -12px 0 0;
 }
 .editor-header div {
-  height: .8rem;
-  width: .8rem;
+  height: 1.2rem;
+  width: 1.2rem;
   border-radius: 50%;
   margin: 0 .3rem;
 }
@@ -59,6 +60,7 @@ textarea:focus {
   justify-content: center;
   align-items: center;
   padding-top: 1.5rem;
+  border-top: 1px solid rgb(169 169 168 / 8%);
 }
 .editor-options svg {
   margin: 0 1.8rem;

@@ -58,6 +58,19 @@ class LocalStorageClient {
   listRules(): any {
     return this._list(this.KEY_RULES);
   }
+
+  deleteRule(rule: Rule): any {
+    try {
+      const list = this._list(this.KEY_RULES);
+
+      this._setValue(this.KEY_RULES, list.filter((item: Rule, index: number) => {
+        return item.id !== rule.id;
+      }))
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default LocalStorageClient;

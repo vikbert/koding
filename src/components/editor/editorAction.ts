@@ -1,8 +1,8 @@
 export const CODE_CHANGED = 'editor.code_changed';
 
-export const codeChanged = (codeContent: string) => {
+export const codeChanged = (snippetId: string) => {
   return {
     type: CODE_CHANGED,
-    content: codeContent,
+    snippetId,
   };
 };

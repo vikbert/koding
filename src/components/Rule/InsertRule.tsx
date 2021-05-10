@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import useVisibility from "../../hooks/useVisibility";
 import {useDispatch} from "react-redux";
-import {addRule, fetchRules, showRules} from "./ruleAction";
+import {addRule, receiveRules, showRules} from "./ruleAction";
 import {nanoid} from "nanoid";
 import ExtendedInput from "../base/ExtendedInput";
 
@@ -28,7 +28,7 @@ export default function InsertRule() {
   }
 
   useEffect(() => {
-    dispatch(fetchRules());
+    dispatch(receiveRules());
   }, [])
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import AddIcon from "./AddIcon";
 
 type ExtendedInputProps = {
   type: string,
@@ -20,7 +21,7 @@ export default function ExtendedInput(props: ExtendedInputProps): JSX.Element {
   return (
       <div className={'extended-input space-between'}>
         {type === 'search' && (<span className="iconify" data-icon="fe:search" data-inline="false"/>)}
-        {type === 'add' && (<span className="iconify" data-icon="carbon:add-alt" data-inline="false"/>)}
+        {type === 'add' && (<AddIcon/>)}
         <input type="text" placeholder={placeHolderText} value={inputValue} onChange={handleOnChange}/>
       </div>
   );

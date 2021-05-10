@@ -1,7 +1,8 @@
 import React from 'react';
 import {Rule} from "../../types/Rule";
 import {useDispatch} from "react-redux";
-import {hidePopup, updateRule} from "./ruleAction";
+import {hidePopup, updateRule, deleteRule} from "./ruleAction";
+import useNotify from "../../hooks/useToast";
 
 type RulePopupProps = {
   rule: Rule | null,
@@ -9,6 +10,7 @@ type RulePopupProps = {
 
 export default function RulePopup(props: RulePopupProps) {
   const dispatch = useDispatch();
+  const notify = useNotify();
   const [rule, setRule] = React.useState<any>(props.rule);
 
   function handleOnChange(event: any) {
@@ -22,11 +24,14 @@ export default function RulePopup(props: RulePopupProps) {
   function handleSave() {
     dispatch(updateRule(rule));
     dispatch(hidePopup());
+    notify({type: 'success', message: 'updated!'})
   }
 
-  React.useEffect(() => {
-  	console.log(rule);
-  }, [])
+  function handleDelete() {
+    dispatch(deleteRule(rule))
+    dispatch(hidePopup())
+    notify({type: 'success', message: 'This convention is deleted!'})
+  }
 
   return props.rule && (
       <div className="overlay open">
@@ -39,6 +44,7 @@ export default function RulePopup(props: RulePopupProps) {
           </div>
           <div className="action">
             <button className={'is-primary is-cleared'} onClick={handleCancel}>cancel</button>
+            <button className={'is-primary is-cleared is-error'} onClick={handleDelete}>delete</button>
             <button className={'is-success is-cleared'} onClick={handleSave}>save</button>
           </div>
         </div>
