@@ -13,8 +13,9 @@ import './insert.css'
 import EditorHeader from "../../components/editor/EditorHeader";
 import {Snippet} from "../../types/Snippet";
 import NotificationIcon from "../../components/base/NotificationIcon";
+import {updateSnippetId} from "../../components/editor/editorAction";
 
-const initState = {bad: '', good: ''};
+const initState = {bad: '', good: '', id: nanoid()};
 export default function Insert() {
   useDocumentTitle('new snippet and convention');
 
@@ -24,7 +25,7 @@ export default function Insert() {
   const [editorState, setEditorState] = React.useState(initState);
 
   React.useEffect(() => {
-    dispatch(receiveRules());
+    dispatch(receiveRules())
   }, [])
 
   function resetEditor() {
@@ -51,7 +52,7 @@ export default function Insert() {
     }
 
     const badSnippet: Snippet = {
-      id: nanoid(),
+      id: initState.id,
       body: editorState.bad,
       isBad: true,
       lang: 'php',
@@ -65,14 +66,14 @@ export default function Insert() {
 
   }
 
-  function handleOnChangeBad(event: any) {
+  function handleChangeBadSnippet(event: any) {
     setEditorState({
       ...editorState,
       bad: event.target.value,
     })
   }
 
-  function handleOnChangeGood(event: any) {
+  function handleChangeGoodSnippet(event: any) {
     event.preventDefault();
     setEditorState({
       ...editorState,
@@ -83,6 +84,12 @@ export default function Insert() {
   function handleAssignConvention() {
     dispatch(showRules());
   }
+
+  React.useEffect(() => {
+  	if (editorState.bad.length > 0) {
+      dispatch(updateSnippetId(initState.id))
+    }
+  }, [editorState])
 
   return (
       <div className={'page page__insert'}>
@@ -111,7 +118,7 @@ export default function Insert() {
                       rows={15}
                       placeholder={'Bad snippet'}
                       value={editorState.bad}
-                      onChange={handleOnChangeBad}/>
+                      onChange={handleChangeBadSnippet}/>
                   <div className="editor-options">
                     <Thumb bad={true}/>
                     <span/>
@@ -124,14 +131,14 @@ export default function Insert() {
                       rows={15}
                       placeholder={'Good snippet'}
                       value={editorState.good}
-                      onChange={handleOnChangeGood}/>
+                      onChange={handleChangeGoodSnippet}/>
                   <div className="editor-options">
                     <Thumb bad={false}/>
                     <span/>
                   </div>
                 </div>
               </div>
-              <div className="space-evenly">
+              <div className="space-evenly" style={{marginBottom: '4.8rem'}}>
                 <button
                     type={'button'}
                     className={'is-warning is-rounded box-shadow mx-1'}
