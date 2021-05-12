@@ -7,24 +7,33 @@ export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
     case RULE_ADDED:
       return {...state, rules: [action.rule, ...state.rules]};
+
     case RULE_UPDATED:
       const updatedRules = state.rules.map((item: Rule, index: number) => {
         return item.id === action.rule.id ? action.rule : item;
       });
+
       return {...state, rules: updatedRules};
+
     case RULE_DELETED:
       const reducedRules = state.rules.filter((item: Rule, index: number) => {
         return item.id !== action.rule.id;
       });
+
       return {...state, rules: reducedRules};
+
     case RULES_RECEIVED:
       return {...state, rules: action.rules};
+
     case SHOW_RULES:
       return {...state, showWrapper: true};
+
     case HIDE_RULES:
       return {...state, showWrapper: false};
+
     case SHOW_POPUP:
       return {...state, showPopup: true, targetRule: action.targetRule};
+
     case HIDE_POPUP:
       return {...state, showPopup: false};
   }

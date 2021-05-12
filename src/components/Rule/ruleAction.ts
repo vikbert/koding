@@ -55,7 +55,7 @@ export const updateRule = (rule: Rule) => {
   };
 }
 
-export const rulesReceived = (rules: string[]) => ({
+export const rulesReceived = (rules: any) => ({
   type: RULES_RECEIVED,
   rules,
 })
