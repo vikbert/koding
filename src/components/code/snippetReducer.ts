@@ -1,6 +1,6 @@
-import {SNIPPETS_RECEIVED, SNIPPET_ADDED} from './snippetAction';
+import { SNIPPETS_RECEIVED, SNIPPET_ADDED } from './snippetAction';
 
-export const snippetState = []
+export const snippetState = [];
 
 export const snippetReducer = (state = snippetState, action: any) => {
   switch (action.type) {
@@ -11,4 +11,4 @@ export const snippetReducer = (state = snippetState, action: any) => {
     default:
       return state;
   }
-}
+};

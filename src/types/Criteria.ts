@@ -1,7 +1,7 @@
-import type {Lang} from "./Lang";
+import type { Lang } from './Lang';
 
 export type Criteria = {
-  lang: Lang,
-  isBad: boolean,
-  isAll: boolean,
-}
+  lang: Lang;
+  isBad: boolean;
+  isAll: boolean;
+};

@@ -1,5 +1,5 @@
-import type {Snippet} from "../../types/Snippet";
-import LocalStorageClient from "../../services/LocalStorageClient";
+import type { Snippet } from '../../types/Snippet';
+import LocalStorageClient from '../../services/LocalStorageClient';
 
 export const SNIPPET_ADDED = 'snippet.snippet_added';
 export const SNIPPETS_RECEIVED = 'snippet.snippets_received';
@@ -21,4 +21,4 @@ export const addSnippet = (snippet: Snippet) => {
   client.insertSnippet(snippet);
 
   return addSnippetDone(snippet);
-}
+};
