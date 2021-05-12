@@ -9,14 +9,14 @@ export const ruleReducer = (state = ruleState, action: any) => {
       return {...state, rules: [action.rule, ...state.rules]};
 
     case RULE_UPDATED:
-      const updatedRules = state.rules.map((item: Rule, index: number) => {
+      const updatedRules = state.rules.map((item: Rule) => {
         return item.id === action.rule.id ? action.rule : item;
       });
 
       return {...state, rules: updatedRules};
 
     case RULE_DELETED:
-      const reducedRules = state.rules.filter((item: Rule, index: number) => {
+      const reducedRules = state.rules.filter((item: Rule) => {
         return item.id !== action.rule.id;
       });
 
