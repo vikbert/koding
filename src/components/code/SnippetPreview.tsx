@@ -25,17 +25,20 @@ export default function SnippetPreview(props: PropsType) {
     <>
       <ReadOnlyEditor code={targetSnippet.body} disabled={true}>
         <div className="editor-options">
-          <div onClick={() => setTargetSnippet(props.snippet)} className={classNames({'opacity-25': !targetSnippet.isBad})}>
-            <Thumb bad={true}/>
+          <div
+            onClick={() => setTargetSnippet(props.snippet)}
+            className={classNames({'opacity-25': !targetSnippet.isBad})}
+          >
+            <Thumb bad={true} />
           </div>
           <div
             onClick={() => setTargetSnippet(goodSnippet)}
             className={classNames({'opacity-25': targetSnippet.isBad})}
           >
-            <Thumb bad={false}/>
+            <Thumb bad={false} />
           </div>
           <div onClick={handleOpenSnippetRules}>
-            <IconNotification size={'32px'} opacity={'25%'}/>
+            <IconNotification size={'32px'} opacity={'25%'} />
           </div>
         </div>
       </ReadOnlyEditor>
