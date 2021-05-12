@@ -22,9 +22,9 @@ module.exports = {
         // {"match": "routes", "src": ".*", "dest": "/index.html"},
     ],
     optimize: {
-        bundle: true,
-        minify: true,
-        target: 'es2020',
+        // bundle: true,
+        // minify: true,
+        // target: 'es2020',
     },
     packageOptions: {
         /* ... */

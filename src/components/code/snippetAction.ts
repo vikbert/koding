@@ -20,7 +20,5 @@ export const addSnippet = (snippet: Snippet) => {
   const client = new LocalStorageClient();
   client.insertSnippet(snippet);
 
-  return function(dispatch: any) {
-    dispatch(addSnippetDone(snippet));
-  };
+  return addSnippetDone(snippet);
 }

@@ -36,9 +36,7 @@ export const addRule = (rule: Rule) => {
   const client = new LocalStorageClient();
   client.insertRule(rule);
 
-  return function (dispatch: any) {
-    dispatch(ruleAdded(rule));
-  };
+  return ruleAdded(rule);
 }
 
 export const ruleUpdated = (rule: Rule) => ({
@@ -50,9 +48,7 @@ export const updateRule = (rule: Rule) => {
   const client = new LocalStorageClient();
   client.updateRule(rule);
 
-  return function (dispatch: any) {
-    dispatch(ruleUpdated(rule));
-  };
+  return ruleUpdated(rule);
 }
 
 export const rulesReceived = (rules: any) => ({
@@ -64,9 +60,7 @@ export const receiveRules = () => {
   const client = new LocalStorageClient();
   const rules = client.listRules();
 
-  return function (dispatch: any) {
-    dispatch(rulesReceived(rules));
-  };
+  return rulesReceived(rules)
 }
 
 export const ruleDeleted = (rule: Rule) => ({
@@ -78,7 +72,5 @@ export const deleteRule = (rule: Rule) => {
   const client = new LocalStorageClient();
   client.deleteRule(rule);
 
-  return function (dispatch: any) {
-    dispatch(ruleDeleted(rule));
-  };
+  return ruleDeleted(rule);
 }
