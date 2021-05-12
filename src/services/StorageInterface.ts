@@ -1,4 +1,4 @@
-import {Snippet} from "../types/Snippet";
+import type {Snippet} from "../types/Snippet";
 
 export interface StorageInterface {
   saveSnippet: (code: Snippet) => void

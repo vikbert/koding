@@ -1,5 +1,5 @@
 import React from 'react';
-import {Rule} from "../../types/Rule";
+import type {Rule} from "../../types/Rule";
 
 type PropsT = {
   rule: Rule

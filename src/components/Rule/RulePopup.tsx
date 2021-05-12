@@ -1,5 +1,5 @@
 import React from 'react';
-import {Rule} from "../../types/Rule";
+import type {Rule} from "../../types/Rule";
 import {useDispatch, useSelector} from "react-redux";
 import {hidePopup, updateRule, deleteRule} from "./ruleAction";
 import useNotify from "../../hooks/useToast";

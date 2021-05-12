@@ -2,11 +2,11 @@
   "name": "ratecode",
   "version": "0.1.0",
   "scripts": {
-    "dev": "vite",
-    "snow:dev": "snowpack dev",
-    "snow:build": "snowpack build",
-    "start": "serve -s dist",
-    "build": "tsc && vite build"
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "start": "serve -s build"
   },
   "dependencies": {
     "classnames": "^2.3.1",

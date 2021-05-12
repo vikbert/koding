@@ -5,7 +5,7 @@ html, body {
   font-family: "Helvetica Neue LT", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./bg.jpeg");
+  background-image: url("../img/bg.jpeg");
   background-size: cover;
   overflow: scroll;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ textarea {
   padding: var(--header-height) 1rem var(--footer-height) 1rem;
   min-width: 32rem;
 }
-.page .page-content h1, h2, h3. h4, h5, h6 {
+.page .page-content h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 .action-save {

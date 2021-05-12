@@ -1,5 +1,5 @@
 import {RULE_ADDED, RULES_RECEIVED, SHOW_RULES, HIDE_RULES, SHOW_POPUP, HIDE_POPUP, RULE_UPDATED, RULE_DELETED} from "./ruleAction";
-import {Rule} from "../../types/Rule";
+import type {Rule} from "../../types/Rule";
 
 export const ruleState = {showWrapper: false, showPopup: false, rules: [], targetRule: null}
 

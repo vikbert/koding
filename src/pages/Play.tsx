@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {fetchSnippetsDone} from "../components/code/snippetAction";
 import LocalStorageClient from "../services/LocalStorageClient";
-import {Snippet} from "../types/Snippet";
+import type {Snippet} from "../types/Snippet";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import Header from "../components/base/Header";
 import './play.css'

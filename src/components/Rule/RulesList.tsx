@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {Rule} from '../../types/Rule'
+import type {Rule} from '../../types/Rule'
 import './rule.css';
 import ExtendedInput from "../base/ExtendedInput";
 import {showPopup} from "./ruleAction";

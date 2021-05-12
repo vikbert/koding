@@ -21,7 +21,7 @@ const Rule = () => {
         )}
 
         <div className="page" id="page-bad">
-          <Header title={'Coding Conventions'}>
+          <Header title={'Coding Convention'}>
             <div className={'menu-icon'} onClick={handleOnClick}>
               <IconNotification/>
             </div>

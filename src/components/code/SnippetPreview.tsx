@@ -1,6 +1,6 @@
 import React from 'react';
 import ReadOnlyEditor from "../editor/ReadOnlyEditor";
-import {Snippet} from "../../types/Snippet";
+import type {Snippet} from "../../types/Snippet";
 import {useSelector} from "react-redux";
 import Thumb from "../editor/Thumb";
 import classNames from "classnames";
@@ -17,6 +17,7 @@ export default function SnippetPreview(props: PropsType) {
   function handleOpenSnippetRules() {
     // open a new popup with rules defined
   }
+
   // @ts-ignore
   return (
       <>

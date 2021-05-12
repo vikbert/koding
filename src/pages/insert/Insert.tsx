@@ -11,7 +11,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import Header from "../../components/base/Header";
 import './insert.css'
 import EditorHeader from "../../components/editor/EditorHeader";
-import {Snippet} from "../../types/Snippet";
+import type {Snippet} from "../../types/Snippet";
 import IconNotification from "../../components/base/icons/IconNotification";
 import {updateSnippetId} from "../../components/editor/editorAction";
 
