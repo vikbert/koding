@@ -1,5 +1,6 @@
 {
   "singleQuote": true,
   "bracketSpacing": false,
+  "htmlWhitespaceSensitivity": "ignore",
   "trailingComma": "all"
 }
