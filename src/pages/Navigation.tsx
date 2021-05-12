@@ -23,7 +23,7 @@ const Navigation = () => {
 
   return (
       <ul id={'menu'}>
-        <LinkItem linkName={'/rules'}>
+        <LinkItem linkName={'/'}>
           <IconNotification/>
         </LinkItem>
         <LinkItem linkName={'/play'}>
