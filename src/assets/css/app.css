@@ -5,10 +5,9 @@ html, body {
   font-family: "Helvetica Neue LT", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("../img/bg.jpeg");
   background-size: cover;
   overflow: scroll;
-  background-repeat: no-repeat;
+  background: url('/img/bg.jpeg') no-repeat;
 }
 #header {
   display: flex;

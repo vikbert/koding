@@ -582,6 +582,7 @@ input[type='checkbox'], input[type='radio'] {
   color: #d1d1d1
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 ::-webkit-datetime-edit {
   font-family: "Helvetica Neue LT", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
@@ -704,7 +705,7 @@ input[type="checkbox"], input[type="radio"] {
   left: 0;
   height: 2rem;
   width: 2rem;
-  background-color: #fffff;
+  background-color: #ffffff;
   border: 2px solid var(--color-primary)
 }
 
@@ -753,7 +754,7 @@ input[type="checkbox"], input[type="radio"] {
   left: 0;
   height: 2rem;
   width: 2rem;
-  background-color: #fffff;
+  background-color: #ffffff;
   border: 2px solid #7a7a7a
 }
 
@@ -915,6 +916,7 @@ input[type="checkbox"], input[type="radio"] {
   text-align: right !important
 }
 
+/*noinspection CssInvalidPropertyValue*/
 .fit-content {
   width: -webkit-fit-content;
   width: -moz-fit-content;

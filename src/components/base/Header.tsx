@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../../public/img/logo.png';
 
 type HeaderProps = {
   title: string;
