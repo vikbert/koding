@@ -39,9 +39,6 @@ export default function InsertRule() {
             placeHolderText={'Enter a new coding convention'}
             handleOnChange={(userInput) => handleRuleChange(userInput)}
         />
-        <div className="rule_bubble rule_preview space-between">
-          <p>{rule.body}</p>
-        </div>
       </form>
   );
 };
