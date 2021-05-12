@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import type { Rule } from '../../types/Rule';
+import {useSelector, useDispatch} from 'react-redux';
+import type {Rule} from '../../types/Rule';
 import './rule.css';
 import ExtendedInput from '../base/ExtendedInput';
-import { showPopup } from './ruleAction';
+import {showPopup} from './ruleAction';
 
 export default function RulesList() {
   const [filter, setFilter] = React.useState('');

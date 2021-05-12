@@ -1,5 +1,5 @@
-import type { Snippet } from '../types/Snippet';
-import type { Rule } from '../types/Rule';
+import type {Snippet} from '../types/Snippet';
+import type {Rule} from '../types/Rule';
 
 class LocalStorageClient {
   readonly KEY_SNIPPETS = 'APP_SNIPPETS';

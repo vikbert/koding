@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 export default function useVisibility(): {
   visible: boolean;
@@ -13,5 +13,5 @@ export default function useVisibility(): {
     }, 2500);
   };
 
-  return { visible, show };
+  return {visible, show};
 }

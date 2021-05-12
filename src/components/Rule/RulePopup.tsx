@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Rule } from '../../types/Rule';
-import { useDispatch, useSelector } from 'react-redux';
-import { hidePopup, updateRule, deleteRule } from './ruleAction';
+import type {Rule} from '../../types/Rule';
+import {useDispatch, useSelector} from 'react-redux';
+import {hidePopup, updateRule, deleteRule} from './ruleAction';
 import useNotify from '../../hooks/useToast';
 
 type RulePopupProps = {
@@ -15,7 +15,7 @@ export default function RulePopup(props: RulePopupProps) {
   const editorState = useSelector((state: any) => state.reduxEditor);
 
   function handleOnChange(event: any) {
-    setRule({ ...rule, body: event.target.value });
+    setRule({...rule, body: event.target.value});
   }
 
   function handleCancel() {
@@ -25,13 +25,13 @@ export default function RulePopup(props: RulePopupProps) {
   function handleSave() {
     dispatch(updateRule(rule));
     dispatch(hidePopup());
-    notify({ type: 'success', message: 'updated!' });
+    notify({type: 'success', message: 'updated!'});
   }
 
   function handleDelete() {
     dispatch(deleteRule(rule));
     dispatch(hidePopup());
-    notify({ type: 'success', message: 'This convention is deleted!' });
+    notify({type: 'success', message: 'This convention is deleted!'});
   }
 
   function handleAddSnippet() {
@@ -40,7 +40,7 @@ export default function RulePopup(props: RulePopupProps) {
       snippets: [editorState.snippetId, ...(rule.snippets || [])],
     };
     dispatch(updateRule(updatedRule));
-    notify({ type: 'success', message: 'snippet added!' });
+    notify({type: 'success', message: 'snippet added!'});
   }
 
   return (
@@ -54,7 +54,7 @@ export default function RulePopup(props: RulePopupProps) {
             <textarea value={rule.body} onChange={handleOnChange} />
             {rule.snippets && (
               <div className="container my-2">
-                <h5 style={{ marginBottom: '0' }}>Code Snippets:</h5>
+                <h5 style={{marginBottom: '0'}}>Code Snippets:</h5>
                 {rule.snippets.map(
                   (snippetId: string) =>
                     snippetId && (

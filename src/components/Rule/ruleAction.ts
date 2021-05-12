@@ -1,5 +1,5 @@
 import LocalStorageClient from '../../services/LocalStorageClient';
-import type { Rule } from '../../types/Rule';
+import type {Rule} from '../../types/Rule';
 
 export const RULE_ADDED = 'rule.rule_added';
 export const RULE_DELETED = 'rule.rule_deleted';

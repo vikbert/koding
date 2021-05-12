@@ -1,4 +1,4 @@
-import { SNIPPETS_RECEIVED, SNIPPET_ADDED } from './snippetAction';
+import {SNIPPETS_RECEIVED, SNIPPET_ADDED} from './snippetAction';
 
 export const snippetState = [];
 

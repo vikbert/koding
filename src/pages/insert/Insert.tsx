@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addSnippet } from '../../components/code/snippetAction';
+import {useSelector, useDispatch} from 'react-redux';
+import {addSnippet} from '../../components/code/snippetAction';
 import Thumb from '../../components/editor/Thumb';
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 import useNotify from '../../hooks/useToast';
 import RulesList from '../../components/Rule/RulesList';
 import {
@@ -15,11 +15,11 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Header from '../../components/base/Header';
 import './insert.css';
 import EditorHeader from '../../components/editor/EditorHeader';
-import type { Snippet } from '../../types/Snippet';
+import type {Snippet} from '../../types/Snippet';
 import IconNotification from '../../components/base/icons/IconNotification';
-import { updateSnippetId } from '../../components/editor/editorAction';
+import {updateSnippetId} from '../../components/editor/editorAction';
 
-const initState = { bad: '', good: '', id: nanoid() };
+const initState = {bad: '', good: '', id: nanoid()};
 export default function Insert() {
   useDocumentTitle('new snippet and convention');
 
@@ -69,7 +69,7 @@ export default function Insert() {
     dispatch(addSnippet(goodSnippet));
     dispatch(addSnippet(badSnippet));
     resetEditor();
-    notify({ type: 'success', message: 'Both Code snippets are added!' });
+    notify({type: 'success', message: 'Both Code snippets are added!'});
   }
 
   function handleChangeBadSnippet(event: any) {
@@ -143,7 +143,7 @@ export default function Insert() {
                 </div>
               </div>
             </div>
-            <div className="space-evenly" style={{ marginBottom: '4.8rem' }}>
+            <div className="space-evenly" style={{marginBottom: '4.8rem'}}>
               <button
                 type={'button'}
                 className={'is-warning is-rounded box-shadow mx-1'}
@@ -159,7 +159,7 @@ export default function Insert() {
                 <span
                   className="iconify"
                   data-icon="codicon:save"
-                  style={{ fontSize: '25px' }}
+                  style={{fontSize: '25px'}}
                 />
                 &nbsp;&nbsp; save the snippets
               </button>

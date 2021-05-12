@@ -13,14 +13,14 @@ const App = () => {
     <>
       <main>
         <Switch>
-          <Route path={'/'} component={Rule}/>
-          <Route path={'/play'} component={Play}/>
-          <Route path={'/insert'} component={Insert}/>
-          <Route path={'/favorite'} component={Good}/>
+          <Route path={'/'} component={Rule} />
+          <Route path={'/play'} component={Play} />
+          <Route path={'/insert'} component={Insert} />
+          <Route path={'/favorite'} component={Good} />
         </Switch>
       </main>
       <footer>
-        <Navigation/>
+        <Navigation />
       </footer>
     </>
   );

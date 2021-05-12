@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import done from './svg/check.svg';
 import error from './svg/error.svg';
 import info from './svg/info.svg';
@@ -55,19 +55,19 @@ const Toast = (props: ComponentProps): JSX.Element => {
       case 'success':
         setToast([
           ...toast,
-          { title, description, backgroundColor: '#666565', icon: done },
+          {title, description, backgroundColor: '#666565', icon: done},
         ]);
         break;
       case 'error':
         setToast([
           ...toast,
-          { title, description, backgroundColor: '#E53E3E', icon: error },
+          {title, description, backgroundColor: '#E53E3E', icon: error},
         ]);
         break;
       case 'info':
         setToast([
           ...toast,
-          { title, description, backgroundColor: '#3182ce', icon: info },
+          {title, description, backgroundColor: '#3182ce', icon: info},
         ]);
         break;
       case 'warning':
@@ -95,7 +95,7 @@ const Toast = (props: ComponentProps): JSX.Element => {
   return (
     <div
       className={`${Style.toastcontainer}  ${Style[position]}`}
-      style={{ animationDuration: `${duration + 500 + 'ms'}` }}
+      style={{animationDuration: `${duration + 500 + 'ms'}`}}
     >
       {toast.map((toast, i) => (
         <div

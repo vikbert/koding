@@ -1,4 +1,4 @@
-import type { Snippet } from '../../types/Snippet';
+import type {Snippet} from '../../types/Snippet';
 import LocalStorageClient from '../../services/LocalStorageClient';
 
 export const SNIPPET_ADDED = 'snippet.snippet_added';

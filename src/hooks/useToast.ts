@@ -1,4 +1,4 @@
-import nativeToast, { ToastOptions } from 'native-toast';
+import nativeToast, {ToastOptions} from 'native-toast';
 
 const useNotify = () => {
   const notify = (options: ToastOptions) => {

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchSnippetsDone } from '../components/code/snippetAction';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {fetchSnippetsDone} from '../components/code/snippetAction';
 import LocalStorageClient from '../services/LocalStorageClient';
-import type { Snippet } from '../types/Snippet';
+import type {Snippet} from '../types/Snippet';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Header from '../components/base/Header';
 import './play.css';
@@ -24,7 +24,7 @@ const Play = () => {
     return (
       <div className="showcase">
         <div className="figure">{props.children}</div>
-        <h3 style={{ color: '#fff', lineHeight: '1.6', marginBottom: '0' }}>
+        <h3 style={{color: '#fff', lineHeight: '1.6', marginBottom: '0'}}>
           {props.title}
         </h3>
       </div>

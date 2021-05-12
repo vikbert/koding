@@ -7,7 +7,7 @@ type PropsT = {
 };
 
 export default function EditorOption(props: PropsT): JSX.Element {
-  const { isBad } = props;
+  const {isBad} = props;
 
   return (
     <>

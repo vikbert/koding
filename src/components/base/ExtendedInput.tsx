@@ -9,7 +9,7 @@ type ExtendedInputProps = {
 };
 
 export default function ExtendedInput(props: ExtendedInputProps): JSX.Element {
-  const { type, initValue, placeHolderText } = props;
+  const {type, initValue, placeHolderText} = props;
 
   const [inputValue, setInputValue] = React.useState(initValue);
   const handleOnChange = (event: any) => {

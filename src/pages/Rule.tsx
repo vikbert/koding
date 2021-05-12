@@ -2,7 +2,7 @@ import React from 'react';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Header from '../components/base/Header';
 import RulePopup from '../components/Rule/RulePopup';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import InsertRule from '../components/Rule/InsertRule';
 import IconNotification from '../components/base/icons/IconNotification';
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'wouter';
+import React, {useState} from 'react';
+import {Link} from 'wouter';
 import classNames from 'classnames';
 import './navigation.css';
 import IconNotification from '../components/base/icons/IconNotification';
@@ -15,7 +15,7 @@ const Navigation = () => {
     return (
       <Link href={props.linkName} onClick={() => setActive(props.linkName)}>
         <li
-          className={classNames('icon', { active: current === props.linkName })}
+          className={classNames('icon', {active: current === props.linkName})}
         >
           {props.children}
         </li>
