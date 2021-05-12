@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
+    "snow:dev": "snowpack dev",
+    "snow:build": "snowpack build",
     "start": "serve -s dist",
     "build": "tsc && vite build"
   },
@@ -20,13 +22,21 @@
     "wouter": "^2.7.4"
   },
   "devDependencies": {
+    "@snowpack/plugin-dotenv": "^2.1.0",
+    "@snowpack/plugin-postcss": "^1.2.2",
+    "@snowpack/plugin-react-refresh": "^2.5.0",
+    "@snowpack/plugin-typescript": "^1.2.1",
     "@types/native-toast": "^2.0.1",
     "@types/prismjs": "^1.16.5",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
+    "@types/snowpack-env": "^2.3.3",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.14",
+    "prettier": "^2.3.0",
     "serve": "^11.3.2",
+    "snowpack": "^3.3.7",
+    "snowpack-plugin-relative-css-urls": "^1.2.0",
     "typescript": "^4.2.4",
     "vite": "^1.0.0-rc.13",
     "vite-plugin-react": "^4.0.1"

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'wouter'
 import classNames from 'classnames'
-import '../assets/css/navigation.css'
+import './navigation.css'
 import IconNotification from "../components/base/icons/IconNotification";
 
 const Navigation = () => {

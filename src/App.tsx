@@ -6,6 +6,7 @@ import Insert from "./pages/insert/Insert";
 import Navigation from "./pages/Navigation";
 import Play from "./pages/Play";
 import 'native-toast/dist/native-toast.css'
+import './assets/css/app.css'
 
 const App = () => {
   return (
