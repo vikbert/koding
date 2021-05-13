@@ -4,7 +4,7 @@ type PropsT = {
   name?: string;
 };
 
-export default function SidebarOverflow(props: PropsT): JSX.Element {
+export default function OverflowSidebar(props: PropsT): JSX.Element {
   const {name} = props;
 
   return (
@@ -76,102 +76,6 @@ export default function SidebarOverflow(props: PropsT): JSX.Element {
                     >
                       <div className="grid ai-center">
                         <div className="grid--cell truncate">Users</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
-                    Find a Job
-                  </li>
-                  <li>
-                    <a
-                      id="nav-jobs"
-                      href="/jobs?so_medium=StackOverflow&so_source=SiteNav"
-                      className=" js-gps-track nav-links--link"
-                      data-gps-track="top_nav.click({is_current:false, location:1, destination:6})"
-                      data-s-popover-placement="right"
-                    >
-                      <div className="grid ai-center">
-                        <div className="grid--cell truncate">Jobs</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      id="nav-companies"
-                      href="/jobs/companies?so_medium=StackOverflow&so_source=SiteNav"
-                      className=" js-gps-track nav-links--link"
-                      data-gps-track="top_nav.click({is_current:false, location:1, destination:12})"
-                      data-s-popover-placement="right"
-                    >
-                      <div className="grid ai-center">
-                        <div className="grid--cell truncate">Companies</div>
-                      </div>
-                    </a>
-                  </li>
-                </ol>
-              </li>
-              <li>
-                <ol className="nav-links">
-                  <li className="grid ai-center jc-space-between ml8 mt24 mb4 js-create-team-cta">
-                    <div className="grid--cell tt-uppercase fs-fine fc-light">
-                      Teams
-                    </div>
-                    <div className="grid--cell fs-fine fc-light mr4">
-                      <a
-                        href="/#"
-                        className="s-link s-link__inherit js-gps-track"
-                        role="button"
-                        aria-controls="popover-teams-create-cta"
-                        data-controller="s-popover"
-                        data-action="s-popover#toggle"
-                        data-s-popover-placement="bottom-start"
-                        data-s-popover-toggle-class="is-selected"
-                        data-gps-track="teams.create.left-sidenav.click({ Action: ShowInfo })"
-                        data-ga='["teams left navigation","left nav show teams info",null,null,null]'
-                      >
-                        What’s this?
-                      </a>
-                    </div>
-                  </li>
-                  <li className="ps-relative js-create-team-cta">
-                    <a
-                      href="https://stackoverflow.com/teams/create/free?utm_source=so-owned&utm_medium=side-bar&utm_campaign=campaign-38&utm_content=cta"
-                      className="pl8 js-gps-track nav-links--link"
-                      title="Stack Overflow for Teams is a private, secure spot for your organization's questions and answers."
-                      data-gps-track="teams.create.left-sidenav.click({ Action: FreemiumTeamsCreateClick })"
-                      data-ga='["teams left navigation","left nav team click","stackoverflow.com/teams/create/free",null,null]'
-                    >
-                      <div className="grid ai-center">
-                        <div className="grid--cell s-avatar va-middle bg-orange-400">
-                          <div className="s-avatar--letter mtn1">
-                            <svg
-                              aria-hidden="true"
-                              className="svg-icon iconBriefcaseSm"
-                              width={14}
-                              height={14}
-                              viewBox="0 0 14 14"
-                            >
-                              <path d="M4 3a1 1 0 011-1h4a1 1 0 011 1v1h.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 012 10.5v-5C2 4.67 2.67 4 3.5 4H4V3zm5 1V3H5v1h4z" />
-                            </svg>
-                          </div>
-                          <svg
-                            aria-hidden="true"
-                            className="native s-avatar--badge svg-icon iconShieldXSm"
-                            width={9}
-                            height={10}
-                            viewBox="0 0 9 10"
-                          >
-                            <path
-                              d="M0 1.84L4.5 0 9 1.84v3.17C9 7.53 6.3 10 4.5 10 2.7 10 0 7.53 0 5.01V1.84z"
-                              fill="var(--white)"
-                            />
-                            <path
-                              d="M1 2.5L4.5 1 8 2.5v2.51C8 7.34 5.34 9 4.5 9 3.65 9 1 7.34 1 5.01V2.5zm2.98 3.02L3.2 7h2.6l-.78-1.48a.4.4 0 01.15-.38c.34-.24.73-.7.73-1.14 0-.71-.5-1.23-1.41-1.23-.92 0-1.39.52-1.39 1.23 0 .44.4.9.73 1.14.12.08.18.23.15.38z"
-                              fill="var(--black-500)"
-                            />
-                          </svg>
-                        </div>
-                        <div className="grid--cell pl6">Create free Team</div>
                       </div>
                     </a>
                   </li>

@@ -16883,7 +16883,7 @@ html.html__unpinned-leftnav .left-sidebar-toggle {
 }
 
 .flush-left {
-  border-top: 1px solid var(--black-100)
+  border-top: 1px solid var(--black-100)s-btn__primary
 }
 
 .flush-left .question-summary {

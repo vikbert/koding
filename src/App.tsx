@@ -2,8 +2,9 @@ import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Play from './pages/Play';
 import 'native-toast/dist/native-toast.css';
-import HomeFlow from './pages/HomeFlow';
-import InsertRule from './components/Rule/InsertRule';
+import LayoutHome from './pages/HomeFlow';
+import OverflowInsert from './pages/OverflowInsert';
+import LayoutInsert from "./pages/LayoutInsert";
 
 const App = () => {
   return (
@@ -11,13 +12,13 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <HomeFlow />
+            <LayoutHome />
           </Route>
           <Route path="/play">
             <Play />
           </Route>
           <Route path="/insert">
-            <InsertRule />
+            <LayoutInsert />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -6,7 +6,7 @@ type PropsT = {
   name?: string;
 };
 
-export default function HeaderOverflow(props: PropsT): JSX.Element {
+export default function OverflowHeader(props: PropsT): JSX.Element {
   const {name} = props;
 
   return (
