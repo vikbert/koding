@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 type PropsT = {
   name?: string;
@@ -13,7 +13,9 @@ export default function OverflowContent(props: PropsT): JSX.Element {
           <div className="grid">
             <h1 className="grid--cell fl1 fs-headline1">Top Questions</h1>
             <div className="ml12 aside-cta grid--cell print:d-none">
-              <Link className="ws-nowrap s-btn s-btn__primary" to={'/insert'}>Add Coding Convention</Link>
+              <Link className="ws-nowrap s-btn s-btn__primary" to={'/insert'}>
+                Add Coding Convention
+              </Link>
             </div>
           </div>
           <div id="qlist-wrapper" className="flush-left">

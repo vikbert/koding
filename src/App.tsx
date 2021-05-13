@@ -4,7 +4,7 @@ import Play from './pages/Play';
 import 'native-toast/dist/native-toast.css';
 import LayoutHome from './pages/HomeFlow';
 import OverflowInsert from './pages/OverflowInsert';
-import LayoutInsert from "./pages/LayoutInsert";
+import LayoutInsert from './pages/LayoutInsert';
 
 const App = () => {
   return (
