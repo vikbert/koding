@@ -1,10 +1,10 @@
 import React from 'react';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import './header.css';
-import Layout from './Layout';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import '../../components/header/header.css';
+import Layout from '../Layout';
 import OverflowInsert from './OverflowInsert';
 
-const LayoutInsert = () => {
+const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');
   return (
     <>
@@ -15,4 +15,4 @@ const LayoutInsert = () => {
   );
 };
 
-export default LayoutInsert;
+export default PageInsert;

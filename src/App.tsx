@@ -1,9 +1,11 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
-import Play from './pages/Play';
 import 'native-toast/dist/native-toast.css';
-import LayoutInsert from './pages/LayoutInsert';
-import LayoutHome from './pages/LayoutHome';
+import PageInsert from './pages/insert/PageInsert';
+import PageHome from './pages/home/PageHome';
+import PageSnippets from './pages/snippet/PageSnippets';
+import PageTags from './pages/tags/PageTags';
+import PageUsers from './pages/user/PageUsers';
 
 const App = () => {
   return (
@@ -11,13 +13,19 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <LayoutHome />
+            <PageHome />
           </Route>
-          <Route path="/play">
-            <Play />
+          <Route path="/snippets">
+            <PageSnippets />
           </Route>
           <Route path="/insert">
-            <LayoutInsert />
+            <PageInsert />
+          </Route>
+          <Route path="/tags">
+            <PageTags />
+          </Route>
+          <Route path="/users">
+            <PageUsers />
           </Route>
         </Switch>
       </BrowserRouter>

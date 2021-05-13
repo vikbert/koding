@@ -1,8 +1,8 @@
 import React from 'react';
-import DemoEditor from '../components/editor/DemoEditor';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import Header from '../components/base/Header';
-import IconNotification from '../components/base/icons/IconNotification';
+import DemoEditor from '../../components/editor/DemoEditor';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import Header from '../../components/base/Header';
+import IconNotification from '../../components/base/icons/IconNotification';
 
 const Good = () => {
   useDocumentTitle('good snippets');

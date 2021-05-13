@@ -1,6 +1,6 @@
 import React from 'react';
-import OverflowHeader from './OverflowHeader';
-import OverflowSidebar from './OverflowSidebar';
+import OverflowHeader from '../components/header/OverflowHeader';
+import OverflowSidebar from '../components/sidebar/OverflowSidebar';
 
 type PropsT = {
   children: any;

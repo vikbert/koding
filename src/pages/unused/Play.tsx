@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchSnippetsDone} from '../components/code/snippetAction';
-import LocalStorageClient from '../services/LocalStorageClient';
-import type {Snippet} from '../types/Snippet';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import Header from '../components/base/Header';
+import {fetchSnippetsDone} from '../../components/code/snippetAction';
+import LocalStorageClient from '../../services/LocalStorageClient';
+import type {Snippet} from '../../types/Snippet';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import Header from '../../components/base/Header';
 import './play.css';
-import SnippetPreview from '../components/code/SnippetPreview';
-import IconNotification from '../components/base/icons/IconNotification';
+import SnippetPreview from '../../components/code/SnippetPreview';
+import IconNotification from '../../components/base/icons/IconNotification';
 
 const Play = () => {
   useDocumentTitle('Play snippets');

@@ -1,6 +1,6 @@
 import React from 'react';
-import FormInsert from './insert/FormInsert';
-import StepAside from './insert/StepAside';
+import FormInsert from './FormInsert';
+import StepAside from './StepAside';
 
 type PropsT = {
   name?: string;

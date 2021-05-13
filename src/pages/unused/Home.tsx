@@ -1,8 +1,8 @@
 import React from 'react';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import Logo from './logo.png';
-import './header.css';
-import AppStack from '../AppStack';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import Logo from '../../components/header/logo.png';
+import '../../components/header/header.css';
+import AppStack from '../../AppStack';
 
 const Home = () => {
   useDocumentTitle('Home');

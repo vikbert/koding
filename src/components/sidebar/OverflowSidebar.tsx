@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './sidebar.css'
+import './sidebar.css';
 
 type PropsT = {
   name?: string;
@@ -51,7 +51,7 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
         </Link>
       </li>
     );
-  }
+  };
 
   return (
     <>
@@ -62,23 +62,39 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
         <div className="left-sidebar--sticky-container js-sticky-leftnav">
           <nav role="navigation">
             <ol className="nav-links">
-              <LinkActive path={'/'} title={'Home'}/>
+              <LinkActive path={'/'} title={'Home'} />
               <li>
                 <ol className="nav-links">
                   <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
                     Public
                   </li>
-                  <LinkWithIcon path={'/top-conventions'} title={'Top 20'}>
-                    <span className="iconify" data-icon="fluent:align-top-24-filled" data-inline="false"/>
+                  <LinkWithIcon path={'/'} title={'Top 20'}>
+                    <span
+                      className="iconify"
+                      data-icon="fluent:align-top-24-filled"
+                      data-inline="false"
+                    />
                   </LinkWithIcon>
                   <LinkWithIcon path={'/snippets'} title={'Snippets'}>
-                    <span className="iconify" data-icon="ant-design:code-sandbox-outlined" data-inline="false"/>
+                    <span
+                      className="iconify"
+                      data-icon="ant-design:code-sandbox-outlined"
+                      data-inline="false"
+                    />
                   </LinkWithIcon>
                   <LinkWithIcon path={'/tags'} title={'Tags'}>
-                    <span className="iconify" data-icon="fluent:tag-24-filled" data-inline="false"/>
+                    <span
+                      className="iconify"
+                      data-icon="fluent:tag-24-filled"
+                      data-inline="false"
+                    />
                   </LinkWithIcon>
                   <LinkWithIcon path={'/users'} title={'Users'}>
-                    <span className="iconify" data-icon="bx:bxs-user-circle" data-inline="false"/>
+                    <span
+                      className="iconify"
+                      data-icon="bx:bxs-user-circle"
+                      data-inline="false"
+                    />
                   </LinkWithIcon>
                 </ol>
               </li>

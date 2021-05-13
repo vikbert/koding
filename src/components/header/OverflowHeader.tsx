@@ -48,7 +48,7 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
                 data-gps-track="top_nav.products.click({location:1, destination:1})"
                 data-ga='["top navigation","products menu click",null,null,null]'
               >
-                Products
+                About
               </a>
             </li>
           </ol>
