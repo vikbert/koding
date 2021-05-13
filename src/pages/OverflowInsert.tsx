@@ -1,6 +1,6 @@
 import React from 'react';
-import AsideInsert from './insert/AsideInsert';
 import FormInsert from './insert/FormInsert';
+import StepAside from './insert/StepAside';
 
 type PropsT = {
   name?: string;
@@ -19,7 +19,7 @@ export default function OverflowInsert(props: PropsT): JSX.Element {
           </div>
           <div className="grid ai-start jc-space-between md:fd-column md:ai-stretch">
             <FormInsert />
-            <AsideInsert />
+            <StepAside />
           </div>
         </div>
       </div>

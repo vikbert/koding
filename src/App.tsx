@@ -2,9 +2,8 @@ import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Play from './pages/Play';
 import 'native-toast/dist/native-toast.css';
-import LayoutHome from './pages/HomeFlow';
-import OverflowInsert from './pages/OverflowInsert';
 import LayoutInsert from './pages/LayoutInsert';
+import LayoutHome from './pages/LayoutHome';
 
 const App = () => {
   return (
