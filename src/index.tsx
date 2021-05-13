@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider as ReduxProvider} from 'react-redux';
-import App from './App';
 import './assets/css/index.css';
 import './assets/css/app.css';
-import './assets/css/pixss.css';
 
 // @ts-ignore
 import configureStore from './redux/configureStore';
+import App from "./App";
 
 const store = configureStore();
 
@@ -17,7 +16,7 @@ ReactDOM.render(
       <App />
     </React.StrictMode>
   </ReduxProvider>,
-  document.getElementById('root'),
+  document.body,
 );
 
 if (import.meta.hot) {

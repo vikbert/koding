@@ -21,9 +21,32 @@
   color: #c8cacd;
   font-size: 1em;
   line-height: 1.75;
-  padding: 20px 25px 15px 25px;
   margin: 1rem 0;
   cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+}
+.rule-meta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #1d1c1c;
+  padding: .4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+
+}
+
+@media only screen and (max-width: 480px) {
+  .rule-meta {
+    width: 100%;
+  }
+}
+.meta-item {
+  display: flex;
+  flex-wrap: wrap;
 }
 .rule_bubble {
   border-right: 10px solid;
@@ -55,9 +78,10 @@
   display: inline-block;
 }
 .rule_bubble.rule_preview{
+  outline: 1px solid red;
   border-right: none;
   border-radius: .4rem;
-  padding: 30px 25px 15px 25px;
+  padding: .8rem;
   cursor: default;
 }
 .rule_bubble.rule_preview:hover{
