@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import './sidebar.css'
 
 type PropsT = {
   name?: string;
@@ -6,6 +8,50 @@ type PropsT = {
 
 export default function OverflowSidebar(props: PropsT): JSX.Element {
   const {name} = props;
+
+  type LinkProps = {
+    path: string;
+    title: string;
+    children?: any;
+  };
+  const LinkItem = (props: LinkProps) => {
+    return (
+      <li>
+        <Link to={props.path} className="nav-links--link">
+          <div className="grid ai-center">
+            <div className="grid--cell truncate">{props.title}</div>
+          </div>
+        </Link>
+      </li>
+    );
+  };
+
+  const LinkActive = (props: LinkProps) => {
+    return (
+      <li className="youarehere">
+        <Link to={props.path} className="pl8 nav-links--link">
+          <div className="grid ai-center">
+            <div className="grid--cell truncate">{props.title}</div>
+          </div>
+        </Link>
+      </li>
+    );
+  };
+
+  const LinkWithIcon = (props: LinkProps) => {
+    return (
+      <li>
+        <Link
+          to={props.path}
+          className="pl8 js-gps-track nav-links--link -link__with-icon"
+          id="nav-questions"
+        >
+          {props.children}
+          <span className="-link--channel-name">{props.title}</span>
+        </Link>
+      </li>
+    );
+  }
 
   return (
     <>
@@ -16,69 +62,24 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
         <div className="left-sidebar--sticky-container js-sticky-leftnav">
           <nav role="navigation">
             <ol className="nav-links">
-              <li className=" youarehere">
-                <a
-                  href="/"
-                  className="pl8 js-gps-track nav-links--link"
-                  data-gps-track="top_nav.click({is_current:true, location:1, destination:8})"
-                  data-s-popover-placement="right"
-                >
-                  <div className="grid ai-center">
-                    <div className="grid--cell truncate">Home</div>
-                  </div>
-                </a>
-              </li>
+              <LinkActive path={'/'} title={'Home'}/>
               <li>
                 <ol className="nav-links">
                   <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
                     Public
                   </li>
-                  <li>
-                    <a
-                      id="nav-questions"
-                      href="/questions"
-                      className="pl8 js-gps-track nav-links--link -link__with-icon"
-                      data-gps-track="top_nav.click({is_current:false, location:1, destination:1})"
-                      data-s-popover-placement="right"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-icon iconGlobe"
-                        width={18}
-                        height={18}
-                        viewBox="0 0 18 18"
-                      >
-                        <path d="M9 1C4.64 1 1 4.64 1 9c0 4.36 3.64 8 8 8 4.36 0 8-3.64 8-8 0-4.36-3.64-8-8-8zM8 15.32a6.46 6.46 0 01-4.3-2.74 6.46 6.46 0 01-.93-5.01L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.45 6.45 0 013.83 4.51 6.45 6.45 0 01-1.51 5.73v.01z" />
-                      </svg>{' '}
-                      <span className="-link--channel-name">Questions</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      id="nav-tags"
-                      href="/tags"
-                      className=" js-gps-track nav-links--link"
-                      data-gps-track="top_nav.click({is_current:false, location:1, destination:2})"
-                      data-s-popover-placement="right"
-                    >
-                      <div className="grid ai-center">
-                        <div className="grid--cell truncate">Tags</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      id="nav-users"
-                      href="/users"
-                      className=" js-gps-track nav-links--link"
-                      data-gps-track="top_nav.click({is_current:false, location:1, destination:3})"
-                      data-s-popover-placement="right"
-                    >
-                      <div className="grid ai-center">
-                        <div className="grid--cell truncate">Users</div>
-                      </div>
-                    </a>
-                  </li>
+                  <LinkWithIcon path={'/top-conventions'} title={'Top 20'}>
+                    <span className="iconify" data-icon="fluent:align-top-24-filled" data-inline="false"/>
+                  </LinkWithIcon>
+                  <LinkWithIcon path={'/snippets'} title={'Snippets'}>
+                    <span className="iconify" data-icon="ant-design:code-sandbox-outlined" data-inline="false"/>
+                  </LinkWithIcon>
+                  <LinkWithIcon path={'/tags'} title={'Tags'}>
+                    <span className="iconify" data-icon="fluent:tag-24-filled" data-inline="false"/>
+                  </LinkWithIcon>
+                  <LinkWithIcon path={'/users'} title={'Users'}>
+                    <span className="iconify" data-icon="bx:bxs-user-circle" data-inline="false"/>
+                  </LinkWithIcon>
                 </ol>
               </li>
             </ol>

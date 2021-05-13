@@ -14,7 +14,7 @@ export default function OverflowContent(props: PropsT): JSX.Element {
             <h1 className="grid--cell fl1 fs-headline1">Top Questions</h1>
             <div className="ml12 aside-cta grid--cell print:d-none">
               <Link className="ws-nowrap s-btn s-btn__primary" to={'/insert'}>
-                Add Coding Convention
+                New Coding Convention
               </Link>
             </div>
           </div>
