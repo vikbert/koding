@@ -1,3 +1,6 @@
 .top-bar {
   background-color: #ffffff;
 }
+.top-bar a.-logo:hover {
+  background-color: transparent;
+}
