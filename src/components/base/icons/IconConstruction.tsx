@@ -12,7 +12,7 @@ export default function IconConstruction(props: PropsT): JSX.Element {
       <span
         style={{fontSize: `${size}rem`}}
         className="iconify"
-        data-icon="emojione-monotone:construction"
+        data-icon="noto:construction"
         data-inline="false"
       />
     </>

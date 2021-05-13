@@ -6,6 +6,7 @@ import PageHome from './pages/home/PageHome';
 import PageSnippets from './pages/snippet/PageSnippets';
 import PageTags from './pages/tags/PageTags';
 import PageUsers from './pages/user/PageUsers';
+import PageRule from "./pages/rule/PageRule";
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <PageHome />
+          </Route>
+          <Route exact path="/convention/:id">
+            <PageRule />
           </Route>
           <Route path="/snippets">
             <PageSnippets />

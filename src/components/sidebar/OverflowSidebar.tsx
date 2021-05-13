@@ -96,6 +96,13 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
                       data-inline="false"
                     />
                   </LinkWithIcon>
+                  <LinkWithIcon path={'/convention/Kj6mU2qSUvUot8GnmxKdU'} title={'test'}>
+                    <span
+                      className="iconify"
+                      data-icon="bx:bxs-user-circle"
+                      data-inline="false"
+                    />
+                  </LinkWithIcon>
                 </ol>
               </li>
             </ol>

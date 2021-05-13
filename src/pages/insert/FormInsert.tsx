@@ -1,30 +1,32 @@
 import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom'
 import useNotify from '../../hooks/useToast';
 import {
   receiveRules,
-  hideRules,
   showRules,
+  addRule,
 } from '../../components/Rule/ruleAction';
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../types/Snippet';
 import {addSnippet} from '../../components/code/snippetAction';
 import {updateSnippetId} from '../../components/editor/editorAction';
 import './form.css';
+import type {Rule} from '../../types/Rule';
 
 type PropsT = {
   name?: string;
 };
 
 export default function FormInsert(props: PropsT): JSX.Element {
-  const initState = {bad: '', good: '', id: nanoid()};
+  const initState = {id: nanoid(), bad: '', good: '', rule: ''};
   useDocumentTitle('new snippet and convention');
 
   const dispatch = useDispatch();
   const notify = useNotify();
-  const ruleState = useSelector((state: any) => state.reduxRule);
   const [editorState, setEditorState] = React.useState(initState);
+  const history = useHistory();
 
   React.useEffect(() => {
     dispatch(receiveRules());
@@ -34,14 +36,14 @@ export default function FormInsert(props: PropsT): JSX.Element {
     setEditorState(initState);
   }
 
-  function handleToggleRulesWrapper() {
-    dispatch(ruleState.showWrapper ? hideRules() : showRules());
-  }
-
-  function handleOnSubmit(event: any) {
+  function handleSubmit(event: any) {
     event.preventDefault();
 
-    if (editorState.bad.length === 0 || editorState.good.length === 0) {
+    if (
+      editorState.bad.length === 0 ||
+      editorState.good.length === 0 ||
+      editorState.rule.length === 0
+    ) {
       notify({
         type: 'error',
         message: 'Both Code snippets should not be empty!',
@@ -64,10 +66,26 @@ export default function FormInsert(props: PropsT): JSX.Element {
       suggestion: goodSnippet.id,
     };
 
+    const rule: Rule = {
+      id: nanoid(),
+      body: editorState.rule,
+      snippets: [editorState.id],
+    };
+
     dispatch(addSnippet(goodSnippet));
     dispatch(addSnippet(badSnippet));
+    dispatch(addRule(rule));
     resetEditor();
     notify({type: 'success', message: 'Both Code snippets are added!'});
+
+    history.push(`/convention/${rule.id}`);
+  }
+
+  function handleChangeRule(event: any) {
+    setEditorState({
+      ...editorState,
+      rule: event.target.value,
+    });
   }
 
   function handleChangeBadSnippet(event: any) {
@@ -94,12 +112,14 @@ export default function FormInsert(props: PropsT): JSX.Element {
       dispatch(updateSnippetId(initState.id));
     }
   }, [editorState]);
+
   return (
     <div className="grid--cell fl1 wmn0">
       <form
         id="post-form"
         className="post-form js-post-form"
         data-form-type="question"
+        onSubmit={handleSubmit}
       >
         <div id="question-form">
           <div className="bg-white bar-sm bs-md p16 ba bc-black-100">
@@ -122,6 +142,8 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     placeholder="e.g. Use always constant instead of magic number and string"
                     className="s-input js-post-title-field"
                     autoComplete="off"
+                    value={editorState.rule}
+                    onChange={handleChangeRule}
                   />
                 </div>
               </div>
@@ -252,7 +274,11 @@ export default function FormInsert(props: PropsT): JSX.Element {
         </div>
         <div className="js-visible-before-review">
           <div className="grid gsx gs4 mt32">
-            <button className="grid--cell s-btn s-btn__filled" type="button">
+            <button
+              className="grid--cell s-btn s-btn__filled"
+              type="submit"
+              onClick={handleSubmit}
+            >
               Submit your coding convention and snippets
             </button>
           </div>

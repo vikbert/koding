@@ -39,6 +39,16 @@ class LocalStorageClient {
     }
   }
 
+  fetchRule(id: string): any {
+    try {
+      const list = this._list(this.KEY_RULES);
+
+      return list.find((rule: Rule) => rule.id === id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   updateRule(rule: Rule): void {
     try {
       const list = this._list(this.KEY_RULES);

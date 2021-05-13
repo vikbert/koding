@@ -2,6 +2,7 @@ import LocalStorageClient from '../../services/LocalStorageClient';
 import type {Rule} from '../../types/Rule';
 
 export const RULE_ADDED = 'rule.rule_added';
+export const RULE_FETCHED = 'rule.rule_fetched';
 export const RULE_DELETED = 'rule.rule_deleted';
 export const RULE_UPDATED = 'rule.rule_updated';
 export const RULES_RECEIVED = 'rule.rules_received';
@@ -73,4 +74,16 @@ export const deleteRule = (rule: Rule) => {
   client.deleteRule(rule);
 
   return ruleDeleted(rule);
+};
+
+export const ruleFetched = (rule: Rule) => ({
+  type: RULE_FETCHED,
+  rule,
+});
+
+export const fetchRule = (id: string) => {
+  const client = new LocalStorageClient();
+  const matchedRule = client.fetchRule(id);
+
+  return ruleFetched(matchedRule);
 };

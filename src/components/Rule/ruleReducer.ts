@@ -20,7 +20,7 @@ export const ruleState = {
 export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
     case RULE_ADDED:
-      return {...state, rules: [action.rule, ...state.rules]};
+      return {...state, rules: [action.rule, ...state.rules], targetRule: action.rule};
 
     case RULE_UPDATED:
       const updatedRules = state.rules.map((item: Rule) => {
@@ -35,6 +35,9 @@ export const ruleReducer = (state = ruleState, action: any) => {
       });
 
       return {...state, rules: reducedRules};
+
+    case RULES_RECEIVED:
+      return {...state, targetRule: action.rule};
 
     case RULES_RECEIVED:
       return {...state, rules: action.rules};
