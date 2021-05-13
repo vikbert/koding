@@ -1,10 +1,99 @@
 import React from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import {useDispatch, useSelector} from 'react-redux';
+import useNotify from '../../hooks/useToast';
+import {
+  receiveRules,
+  hideRules,
+  showRules,
+} from '../../components/Rule/ruleAction';
+import {nanoid} from 'nanoid';
+import type {Snippet} from '../../types/Snippet';
+import {addSnippet} from '../../components/code/snippetAction';
+import {updateSnippetId} from '../../components/editor/editorAction';
+import './form.css';
 
 type PropsT = {
   name?: string;
 };
 
 export default function FormInsert(props: PropsT): JSX.Element {
+  const initState = {bad: '', good: '', id: nanoid()};
+  useDocumentTitle('new snippet and convention');
+
+  const dispatch = useDispatch();
+  const notify = useNotify();
+  const ruleState = useSelector((state: any) => state.reduxRule);
+  const [editorState, setEditorState] = React.useState(initState);
+
+  React.useEffect(() => {
+    dispatch(receiveRules());
+  }, []);
+
+  function resetEditor() {
+    setEditorState(initState);
+  }
+
+  function handleToggleRulesWrapper() {
+    dispatch(ruleState.showWrapper ? hideRules() : showRules());
+  }
+
+  function handleOnSubmit(event: any) {
+    event.preventDefault();
+
+    if (editorState.bad.length === 0 || editorState.good.length === 0) {
+      notify({
+        type: 'error',
+        message: 'Both Code snippets should not be empty!',
+      });
+      return;
+    }
+
+    const goodSnippet = {
+      id: nanoid(),
+      body: editorState.good,
+      isBad: false,
+      lang: 'php',
+    };
+
+    const badSnippet: Snippet = {
+      id: initState.id,
+      body: editorState.bad,
+      isBad: true,
+      lang: 'php',
+      suggestion: goodSnippet.id,
+    };
+
+    dispatch(addSnippet(goodSnippet));
+    dispatch(addSnippet(badSnippet));
+    resetEditor();
+    notify({type: 'success', message: 'Both Code snippets are added!'});
+  }
+
+  function handleChangeBadSnippet(event: any) {
+    setEditorState({
+      ...editorState,
+      bad: event.target.value,
+    });
+  }
+
+  function handleChangeGoodSnippet(event: any) {
+    event.preventDefault();
+    setEditorState({
+      ...editorState,
+      good: event.target.value,
+    });
+  }
+
+  function handleAssignConvention() {
+    dispatch(showRules());
+  }
+
+  React.useEffect(() => {
+    if (editorState.bad.length > 0) {
+      dispatch(updateSnippetId(initState.id));
+    }
+  }, [editorState]);
   return (
     <div className="grid--cell fl1 wmn0">
       <form
@@ -32,8 +121,6 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     maxLength={300}
                     placeholder="e.g. Use always constant instead of magic number and string"
                     className="s-input js-post-title-field"
-                    data-min-length={15}
-                    data-max-length={150}
                     autoComplete="off"
                   />
                 </div>
@@ -51,7 +138,15 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     Add a bad code snippet to this convention
                   </p>
                 </label>
-                <textarea name={'bad-snippet'} />
+                <div className="editor-wrapper">
+                  <textarea
+                    name={'bad'}
+                    rows={15}
+                    placeholder={'Bad snippet'}
+                    value={editorState.bad}
+                    onChange={handleChangeBadSnippet}
+                  />
+                </div>
               </div>
               <div className="ps-relative">
                 <label className="s-label mb4 d-block" htmlFor="good-snippet">
@@ -60,7 +155,15 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     Add a Good code snippet to this convention
                   </p>
                 </label>
-                <textarea name={'good-snippet'} />
+                <div className="editor-wrapper  ">
+                  <textarea
+                    name={'good'}
+                    rows={15}
+                    placeholder={'Good snippet'}
+                    value={editorState.good}
+                    onChange={handleChangeGoodSnippet}
+                  />
+                </div>
               </div>
               <div className="edit-block">
                 <input id="author" name="author" type="text" />

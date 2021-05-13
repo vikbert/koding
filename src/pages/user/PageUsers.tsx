@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../Layout';
+import IconConstruction from '../../components/base/icons/IconConstruction';
 
 type PropsT = {
   name?: string;
@@ -15,6 +16,11 @@ export default function PageUsers(props: PropsT): JSX.Element {
           <div id="mainbar">
             <div className="grid">
               <h1 className={'grid-cell fl1'}>User page</h1>
+            </div>
+            <div className="grid">
+              <div className="grid--cell12 text-centered">
+                <IconConstruction size={8} />
+              </div>
             </div>
           </div>
         </div>
