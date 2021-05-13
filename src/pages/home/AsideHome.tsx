@@ -1,5 +1,5 @@
 import React from 'react';
-import IconConstruction from "../../components/base/icons/IconConstruction";
+import IconConstruction from '../../components/base/icons/IconConstruction';
 
 type PropsT = {
   name?: string;
@@ -64,9 +64,9 @@ export default function AsideHome(props: PropsT): JSX.Element {
               </a>
             </div>
           </li>
-          <li className='s-sidebarwidget--item grid px16'>
+          <li className="s-sidebarwidget--item grid px16">
             <div className="grid--cell12 text-centered">
-              <IconConstruction size={4}/>
+              <IconConstruction size={4} />
             </div>
           </li>
         </ul>
