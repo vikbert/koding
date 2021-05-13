@@ -1,21 +1,26 @@
 import React from 'react';
-import {Route, Switch} from 'wouter';
-import Good from './pages/Good';
-import Insert from './pages/insert/Insert';
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Play from './pages/Play';
 import 'native-toast/dist/native-toast.css';
-import Navigation from './pages/Navigation';
 import HomeFlow from './pages/HomeFlow';
+import InsertRule from './components/Rule/InsertRule';
 
 const App = () => {
   return (
     <>
-      <Switch>
-        <Route path={'/'} component={HomeFlow} />
-        <Route path={'/play'} component={Play} />
-        <Route path={'/insert'} component={Insert} />
-        <Route path={'/favorite'} component={Good} />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <HomeFlow />
+          </Route>
+          <Route path="/play">
+            <Play />
+          </Route>
+          <Route path="/insert">
+            <InsertRule />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'wouter';
+import {Link} from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.css';
 import IconNotification from '../components/base/icons/IconNotification';
@@ -24,7 +24,7 @@ const Navigation = () => {
   };
 
   return (
-    <ul id={'menu'}>
+    <ul id={'mobile-nav'}>
       <LinkItem linkName={'/'}>
         <IconNotification />
       </LinkItem>

@@ -118,7 +118,7 @@ export default function SidebarOverflow(props: PropsT): JSX.Element {
                     </div>
                     <div className="grid--cell fs-fine fc-light mr4">
                       <a
-                        href="javascript:void(0)"
+                        href="/#"
                         className="s-link s-link__inherit js-gps-track"
                         role="button"
                         aria-controls="popover-teams-create-cta"
