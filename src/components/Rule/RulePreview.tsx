@@ -1,6 +1,6 @@
 import React from 'react';
 import type {Rule} from '../../types/Rule';
-import './rule.css'
+import './rule.css';
 
 type PropsT = {
   rule: Rule;

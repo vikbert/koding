@@ -2,7 +2,7 @@ import React from 'react';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Logo from './logo.png';
 import './header.css';
-import AppStack from "../AppStack";
+import AppStack from '../AppStack';
 
 const Home = () => {
   useDocumentTitle('Home');
@@ -28,7 +28,7 @@ const Home = () => {
         </nav>
       </header>
       <main className="main">
-        <AppStack/>
+        <AppStack />
       </main>
     </>
   );

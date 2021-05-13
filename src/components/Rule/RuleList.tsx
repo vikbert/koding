@@ -1,7 +1,7 @@
 import React from 'react';
 
 type PropsT = {
-  name?: string
+  name?: string;
 };
 
 export default function RuleList(props: PropsT): JSX.Element {
@@ -83,8 +83,8 @@ export default function RuleList(props: PropsT): JSX.Element {
               >
                 asked{' '}
                 <span title="2021-05-13 00:02:03Z" className="relativetime">
-                    1 min ago
-                  </span>{' '}
+                  1 min ago
+                </span>{' '}
               </a>
               <a href="https://stackoverflow.com/users/14559436/001">001</a>{' '}
               <span
@@ -92,13 +92,12 @@ export default function RuleList(props: PropsT): JSX.Element {
                 title="reputation score "
                 dir="ltr"
               >
-                  938
-                </span>
+                938
+              </span>
             </div>
           </div>
         </div>
       </div>
     </>
   );
-};
-
+}

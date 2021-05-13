@@ -6,7 +6,7 @@ import './assets/css/app.css';
 
 // @ts-ignore
 import configureStore from './redux/configureStore';
-import App from "./App";
+import App from './App';
 
 const store = configureStore();
 
