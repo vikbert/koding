@@ -5,7 +5,10 @@
   min-height: 100px;
   background: rgb(40, 44, 52);
   padding: .2rem .8rem;
-  overflow: hidden;
+}
+textarea.code-editor {
+  height: auto;
+  overflow: scroll;
 }
 
 textarea:focus {
@@ -19,8 +22,8 @@ textarea:focus {
   height: 2rem;
 }
 .editor-header div {
-  height: .8rem;
-  width: .8rem;
+  height: .6rem;
+  width: .6rem;
   border-radius: 50%;
 }
 .red{
@@ -41,9 +44,9 @@ textarea:focus {
   right: 0;
 }
 .editor-options svg {
-  margin: 1rem;
-  font-size: 60px;
-  opacity: 50%;
+  margin: .3rem;
+  font-size: 30px;
+  opacity: 60%;
 }
 .option-lang {
   font-size: 14px;

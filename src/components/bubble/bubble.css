@@ -8,6 +8,7 @@
   text-align: left;
   color: #000;
   margin-bottom: 2rem;
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: 4rem 1fr;
 }

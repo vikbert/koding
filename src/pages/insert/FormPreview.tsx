@@ -8,7 +8,7 @@ type PropsT = {
   goodSnippet: string;
 };
 
-export default function RulePreview(props: PropsT): JSX.Element {
+export default function FormPreview(props: PropsT): JSX.Element {
   const {rule, badSnippet, goodSnippet} = props;
 
   return (

@@ -1,7 +1,7 @@
 textarea.snippet {
   resize: none;
   width: 100%;
-  min-height: 10rem;
+  min-height: 15rem;
   color: #c18109 !important;
   font-family: 'Fira Code', Helvetica, Arial !important;
   padding: 1rem !important;
@@ -9,4 +9,7 @@ textarea.snippet {
   border: none;
   border-radius: 8px;
   background-color: #1d1c1c !important;
+}
+.post-layout--right {
+  padding-right: 0;
 }

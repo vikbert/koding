@@ -12,8 +12,10 @@ import type {Rule} from '../../types/Rule';
 import './formInsert.css';
 import useVisibility from '../../hooks/useVisibility';
 import classNames from 'classnames';
-import RulePreview from './RulePreview';
+import FormPreview from './FormPreview';
 import useKeypress from '../../hooks/useKeyPress';
+import CodePreview from "../../components/code/CodePreview";
+import Bubble from "../../components/bubble/Bubble";
 
 type PropsT = {
   name?: string;
@@ -121,12 +123,6 @@ export default function FormInsert(props: PropsT): JSX.Element {
     hide();
   }
 
-  React.useEffect(() => {
-    if (editorState.bad.length > 0) {
-      dispatch(updateSnippetId(initState.id));
-    }
-  }, [editorState]);
-
   return (
     <div className="grid--cell fl1 wmn0">
       <div className={classNames('overlay', {open: visible})}>
@@ -135,28 +131,33 @@ export default function FormInsert(props: PropsT): JSX.Element {
             <h3>Coding convention preview</h3>
           </div>
           <div className="content">
-            <RulePreview
+            <FormPreview
               rule={editorState.rule}
               badSnippet={editorState.bad}
               goodSnippet={editorState.good}
             />
           </div>
-          <div className="action mb16">
+          <div className="action mb16 mr12">
             <button
-              className="grid--cell s-btn s-btn__md"
+              className="grid--cell s-btn s-btn__link"
               onClick={handleClosePreview}
             >
-              close the preview
+              Close the preview
+            </button>
+
+            <button
+              className="grid--cell s-btn s-btn__filled"
+              onClick={handleSubmit}
+            >
+              Yes, Submit
             </button>
           </div>
         </div>
       </div>
-      <form
-        id="post-form"
+      <form id="post-form"
         className="post-form js-post-form"
         data-form-type="question"
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         <div id="question-form">
           <div className="bg-white bar-sm bs-md p16 ba bc-black-100">
             <div id="post-title" className="ps-relative mb16">
@@ -189,7 +190,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
               id="post-editor"
               className="post-editor js-post-editor mt0 mb16"
             >
-              <div className="ps-relative">
+              <div className="mt24">
                 <label className="s-label mb4 d-block" htmlFor="bad-snippet">
                   Bad Code snippet
                   <p className="s-description mt2">
@@ -199,13 +200,12 @@ export default function FormInsert(props: PropsT): JSX.Element {
                 <textarea
                   className="snippet"
                   name={'bad'}
-                  rows={15}
                   placeholder={'Bad snippet'}
                   value={editorState.bad}
                   onChange={handleChangeBadSnippet}
                 />
               </div>
-              <div className="ps-relative">
+              <div className="mt24">
                 <label className="s-label mb4 d-block" htmlFor="good-snippet">
                   Good Code snippet
                   <p className="s-description mt2">
@@ -215,7 +215,6 @@ export default function FormInsert(props: PropsT): JSX.Element {
                 <textarea
                   className="snippet"
                   name={'good'}
-                  rows={15}
                   placeholder={'Good snippet'}
                   value={editorState.good}
                   onChange={handleChangeGoodSnippet}
@@ -231,45 +230,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
               </div>
             </div>
             <div className="ps-relative" id="tag-editor">
-              <div className="ps-relative">
-                <div className="form-item p0 js-stacks-validation js-tag-editor-container">
-                  <div className="grid ai-center jc-space-between">
-                    <label
-                      htmlFor="tageditor-replacing-tagnames--input"
-                      className="s-label mb4 d-block grid--cell fl1"
-                    >
-                      Convention Tags
-                      <div className="s-description mt2">
-                        Add up to 5 tags to describe what your coding convention
-                        is about
-                      </div>
-                    </label>
-                  </div>
-                  <div className="ps-relative">
-                    <div
-                      className="js-tag-editor tag-editor multi-line s-input"
-                      style={{
-                        padding: '0px 9.1px',
-                        boxSizing: 'border-box',
-                        marginTop: '0px',
-                        marginBottom: '0px',
-                        width: '100%',
-                      }}
-                    >
-                      <input
-                        type="text"
-                        autoComplete="off"
-                        tabIndex={103}
-                        placeholder="e.g. (php, javascript, css)"
-                        id="tageditor-replacing-tagnames--input"
-                        className="s-input js-tageditor-replacing"
-                        style={{width: '19px'}}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="js-tag-suggestions hmn0" />
+              {/*tags input*/}
             </div>
             <div
               id="question-answer-section"
@@ -309,11 +270,14 @@ export default function FormInsert(props: PropsT): JSX.Element {
         <div className="grid gsx gs4 mt32 float-right">
           {editorState.rule.length > 0 && editorState.bad.length > 0 && (
             <button
-              className="grid--cell s-btn s-btn__outlined"
+              className="grid--cell s-btn s-btn__outlined s-btn__icon"
               type="button"
               onClick={handleOpenPreview}
             >
-              See preview
+              <svg aria-hidden="true" className="svg-icon iconEye" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M9.06 3C4 3 1 9 1 9s3 6 8.06 6C14 15 17 9 17 9s-3-6-7.94-6zM9 13a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 002-2 2 2 0 00-2-2 2 2 0 00-2 2 2 2 0 002 2z"></path>
+              </svg>
+              {" Preview"}
             </button>
           )}
           <button

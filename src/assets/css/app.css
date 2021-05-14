@@ -58,3 +58,6 @@
   display: flex;
   align-items: center;
 }
+pre {
+  max-height: none !important;
+}

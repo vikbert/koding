@@ -14,17 +14,18 @@ type BaseEditorProps = {
 export default function BaseEditor(props: BaseEditorProps) {
   return (
     <Editor
+      textareaClassName="code-editor"
       disabled={props.disabled || false}
       value={props.code}
       placeholder={props.placeholder || 'Enter your new snippet'}
       onValueChange={() => null}
       highlight={(codeString) => highlight(codeString, languages.js)}
-      padding={10}
+      padding={0}
       style={{
         fontFamily: '"Fira code", "Fira Mono", monospace',
+        fontSize: '13px',
         minHeight: '100px',
-        maxHeight: '700px',
-        overflow: 'scroll',
+        // overflow: 'scroll',
         color: 'rgb(169 208 247)',
       }}
     />

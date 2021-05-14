@@ -11,7 +11,7 @@ export default function CodePreview(props: PropsT): JSX.Element {
   const {code, isBad} = props;
 
   return (
-    <EditorPreview code={code} disabled={true}>
+    <EditorPreview code={code}>
       <div className="editor-options">
         <Thumb bad={isBad} />
       </div>
