@@ -1,5 +1,6 @@
 import React from 'react';
 import IconAdd from '../icons/IconAdd';
+import './extendedInput.css';
 
 type ExtendedInputProps = {
   type: string;

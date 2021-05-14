@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {addRule, receiveRules, showRules} from './ruleAction';
+import {addRule, loadRules, showRules} from './ruleAction';
 import {nanoid} from 'nanoid';
 import ExtendedInput from '../input/ExtendedInput';
 
@@ -20,7 +20,7 @@ export default function InsertRule() {
   }
 
   useEffect(() => {
-    dispatch(receiveRules());
+    dispatch(loadRules());
   }, []);
 
   return (

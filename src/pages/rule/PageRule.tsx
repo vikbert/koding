@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../Layout';
 import {useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import ActionLink from '../../components/link/ActionLink';
 import './pageRule.css';
 import UserSignature from '../../components/user/UserSignature';
@@ -12,9 +12,11 @@ import SnippetPreview from '../../components/code/SnippetPreview';
 import Bubble from '../../components/bubble/Bubble';
 import LocalStorageClient from '../../services/LocalStorageClient';
 import NotFound from '../../components/error/NotFound';
+import {loadSnippets} from '../../components/code/snippetAction';
 
 export default function PageRule(): JSX.Element {
   const {id} = useParams<{id?: string}>();
+  const dispatch = useDispatch();
   const reduxRule = useSelector((state: any) => state.reduxRule);
   let targetRule = reduxRule.targetRule;
 
@@ -23,7 +25,9 @@ export default function PageRule(): JSX.Element {
     targetRule = client.fetchRule(id);
   }
 
-  console.log(targetRule);
+  React.useEffect(() => {
+    dispatch(loadSnippets());
+  }, []);
 
   return (
     <>

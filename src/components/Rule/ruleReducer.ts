@@ -7,6 +7,7 @@ import {
   HIDE_POPUP,
   RULE_UPDATED,
   RULE_DELETED,
+  RULE_FETCHED,
 } from './ruleAction';
 import type {Rule} from '../../types/Rule';
 
@@ -40,7 +41,7 @@ export const ruleReducer = (state = ruleState, action: any) => {
 
       return {...state, rules: reducedRules};
 
-    case RULES_RECEIVED:
+    case RULE_FETCHED:
       return {...state, targetRule: action.rule};
 
     case RULES_RECEIVED:

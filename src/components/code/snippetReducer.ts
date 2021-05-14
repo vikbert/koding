@@ -1,10 +1,10 @@
-import {SNIPPETS_RECEIVED, SNIPPET_ADDED} from './snippetAction';
+import {SNIPPETS_LOADED, SNIPPET_ADDED} from './snippetAction';
 
 export const snippetState = [];
 
 export const snippetReducer = (state = snippetState, action: any) => {
   switch (action.type) {
-    case SNIPPETS_RECEIVED:
+    case SNIPPETS_LOADED:
       return action.snippets;
     case SNIPPET_ADDED:
       return [action.snippet, ...state];

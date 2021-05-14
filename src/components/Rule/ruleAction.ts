@@ -57,7 +57,7 @@ export const rulesReceived = (rules: any) => ({
   rules,
 });
 
-export const receiveRules = () => {
+export const loadRules = () => {
   const client = new LocalStorageClient();
   const rules = client.listRules();
 

@@ -1,8 +1,6 @@
 import React from 'react';
-import EditorPreview from '../editor/preview/EditorPreview';
 import type {Snippet} from '../../types/Snippet';
 import {useSelector} from 'react-redux';
-import Thumb from '../editor/preview/Thumb';
 import CodePreview from './CodePreview';
 
 type PropsType = {

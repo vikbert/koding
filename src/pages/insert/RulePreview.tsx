@@ -1,6 +1,5 @@
 import React from 'react';
 import Bubble from '../../components/bubble/Bubble';
-import TagList from '../../components/tag/TagList';
 import CodePreview from '../../components/code/CodePreview';
 
 type PropsT = {
@@ -20,9 +19,7 @@ export default function RulePreview(props: PropsT): JSX.Element {
           <CodePreview code={badSnippet} isBad={true} />
           <CodePreview code={goodSnippet} isBad={false} />
 
-          <div className="mt24 mb12">
-            <TagList />
-          </div>
+          <div className="mt24 mb12">{/*<TagList />*/}</div>
         </div>
       </div>
     </>

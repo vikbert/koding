@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useNotify from '../../hooks/useToast';
-import {receiveRules, addRule} from '../../components/Rule/ruleAction';
+import {loadRules, addRule} from '../../components/Rule/ruleAction';
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../types/Snippet';
 import {addSnippet} from '../../components/code/snippetAction';
@@ -13,6 +13,8 @@ import './formInsert.css';
 import useVisibility from '../../hooks/useVisibility';
 import classNames from 'classnames';
 import RulePreview from './RulePreview';
+import useKeyPress from "../../hooks/useKeyPress";
+import useKeypress from "../../hooks/useKeyPress";
 
 type PropsT = {
   name?: string;
@@ -28,8 +30,12 @@ export default function FormInsert(props: PropsT): JSX.Element {
   const [editorState, setEditorState] = React.useState(initState);
   const history = useHistory();
 
+  useKeypress('Escape', () => {
+    hide();
+  });
+
   React.useEffect(() => {
-    dispatch(receiveRules());
+    dispatch(loadRules());
   }, []);
 
   function resetEditor() {
@@ -180,10 +186,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
               </div>
             </div>
 
-            <div
-              id="post-editor"
-              className="post-editor js-post-editor mt0 mb16"
-            >
+            <div id="post-editor" className="post-editor js-post-editor mt0 mb16">
               <div className="ps-relative">
                 <label className="s-label mb4 d-block" htmlFor="bad-snippet">
                   Bad Code snippet
