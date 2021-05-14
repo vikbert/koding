@@ -3,17 +3,16 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useNotify from '../../hooks/useToast';
-import {
-  receiveRules,
-  showRules,
-  addRule,
-} from '../../components/Rule/ruleAction';
+import {receiveRules, addRule} from '../../components/Rule/ruleAction';
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../types/Snippet';
 import {addSnippet} from '../../components/code/snippetAction';
 import {updateSnippetId} from '../../components/editor/preview/editorAction';
 import type {Rule} from '../../types/Rule';
 import './formInsert.css';
+import useVisibility from '../../hooks/useVisibility';
+import classNames from 'classnames';
+import RulePreview from './RulePreview';
 
 type PropsT = {
   name?: string;
@@ -24,6 +23,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
   useDocumentTitle('new snippet and convention');
 
   const dispatch = useDispatch();
+  const {visible, show, hide} = useVisibility();
   const notify = useNotify();
   const [editorState, setEditorState] = React.useState(initState);
   const history = useHistory();
@@ -108,8 +108,12 @@ export default function FormInsert(props: PropsT): JSX.Element {
     });
   }
 
-  function handleAssignConvention() {
-    dispatch(showRules());
+  function handleOpenPreview() {
+    show();
+  }
+
+  function handleClosePreview() {
+    hide();
   }
 
   React.useEffect(() => {
@@ -120,6 +124,22 @@ export default function FormInsert(props: PropsT): JSX.Element {
 
   return (
     <div className="grid--cell fl1 wmn0">
+      <div className={classNames("overlay", {"open": visible})}>
+        <div className="popup">
+          <div className="title">
+            <h3>Coding convention preview</h3>
+          </div>
+          <div className="content">
+            <RulePreview rule={editorState.rule} badSnippet={editorState.bad} goodSnippet={editorState.good}/>
+          </div>
+          <div className="action mb16">
+            <button className="grid--cell s-btn s-btn__md"
+                    onClick={handleClosePreview}>
+              close the preview
+            </button>
+          </div>
+        </div>
+      </div>
       <form
         id="post-form"
         className="post-form js-post-form"
@@ -166,6 +186,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                   </p>
                 </label>
                 <textarea
+                  className="snippet"
                   name={'bad'}
                   rows={15}
                   placeholder={'Bad snippet'}
@@ -181,6 +202,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                   </p>
                 </label>
                 <textarea
+                  className="snippet"
                   name={'good'}
                   rows={15}
                   placeholder={'Good snippet'}
@@ -189,7 +211,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                 />
               </div>
               <div className="edit-block">
-                <input id="author" name="author" type="text" />
+                <input id="author" name="author" type="text"/>
                 <input
                   type="hidden"
                   name="i1l"
@@ -236,7 +258,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                   </div>
                 </div>
               </div>
-              <div className="js-tag-suggestions hmn0" />
+              <div className="js-tag-suggestions hmn0"/>
             </div>
             <div
               id="question-answer-section"
@@ -264,7 +286,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                             defaultValue={''}
                           />
                         </div>
-                        <div className="s-input-message mt4 d-none js-stacks-validation-message" />
+                        <div className="s-input-message mt4 d-none js-stacks-validation-message"/>
                       </div>
                     </div>
                   </div>
@@ -273,16 +295,23 @@ export default function FormInsert(props: PropsT): JSX.Element {
             </div>
           </div>
         </div>
-        <div className="js-visible-before-review">
-          <div className="grid gsx gs4 mt32">
+        <div className="grid gsx gs4 mt32 float-right">
+          {editorState.rule.length > 0 && editorState.bad.length > 0 && (
             <button
-              className="grid--cell s-btn s-btn__filled"
-              type="submit"
-              onClick={handleSubmit}
+              className="grid--cell s-btn s-btn__outlined"
+              type="button"
+              onClick={handleOpenPreview}
             >
-              Submit your coding convention and snippets
+              See preview
             </button>
-          </div>
+          )}
+          <button
+            className="grid--cell s-btn s-btn__filled"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Submit the convention
+          </button>
         </div>
       </form>
     </div>

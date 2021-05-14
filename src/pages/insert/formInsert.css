@@ -1,11 +1,13 @@
-textarea {
+textarea.snippet {
   resize: none;
   width: 100%;
+  height: 10rem;
+  max-height: 40rem;
   color: #c18109 !important;
   font-family: 'Fira Code', Helvetica, Arial !important;
   padding: 1rem !important;
   outline: none;
   border: none;
   border-radius: 8px;
-  background-color: var(--highlight-bg);
+  background-color: #1d1c1c !important;
 }

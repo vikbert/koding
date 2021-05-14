@@ -11,7 +11,7 @@ export default function OverflowTopRules(props: PropsT): JSX.Element {
       <div className="grid">
         <h1 className="grid--cell fl1 fs-headline1">Top Coding Conventions</h1>
         <div className="ml12 aside-cta grid--cell print:d-none">
-          <Link className="ws-nowrap s-btn s-btn__primary" to={'/insert'}>
+          <Link className="ws-nowrap s-btn s-btn__filled" to={'/insert'}>
             New Coding Convention
           </Link>
         </div>

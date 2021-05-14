@@ -3,9 +3,7 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import '../../components/header/header.css';
 import Layout from '../Layout';
 import FormInsert from './FormInsert';
-import IconConstruction from '../../components/icons/IconConstruction';
-import AsideHome from '../home/AsideHome';
-import AsideInsert from './AsideInsert';
+import AsideInsert from './aside/AsideInsert';
 
 const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');
@@ -19,11 +17,6 @@ const PageInsert = () => {
           <div id="mainbar">
             <div className="grid">
               <FormInsert />
-            </div>
-            <div className="grid">
-              <div className="grid--cell12 text-centered">
-                <IconConstruction size={8} />
-              </div>
             </div>
           </div>
           <div id="sidebar">

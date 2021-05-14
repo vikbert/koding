@@ -25,12 +25,15 @@ textarea:focus {
 }
 .red{
   background: #d63c15;
+  margin-left: 4px;
 }
 .yellow {
   background: #e0bd0e;
+  margin-left: 4px;
 }
 .green {
   background: #84cb2a;
+  margin-left: 4px;
 }
 .editor-options {
   width: 100%;
