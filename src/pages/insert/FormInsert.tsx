@@ -124,17 +124,23 @@ export default function FormInsert(props: PropsT): JSX.Element {
 
   return (
     <div className="grid--cell fl1 wmn0">
-      <div className={classNames("overlay", {"open": visible})}>
+      <div className={classNames('overlay', {open: visible})}>
         <div className="popup">
           <div className="title">
             <h3>Coding convention preview</h3>
           </div>
           <div className="content">
-            <RulePreview rule={editorState.rule} badSnippet={editorState.bad} goodSnippet={editorState.good}/>
+            <RulePreview
+              rule={editorState.rule}
+              badSnippet={editorState.bad}
+              goodSnippet={editorState.good}
+            />
           </div>
           <div className="action mb16">
-            <button className="grid--cell s-btn s-btn__md"
-                    onClick={handleClosePreview}>
+            <button
+              className="grid--cell s-btn s-btn__md"
+              onClick={handleClosePreview}
+            >
               close the preview
             </button>
           </div>
@@ -211,7 +217,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                 />
               </div>
               <div className="edit-block">
-                <input id="author" name="author" type="text"/>
+                <input id="author" name="author" type="text" />
                 <input
                   type="hidden"
                   name="i1l"
@@ -258,7 +264,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                   </div>
                 </div>
               </div>
-              <div className="js-tag-suggestions hmn0"/>
+              <div className="js-tag-suggestions hmn0" />
             </div>
             <div
               id="question-answer-section"
@@ -286,7 +292,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
                             defaultValue={''}
                           />
                         </div>
-                        <div className="s-input-message mt4 d-none js-stacks-validation-message"/>
+                        <div className="s-input-message mt4 d-none js-stacks-validation-message" />
                       </div>
                     </div>
                   </div>

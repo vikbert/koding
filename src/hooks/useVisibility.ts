@@ -12,8 +12,8 @@ export default function useVisibility(): {
   };
 
   const hide = (): void => {
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   return {visible, show, hide};
 }

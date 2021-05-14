@@ -3,7 +3,7 @@ import EditorPreview from '../editor/preview/EditorPreview';
 import type {Snippet} from '../../types/Snippet';
 import {useSelector} from 'react-redux';
 import Thumb from '../editor/preview/Thumb';
-import CodePreview from "./CodePreview";
+import CodePreview from './CodePreview';
 
 type PropsType = {
   snippetId: string;
@@ -26,8 +26,8 @@ export default function SnippetPreview(props: PropsType) {
   // @ts-ignore
   return (
     <>
-      <CodePreview code={targetSnippet.body} isBad={true}/>
-      <CodePreview code={goodSnippet.body} isBad={false}/>
+      <CodePreview code={targetSnippet.body} isBad={true} />
+      <CodePreview code={goodSnippet.body} isBad={false} />
     </>
   );
 }
