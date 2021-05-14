@@ -97,7 +97,7 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
                     />
                   </LinkWithIcon>
                   <LinkWithIcon
-                    path={'/convention/Kj6mU2qSUvUot8GnmxKdU'}
+                    path={'/convention/YheGua30WQYf_rQ0ZQi6g'}
                     title={'test'}
                   >
                     <span
