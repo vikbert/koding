@@ -12,13 +12,11 @@ export default function IconNotification(props: PropsType): JSX.Element {
   };
 
   return (
-    <>
-      <span
-        className="iconify"
-        data-icon="ant-design:notification-outlined"
-        data-inline="false"
-        style={inlineStyle}
-      />
-    </>
+    <span
+      className="iconify"
+      data-icon="ant-design:notification-outlined"
+      data-inline="false"
+      style={inlineStyle}
+    />
   );
 }

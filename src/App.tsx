@@ -6,7 +6,7 @@ import PageHome from './pages/home/PageHome';
 import PageSnippets from './pages/snippet/PageSnippets';
 import PageTags from './pages/tags/PageTags';
 import PageUsers from './pages/user/PageUsers';
-import PageRule from "./pages/rule/PageRule";
+import PageRule from './pages/rule/PageRule';
 
 const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import './editor.css';
+import './editorPreview.css';
 import EditorHeader from './EditorHeader';
-import BaseEditor from './BaseEditor';
+import BaseEditor from '../BaseEditor';
 
 type ReadOnlyEditorProps = {
   code: string;
@@ -9,9 +9,9 @@ type ReadOnlyEditorProps = {
   children?: any;
 };
 
-export default function ReadOnlyEditor(props: ReadOnlyEditorProps) {
+export default function EditorPreview(props: ReadOnlyEditorProps) {
   return (
-    <div className={'editor-wrapper'}>
+    <div className="editor-wrapper">
       <EditorHeader />
       <BaseEditor code={props.code} disabled={true} placeholder={''} />
       {props.children}

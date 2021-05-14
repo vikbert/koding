@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import type {Rule} from '../../types/Rule';
 import './rule.css';
-import ExtendedInput from '../base/ExtendedInput';
+import ExtendedInput from '../input/ExtendedInput';
 import {showPopup} from './ruleAction';
 
 export default function RulesList() {

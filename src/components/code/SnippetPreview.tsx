@@ -1,47 +1,39 @@
 import React from 'react';
-import ReadOnlyEditor from '../editor/ReadOnlyEditor';
+import EditorPreview from '../editor/preview/EditorPreview';
 import type {Snippet} from '../../types/Snippet';
 import {useSelector} from 'react-redux';
-import Thumb from '../editor/Thumb';
-import classNames from 'classnames';
-import IconNotification from '../base/icons/IconNotification';
+import Thumb from '../editor/preview/Thumb';
 
 type PropsType = {
-  snippet: Snippet;
+  snippetId: string;
 };
+
 export default function SnippetPreview(props: PropsType) {
   const snippetState = useSelector((state: any) => state.reduxSnippet);
-  const [targetSnippet, setTargetSnippet] = React.useState(props.snippet);
-  const goodSnippet = snippetState.find(
-    (element: Snippet) => element.id === props.snippet.suggestion,
+  const target = snippetState.find(
+    (code: Snippet) => code.id === props.snippetId,
   );
-
-  function handleOpenSnippetRules() {
-    // open a new popup with rules defined
-  }
+  const [targetSnippet, setTargetSnippet] = React.useState(target);
+  const goodSnippet = snippetState.find(
+    (element: Snippet) => element.id === target.suggestion,
+  );
 
   // @ts-ignore
   return (
-    <>
-      <ReadOnlyEditor code={targetSnippet.body} disabled={true}>
-        <div className="editor-options">
-          <div
-            onClick={() => setTargetSnippet(props.snippet)}
-            className={classNames({'opacity-25': !targetSnippet.isBad})}
-          >
+    targetSnippet && (
+      <>
+        <EditorPreview code={targetSnippet.body} disabled={true}>
+          <div className="editor-options">
             <Thumb bad={true} />
           </div>
-          <div
-            onClick={() => setTargetSnippet(goodSnippet)}
-            className={classNames({'opacity-25': targetSnippet.isBad})}
-          >
+        </EditorPreview>
+
+        <EditorPreview code={goodSnippet.body} disabled={true}>
+          <div className="editor-options">
             <Thumb bad={false} />
           </div>
-          <div onClick={handleOpenSnippetRules}>
-            <IconNotification size={'32px'} opacity={'25%'} />
-          </div>
-        </div>
-      </ReadOnlyEditor>
-    </>
+        </EditorPreview>
+      </>
+    )
   );
 }

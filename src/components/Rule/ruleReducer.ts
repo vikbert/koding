@@ -20,7 +20,11 @@ export const ruleState = {
 export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
     case RULE_ADDED:
-      return {...state, rules: [action.rule, ...state.rules], targetRule: action.rule};
+      return {
+        ...state,
+        rules: [action.rule, ...state.rules],
+        targetRule: action.rule,
+      };
 
     case RULE_UPDATED:
       const updatedRules = state.rules.map((item: Rule) => {

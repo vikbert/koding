@@ -1,8 +1,0 @@
-@media only screen and (max-width: 426px) {
-  #page-play .container {
-    padding: 0 4px;
-  }
-  #page-play pre {
-    transform: scale(.8)
-  }
-}

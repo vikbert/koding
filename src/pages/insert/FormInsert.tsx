@@ -1,7 +1,7 @@
 import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
 import useNotify from '../../hooks/useToast';
 import {
   receiveRules,
@@ -11,9 +11,9 @@ import {
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../types/Snippet';
 import {addSnippet} from '../../components/code/snippetAction';
-import {updateSnippetId} from '../../components/editor/editorAction';
-import './form.css';
+import {updateSnippetId} from '../../components/editor/preview/editorAction';
 import type {Rule} from '../../types/Rule';
+import './formInsert.css';
 
 type PropsT = {
   name?: string;
@@ -69,12 +69,17 @@ export default function FormInsert(props: PropsT): JSX.Element {
     const rule: Rule = {
       id: nanoid(),
       body: editorState.rule,
-      snippets: [editorState.id],
+      snippets: [initState.id],
     };
 
     dispatch(addSnippet(goodSnippet));
     dispatch(addSnippet(badSnippet));
     dispatch(addRule(rule));
+    console.table({
+      bad: badSnippet.id,
+      good: goodSnippet.id,
+      'rule suggestion': rule.snippets,
+    });
     resetEditor();
     notify({type: 'success', message: 'Both Code snippets are added!'});
 
@@ -160,15 +165,13 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     Add a bad code snippet to this convention
                   </p>
                 </label>
-                <div className="editor-wrapper">
-                  <textarea
-                    name={'bad'}
-                    rows={15}
-                    placeholder={'Bad snippet'}
-                    value={editorState.bad}
-                    onChange={handleChangeBadSnippet}
-                  />
-                </div>
+                <textarea
+                  name={'bad'}
+                  rows={15}
+                  placeholder={'Bad snippet'}
+                  value={editorState.bad}
+                  onChange={handleChangeBadSnippet}
+                />
               </div>
               <div className="ps-relative">
                 <label className="s-label mb4 d-block" htmlFor="good-snippet">
@@ -177,15 +180,13 @@ export default function FormInsert(props: PropsT): JSX.Element {
                     Add a Good code snippet to this convention
                   </p>
                 </label>
-                <div className="editor-wrapper  ">
-                  <textarea
-                    name={'good'}
-                    rows={15}
-                    placeholder={'Good snippet'}
-                    value={editorState.good}
-                    onChange={handleChangeGoodSnippet}
-                  />
-                </div>
+                <textarea
+                  name={'good'}
+                  rows={15}
+                  placeholder={'Good snippet'}
+                  value={editorState.good}
+                  onChange={handleChangeGoodSnippet}
+                />
               </div>
               <div className="edit-block">
                 <input id="author" name="author" type="text" />

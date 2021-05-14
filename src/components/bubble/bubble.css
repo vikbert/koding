@@ -1,0 +1,28 @@
+.bubble {
+  position: relative;
+  font-size: 1.2rem;
+  width: 100%;
+  background: var(--yellow-100);
+  border-radius: 4px;
+  padding: 1.2rem;
+  text-align: left;
+  color: #000;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+}
+.bubble svg {
+  font-size: 2rem;
+}
+.bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 24px solid var(--yellow-100);
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--yellow-100);
+  border-bottom: 20px solid transparent;
+  right: 12px;
+  bottom: -14px;
+}

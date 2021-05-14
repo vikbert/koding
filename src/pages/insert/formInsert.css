@@ -1,0 +1,11 @@
+textarea {
+  resize: none;
+  width: 100%;
+  color: #c18109 !important;
+  font-family: 'Fira Code', Helvetica, Arial !important;
+  padding: 1rem !important;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--highlight-bg);
+}
