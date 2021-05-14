@@ -14,8 +14,6 @@ import useVisibility from '../../hooks/useVisibility';
 import classNames from 'classnames';
 import FormPreview from './FormPreview';
 import useKeypress from '../../hooks/useKeyPress';
-import CodePreview from "../../components/code/CodePreview";
-import Bubble from "../../components/bubble/Bubble";
 
 type PropsT = {
   name?: string;
@@ -154,10 +152,12 @@ export default function FormInsert(props: PropsT): JSX.Element {
           </div>
         </div>
       </div>
-      <form id="post-form"
+      <form
+        id="post-form"
         className="post-form js-post-form"
         data-form-type="question"
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+      >
         <div id="question-form">
           <div className="bg-white bar-sm bs-md p16 ba bc-black-100">
             <div id="post-title" className="ps-relative mb16">
@@ -274,10 +274,16 @@ export default function FormInsert(props: PropsT): JSX.Element {
               type="button"
               onClick={handleOpenPreview}
             >
-              <svg aria-hidden="true" className="svg-icon iconEye" width="18" height="18" viewBox="0 0 18 18">
+              <svg
+                aria-hidden="true"
+                className="svg-icon iconEye"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
                 <path d="M9.06 3C4 3 1 9 1 9s3 6 8.06 6C14 15 17 9 17 9s-3-6-7.94-6zM9 13a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 002-2 2 2 0 00-2-2 2 2 0 00-2 2 2 2 0 002 2z"></path>
               </svg>
-              {" Preview"}
+              {' Preview'}
             </button>
           )}
           <button

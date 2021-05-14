@@ -10,8 +10,8 @@ export default function FilterSnippet(props: PropsT): JSX.Element {
   const [filter, setFilter] = React.useState('all');
 
   React.useEffect(() => {
-  	filterBy(filter);
-  }, [filter])
+    filterBy(filter);
+  }, [filter]);
 
   return (
     <>

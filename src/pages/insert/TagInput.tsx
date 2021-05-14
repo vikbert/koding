@@ -1,12 +1,6 @@
 import React from 'react';
 
-type PropsT = {
-  name?: string
-};
-
-export default function TagInput(props: PropsT): JSX.Element {
-  const {name} = props;
-
+export default function TagInput(): JSX.Element {
   return (
     <>
       <div className="ps-relative">
@@ -18,8 +12,8 @@ export default function TagInput(props: PropsT): JSX.Element {
             >
               Convention Tags
               <div className="s-description mt2">
-                Add up to 5 tags to describe what your coding convention
-                is about
+                Add up to 5 tags to describe what your coding convention is
+                about
               </div>
             </label>
           </div>
@@ -50,5 +44,4 @@ export default function TagInput(props: PropsT): JSX.Element {
       <div className="js-tag-suggestions hmn0" />
     </>
   );
-};
-
+}
