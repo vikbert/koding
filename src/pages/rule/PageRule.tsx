@@ -3,7 +3,6 @@ import Layout from '../Layout';
 import {useParams} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ActionLink from '../../components/link/ActionLink';
-import './pageRule.css';
 import UserSignature from '../../components/user/UserSignature';
 import RuleVoting from '../../components/voting/RuleVoting';
 import TagList from '../../components/tag/TagList';
@@ -13,6 +12,7 @@ import Bubble from '../../components/bubble/Bubble';
 import LocalStorageClient from '../../services/LocalStorageClient';
 import NotFound from '../../components/error/NotFound';
 import {loadSnippets} from '../../components/code/snippetAction';
+import './pageRule.css';
 
 export default function PageRule(): JSX.Element {
   const {id} = useParams<{id?: string}>();
@@ -44,7 +44,6 @@ export default function PageRule(): JSX.Element {
                   </div>
                   <div className="postcell post-layout--right">
                     <Bubble message={targetRule.body} />
-
                     {targetRule.snippets.map((id: string) => (
                       <SnippetPreview snippetId={id} key={id} />
                     ))}
@@ -54,8 +53,8 @@ export default function PageRule(): JSX.Element {
                     <div className="mb0">
                       <div className="mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
                         <ActionContainer>
-                          <ActionLink path={'/rule'} name={'Edit'} />
-                          <ActionLink path={'/rule'} name={'Edit'} />
+                          <ActionLink path={'/'} name={'✐ Edit'} />
+                          <ActionLink path={'/rule'} name={'✚ snippet'} />
                         </ActionContainer>
                         <UserSignature isOwner={false} />
                         <UserSignature isOwner={true} />

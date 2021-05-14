@@ -19,7 +19,7 @@ export default function TopRuleVoting(props: PropsT): JSX.Element {
         <div className="mini-counts">
           <span title="2 answers">2</span>
         </div>
-        <div>answers</div>
+        <div>snippets</div>
       </div>
       <div className="views">
         <div className="mini-counts">

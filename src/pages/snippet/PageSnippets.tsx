@@ -32,11 +32,7 @@ export default function PageSnippets(): JSX.Element {
       <Layout>
         <div id="content" className="snippet-hidden">
           <div id="mainbar">
-            <div className="grid">
-              <div className="grid--cell ml-auto mb12 grid s-btn-group js-filter-btn">
-                <FilterSnippet filterBy={filterBy} />
-              </div>
-            </div>
+            <FilterSnippet filterBy={filterBy} />
             <div className="grid">
               <div className="grid-cell grid--cell12">
                 {items.map((item: Snippet) => (
@@ -46,11 +42,6 @@ export default function PageSnippets(): JSX.Element {
                     key={item.id}
                   />
                 ))}
-              </div>
-            </div>
-            <div className="grid">
-              <div className="grid--cell12 text-centered">
-                <IconConstruction size={8} />
               </div>
             </div>
           </div>
