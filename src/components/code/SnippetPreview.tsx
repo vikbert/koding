@@ -3,6 +3,7 @@ import EditorPreview from '../editor/preview/EditorPreview';
 import type {Snippet} from '../../types/Snippet';
 import {useSelector} from 'react-redux';
 import Thumb from '../editor/preview/Thumb';
+import CodePreview from "./CodePreview";
 
 type PropsType = {
   snippetId: string;
@@ -18,22 +19,15 @@ export default function SnippetPreview(props: PropsType) {
     (element: Snippet) => element.id === target.suggestion,
   );
 
+  if (!targetSnippet) {
+    return null;
+  }
+
   // @ts-ignore
   return (
-    targetSnippet && (
-      <>
-        <EditorPreview code={targetSnippet.body} disabled={true}>
-          <div className="editor-options">
-            <Thumb bad={true} />
-          </div>
-        </EditorPreview>
-
-        <EditorPreview code={goodSnippet.body} disabled={true}>
-          <div className="editor-options">
-            <Thumb bad={false} />
-          </div>
-        </EditorPreview>
-      </>
-    )
+    <>
+      <CodePreview code={targetSnippet.body} isBad={true}/>
+      <CodePreview code={goodSnippet.body} isBad={false}/>
+    </>
   );
 }
