@@ -10,11 +10,20 @@ import TagList from '../../components/tag/TagList';
 import ActionContainer from '../../components/link/ActionContainer';
 import SnippetPreview from '../../components/code/SnippetPreview';
 import Bubble from '../../components/bubble/Bubble';
+import LocalStorageClient from '../../services/LocalStorageClient';
+import NotFound from "../../components/error/NotFound";
 
 export default function PageRule(): JSX.Element {
-  const {id} = useParams<{id?: string}>();
+  const {id} = useParams<{ id?: string }>();
   const reduxRule = useSelector((state: any) => state.reduxRule);
-  const targetRule = reduxRule.targetRule;
+  let targetRule = reduxRule.targetRule;
+
+  if (!targetRule && id) {
+    const client = new LocalStorageClient();
+    targetRule = client.fetchRule(id);
+  }
+
+  console.log(targetRule);
 
   return (
     <>
@@ -22,31 +31,36 @@ export default function PageRule(): JSX.Element {
         <div id="content" className="snippet-hidden">
           <div id="mainbar">
             <div className="question" id="question">
-              <div className="post-layout">
-                <div className="votecell post-layout--left">
-                  <RuleVoting />
-                </div>
-                <div className="postcell post-layout--right">
-                  <Bubble message={reduxRule.targetRule.body} />
+              {  undefined === targetRule
+                ? (<NotFound/>)
+                : (
+                  <div className="post-layout">
+                    <div className="votecell post-layout--left">
+                      <RuleVoting/>
+                    </div>
+                    <div className="postcell post-layout--right">
+                      <Bubble message={targetRule.body}/>
 
-                  {targetRule.snippets.map((id: string) => (
-                    <SnippetPreview snippetId={id} />
-                  ))}
-                  <div className="mt24 mb12">
-                    <TagList />
-                  </div>
-                  <div className="mb0">
-                    <div className="mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
-                      <ActionContainer>
-                        <ActionLink path={'/rule'} name={'Edit'} />
-                        <ActionLink path={'/rule'} name={'Edit'} />
-                      </ActionContainer>
-                      <UserSignature isOwner={false} />
-                      <UserSignature isOwner={true} />
+                      {targetRule.snippets.map((id: string) => (
+                        <SnippetPreview snippetId={id} key={id}/>
+                      ))}
+                      <div className="mt24 mb12">
+                        <TagList/>
+                      </div>
+                      <div className="mb0">
+                        <div className="mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
+                          <ActionContainer>
+                            <ActionLink path={'/rule'} name={'Edit'}/>
+                            <ActionLink path={'/rule'} name={'Edit'}/>
+                          </ActionContainer>
+                          <UserSignature isOwner={false}/>
+                          <UserSignature isOwner={true}/>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                )
+              }
             </div>
           </div>
         </div>
