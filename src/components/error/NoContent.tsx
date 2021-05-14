@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 
 export default function NoContent(): JSX.Element {
   return (
@@ -95,8 +94,16 @@ export default function NoContent(): JSX.Element {
           </g>
         </svg>
 
-        <p className="ws-pre-wrap">I couldn't find any data.<br/> Would you like to check the other pages?</p>
-        <a href={'mailto:info@koding.vercel.app'} className="s-btn s-btn__filled">Contact the Admin</a>
+        <p className="ws-pre-wrap">
+          I couldn't find any data.
+          <br /> Would you like to check the other pages?
+        </p>
+        <a
+          href={'mailto:info@koding.vercel.app'}
+          className="s-btn s-btn__filled"
+        >
+          Contact the Admin
+        </a>
       </div>
     </>
   );

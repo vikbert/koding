@@ -13,8 +13,7 @@ import './formInsert.css';
 import useVisibility from '../../hooks/useVisibility';
 import classNames from 'classnames';
 import RulePreview from './RulePreview';
-import useKeyPress from "../../hooks/useKeyPress";
-import useKeypress from "../../hooks/useKeyPress";
+import useKeypress from '../../hooks/useKeyPress';
 
 type PropsT = {
   name?: string;
@@ -186,7 +185,10 @@ export default function FormInsert(props: PropsT): JSX.Element {
               </div>
             </div>
 
-            <div id="post-editor" className="post-editor js-post-editor mt0 mb16">
+            <div
+              id="post-editor"
+              className="post-editor js-post-editor mt0 mb16"
+            >
               <div className="ps-relative">
                 <label className="s-label mb4 d-block" htmlFor="bad-snippet">
                   Bad Code snippet

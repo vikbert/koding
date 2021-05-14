@@ -20,8 +20,7 @@ export default function AsideInsert(): JSX.Element {
           <div className="s-sidebarwidget--content d-blocks pb0 bbr-sm">
             <p>
               To remove the unnecessary spacing and tab from the code, try to
-              format the code snippets at first. <br/>
-
+              format the code snippets at first. <br />
               Try
               <a
                 href="https://webformatter.com/html"

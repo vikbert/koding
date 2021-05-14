@@ -16,7 +16,7 @@ export const loadSnippets = () => {
   const snippets = client.listSnippets();
 
   return loadSnippetsDone(snippets);
-}
+};
 
 export const addSnippetDone = (snippet: Snippet) => ({
   type: SNIPPET_ADDED,

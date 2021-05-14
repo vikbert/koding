@@ -5,7 +5,7 @@ import {loadRules} from '../../components/Rule/ruleAction';
 import HeadlineHome from './HeadlineHome';
 import type {Rule} from '../../types/Rule';
 import NoContent from '../../components/error/NoContent';
-import {loadSnippets} from "../../components/code/snippetAction";
+import {loadSnippets} from '../../components/code/snippetAction';
 
 export default function OverflowTopRules(): JSX.Element {
   const reduxRule = useSelector((state: any) => state.reduxRule);
@@ -13,7 +13,7 @@ export default function OverflowTopRules(): JSX.Element {
 
   React.useEffect(() => {
     dispatch(loadRules());
-    dispatch(loadSnippets())
+    dispatch(loadSnippets());
   }, []);
 
   return (

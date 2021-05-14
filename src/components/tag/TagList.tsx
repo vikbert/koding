@@ -4,7 +4,7 @@ type PropsT = {
   children?: any;
 };
 
-export default function TagList(props: PropsT): JSX.Element |null {
+export default function TagList(props: PropsT): JSX.Element | null {
   if (!props.children) {
     return null;
   }
@@ -12,9 +12,7 @@ export default function TagList(props: PropsT): JSX.Element |null {
   return (
     <>
       <div className="post-taglist grid gs4 gsy fd-column">
-        <div className="grid ps-relative">
-          {props.children}
-        </div>
+        <div className="grid ps-relative">{props.children}</div>
       </div>
     </>
   );
