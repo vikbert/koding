@@ -14,7 +14,6 @@ export default function FilterSnippet(props: PropsT): JSX.Element {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-
   React.useEffect(() => {
     filterBy(filter);
   }, [filter]);
