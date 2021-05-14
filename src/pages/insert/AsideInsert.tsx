@@ -1,7 +1,7 @@
 import React from 'react';
 import StepDoneMessage from './StepDoneMessage';
 
-export default function StepAside(): JSX.Element {
+export default function AsideInsert(): JSX.Element {
   return (
     <aside className="fl-shrink0">
       <div
