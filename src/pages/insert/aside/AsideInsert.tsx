@@ -25,6 +25,7 @@ export default function AsideInsert(): JSX.Element {
               <a
                 href="https://webformatter.com/html"
                 className="s-btn s-btn__sm"
+                target="_blank"
               >
                 https://webformatter.com/
               </a>

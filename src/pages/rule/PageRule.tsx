@@ -15,7 +15,7 @@ import {loadSnippets} from '../../components/code/snippetAction';
 import './pageRule.css';
 
 export default function PageRule(): JSX.Element {
-  const {id} = useParams<{id?: string}>();
+  const {id} = useParams<{ id?: string }>();
   const dispatch = useDispatch();
   const reduxRule = useSelector((state: any) => state.reduxRule);
   let targetRule = reduxRule.targetRule;
@@ -23,11 +23,16 @@ export default function PageRule(): JSX.Element {
   if (!targetRule && id) {
     const client = new LocalStorageClient();
     targetRule = client.fetchRule(id);
+    console.log(targetRule);
   }
 
   React.useEffect(() => {
     dispatch(loadSnippets());
   }, []);
+
+  React.useEffect(() => {
+  	console.log(targetRule)
+  }, [])
 
   return (
     <>
@@ -36,28 +41,28 @@ export default function PageRule(): JSX.Element {
           <div id="mainbar">
             <div className="question" id="question">
               {undefined === targetRule ? (
-                <NotFound />
+                <NotFound/>
               ) : (
                 <div className="post-layout">
                   <div className="votecell post-layout--left">
-                    <RuleVoting />
+                    <RuleVoting/>
                   </div>
                   <div className="postcell post-layout--right">
-                    <Bubble message={targetRule.body} />
+                    <Bubble message={targetRule.body}/>
                     {targetRule.snippets.map((id: string) => (
-                      <SnippetPreview snippetId={id} key={id} />
+                      <SnippetPreview snippetId={id} key={id}/>
                     ))}
                     <div className="mt24 mb12">
-                      <TagList />
+                      <TagList/>
                     </div>
                     <div className="mb0">
                       <div className="mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4 mb16">
                         <ActionContainer>
-                          <ActionLink path={'/'} name={'✐ Edit'} />
-                          <ActionLink path={'/rule'} name={'✚ snippet'} />
+                          <ActionLink path={'/'} name={'✐ Edit'}/>
+                          <ActionLink path={'/rule'} name={'✚ snippet'}/>
                         </ActionContainer>
-                        <UserSignature isOwner={false} />
-                        <UserSignature isOwner={true} />
+                        <UserSignature isOwner={false}/>
+                        <UserSignature isOwner={true}/>
                       </div>
                     </div>
                   </div>
