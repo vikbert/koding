@@ -99,10 +99,10 @@ export default function NoContent(): JSX.Element {
           <br /> Would you like to check the other pages?
         </p>
         <a
-          href={'mailto:info@koding.vercel.app'}
+          href={'/'}
           className="s-btn s-btn__filled"
         >
-          Contact the Admin
+          Back to home
         </a>
       </div>
     </>
