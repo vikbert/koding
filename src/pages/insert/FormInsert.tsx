@@ -7,7 +7,6 @@ import {loadRules, addRule} from '../../components/Rule/ruleAction';
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../types/Snippet';
 import {addSnippet} from '../../components/code/snippetAction';
-import {updateSnippetId} from '../../components/editor/preview/editorAction';
 import type {Rule} from '../../types/Rule';
 import './formInsert.css';
 import useVisibility from '../../hooks/useVisibility';

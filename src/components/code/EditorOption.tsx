@@ -1,5 +1,5 @@
 import React from 'react';
-import Thumb from '../editor/preview/Thumb';
+import Thumb from './Thumb';
 
 type PropsT = {
   isBad: boolean;

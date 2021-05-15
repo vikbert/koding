@@ -1,4 +1,4 @@
-import {SNIPPED_ID_UPDATED} from './preview/editorAction';
+import {SNIPPED_ID_UPDATED} from './editorAction';
 
 export const editorState = {
   snippetId: '',

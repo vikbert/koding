@@ -1,53 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Layout from '../Layout';
-import IconConstruction from '../../components/icons/IconConstruction';
 import {useSelector, useDispatch} from 'react-redux';
-import CodePreview from '../../components/code/CodePreview';
-import type {Snippet} from '../../types/Snippet';
-import FilterSnippet from '../../components/filter/FilterSnippet';
 import {loadSnippets} from '../../components/code/snippetAction';
+import ListSnippets from '../../components/code/ListSnippets';
 
-export default function PageSnippets(): JSX.Element {
+export default function PageSnippets(): null | JSX.Element {
   const reduxSnippet = useSelector((state: any) => state.reduxSnippet);
-  const [items, setItems] = useState(reduxSnippet);
   const dispatch = useDispatch();
-
-  function filterBy(filter: string) {
-    setItems(
-      reduxSnippet.filter((item: Snippet) => {
-        if (filter === 'all') {
-          return true;
-        }
-
-        return filter === 'bad' ? item.isBad : !item.isBad;
-      }),
-    );
-  }
 
   React.useEffect(() => {
     dispatch(loadSnippets());
   }, []);
 
+  if (reduxSnippet.length === 0) {
+    return null;
+  }
+
   return (
-    <>
-      <Layout>
-        <div id="content" className="snippet-hidden">
-          <div id="mainbar">
-            <FilterSnippet filterBy={filterBy} />
-            <div className="grid">
-              <div className="grid-cell grid--cell12">
-                {reduxSnippet.map((item: Snippet) => (
-                  <CodePreview
-                    code={item.body}
-                    isBad={item.isBad}
-                    key={item.id}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+    <Layout>
+      <div id="content" className="snippet-hidden list-snippets">
+        <div id="mainbar">
+          <ListSnippets snippets={reduxSnippet} />
         </div>
-      </Layout>
-    </>
+      </div>
+    </Layout>
   );
 }

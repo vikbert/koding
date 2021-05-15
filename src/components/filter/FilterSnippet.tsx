@@ -2,11 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 
 type PropsT = {
-  filterBy: (filter: string) => void;
+  updateFilter: (filter: string) => void;
 };
 
 export default function FilterSnippet(props: PropsT): JSX.Element {
-  const {filterBy} = props;
+  const {updateFilter} = props;
   const [filter, setFilter] = React.useState<string>('all');
 
   // @ts-ignore
@@ -15,7 +15,7 @@ export default function FilterSnippet(props: PropsT): JSX.Element {
   }
 
   React.useEffect(() => {
-    filterBy(filter);
+    updateFilter(filter);
   }, [filter]);
 
   return (

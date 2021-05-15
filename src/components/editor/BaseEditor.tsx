@@ -1,7 +1,7 @@
 import {highlight, languages} from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
-import 'prismjs/themes/prism-tomorrow.css';
+import "prismjs/themes/prism.css"
 import React from 'react';
 import Editor from 'react-simple-code-editor';
 
@@ -22,11 +22,11 @@ export default function BaseEditor(props: BaseEditorProps) {
       highlight={(codeString) => highlight(codeString, languages.js)}
       padding={0}
       style={{
-        fontFamily: '"Fira code", "Fira Mono", monospace',
+        fontFamily: 'ui-monospace,"Cascadia Mono","Segoe UI Mono","Ubuntu Mono","Roboto Mono",Menlo,Monaco,Consolas,monospace',
         fontSize: '13px',
         minHeight: '100px',
-        // overflow: 'scroll',
-        color: 'rgb(169 208 247)',
+        borderRadius: '4px',
+        color: '#4c4b4b',
       }}
     />
   );

@@ -23,16 +23,11 @@ export default function PageRule(): JSX.Element {
   if (!targetRule && id) {
     const client = new LocalStorageClient();
     targetRule = client.fetchRule(id);
-    console.log(targetRule);
   }
 
   React.useEffect(() => {
     dispatch(loadSnippets());
   }, []);
-
-  React.useEffect(() => {
-  	console.log(targetRule)
-  }, [])
 
   return (
     <>
@@ -49,9 +44,11 @@ export default function PageRule(): JSX.Element {
                   </div>
                   <div className="postcell post-layout--right">
                     <Bubble message={targetRule.body}/>
+
                     {targetRule.snippets.map((id: string) => (
                       <SnippetPreview snippetId={id} key={id}/>
                     ))}
+
                     <div className="mt24 mb12">
                       <TagList/>
                     </div>

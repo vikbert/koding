@@ -6,8 +6,8 @@ type ThumbProps = {
 
 export default function Thumb(props: ThumbProps) {
   const config = props.bad
-    ? {color: 'red', icon: 'ic:outline-gpp-bad'}
-    : {color: 'green', icon: 'ic:outline-gpp-good'};
+    ? {color: 'red', icon: 'heroicons-outline:thumb-down'}
+    : {color: 'green', icon: 'heroicons-outline:thumb-up'};
 
   return (
     <div style={{color: config.color}}>

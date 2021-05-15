@@ -1,18 +1,30 @@
 .editor-wrapper {
+  cursor: pointer;
   margin: 1rem 0;
   border-radius: .5rem;
   position: relative;
   min-height: 100px;
-  background: rgb(40, 44, 52);
-  padding: .2rem .8rem;
+  background: #f9f3e847;
+  padding: 1rem;
+  border: 1px solid #dedede;
+}
+.editor-wrapper:hover {
+  border: 1px solid var(--theme-primary-color);
 }
 textarea.code-editor {
+  cursor: pointer;
   height: auto;
   overflow: scroll;
+  box-shadow: none !important;
 }
-
 textarea:focus {
   outline: none;
+}
+pre {
+  max-height: none !important;
+}
+.list-item pre {
+  max-height: 100px !important;
 }
 .editor-header {
   display: flex;
@@ -46,10 +58,8 @@ textarea:focus {
 .editor-options svg {
   margin: .3rem;
   font-size: 30px;
-  opacity: 60%;
 }
 .option-lang {
   font-size: 14px;
   padding-left: .6rem;
-  opacity: 50%;
 }
