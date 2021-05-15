@@ -21,10 +21,7 @@ export default function NotFound(): JSX.Element {
               <div className="grid--cell wmx5">
                 <h1 className="fs-headline1 mb4">Ops</h1>
                 <p>There is something wrong!</p>
-                <a
-                  href={'/'}
-                  className="s-btn s-btn__filled"
-                >
+                <a href={'/'} className="s-btn s-btn__filled">
                   Back to home
                 </a>
               </div>

@@ -232,7 +232,10 @@ export default function FormInsert(props: PropsT): JSX.Element {
               <div className="ps-relative mb16">
                 <div className="grid fl1 fd-column js-stacks-validation">
                   <div className="fl1 ps-relative">
-                    <Bubble title={editorState.rule} description={editorState.ruleDescription}/>
+                    <Bubble
+                      title={editorState.rule}
+                      description={editorState.ruleDescription}
+                    />
                   </div>
                 </div>
               </div>

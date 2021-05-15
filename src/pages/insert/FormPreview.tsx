@@ -16,8 +16,8 @@ export default function FormPreview(props: PropsT): JSX.Element {
     <>
       <div className="post-layout">
         <div className="postcell post-layout--right">
-          <Bubble title={rule} description={ruleDescription}/>
-          <CodePreview code={badSnippet} isBad={true}  />
+          <Bubble title={rule} description={ruleDescription} />
+          <CodePreview code={badSnippet} isBad={true} />
           <CodePreview code={goodSnippet} isBad={false} />
 
           <div className="mt24 mb12">{/*<TagList />*/}</div>

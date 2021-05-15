@@ -98,10 +98,7 @@ export default function NoContent(): JSX.Element {
           I couldn't find any data.
           <br /> Would you like to check the other pages?
         </p>
-        <a
-          href={'/'}
-          className="s-btn s-btn__filled"
-        >
+        <a href={'/'} className="s-btn s-btn__filled">
           Back to home
         </a>
       </div>

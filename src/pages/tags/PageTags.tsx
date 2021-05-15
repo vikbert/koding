@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../Layout';
-import NoContent from "../../components/error/NoContent";
+import NoContent from '../../components/error/NoContent';
 
 type PropsT = {
   name?: string;
@@ -19,7 +19,7 @@ export default function PageTags(props: PropsT): JSX.Element {
             </div>
             <div className="grid">
               <div className="grid--cell12 text-centered">
-                <NoContent/>
+                <NoContent />
               </div>
             </div>
           </div>
