@@ -7,12 +7,12 @@ import classNames from 'classnames';
 type PropsT = {
   code: string;
   isBad: boolean;
-  height?: number;
+  autoHeight?: boolean;
 };
 
 export default function CodePreview(props: PropsT): JSX.Element {
-  const {code, isBad} = props;
-  const [fullView, setFullView] = React.useState(false);
+  const {code, isBad, autoHeight = false} = props;
+  const [fullView, setFullView] = React.useState(autoHeight);
 
   function toggleFullView() {
     setFullView((prev) => {

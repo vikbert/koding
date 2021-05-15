@@ -13,6 +13,12 @@
   grid-template-columns: 4rem 1fr;
   border: 1px solid #f6dba5;
 }
+.bubble-title {
+  font-weight: bolder;
+}
+.bubble-body {
+  padding: 0 1rem 0 0;
+}
 .bubble svg {
   font-size: 2rem;
 }

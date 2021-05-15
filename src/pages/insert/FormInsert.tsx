@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
@@ -13,13 +13,20 @@ import useVisibility from '../../hooks/useVisibility';
 import classNames from 'classnames';
 import FormPreview from './FormPreview';
 import useKeypress from '../../hooks/useKeyPress';
+import Bubble from '../../components/bubble/Bubble';
 
 type PropsT = {
   name?: string;
 };
 
 export default function FormInsert(props: PropsT): JSX.Element {
-  const initState = {id: nanoid(), bad: '', good: '', rule: ''};
+  const initState = {
+    id: nanoid(),
+    bad: '',
+    good: '',
+    rule: '',
+    ruleDescription: '',
+  };
   useDocumentTitle('new snippet and convention');
 
   const dispatch = useDispatch();
@@ -97,18 +104,27 @@ export default function FormInsert(props: PropsT): JSX.Element {
     });
   }
 
-  function handleChangeBadSnippet(event: any) {
+  function handleChangeRuleDescription(event: any) {
     setEditorState({
       ...editorState,
-      bad: event.target.value,
+      ruleDescription: event.target.value,
     });
   }
 
-  function handleChangeGoodSnippet(event: any) {
-    event.preventDefault();
+  function handleChangeBadSnippet(event: any) {
+    const codeWithoutTab = event.target.value.replace(/\t/g, '');
     setEditorState({
       ...editorState,
-      good: event.target.value,
+      bad: codeWithoutTab,
+    });
+    console.log(codeWithoutTab);
+  }
+
+  function handleChangeGoodSnippet(event: any) {
+    const codeWithoutTab = event.target.value.replace(/\t/g, '');
+    setEditorState({
+      ...editorState,
+      good: codeWithoutTab,
     });
   }
 
@@ -130,6 +146,7 @@ export default function FormInsert(props: PropsT): JSX.Element {
           <div className="content">
             <FormPreview
               rule={editorState.rule}
+              ruleDescription={editorState.ruleDescription}
               badSnippet={editorState.bad}
               goodSnippet={editorState.good}
             />
@@ -184,6 +201,42 @@ export default function FormInsert(props: PropsT): JSX.Element {
                 </div>
               </div>
             </div>
+
+            <div className="ps-relative mb16">
+              <div className="grid fl1 fd-column js-stacks-validation">
+                <label
+                  className="d-block s-label mb4"
+                  htmlFor="rule-description"
+                >
+                  <div className="grid">
+                    <p className="s-description mt2 grid--cell9">
+                      (Optional) Description about the coding convention
+                    </p>
+                  </div>
+                </label>
+                <div className="fl1 ps-relative">
+                  <textarea
+                    name="description"
+                    placeholder="e.g. add more information about the coding convention"
+                    className="s-input js-post-title-field"
+                    autoComplete="off"
+                    rows={10}
+                    value={editorState.ruleDescription}
+                    onChange={handleChangeRuleDescription}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {editorState.rule.length > 0 && (
+              <div className="ps-relative mb16">
+                <div className="grid fl1 fd-column js-stacks-validation">
+                  <div className="fl1 ps-relative">
+                    <Bubble title={editorState.rule} description={editorState.ruleDescription}/>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div
               id="post-editor"

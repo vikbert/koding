@@ -43,7 +43,7 @@ export default function PageRule(): JSX.Element {
                     <RuleVoting />
                   </div>
                   <div className="postcell post-layout--right">
-                    <Bubble message={targetRule.body} />
+                    <Bubble title={targetRule.body} description={''} />
 
                     {targetRule.snippets.map((id: string) => (
                       <SnippetPreview snippetId={id} key={id} />
