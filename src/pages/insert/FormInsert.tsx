@@ -15,11 +15,7 @@ import FormPreview from './FormPreview';
 import useKeypress from '../../hooks/useKeyPress';
 import Bubble from '../../components/bubble/Bubble';
 
-type PropsT = {
-  name?: string;
-};
-
-export default function FormInsert(props: PropsT): JSX.Element {
+export default function FormInsert(): JSX.Element {
   const initState = {
     id: nanoid(),
     bad: '',
@@ -79,8 +75,14 @@ export default function FormInsert(props: PropsT): JSX.Element {
 
     const rule: Rule = {
       id: nanoid(),
-      body: editorState.rule,
+      title: editorState.rule,
+      description: editorState.ruleDescription,
       snippets: [initState.id],
+      votes: 0,
+      views: 0,
+      isPublic: true,
+      editors: [],
+      createdAt: +(new Date()),
     };
 
     dispatch(addSnippet(goodSnippet));

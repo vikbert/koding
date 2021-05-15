@@ -6,7 +6,7 @@ import PageHome from './pages/home/PageHome';
 import PageSnippets from './pages/snippet/PageSnippets';
 import PageTags from './pages/tags/PageTags';
 import PageUsers from './pages/user/PageUsers';
-import PageRule from './pages/rule/PageRule';
+import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
 import NotFound from './components/error/NotFound';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
             <PageHome />
           </Route>
           <Route path="/convention/:id" exact>
-            <PageRule />
+            <PageRuleDetail />
           </Route>
           <Route path="/snippets" exact>
             <PageSnippets />

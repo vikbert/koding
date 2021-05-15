@@ -15,14 +15,14 @@ export default function RuleItem(props: PropsT): JSX.Element {
   return (
     <>
       <div className="question-summary narrow" id="question-summary-67499960">
-        <TopRuleVoting />
+        <TopRuleVoting rule={rule}/>
         <div className="summary">
           <h3>
             <Link to={`/convention/${rule.id}`} className="question-hyperlink">
-              {rule.body}
+              {rule.title}
             </Link>
           </h3>
-          <div className="subcommunities float-left"></div>
+          <div className="float-left"></div>
           <TagList>
             <TagLink path={'/tags'} name={'javascript'} />
             <TagLink path={'/tags'} name={'php'} />

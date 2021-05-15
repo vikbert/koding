@@ -5,7 +5,7 @@ import './rule.css';
 import ExtendedInput from '../input/ExtendedInput';
 import {showPopup} from './ruleAction';
 
-export default function RulesList() {
+export default function RulesListBak() {
   const [filter, setFilter] = React.useState('');
   const ruleState = useSelector((state: any) => state.reduxRule);
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function RulesList() {
     }
 
     return ruleState.rules.filter((rule: Rule) =>
-      rule.body.toLowerCase().includes(filter.toLowerCase()),
+      rule.title.toLowerCase().includes(filter.toLowerCase()),
     );
   };
 
@@ -43,7 +43,7 @@ export default function RulesList() {
           key={index}
           onClick={() => handleOpenRulePopup(rule)}
         >
-          <p>{rule.body}</p>
+          <p>{rule.title}</p>
         </div>
       ))}
 

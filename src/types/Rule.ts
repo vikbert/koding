@@ -1,5 +1,11 @@
 export type Rule = {
   id: string;
-  body: string;
-  snippets?: string[];
+  title: string;
+  description?: string;
+  snippets: string[];
+  votes: number;
+  views: number;
+  editors?: string[];
+  isPublic?: boolean;
+  createdAt: number;
 };

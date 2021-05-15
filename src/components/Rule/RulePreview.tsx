@@ -7,24 +7,26 @@ type PropsT = {
 };
 
 export default function RulePreview(props: PropsT): JSX.Element {
+  const {rule} = props;
+
   return (
     <>
       <div className="rule_bubble rule_preview ">
         <div className="rule-meta">
           <div className={'meta-item'}>
-            <div>12</div>
+            <div>{rule.votes || 0}</div>
             <div>votes</div>
           </div>
           <div className={'meta-item'}>
-            <div>12</div>
+            <div>{rule.snippets.length}</div>
             <div>Snippets</div>
           </div>
           <div className={'meta-item'}>
-            <div>12</div>
+            <div>{rule.views || 0}</div>
             <div>Views</div>
           </div>
         </div>
-        <div>{props.rule.body}</div>
+        <div>{rule.title}</div>
       </div>
     </>
   );
