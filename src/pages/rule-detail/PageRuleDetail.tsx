@@ -47,6 +47,9 @@ export default function PageRuleDetail(): JSX.Element {
                     <RuleVoting rule={targetRule} />
                   </div>
                   <div className="postcell post-layout--right">
+                    <div className="mt16 grid gs8 gsy fw-wrap jc-end ai-start">
+                      <a className="s-btn pt0 pb0 fc-light">edit</a>
+                    </div>
                     <Bubble
                       title={targetRule.title}
                       description={targetRule.description}
