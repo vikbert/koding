@@ -2,8 +2,8 @@ import type {Snippet} from '../types/Snippet';
 import type {Rule} from '../types/Rule';
 
 class LocalStorageClient {
-  readonly KEY_SNIPPETS = 'APP_SNIPPETS';
-  readonly KEY_RULES = 'APP_RULES';
+   KEY_SNIPPETS = 'APP_SNIPPETS';
+   KEY_RULES = 'APP_RULES';
 
   _setValue(key: string, value: Snippet[]): void {
     window.localStorage.setItem(key, JSON.stringify(value));

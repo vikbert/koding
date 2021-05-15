@@ -18,7 +18,3 @@ ReactDOM.render(
   </ReduxProvider>,
   document.body,
 );
-
-if (import.meta.hot) {
-  import.meta.hot.accept();
-}

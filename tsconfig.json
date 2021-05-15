@@ -1,23 +1,26 @@
 {
-  "include": ["src"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "preserve",
-    "baseUrl": "./",
-    "noEmit": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["snowpack-env"],
-    "allowJs": false,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
-    "sourceMap": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "importsNotUsedAsValues": "error"
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
+  "include": [
+    "src"
+  ]
 }

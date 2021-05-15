@@ -27,6 +27,7 @@ export default function PageSnippets(): JSX.Element {
   React.useEffect(() => {
     dispatch(loadSnippets());
   }, []);
+
   return (
     <>
       <Layout>
@@ -35,7 +36,7 @@ export default function PageSnippets(): JSX.Element {
             <FilterSnippet filterBy={filterBy} />
             <div className="grid">
               <div className="grid-cell grid--cell12">
-                {items.map((item: Snippet) => (
+                {reduxSnippet.map((item: Snippet) => (
                   <CodePreview
                     code={item.body}
                     isBad={item.isBad}
