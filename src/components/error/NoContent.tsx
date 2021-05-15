@@ -2,9 +2,8 @@ import React from 'react';
 
 type PropsType = {
   info?: string;
-}
+};
 export default function NoContent({info}: PropsType): JSX.Element {
-
   return (
     <>
       <div className="s-empty-state wmx4 p48 ta-center">
@@ -99,7 +98,8 @@ export default function NoContent({info}: PropsType): JSX.Element {
         </svg>
 
         <p className="ws-pre-wrap">
-          I couldn't find any data.<br />
+          I couldn't find any data.
+          <br />
           {info ?? 'Would you like to check the other pages?'}
         </p>
         <a href={'/'} className="s-btn s-btn__filled">

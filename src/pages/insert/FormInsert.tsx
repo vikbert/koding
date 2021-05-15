@@ -82,7 +82,7 @@ export default function FormInsert(): JSX.Element {
       views: 0,
       isPublic: true,
       editors: [],
-      createdAt: +(new Date()),
+      createdAt: +new Date(),
     };
 
     dispatch(addSnippet(goodSnippet));

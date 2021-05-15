@@ -2,8 +2,8 @@ import React from 'react';
 import {Rule} from '../../types/Rule';
 import {useDispatch} from 'react-redux';
 import {updateRule} from '../Rule/ruleAction';
-import IconBookmark from "../icons/IconBookmark";
-import classNames from "classnames";
+import IconBookmark from '../icons/IconBookmark';
+import classNames from 'classnames';
 
 type PropsT = {
   rule: Rule;
@@ -15,13 +15,13 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
   const dispatch = useDispatch();
 
   function handleVoteUp() {
-    setTarget( {...target, votes: ++target.votes});
+    setTarget({...target, votes: ++target.votes});
 
     dispatch(updateRule(target));
   }
 
   function handleVoteDown() {
-    setTarget( {...target, votes: --target.votes});
+    setTarget({...target, votes: --target.votes});
 
     dispatch(updateRule(target));
   }
@@ -34,7 +34,10 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
     <>
       <div className="js-voting-container grid jc-center fd-column ai-stretch gs4 fc-black-200">
         <button
-          className= {classNames("js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer", {"fc-theme-primary": target.votes > 0})}
+          className={classNames(
+            'js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer',
+            {'fc-theme-primary': target.votes > 0},
+          )}
           aria-pressed="false"
           aria-label="Up vote"
           onClick={handleVoteUp}
@@ -57,7 +60,10 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
           {target.votes}
         </div>
         <button
-          className= {classNames("js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer", {"fc-theme-primary": target.votes < 0})}
+          className={classNames(
+            'js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer',
+            {'fc-theme-primary': target.votes < 0},
+          )}
           aria-pressed="false"
           aria-label="Down vote"
           onClick={handleVoteDown}
@@ -79,7 +85,7 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
             {'fc-yellow-600': bookmarked},
           )}
         >
-          <IconBookmark/>
+          <IconBookmark />
         </button>
       </div>
     </>

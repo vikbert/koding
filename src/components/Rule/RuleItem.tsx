@@ -15,7 +15,7 @@ export default function RuleItem(props: PropsT): JSX.Element {
   return (
     <>
       <div className="question-summary narrow" id="question-summary-67499960">
-        <TopRuleVoting rule={rule}/>
+        <TopRuleVoting rule={rule} />
         <div className="summary">
           <h3>
             <Link to={`/convention/${rule.id}`} className="question-hyperlink">

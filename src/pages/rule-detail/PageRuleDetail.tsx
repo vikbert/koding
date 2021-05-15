@@ -12,7 +12,7 @@ import Bubble from '../../components/bubble/Bubble';
 import LocalStorageClient from '../../services/LocalStorageClient';
 import NotFound from '../../components/error/NotFound';
 import {loadSnippets} from '../../components/code/snippetAction';
-import {updateRule} from "../../components/Rule/ruleAction";
+import {updateRule} from '../../components/Rule/ruleAction';
 
 export default function PageRuleDetail(): JSX.Element {
   const {id} = useParams<{id?: string}>();
@@ -28,11 +28,10 @@ export default function PageRuleDetail(): JSX.Element {
   React.useEffect(() => {
     dispatch(loadSnippets());
   }, []);
-  
-  React.useEffect(() => {
-  	dispatch(updateRule({...targetRule, views: ++targetRule.views}));
-  }, [])
 
+  React.useEffect(() => {
+    dispatch(updateRule({...targetRule, views: ++targetRule.views}));
+  }, []);
 
   return (
     <>
@@ -48,7 +47,10 @@ export default function PageRuleDetail(): JSX.Element {
                     <RuleVoting rule={targetRule} />
                   </div>
                   <div className="postcell post-layout--right">
-                    <Bubble title={targetRule.title} description={targetRule.description} />
+                    <Bubble
+                      title={targetRule.title}
+                      description={targetRule.description}
+                    />
 
                     {targetRule.snippets.map((id: string) => (
                       <SnippetPreview snippetId={id} key={id} />

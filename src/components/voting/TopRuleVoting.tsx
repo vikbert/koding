@@ -1,6 +1,6 @@
 import React from 'react';
-import {Rule} from "../../types/Rule";
-import {Link} from 'react-router-dom'
+import {Rule} from '../../types/Rule';
+import {Link} from 'react-router-dom';
 
 type PropsT = {
   rule: Rule;
