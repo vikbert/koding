@@ -1,8 +1,12 @@
 :root {
   --header-height: 3.5rem;
   --footer-height: 4.8rem;
-  --color-primary: #4B4B4B;
 }
+
+body {
+  /*--theme-primary-color: #7b2182;*/
+}
+
 
 /**
  * ----------------------------------------

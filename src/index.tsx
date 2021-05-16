@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider as ReduxProvider} from 'react-redux';
+import './assets/css/stacks.css';
+import './assets/css/primary.css';
 import './assets/css/index.css';
 import './assets/css/app.css';
 
