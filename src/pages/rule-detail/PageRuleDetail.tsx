@@ -52,7 +52,7 @@ export default function PageRuleDetail(): JSX.Element {
               {undefined === targetRule ? (
                 <NotFound />
               ) : (
-                <div className="post-layout">
+                <div className="post-layout rule-detail">
                   <div className="votecell post-layout--left">
                     <RuleVoting rule={targetRule} />
                   </div>

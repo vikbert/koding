@@ -24,8 +24,8 @@ export default function PreviewWrapper(props: PropsType) {
   // @ts-ignore
   return (
     <>
-      <SnippetPreview snippet={target} />
-      <SnippetPreview snippet={goodSnippet} />
+      <SnippetPreview snippet={target} autoHeight={true} />
+      <SnippetPreview snippet={goodSnippet} autoHeight={true} />
     </>
   );
 }

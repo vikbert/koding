@@ -20,7 +20,7 @@ textarea.code-editor {
 textarea:focus {
   outline: none;
 }
-pre {
+.rule-detail pre {
   padding-right: 1.5rem !important;
   max-height: none !important;
 }
