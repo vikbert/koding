@@ -1,9 +1,11 @@
 import React from 'react';
+import './snippetPreview.css';
 import Thumb from './Thumb';
 import BaseEditor from '../editor/BaseEditor';
-import './snippetPreview.css';
 import classNames from 'classnames';
 import {Snippet} from '../../types/Snippet';
+import useVisibility from '../../hooks/useVisibility';
+import SnippetForm from './SnippetForm';
 
 type PropsT = {
   snippet: Snippet;
@@ -13,6 +15,7 @@ type PropsT = {
 export default function SnippetPreview(props: PropsT): JSX.Element {
   const {snippet, autoHeight = false} = props;
   const [fullView, setFullView] = React.useState(autoHeight);
+  const {visible, show, hide} = useVisibility();
 
   function toggleFullView() {
     setFullView((prev) => {
@@ -32,9 +35,17 @@ export default function SnippetPreview(props: PropsT): JSX.Element {
         </div>
       </div>
       <div className="grid gs8 mb32">
-        <a className="s-btn pt0 pb0 fc-light" onClick={() => false}>
+        <a className="s-btn pt0 pb0 fc-light" onClick={() => show()}>
           {'✐ Edit'}
         </a>
+        <div className={classNames('overlay', {open: visible})}>
+          <div className="popup">
+            <div className="title">Update the current snippet:</div>
+            <div className="content pt0">
+              <SnippetForm snippet={snippet} closePopup={() => hide()} />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

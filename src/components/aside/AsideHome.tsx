@@ -1,5 +1,5 @@
 import React from 'react';
-import IconConstruction from '../../components/icons/IconConstruction';
+import IconConstruction from '../icons/IconConstruction';
 
 type PropsT = {
   name?: string;

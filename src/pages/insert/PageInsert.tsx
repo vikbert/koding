@@ -3,7 +3,7 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import '../../components/header/header.css';
 import Layout from '../Layout';
 import FormInsert from '../../components/Rule/form/FormInsert';
-import AsideInsert from '../../components/aside/AsideInsert';
+import AsideInformation from '../../components/aside/AsideInformation';
 
 const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');
@@ -20,7 +20,20 @@ const PageInsert = () => {
             </div>
           </div>
           <div id="sidebar">
-            <AsideInsert />
+            <AsideInformation title={'Clean up the code'}>
+              <p>
+                Be sure you have removed all unnecessary spaces and tabs, try to
+                clean up the code snippet at first. <br />
+                Try
+                <a
+                  href="https://webformatter.com/html"
+                  className="s-btn s-btn__sm"
+                  target="_blank"
+                >
+                  https://webformatter.com/
+                </a>
+              </p>
+            </AsideInformation>
           </div>
         </div>
       </Layout>

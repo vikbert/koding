@@ -64,6 +64,21 @@ class LocalStorageClient {
     }
   }
 
+  updateSnippet(snippet: Snippet): void {
+    try {
+      const list = this._list(this.KEY_SNIPPETS);
+
+      this._setValue(
+        this.KEY_SNIPPETS,
+        list.map((item: Snippet, index: number) => {
+          return item.id === snippet.id ? snippet : item;
+        }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   listSnippets(): any {
     return this._list(this.KEY_SNIPPETS);
   }

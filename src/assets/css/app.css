@@ -36,17 +36,20 @@
   border-radius: 0
 }
 
-.overlay .popup .title {
-  padding: 1.6rem 1.6rem 0;
+.popup .title {
+  padding: 1rem;
+  cursor: auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 75%;
+}
+
+.popup .content {
+  padding: 1rem;
   cursor: auto
 }
 
-.overlay .popup .content {
-  padding: 1.6rem;
-  cursor: auto
-}
-
-.overlay .popup .action {
+.popup .action {
   padding: .8rem .8rem 0;
   display: inline-flex;
   gap: .8rem;

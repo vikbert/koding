@@ -19,7 +19,6 @@ export default function FormPreview(props: PropsT): JSX.Element {
           <Bubble title={rule} description={ruleDescription} />
           <SnippetPreview snippet={{id: '', body: badSnippet, isBad: true}} />
           <SnippetPreview snippet={{id: '', body: goodSnippet, isBad: false}} />
-
           <div className="mt24 mb12">{/*<TagList />*/}</div>
         </div>
       </div>

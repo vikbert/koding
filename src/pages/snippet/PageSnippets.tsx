@@ -3,6 +3,7 @@ import Layout from '../Layout';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadSnippets} from '../../components/snippet/snippetAction';
 import ListSnippets from '../../components/snippet/ListSnippets';
+import AsideHome from '../../components/aside/AsideHome';
 
 export default function PageSnippets(): null | JSX.Element {
   const reduxSnippet = useSelector((state: any) => state.reduxSnippet);
@@ -21,6 +22,9 @@ export default function PageSnippets(): null | JSX.Element {
       <div id="content" className="snippet-hidden list-snippets">
         <div id="mainbar">
           <ListSnippets snippets={reduxSnippet} />
+        </div>
+        <div id="sidebar">
+          <AsideHome />
         </div>
       </div>
     </Layout>
