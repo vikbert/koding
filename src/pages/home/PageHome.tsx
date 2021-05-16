@@ -7,6 +7,7 @@ import HeadlineHome from './HeadlineHome';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadRules} from '../../components/Rule/ruleAction';
 import {loadSnippets} from '../../components/snippet/snippetAction';
+import {Rule} from '../../types/Rule';
 
 const PageHome = () => {
   useDocumentTitle('Top coding conventions');
@@ -24,7 +25,11 @@ const PageHome = () => {
         <div id="content" className="snippet-hidden">
           <div id="mainbar">
             <HeadlineHome />
-            <ListRules rules={reduxRule.rules} />
+            <ListRules
+              rules={reduxRule.rules.sort((a: Rule, b: Rule) =>
+                a.votes > b.votes ? -1 : 1,
+              )}
+            />
           </div>
           <div id="sidebar">
             <AsideHome />

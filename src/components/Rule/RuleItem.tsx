@@ -24,7 +24,7 @@ export default function RuleItem(props: PropsT): JSX.Element {
           </h3>
           <div className="float-left"></div>
           <TagList>
-            <TagLink path={'/tags'} name={'javascript'} />
+            <TagLink path={'/tags'} name={'clean code'} />
             <TagLink path={'/tags'} name={'php'} />
           </TagList>
         </div>

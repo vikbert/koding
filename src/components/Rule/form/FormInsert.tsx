@@ -1,7 +1,7 @@
 import React from 'react';
 import useDocumentTitle from '../../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import useNotify from '../../../hooks/useToast';
 import {loadRules, addRule} from '../ruleAction';
 import {nanoid} from 'nanoid';
@@ -321,6 +321,9 @@ export default function FormInsert(): JSX.Element {
           </div>
         </div>
         <div className="grid gsx gs4 mt32 float-right">
+          <Link to={'/'} className="grid--cell s-btn s-btn__muted">
+            Cancel
+          </Link>
           {editorState.rule.length > 0 && editorState.bad.length > 0 && (
             <button
               className="grid--cell s-btn s-btn__outlined s-btn__icon"

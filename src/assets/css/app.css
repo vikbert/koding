@@ -22,6 +22,7 @@
   grid-template-rows:auto 1fr auto;
   min-width: 40rem;
   width: 80%;
+  max-width: 64rem;
   min-height: 100px;
   max-height: 100vh;
   overflow: scroll;
@@ -41,7 +42,7 @@
   cursor: auto;
   font-size: 1.5rem;
   font-weight: 500;
-  opacity: 75%;
+  color: #585757;
 }
 
 .popup .content {

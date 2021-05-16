@@ -46,7 +46,7 @@ export default function PageRuleDetail(): JSX.Element {
                   href="/insert"
                   className="ws-nowrap s-btn s-btn__filled mb16"
                 >
-                  Add another coding convention
+                  {'✚ Add another coding convention'}
                 </a>
               </div>
               {undefined === targetRule ? (
@@ -93,10 +93,9 @@ export default function PageRuleDetail(): JSX.Element {
             </div>
           </div>
           <div id="sidebar">
-            <AsideInformation title={'Toggle full view'}>
+            <AsideInformation title={'Toggle code preview view'}>
               <p>
-                click on the code snippet to toggle full view of the code
-                snippet.
+                click on the code snippet to expand or collapse the preview.
               </p>
             </AsideInformation>
           </div>
