@@ -1,6 +1,6 @@
 import React from 'react';
-import Bubble from '../../components/bubble/Bubble';
-import CodePreview from '../../components/code/CodePreview';
+import Bubble from '../../bubble/Bubble';
+import SnippetPreview from '../../snippet/SnippetPreview';
 
 type PropsT = {
   rule: string;
@@ -17,8 +17,8 @@ export default function FormPreview(props: PropsT): JSX.Element {
       <div className="post-layout">
         <div className="postcell post-layout--right">
           <Bubble title={rule} description={ruleDescription} />
-          <CodePreview code={badSnippet} isBad={true} />
-          <CodePreview code={goodSnippet} isBad={false} />
+          <SnippetPreview snippet={{id: '', body: badSnippet, isBad: true}} />
+          <SnippetPreview snippet={{id: '', body: goodSnippet, isBad: false}} />
 
           <div className="mt24 mb12">{/*<TagList />*/}</div>
         </div>

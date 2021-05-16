@@ -6,7 +6,7 @@ import AsideHome from './AsideHome';
 import HeadlineHome from './HeadlineHome';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadRules} from '../../components/Rule/ruleAction';
-import {loadSnippets} from '../../components/code/snippetAction';
+import {loadSnippets} from '../../components/snippet/snippetAction';
 
 const PageHome = () => {
   useDocumentTitle('Top coding conventions');

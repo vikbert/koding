@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EditorHeader() {
+export default function PreviewHeader() {
   return (
     <div className="editor-header">
       <div className={'red'} />

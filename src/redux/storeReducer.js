@@ -1,5 +1,8 @@
 import {combineReducers} from 'redux';
-import {snippetReducer, snippetState} from '../components/code/snippetReducer';
+import {
+  snippetReducer,
+  snippetState,
+} from '../components/snippet/snippetReducer';
 import {editorReducer, editorState} from '../components/editor/editorReducer';
 import {ruleReducer, ruleState} from '../components/Rule/ruleReducer';
 

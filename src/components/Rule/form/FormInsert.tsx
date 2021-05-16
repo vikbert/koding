@@ -1,19 +1,19 @@
 import React from 'react';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import useDocumentTitle from '../../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import useNotify from '../../hooks/useToast';
-import {loadRules, addRule} from '../../components/Rule/ruleAction';
+import useNotify from '../../../hooks/useToast';
+import {loadRules, addRule} from '../ruleAction';
 import {nanoid} from 'nanoid';
-import type {Snippet} from '../../types/Snippet';
-import {addSnippet} from '../../components/code/snippetAction';
-import type {Rule} from '../../types/Rule';
+import type {Snippet} from '../../../types/Snippet';
+import {addSnippet} from '../../snippet/snippetAction';
+import type {Rule} from '../../../types/Rule';
 import './formInsert.css';
-import useVisibility from '../../hooks/useVisibility';
+import useVisibility from '../../../hooks/useVisibility';
 import classNames from 'classnames';
 import FormPreview from './FormPreview';
-import useKeypress from '../../hooks/useKeyPress';
-import Bubble from '../../components/bubble/Bubble';
+import useKeypress from '../../../hooks/useKeyPress';
+import Bubble from '../../bubble/Bubble';
 
 export default function FormInsert(): JSX.Element {
   const initState = {

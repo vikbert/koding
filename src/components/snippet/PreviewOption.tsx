@@ -6,7 +6,7 @@ type PropsT = {
   lang?: string;
 };
 
-export default function EditorOption(props: PropsT): JSX.Element {
+export default function PreviewOption(props: PropsT): JSX.Element {
   const {isBad} = props;
 
   return (

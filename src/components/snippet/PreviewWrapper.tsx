@@ -1,13 +1,13 @@
 import React from 'react';
 import type {Snippet} from '../../types/Snippet';
 import {useSelector} from 'react-redux';
-import CodePreview from './CodePreview';
+import SnippetPreview from './SnippetPreview';
 
 type PropsType = {
   snippetId: string;
 };
 
-export default function SnippetPreview(props: PropsType) {
+export default function PreviewWrapper(props: PropsType) {
   const snippetState = useSelector((state: any) => state.reduxSnippet);
   const target = snippetState.find(
     (code: Snippet) => code.id === props.snippetId,
@@ -24,8 +24,8 @@ export default function SnippetPreview(props: PropsType) {
   // @ts-ignore
   return (
     <>
-      <CodePreview code={targetSnippet.body} isBad={true} />
-      <CodePreview code={goodSnippet.body} isBad={false} />
+      <SnippetPreview snippet={target} />
+      <SnippetPreview snippet={goodSnippet} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Snippet} from '../../types/Snippet';
 import FilterSnippet from '../filter/FilterSnippet';
-import CodePreview from './CodePreview';
+import SnippetPreview from './SnippetPreview';
 
 type PropsT = {
   snippets: Snippet[];
@@ -32,7 +32,7 @@ export default function ListSnippets(props: PropsT): JSX.Element {
       <div className="grid">
         <div className="grid-cell grid--cell12">
           {items.map((item: Snippet) => (
-            <CodePreview code={item.body} isBad={item.isBad} key={item.id} />
+            <SnippetPreview snippet={item} key={item.id} />
           ))}
         </div>
       </div>

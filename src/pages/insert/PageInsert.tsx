@@ -2,8 +2,8 @@ import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import '../../components/header/header.css';
 import Layout from '../Layout';
-import FormInsert from './FormInsert';
-import AsideInsert from './aside/AsideInsert';
+import FormInsert from '../../components/Rule/form/FormInsert';
+import AsideInsert from '../../components/aside/AsideInsert';
 
 const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');
