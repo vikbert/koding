@@ -11,7 +11,13 @@ const PageInsert = () => {
     <>
       <Layout>
         <div id="content" className="snippet-hidden">
-          <div className="grid ai-center py24 bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background">
+          <div
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL + '/img/bg-robot.svg'})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'bottom',
+            }}
+            className="grid ai-center py24 bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background">
             <div className="fs-headline1">Add a new coding convention</div>
           </div>
           <div id="mainbar">

@@ -11,14 +11,7 @@ export default function Layout(props: PropsT): JSX.Element {
   return (
     <>
       <OverflowHeader />
-      <div
-        className="container"
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL + '/img/bg.svg'})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'bottom',
-        }}
-      >
+      <div className="container">
         <OverflowSidebar />
         {props.children}
       </div>
