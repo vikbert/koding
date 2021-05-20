@@ -3,6 +3,7 @@ export type Rule = {
   title: string;
   description?: string;
   snippets: string[];
+  tags: string[];
   votes: number;
   views: number;
   editors?: string[];

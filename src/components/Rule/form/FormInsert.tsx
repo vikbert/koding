@@ -15,6 +15,8 @@ import FormPreview from './FormPreview';
 import useKeypress from '../../../hooks/useKeyPress';
 import Bubble from '../../bubble/Bubble';
 import IconEye from '../../icons/IconEye';
+import TagsField from '../../tag/TagsField';
+import {createAndUpdateTag} from '../../tag/tagAction';
 
 export default function FormInsert(): JSX.Element {
   const initState = {
@@ -22,8 +24,10 @@ export default function FormInsert(): JSX.Element {
     bad: '',
     good: '',
     rule: '',
+    tags: [''],
     ruleDescription: '',
   };
+
   useDocumentTitle('new snippet and convention');
 
   const dispatch = useDispatch();
@@ -79,6 +83,7 @@ export default function FormInsert(): JSX.Element {
       title: editorState.rule,
       description: editorState.ruleDescription,
       snippets: [initState.id],
+      tags: editorState.tags,
       votes: 0,
       views: 0,
       isPublic: true,
@@ -89,11 +94,16 @@ export default function FormInsert(): JSX.Element {
     dispatch(addSnippet(goodSnippet));
     dispatch(addSnippet(badSnippet));
     dispatch(addRule(rule));
-    console.table({
-      bad: badSnippet.id,
-      good: goodSnippet.id,
-      'rule suggestion': rule.snippets,
+
+    editorState.tags.map((tagString: string) => {
+      dispatch(
+        createAndUpdateTag({
+          name: tagString,
+          rules: [rule.id],
+        }),
+      );
     });
+
     resetEditor();
     notify({type: 'success', message: 'Both Code snippets are added!'});
 
@@ -120,7 +130,6 @@ export default function FormInsert(): JSX.Element {
       ...editorState,
       bad: codeWithoutTab,
     });
-    console.log(codeWithoutTab);
   }
 
   function handleChangeGoodSnippet(event: any) {
@@ -128,6 +137,13 @@ export default function FormInsert(): JSX.Element {
     setEditorState({
       ...editorState,
       good: codeWithoutTab,
+    });
+  }
+
+  function handleUpdateTags(tags: any) {
+    setEditorState({
+      ...editorState,
+      tags: tags,
     });
   }
 
@@ -286,7 +302,7 @@ export default function FormInsert(): JSX.Element {
               </div>
             </div>
             <div className="ps-relative" id="tag-editor">
-              {/*tags input*/}
+              <TagsField updateTags={(tags) => handleUpdateTags(tags)} />
             </div>
             <div
               id="question-answer-section"
