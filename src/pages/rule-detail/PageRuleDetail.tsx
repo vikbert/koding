@@ -14,6 +14,7 @@ import useVisibility from '../../hooks/useVisibility';
 import FormUpdate from '../../components/Rule/form/FormUpdate';
 import PreviewWrapper from '../../components/snippet/PreviewWrapper';
 import AsideInformation from '../../components/aside/AsideInformation';
+import TagItem from '../../components/tag/TagItem';
 
 export default function PageRuleDetail(): JSX.Element {
   const {id} = useParams<{id?: string}>();
@@ -57,12 +58,15 @@ export default function PageRuleDetail(): JSX.Element {
                     <RuleVoting rule={targetRule} />
                   </div>
                   <div className="postcell post-layout--right">
+                    {targetRule.tags.map((tag: string) => (
+                      <TagItem name={tag} onClickCallback={() => null} editable={false} />
+                    ))}
                     <Bubble
                       title={targetRule.title}
                       description={targetRule.description}
                     />
                     <a
-                      className="s-btn pt0 pb0 fc-light"
+                      className="s-btn pt0 pb16 fc-light"
                       onClick={() => show()}
                     >
                       {'✐ Edit the convention'}

@@ -2,13 +2,23 @@ import React from 'react';
 import Layout from '../Layout';
 import NoContent from '../../components/error/NoContent';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import {useSelector, useDispatch} from 'react-redux';
+import {loadTags} from '../../components/tag/tagAction';
+import TagList from '../../components/tag/TagList';
+import TagLink from '../../components/tag/TagLink';
 
 type PropsT = {
   name?: string;
 };
 
 export default function PageTags(props: PropsT): JSX.Element {
-  const {name} = props;
+  const dispatch = useDispatch();
+  const reduxTag = useSelector((state: any) => state.reduxTag);
+  const tagNames = Object.keys(reduxTag);
+
+  React.useEffect(() => {
+    dispatch(loadTags());
+  }, []);
 
   return (
     <>
@@ -20,7 +30,15 @@ export default function PageTags(props: PropsT): JSX.Element {
             </div>
             <div className="grid">
               <div className="grid--cell12 text-centered">
-                <NoContent />
+                {tagNames.length === 0 ? (
+                  <NoContent />
+                ) : (
+                  <TagList>
+                    {tagNames.map((item: string) => (
+                      <TagLink path={'/'} name={item} key={item} />
+                    ))}
+                  </TagList>
+                )}
               </div>
             </div>
           </div>

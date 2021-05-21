@@ -105,8 +105,6 @@ export default function FormInsert(): JSX.Element {
     });
 
     resetEditor();
-    notify({type: 'success', message: 'Both Code snippets are added!'});
-
     history.push(`/convention/${rule.id}`);
   }
 
