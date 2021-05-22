@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import type {Rule} from '../../types/Rule';
 import './rule.css';
 import ExtendedInput from '../input/ExtendedInput';
-import {showPopup} from './ruleAction';
+import {showPopup} from './ruleWidget';
 
 export default function RulesListBak() {
   const [filter, setFilter] = React.useState('');

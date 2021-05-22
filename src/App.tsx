@@ -8,6 +8,7 @@ import PageTags from './pages/tags/PageTags';
 import PageUsers from './pages/user/PageUsers';
 import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
 import NotFound from './components/error/NotFound';
+import PageTagDetail from "./pages/tags/PageTagDetail";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
           <Route exact path="/">
             <PageHome />
           </Route>
-          <Route path="/convention/:id" exact>
+          <Route path="/convention/:id">
             <PageRuleDetail />
           </Route>
           <Route path="/snippets" exact>
@@ -28,6 +29,9 @@ const App = () => {
           </Route>
           <Route path="/tags" exact>
             <PageTags />
+          </Route>
+          <Route path="/tag/:name" exact>
+            <PageTagDetail />
           </Route>
           <Route path="/users" exact>
             <PageUsers />

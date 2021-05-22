@@ -13,13 +13,15 @@ export default function PreviewWrapper(props: PropsType) {
     (code: Snippet) => code.id === props.snippetId,
   );
   const [targetSnippet, setTargetSnippet] = React.useState(target);
+  
+  if (!targetSnippet) {
+    return null;
+  }
+
   const goodSnippet = snippetState.find(
     (element: Snippet) => element.id === target.suggestion,
   );
 
-  if (!targetSnippet) {
-    return null;
-  }
 
   // @ts-ignore
   return (

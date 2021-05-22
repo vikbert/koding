@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "firebase-auth-lite": "^0.8.9",
+    "firebase-firestore-lite": "^1.0.3",
     "nanoid": "^3.1.22",
     "native-toast": "^2.0.0",
     "prismjs": "^1.23.0",

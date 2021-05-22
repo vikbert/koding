@@ -111,30 +111,6 @@ class LocalStorageClient {
       console.log(e);
     }
   }
-
-  //-----------------------
-  // tags
-  //-----------------------
-
-  createAndUpdateTag(tag: Tag) {
-    // {'class': ["id_1", "id_2", "id_3"]}
-    const tags = this.listTags();
-
-    const keys = Object.keys(tags);
-    if (keys.includes(tag.name)) {
-      const prevRules = tags[tag.name];
-      // @ts-ignore
-      tags[tag.name] = [...new Set([...tag.rules, ...prevRules])];
-    } else {
-      tags[tag.name] = tag.rules;
-    }
-
-    this._setValue(this.KEY_TAGES, tags);
-  }
-
-  listTags(): any {
-    return this._list(this.KEY_TAGES, {});
-  }
 }
 
 export default LocalStorageClient;

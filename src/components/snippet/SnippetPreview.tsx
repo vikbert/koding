@@ -7,8 +7,13 @@ import {Snippet} from '../../types/Snippet';
 import useVisibility from '../../hooks/useVisibility';
 import SnippetForm from './SnippetForm';
 
+type PreviewSnippet = {
+  id: string;
+  body: string;
+  isBad: boolean;
+}
 type PropsT = {
-  snippet: Snippet;
+  snippet: PreviewSnippet;
   autoHeight?: boolean;
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Rule} from '../../types/Rule';
 import {useDispatch} from 'react-redux';
-import {updateRule} from '../Rule/ruleAction';
+import {updateRule} from '../Rule/ruleWidget';
 import IconBookmark from '../icons/IconBookmark';
 import classNames from 'classnames';
 

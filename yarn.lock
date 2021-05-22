@@ -5563,6 +5563,16 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
+firebase-auth-lite@^0.8.9:
+  version "0.8.9"
+  resolved "https://registry.yarnpkg.com/firebase-auth-lite/-/firebase-auth-lite-0.8.9.tgz#7c2451373cff979b31436b3e16173222ebec04f1"
+  integrity sha512-dvO1X9jju4Kw3jZoh5TypYByJYcYOyZFtCSElE8rOFCBuzQADNvEXRaWanwQZOJOHRxm6zGHONWVQvEqg2MI6Q==
+
+firebase-firestore-lite@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/firebase-firestore-lite/-/firebase-firestore-lite-1.0.3.tgz#492f45eaff1e6d061d6b2af46627f911f6792960"
+  integrity sha512-mc24fSlOJMUVpMmOETxRuFVjeMOO919r7uZlc3z+Hw5wjtCB9G5JXzg3PLGBxFB0KkT7jD7DjXIjpzxklEiC0Q==
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"

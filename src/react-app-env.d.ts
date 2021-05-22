@@ -76,3 +76,4 @@ declare module '*.module.sass' {
  * my declaration
  */
 declare module 'prismjs/components/prism-core';
+declare module 'firebase-auth-lite';

@@ -1,8 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 import useNotify from '../../../hooks/useToast';
-import {updateRule} from '../ruleAction';
+import {updateRule} from '../ruleWidget';
 import type {Rule} from '../../../types/Rule';
 import './formInsert.css';
 import Bubble from '../../bubble/Bubble';

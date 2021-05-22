@@ -1,5 +1,5 @@
 import type {Snippet} from '../../types/Snippet';
-import LocalStorageClient from '../../services/LocalStorageClient';
+import SnippetReference from '../../http/SnippetReference';
 
 export const SNIPPET_ADDED = 'snippet.snippet_added';
 export const SNIPPET_UPDATED = 'snippet.snippet_updated';
@@ -13,10 +13,12 @@ export const loadSnippetsDone = (snippets: any) => {
 };
 
 export const loadSnippets = () => {
-  const client = new LocalStorageClient();
-  const snippets = client.listSnippets();
-
-  return loadSnippetsDone(snippets);
+  return function (dispatch: any) {
+    const snippetRef = new SnippetReference();
+    return snippetRef.list().then((list) => {
+      dispatch(loadSnippetsDone(list.documents));
+    });
+  };
 };
 
 export const snippetAdded = (snippet: Snippet) => ({
@@ -25,10 +27,13 @@ export const snippetAdded = (snippet: Snippet) => ({
 });
 
 export const addSnippet = (snippet: Snippet) => {
-  const client = new LocalStorageClient();
-  client.insertSnippet(snippet);
-
-  return snippetAdded(snippet);
+  return function (dispatch: any) {
+    const snippetRef = new SnippetReference();
+    return snippetRef.add(snippet).then((ref) => {
+      const withDocumentPath = {...snippet, ...{path: ref.path}};
+      dispatch(snippetAdded(withDocumentPath));
+    });
+  };
 };
 
 export const snippetUpdated = (snippet: Snippet) => ({
@@ -37,8 +42,10 @@ export const snippetUpdated = (snippet: Snippet) => ({
 });
 
 export const updateSnippet = (snippet: Snippet) => {
-  const client = new LocalStorageClient();
-  client.updateSnippet(snippet);
-
-  return snippetUpdated(snippet);
+  return function (dispatch: any) {
+    const snippetRef = new SnippetReference(snippet.path);
+    return snippetRef.update(snippet.body).then((ref) => {
+      dispatch(snippetUpdated(snippet));
+    });
+  };
 };

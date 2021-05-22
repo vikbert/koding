@@ -3,7 +3,7 @@ import useDocumentTitle from '../../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
 import {useHistory, Link} from 'react-router-dom';
 import useNotify from '../../../hooks/useToast';
-import {loadRules, addRule} from '../ruleAction';
+import {loadRules, addRule} from '../ruleWidget';
 import {nanoid} from 'nanoid';
 import type {Snippet} from '../../../types/Snippet';
 import {addSnippet} from '../../snippet/snippetAction';
@@ -16,7 +16,7 @@ import useKeypress from '../../../hooks/useKeyPress';
 import Bubble from '../../bubble/Bubble';
 import IconEye from '../../icons/IconEye';
 import TagsField from '../../tag/TagsField';
-import {createAndUpdateTag} from '../../tag/tagAction';
+import {createAndUpdateTag} from '../../tag/tagWidget';
 
 export default function FormInsert(): JSX.Element {
   const initState = {
@@ -63,11 +63,14 @@ export default function FormInsert(): JSX.Element {
       return;
     }
 
-    const goodSnippet = {
+    const goodSnippet: Snippet = {
       id: nanoid(),
       body: editorState.good,
       isBad: false,
       lang: 'php',
+      path: '',
+      suggestion: '',
+      rules: [],
     };
 
     const badSnippet: Snippet = {
@@ -76,6 +79,8 @@ export default function FormInsert(): JSX.Element {
       isBad: true,
       lang: 'php',
       suggestion: goodSnippet.id,
+      path: '',
+      rules: [],
     };
 
     const rule: Rule = {
@@ -99,7 +104,7 @@ export default function FormInsert(): JSX.Element {
       dispatch(
         createAndUpdateTag({
           name: tagString,
-          rules: [rule.id],
+          rule: rule.id,
         }),
       );
     });

@@ -5,7 +5,7 @@ import Layout from '../Layout';
 import FormInsert from '../../components/Rule/form/FormInsert';
 import AsideInformation from '../../components/aside/AsideInformation';
 import {useDispatch} from 'react-redux';
-import {loadTags} from '../../components/tag/tagAction';
+import {loadTags} from '../../components/tag/tagWidget';
 
 const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');

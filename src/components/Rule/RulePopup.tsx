@@ -1,7 +1,7 @@
 import React from 'react';
 import type {Rule} from '../../types/Rule';
 import {useDispatch, useSelector} from 'react-redux';
-import {hidePopup, updateRule, deleteRule} from './ruleAction';
+import {hidePopup, updateRule, deleteRule} from './ruleWidget';
 import useNotify from '../../hooks/useToast';
 
 type RulePopupProps = {

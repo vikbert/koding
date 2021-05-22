@@ -29,7 +29,6 @@ export default function SnippetForm({
       }),
     );
     closePopup();
-    dispatch(loadSnippets());
   }
 
   return (

@@ -1,5 +1,9 @@
 import LocalStorageClient from '../../services/LocalStorageClient';
 import type {Rule} from '../../types/Rule';
+import TagReference from "../../http/TAGReference";
+import {Reference} from "firebase-firestore-lite";
+import {tagUpdated} from "../tag/tagWidget";
+import RuleReference from "../../http/RuleReference";
 
 export const RULE_ADDED = 'rule.rule_added';
 export const RULE_FETCHED = 'rule.rule_fetched';
@@ -37,7 +41,12 @@ export const addRule = (rule: Rule) => {
   const client = new LocalStorageClient();
   client.insertRule(rule);
 
-  return ruleAdded(rule);
+  return function (dispatch: any) {
+    const ruleRef = new RuleReference();
+    return ruleRef.add(rule).then((ref: Reference) => {
+      dispatch(ruleAdded(rule));
+    });
+  };
 };
 
 export const ruleUpdated = (rule: Rule) => ({
@@ -86,4 +95,56 @@ export const fetchRule = (id: string) => {
   const matchedRule = client.fetchRule(id);
 
   return ruleFetched(matchedRule);
+};
+
+export const ruleState = {
+  showWrapper: false,
+  showPopup: false,
+  rules: [],
+  targetRule: null,
+};
+
+export const ruleReducer = (state = ruleState, action: any) => {
+  switch (action.type) {
+    case RULE_ADDED:
+      return {
+        ...state,
+        rules: [action.rule, ...state.rules],
+        targetRule: action.rule,
+      };
+
+    case RULE_UPDATED:
+      const updatedRules = state.rules.map((item: Rule) => {
+        return item.id === action.rule.id ? action.rule : item;
+      });
+
+      return {...state, rules: updatedRules};
+
+    case RULE_DELETED:
+      const reducedRules = state.rules.filter((item: Rule) => {
+        return item.id !== action.rule.id;
+      });
+
+      return {...state, rules: reducedRules};
+
+    case RULE_FETCHED:
+      return {...state, targetRule: action.rule};
+
+    case RULES_RECEIVED:
+      return {...state, rules: action.rules};
+
+    case SHOW_RULES:
+      return {...state, showWrapper: true};
+
+    case HIDE_RULES:
+      return {...state, showWrapper: false};
+
+    case SHOW_POPUP:
+      return {...state, showPopup: true, targetRule: action.targetRule};
+
+    case HIDE_POPUP:
+      return {...state, showPopup: false};
+  }
+
+  return state;
 };
