@@ -3,7 +3,7 @@ import useFirebase from '../hooks/useFirebase';
 import {List} from 'firebase-firestore-lite/dist/List';
 import {Rule} from '../types/Rule';
 
-const COLLECTION_RULES = 'KODING_RULES';
+export const COLLECTION_RULES = 'KODING_RULES';
 
 export default class RuleReference {
   db: Database;
@@ -16,6 +16,10 @@ export default class RuleReference {
 
   async list(): Promise<List> {
     return await this.ref.list();
+  }
+
+  async get(): Promise<any> {
+    return await this.ref.get();
   }
 
   async add(rule: Rule): Promise<Reference> {

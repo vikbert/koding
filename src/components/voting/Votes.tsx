@@ -6,9 +6,9 @@ type PropsT = {
   rule: Rule;
 };
 
-export default function TopRuleVoting({rule}: PropsT): JSX.Element {
+export default function Votes({rule}: PropsT): JSX.Element {
   return (
-    <Link to={`/convention/${rule.id}`}>
+    <Link to={`/convention/${rule.documentId}`}>
       <div className="cp">
         <div className="status">
           <div className="mini-counts">

@@ -1,33 +1,30 @@
 import React from 'react';
 import {Rule} from '../../types/Rule';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {updateRule} from '../Rule/ruleWidget';
-import IconBookmark from '../icons/IconBookmark';
 import classNames from 'classnames';
 
-type PropsT = {
-  rule: Rule;
-};
-
-export default function RuleVoting({rule}: PropsT): JSX.Element {
-  const [target, setTarget] = React.useState(rule);
-  const [bookmarked, setBookmarked] = React.useState(true);
+export default function VotingRule(): JSX.Element {
+  const reduxRule = useSelector((state: any) => state.reduxRule);
+  const target: Rule = reduxRule.targetRule;
   const dispatch = useDispatch();
+  const [isDisabled, setIsDisabled] = React.useState(false);
+
+  function setVotingTemporaryDisabled () {
+    setIsDisabled(true);
+    setTimeout(() => {
+      setIsDisabled(false)
+    }, 5000);
+  }
 
   function handleVoteUp() {
-    setTarget({...target, votes: ++target.votes});
-
-    dispatch(updateRule(target));
+    setVotingTemporaryDisabled();
+    dispatch(updateRule({...target, votes: target.votes + 1}));
   }
 
   function handleVoteDown() {
-    setTarget({...target, votes: --target.votes});
-
-    dispatch(updateRule(target));
-  }
-
-  function handleBookmark() {
-    setBookmarked(!bookmarked);
+    setVotingTemporaryDisabled();
+    dispatch(updateRule({...target, votes: target.votes - 1}));
   }
 
   return (
@@ -40,6 +37,7 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
           )}
           aria-pressed="false"
           aria-label="Up vote"
+          disabled={isDisabled}
           onClick={handleVoteUp}
         >
           <svg
@@ -66,6 +64,7 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
           )}
           aria-pressed="false"
           aria-label="Down vote"
+          disabled={isDisabled}
           onClick={handleVoteDown}
         >
           <svg
@@ -77,15 +76,6 @@ export default function RuleVoting({rule}: PropsT): JSX.Element {
           >
             <path d="M2 10h32L18 26 2 10z" />
           </svg>
-        </button>
-        <button
-          onClick={handleBookmark}
-          className={classNames(
-            'js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track',
-            {'fc-yellow-600': bookmarked},
-          )}
-        >
-          <IconBookmark />
         </button>
       </div>
     </>

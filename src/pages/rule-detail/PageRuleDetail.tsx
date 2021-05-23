@@ -1,14 +1,15 @@
 import React from 'react';
-import Layout from '../Layout';
 import {useParams} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import RuleVoting from '../../components/voting/RuleVoting';
+import {useDispatch, useSelector} from 'react-redux';
+import VotingRule from '../../components/voting/VotingRule';
 import TagList from '../../components/tag/TagList';
 import Bubble from '../../components/bubble/Bubble';
-import LocalStorageClient from '../../services/LocalStorageClient';
 import NotFound from '../../components/error/NotFound';
 import {loadSnippets} from '../../components/snippet/snippetAction';
-import {updateRule} from '../../components/Rule/ruleWidget';
+import {
+  fetchRule,
+  cleanUpTargetRule,
+} from '../../components/Rule/ruleWidget';
 import classNames from 'classnames';
 import useVisibility from '../../hooks/useVisibility';
 import FormUpdate from '../../components/Rule/form/FormUpdate';
@@ -16,14 +17,15 @@ import PreviewWrapper from '../../components/snippet/PreviewWrapper';
 import AsideInformation from '../../components/aside/AsideInformation';
 import TagItem from '../../components/tag/TagItem';
 
-export default function PageRuleDetail(): JSX.Element {
-  const {id} = useParams<{ id?: string }>();
+export default function PageRuleDetail(): JSX.Element | null {
+  const {documentId} = useParams<{ documentId?: string }>();
   const {visible, show, hide} = useVisibility();
   const dispatch = useDispatch();
-  const reduxRule = useSelector((state: any) => state.reduxRule);
-  let targetRule = reduxRule.targetRule;
+  const targetRule = useSelector((state: any) => state.reduxRule.targetRule);
+  const errorRedux = useSelector((state: any) => state.reduxError);
 
-  if (!targetRule && id) {
+  if (!documentId) {
+    return null;
   }
 
   React.useEffect(() => {
@@ -31,32 +33,37 @@ export default function PageRuleDetail(): JSX.Element {
   }, []);
 
   React.useEffect(() => {
-    if (targetRule) {
-      dispatch(updateRule({...targetRule, views: ++targetRule.views}));
+    try {
+      dispatch(fetchRule(documentId));
+    } catch (error) {
     }
-  }, []);
 
-  if (undefined === targetRule) {
+    return function () {
+      dispatch(cleanUpTargetRule());
+    };
+  }, [documentId]);
+
+  React.useEffect(() => {
+  	console.log('✅', targetRule);
+  }, [documentId, targetRule])
+
+  if (errorRedux.hasError || undefined === targetRule) {
     return <NotFound/>;
   }
 
   return (
-      <>
-        <Layout>
-          <div id="content" className="snippet-hidden">
+      targetRule && (
+          <>
             <div id="mainbar">
               <div className="question" id="question">
                 <div id="question-header" className="grid jc-end">
-                  <a
-                      href="/insert"
-                      className="ws-nowrap s-btn s-btn__filled mb16"
-                  >
+                  <a href="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
                     {'✚ Add another coding convention'}
                   </a>
                 </div>
                 <div className="post-layout rule-detail">
                   <div className="votecell post-layout--left">
-                    <RuleVoting rule={targetRule}/>
+                    <VotingRule/>
                   </div>
                   <div className="postcell post-layout--right">
                     {targetRule.tags.map((tag: string) => (
@@ -94,13 +101,10 @@ export default function PageRuleDetail(): JSX.Element {
             </div>
             <div id="sidebar">
               <AsideInformation title={'Toggle code preview view'}>
-                <p>
-                  click on the code snippet to expand or collapse the preview.
-                </p>
+                <p>click on the code snippet to expand or collapse the preview.</p>
               </AsideInformation>
             </div>
-          </div>
-        </Layout>
-      </>
+          </>
+      )
   );
 }

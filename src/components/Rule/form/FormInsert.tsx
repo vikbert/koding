@@ -98,8 +98,6 @@ export default function FormInsert(): JSX.Element {
 
     dispatch(addSnippet(goodSnippet));
     dispatch(addSnippet(badSnippet));
-    dispatch(addRule(rule));
-
     editorState.tags.map((tagString: string) => {
       dispatch(
         createAndUpdateTag({
@@ -109,8 +107,9 @@ export default function FormInsert(): JSX.Element {
       );
     });
 
+    dispatch(addRule(rule));
     resetEditor();
-    history.push(`/convention/${rule.id}`);
+    notify({message: 'Saving coding convention done!', type: 'success'});
   }
 
   function handleChangeRule(event: any) {

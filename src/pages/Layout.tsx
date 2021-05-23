@@ -13,7 +13,9 @@ export default function Layout(props: PropsT): JSX.Element {
       <OverflowHeader />
       <div className="container">
         <OverflowSidebar />
-        {props.children}
+        <div id="content" className="snippet-hidden">
+          {props.children}
+        </div>
       </div>
       <Footer />
     </>

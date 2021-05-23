@@ -1,9 +1,9 @@
-import LocalStorageClient from '../../services/LocalStorageClient';
 import type {Rule} from '../../types/Rule';
-import TagReference from "../../http/TAGReference";
-import {Reference} from "firebase-firestore-lite";
-import {tagUpdated} from "../tag/tagWidget";
-import RuleReference from "../../http/RuleReference";
+import {Reference} from 'firebase-firestore-lite';
+import RuleReference, {COLLECTION_RULES} from '../../http/RuleReference';
+import {List} from 'firebase-firestore-lite/dist/List';
+import {FirebaseDocument} from 'firebase-firestore-lite/dist/Document';
+import {setError, unsetError} from '../error/errorWidget';
 
 export const RULE_ADDED = 'rule.rule_added';
 export const RULE_FETCHED = 'rule.rule_fetched';
@@ -14,6 +14,7 @@ export const SHOW_RULES = 'rule.show_wrapper';
 export const HIDE_RULES = 'rule.hide_wrapper';
 export const SHOW_POPUP = 'rule.show_popup';
 export const HIDE_POPUP = 'rule.hide_popup';
+export const TARGET_CLEANUP = 'rule.target_cleanup';
 
 export const showRules = () => ({
   type: SHOW_RULES,
@@ -38,9 +39,6 @@ export const ruleAdded = (rule: Rule) => ({
 });
 
 export const addRule = (rule: Rule) => {
-  const client = new LocalStorageClient();
-  client.insertRule(rule);
-
   return function (dispatch: any) {
     const ruleRef = new RuleReference();
     return ruleRef.add(rule).then((ref: Reference) => {
@@ -55,10 +53,20 @@ export const ruleUpdated = (rule: Rule) => ({
 });
 
 export const updateRule = (rule: Rule) => {
-  const client = new LocalStorageClient();
-  client.updateRule(rule);
+  console.log('update rule: ' + rule.documentId);
+  const ruleRef = new RuleReference(`${COLLECTION_RULES}/${rule.documentId}`);
 
-  return ruleUpdated(rule);
+  return function (dispatch: any) {
+    return ruleRef
+      .update(rule)
+      .then((document) => {
+        dispatch(ruleUpdated(rule));
+        dispatch(unsetError());
+      })
+      .catch(() => {
+        dispatch(setError('Document can not be updated!'));
+      });
+  };
 };
 
 export const rulesReceived = (rules: any) => ({
@@ -67,10 +75,13 @@ export const rulesReceived = (rules: any) => ({
 });
 
 export const loadRules = () => {
-  const client = new LocalStorageClient();
-  const rules = client.listRules();
+  return function (dispatch: any) {
+    const ruleRef = new RuleReference();
 
-  return rulesReceived(rules);
+    return ruleRef.list().then((list: List) => {
+      dispatch(rulesReceived(list.documents));
+    });
+  };
 };
 
 export const ruleDeleted = (rule: Rule) => ({
@@ -79,9 +90,6 @@ export const ruleDeleted = (rule: Rule) => ({
 });
 
 export const deleteRule = (rule: Rule) => {
-  const client = new LocalStorageClient();
-  client.deleteRule(rule);
-
   return ruleDeleted(rule);
 };
 
@@ -90,11 +98,24 @@ export const ruleFetched = (rule: Rule) => ({
   rule,
 });
 
-export const fetchRule = (id: string) => {
-  const client = new LocalStorageClient();
-  const matchedRule = client.fetchRule(id);
+export const cleanUpTargetRule = () => ({
+  type: TARGET_CLEANUP,
+})
 
-  return ruleFetched(matchedRule);
+export const fetchRule = (documentId: string) => {
+  const ruleRef = new RuleReference(`${COLLECTION_RULES}/${documentId}`);
+
+  return function (dispatch: any) {
+    return ruleRef
+      .get()
+      .then((document) => {
+        dispatch(ruleFetched({...document, documentId}));
+        dispatch(unsetError());
+      })
+      .catch(() => {
+        dispatch(setError('Document was not found!'));
+      });
+  };
 };
 
 export const ruleState = {
@@ -118,7 +139,10 @@ export const ruleReducer = (state = ruleState, action: any) => {
         return item.id === action.rule.id ? action.rule : item;
       });
 
-      return {...state, rules: updatedRules};
+      return {...state, rules: updatedRules, targetRule: action.rule};
+
+    case TARGET_CLEANUP:
+      return {...state, targetRule: null};
 
     case RULE_DELETED:
       const reducedRules = state.rules.filter((item: Rule) => {
@@ -131,7 +155,14 @@ export const ruleReducer = (state = ruleState, action: any) => {
       return {...state, targetRule: action.rule};
 
     case RULES_RECEIVED:
-      return {...state, rules: action.rules};
+      const enriched = action.rules.map((rule: FirebaseDocument) => {
+        // @ts-ignore
+        const {__meta__: {path, id}} = rule;
+
+        return {...rule, path, documentId: id};
+      });
+
+      return {...state, rules: enriched};
 
     case SHOW_RULES:
       return {...state, showWrapper: true};

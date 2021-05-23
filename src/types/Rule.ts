@@ -9,4 +9,6 @@ export type Rule = {
   editors?: string[];
   isPublic?: boolean;
   createdAt: number;
+  documentId?: string;
+  path?: string;
 };
