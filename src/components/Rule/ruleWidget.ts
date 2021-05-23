@@ -52,23 +52,6 @@ export const ruleUpdated = (rule: Rule) => ({
   rule,
 });
 
-export const updateRule = (rule: Rule) => {
-  console.log('update rule: ' + rule.documentId);
-  const ruleRef = new RuleReference(`${COLLECTION_RULES}/${rule.documentId}`);
-
-  return function (dispatch: any) {
-    return ruleRef
-      .update(rule)
-      .then((document) => {
-        dispatch(ruleUpdated(rule));
-        dispatch(unsetError());
-      })
-      .catch(() => {
-        dispatch(setError('Document can not be updated!'));
-      });
-  };
-};
-
 export const rulesReceived = (rules: any) => ({
   type: RULES_RECEIVED,
   rules,
@@ -101,6 +84,22 @@ export const ruleFetched = (rule: Rule) => ({
 export const cleanUpTargetRule = () => ({
   type: TARGET_CLEANUP,
 })
+
+export const updateRule = (rule: Rule) => {
+  const ruleRef = new RuleReference(`${COLLECTION_RULES}/${rule.documentId}`);
+
+  return function (dispatch: any) {
+    return ruleRef
+        .update(rule)
+        .then((document) => {
+          dispatch(ruleUpdated(rule));
+          dispatch(unsetError());
+        })
+        .catch(() => {
+          dispatch(setError('Document can not be updated!'));
+        });
+  };
+};
 
 export const fetchRule = (documentId: string) => {
   const ruleRef = new RuleReference(`${COLLECTION_RULES}/${documentId}`);

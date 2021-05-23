@@ -44,7 +44,6 @@ export default function PageRuleDetail(): JSX.Element | null {
   }, [documentId]);
 
   React.useEffect(() => {
-  	console.log('✅', targetRule);
   }, [documentId, targetRule])
 
   if (errorRedux.hasError || undefined === targetRule) {

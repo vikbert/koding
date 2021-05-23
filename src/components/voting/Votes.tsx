@@ -4,11 +4,12 @@ import {Link} from 'react-router-dom';
 
 type PropsT = {
   rule: Rule;
+  incrementViews: () => void;
 };
 
-export default function Votes({rule}: PropsT): JSX.Element {
+export default function Votes({rule, incrementViews}: PropsT): JSX.Element {
   return (
-    <Link to={`/convention/${rule.documentId}`}>
+    <Link to={`/convention/${rule.documentId}`} onClick={incrementViews}>
       <div className="cp">
         <div className="status">
           <div className="mini-counts">
