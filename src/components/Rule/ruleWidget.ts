@@ -83,21 +83,21 @@ export const ruleFetched = (rule: Rule) => ({
 
 export const cleanUpTargetRule = () => ({
   type: TARGET_CLEANUP,
-})
+});
 
 export const updateRule = (rule: Rule) => {
   const ruleRef = new RuleReference(`${COLLECTION_RULES}/${rule.documentId}`);
 
   return function (dispatch: any) {
     return ruleRef
-        .update(rule)
-        .then((document) => {
-          dispatch(ruleUpdated(rule));
-          dispatch(unsetError());
-        })
-        .catch(() => {
-          dispatch(setError('Document can not be updated!'));
-        });
+      .update(rule)
+      .then((document) => {
+        dispatch(ruleUpdated(rule));
+        dispatch(unsetError());
+      })
+      .catch(() => {
+        dispatch(setError('Document can not be updated!'));
+      });
   };
 };
 
@@ -156,7 +156,7 @@ export const ruleReducer = (state = ruleState, action: any) => {
     case RULES_RECEIVED:
       const enriched = action.rules.map((rule: FirebaseDocument) => {
         // @ts-ignore
-        const {__meta__: {path, id}} = rule;
+        const {__meta__: {path, id},} = rule;
 
         return {...rule, path, documentId: id};
       });

@@ -13,7 +13,7 @@ export default function PreviewWrapper(props: PropsType) {
     (code: Snippet) => code.id === props.snippetId,
   );
   const [targetSnippet, setTargetSnippet] = React.useState(target);
-  
+
   if (!targetSnippet) {
     return null;
   }
@@ -21,7 +21,6 @@ export default function PreviewWrapper(props: PropsType) {
   const goodSnippet = snippetState.find(
     (element: Snippet) => element.id === target.suggestion,
   );
-
 
   // @ts-ignore
   return (

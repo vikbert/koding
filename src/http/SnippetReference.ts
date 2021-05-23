@@ -28,7 +28,7 @@ export default class SnippetReference {
   }
 
   async update(codeBody: string): Promise<void> {
-    const ref = await this.ref.update({ body: codeBody });
+    const ref = await this.ref.update({body: codeBody});
 
     if (undefined === ref) {
       return;

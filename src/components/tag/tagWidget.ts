@@ -17,7 +17,7 @@ export const tagReducer = (state = TAG_STATE, action: any) => {
       }
     case TAGS_LOADED:
       // @ts-ignore
-      return [...new Set(action.tags.map((item: Tag) => (item.name)))];
+      return [...new Set(action.tags.map((item: Tag) => item.name))];
     default:
       return state;
   }

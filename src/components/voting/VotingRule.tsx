@@ -10,10 +10,10 @@ export default function VotingRule(): JSX.Element {
   const dispatch = useDispatch();
   const [isDisabled, setIsDisabled] = React.useState(false);
 
-  function setVotingTemporaryDisabled () {
+  function setVotingTemporaryDisabled() {
     setIsDisabled(true);
     setTimeout(() => {
-      setIsDisabled(false)
+      setIsDisabled(false);
     }, 5000);
   }
 

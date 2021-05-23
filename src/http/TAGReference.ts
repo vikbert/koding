@@ -1,7 +1,7 @@
 import {Database, Reference} from 'firebase-firestore-lite';
 import useFirebase from '../hooks/useFirebase';
 import {List} from 'firebase-firestore-lite/dist/List';
-import {Tag} from "../types/Tag";
+import {Tag} from '../types/Tag';
 
 const COLLECTION_SNIPPET = 'KODING_TAGS';
 
@@ -20,7 +20,7 @@ export default class TagReference {
 
   async listByName(tagName: string): Promise<any> {
     const queryByName = this.ref.query({
-      where: [['name', '==', tagName]]
+      where: [['name', '==', tagName]],
     });
 
     return await queryByName.run();

@@ -11,7 +11,7 @@ type PreviewSnippet = {
   id: string;
   body: string;
   isBad: boolean;
-}
+};
 type PropsT = {
   snippet: PreviewSnippet;
   autoHeight?: boolean;

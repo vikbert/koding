@@ -13,7 +13,7 @@ export default function PageTagDetail(): JSX.Element | null {
   const [rules, setRules] = React.useState<any[]>([]);
   const tagRef = new TagReference();
 
-  const {name} = useParams<{ name?: string }>();
+  const {name} = useParams<{name?: string}>();
   if (!name) {
     return null;
   }
@@ -33,7 +33,7 @@ export default function PageTagDetail(): JSX.Element | null {
       let rules: any[] = [];
       list.forEach((item: any) => {
         const found = reduxRule.rules.find(
-            (rule: Rule) => rule.id === item.rule,
+          (rule: Rule) => rule.id === item.rule,
         );
         if (found) {
           rules = [found, ...rules];
@@ -49,16 +49,16 @@ export default function PageTagDetail(): JSX.Element | null {
   }
 
   return (
-      <>
-        <div id="mainbar">
-          <div className="grid">
-            <h1 className={'grid-cell fl1'}>Tag: {name}</h1>
-          </div>
-          <ListRules rules={rules}/>
+    <>
+      <div id="mainbar">
+        <div className="grid">
+          <h1 className={'grid-cell fl1'}>Tag: {name}</h1>
         </div>
-        <div id="sidebar">
-          <AsideReadingTips/>
-        </div>
-      </>
+        <ListRules rules={rules} />
+      </div>
+      <div id="sidebar">
+        <AsideReadingTips />
+      </div>
+    </>
   );
 }

@@ -19,19 +19,19 @@ const PageHome = () => {
   }, []);
 
   return (
-      <>
-        <div id="mainbar">
-          <HeadlineHome/>
-          <ListRules
-              rules={reduxRule.rules.sort((a: Rule, b: Rule) =>
-                  a.votes > b.votes ? -1 : 1,
-              )}
-          />
-        </div>
-        <div id="sidebar">
-          <AsideReadingTips/>
-        </div>
-      </>
+    <>
+      <div id="mainbar">
+        <HeadlineHome />
+        <ListRules
+          rules={reduxRule.rules.sort((a: Rule, b: Rule) =>
+            a.votes > b.votes ? -1 : 1,
+          )}
+        />
+      </div>
+      <div id="sidebar">
+        <AsideReadingTips />
+      </div>
+    </>
   );
 };
 

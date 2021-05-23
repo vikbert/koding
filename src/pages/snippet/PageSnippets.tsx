@@ -14,20 +14,20 @@ export default function PageSnippets(): null | JSX.Element {
   }, []);
 
   return (
-      <>
-        <div id="mainbar">
-          <div className="grid">
-            <h1 className={'grid-cell fl1'}>Snippets</h1>
-          </div>
-          {reduxSnippet.length === 0 ? (
-              <NoContent/>
-          ) : (
-              <ListSnippets snippets={reduxSnippet}/>
-          )}
+    <>
+      <div id="mainbar">
+        <div className="grid">
+          <h1 className={'grid-cell fl1'}>Snippets</h1>
         </div>
-        <div id="sidebar">
-          <AsideReadingTips/>
-        </div>
-      </>
+        {reduxSnippet.length === 0 ? (
+          <NoContent />
+        ) : (
+          <ListSnippets snippets={reduxSnippet} />
+        )}
+      </div>
+      <div id="sidebar">
+        <AsideReadingTips />
+      </div>
+    </>
   );
 }
