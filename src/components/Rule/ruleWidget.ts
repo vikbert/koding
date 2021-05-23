@@ -2,7 +2,6 @@ import type {Rule} from '../../types/Rule';
 import {Reference} from 'firebase-firestore-lite';
 import RuleReference, {COLLECTION_RULES} from '../../http/RuleReference';
 import {List} from 'firebase-firestore-lite/dist/List';
-import {FirebaseDocument} from 'firebase-firestore-lite/dist/Document';
 import {setError, unsetError} from '../error/errorWidget';
 
 export const RULE_ADDED = 'rule.rule_added';
@@ -154,11 +153,12 @@ export const ruleReducer = (state = ruleState, action: any) => {
       return {...state, targetRule: action.rule};
 
     case RULES_RECEIVED:
-      const enriched = action.rules.map((rule: FirebaseDocument) => {
-        // @ts-ignore
-        const {__meta__: {path, id},} = rule;
-
-        return {...rule, path, documentId: id};
+      const enriched = action.rules.map((rule: any) => {
+        return {
+          ...rule,
+          path: rule.__meta__.path,
+          documentId: rule.__meta__.id,
+        };
       });
 
       return {...state, rules: enriched};

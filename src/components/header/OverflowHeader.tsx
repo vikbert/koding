@@ -101,41 +101,17 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
             </li>
             <li className="-item">
               <a
-                href="https://vikbert.github.io/"
+                href="https://github.com/vikbert/koding"
                 target="_blank"
-                className="my-profile js-gps-track"
-                data-gps-track="profile_summary.click()"
+                className="-link js-help-button"
+                title="Project Source Code"
               >
-                <div className="gravatar-wrapper-24" title="vikbert">
-                  <img
-                    src="https://i.stack.imgur.com/rSdt7.jpg?s=48&g=1"
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="bar-sm -avatar js-avatar-me"
+                <div style={{fontSize: '19px'}}>
+                  <span
+                    className="iconify"
+                    data-icon="ant-design:github-filled"
                   />
-                </div>{' '}
-                <span className="v-visible-sr">vikbert</span>
-                {/*<div*/}
-                {/*  className="-rep js-header-rep"*/}
-                {/*  title="your reputation: 710"*/}
-                {/*  aria-hidden="true"*/}
-                {/*>*/}
-                {/*  710*/}
-                {/*</div>*/}
-                {/*<span className="v-visible-sr">, 710 reputation</span>*/}
-                {/*<div className="-badges">*/}
-                {/*  <span title="7 silver badges" aria-hidden="true">*/}
-                {/*    <span className="badge2">●</span>*/}
-                {/*    <span className="badgecount">7</span>*/}
-                {/*  </span>*/}
-                {/*  <span className="v-visible-sr">7 silver badges</span>*/}
-                {/*  <span title="8 bronze badges" aria-hidden="true">*/}
-                {/*    <span className="badge3">●</span>*/}
-                {/*    <span className="badgecount">8</span>*/}
-                {/*  </span>*/}
-                {/*  <span className="v-visible-sr">8 bronze badges</span>{' '}*/}
-                {/*</div>*/}
+                </div>
               </a>
             </li>
             <li className="-item help-button-item">
@@ -143,10 +119,6 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
                 href="#"
                 className="-link js-help-button"
                 title="Help Center and other resources"
-                role="menuitem"
-                aria-haspopup="true"
-                aria-controls="topbar-help-dialog"
-                data-ga='["top navigation","help menu click",null,null,null]'
               >
                 <svg
                   aria-hidden="true"
