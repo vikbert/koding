@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import VotingRule from '../../components/voting/VotingRule';
 import TagList from '../../components/tag/TagList';
 import Bubble from '../../components/bubble/Bubble';
@@ -56,21 +57,23 @@ export default function PageRuleDetail(): JSX.Element | null {
             <div id="mainbar">
               <div className="question" id="question">
                 <div id="question-header" className="grid jc-end">
-                  <a href="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
+                  <Link to="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
                     {'✚ Add another coding convention'}
-                  </a>
+                  </Link>
                 </div>
                 <div className="post-layout rule-detail">
                   <div className="votecell post-layout--left">
                     <VotingRule/>
                   </div>
                   <div className="postcell post-layout--right">
-                    {targetRule.tags.map((tag: string) => (
-                        <TagItem
-                            name={tag}
-                            onClickCallback={() => null}
-                            editable={false}
-                        />
+                    {targetRule.tags.map((tagName: string) => (
+                        <Link to={`/tag/${tagName}`}>
+                          <TagItem
+                              name={tagName}
+                              onClickCallback={() => null}
+                              editable={false}
+                          />
+                        </Link>
                     ))}
                     <Bubble
                         title={targetRule.title}

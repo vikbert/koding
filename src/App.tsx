@@ -34,7 +34,7 @@ const App = () => {
           <RouteWrapper exact path="/snippets" component={PageSnippets} layout={Layout} />
           <RouteWrapper exact path="/insert" component={PageInsert} layout={Layout} />
           <RouteWrapper exact path="/tags" component={PageTags} layout={Layout} />
-          <RouteWrapper exact path="/tag:name" component={PageTagDetail} layout={Layout} />
+          <RouteWrapper exact path="/tag/:name" component={PageTagDetail} layout={Layout} />
           <RouteWrapper exact path="/users" component={PageUsers} layout={Layout} />
           <RouteWrapper exact path="/404" component={NotFound} layout={Layout} />
           <RouteWrapper path="/convention/:documentId" component={PageRuleDetail} layout={Layout}/>

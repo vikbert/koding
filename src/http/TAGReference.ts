@@ -18,6 +18,14 @@ export default class TagReference {
     return await this.ref.list();
   }
 
+  async listByName(tagName: string): Promise<any> {
+    const queryByName = this.ref.query({
+      where: [['name', '==', tagName]]
+    });
+
+    return await queryByName.run();
+  }
+
   async add(tag: Tag): Promise<Reference> {
     const ref = await this.ref.add(tag);
     if (ref instanceof Reference) {

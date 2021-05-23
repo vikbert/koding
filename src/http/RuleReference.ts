@@ -18,6 +18,10 @@ export default class RuleReference {
     return await this.ref.list();
   }
 
+  async listBatch(documentPaths: string[]): Promise<any> {
+    return await this.db.batchGet(documentPaths);
+  }
+
   async get(): Promise<any> {
     return await this.ref.get();
   }
