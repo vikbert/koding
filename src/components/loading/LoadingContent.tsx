@@ -1,7 +1,20 @@
 import React from 'react';
 import './loading.css';
+import NoContent from '../error/NoContent';
 
 export default function LoadingContent(): JSX.Element {
+  const [showNoData, setShowNoData] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShowNoData(true);
+    }, 1500);
+  }, []);
+
+  if (showNoData) {
+    return <NoContent />;
+  }
+
   return (
     <div className="grid ai-center jc-center gs32 md:fd-column mt128">
       <div id="wrap">

@@ -34,8 +34,8 @@ export default function RuleItem(props: PropsT): JSX.Element {
             <h3>{rule.title}</h3>
           </Link>
           <TagList>
-            {rule.tags.map((item: string) => (
-              <TagLink path={`/tag/${item}`} name={item} />
+            {rule.tags.map((item: string, index: number) => (
+              <TagLink path={`/tag/${item}`} name={item} key={index} />
             ))}
           </TagList>
         </div>

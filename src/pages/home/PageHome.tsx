@@ -17,8 +17,6 @@ const PageHome = () => {
     dispatch(loadRules());
     dispatch(loadSnippets());
   }, []);
-  
-  console.log(process.env.REACT_APP_NOT_SECRET_CODE);
 
   return (
     <>
