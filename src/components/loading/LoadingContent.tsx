@@ -6,7 +6,7 @@ export default function LoadingContent(): JSX.Element {
     <div className="grid ai-center jc-center gs32 md:fd-column mt128">
       <div id="wrap">
         <div className="item">
-          <div className="spinner"/>
+          <div className="spinner" />
           <h5>
             Loading<span className="dot">.</span>
           </h5>
