@@ -4,18 +4,23 @@ import {Database} from 'firebase-firestore-lite';
 const getDatabase = () => {
   const auth = new Auth({apiKey: process.env.REACT_APP_FIREBASE_API_KEY});
 
-  return new Database({projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || '', auth});
-}
+  return new Database({
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || '',
+    auth,
+  });
+};
 
 const getDatabaseEmulator = () => {
   return new Database({
     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || '',
     host: 'localhost:8080',
-    ssl: false
+    ssl: false,
   });
-}
+};
 const useFirebase = (): Database => {
-  return (process.env.REACT_APP_ENV === 'development') ? getDatabaseEmulator() : getDatabase();
+  return process.env.REACT_APP_ENV === 'development'
+    ? getDatabaseEmulator()
+    : getDatabase();
 };
 
 export default useFirebase;
