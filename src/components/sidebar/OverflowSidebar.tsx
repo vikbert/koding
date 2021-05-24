@@ -68,7 +68,7 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
                   <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
                     Public
                   </li>
-                  <LinkWithIcon path={'/'} title={'Top 20'}>
+                  <LinkWithIcon path={'/'} title={'Top'}>
                     <span
                       className="iconify"
                       data-icon="fluent:align-top-24-filled"

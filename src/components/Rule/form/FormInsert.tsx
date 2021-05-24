@@ -4,7 +4,7 @@ import './formInsert.css';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import {nanoid} from 'nanoid';
-import {loadRules, addRule} from '../ruleWidget';
+import {addRule} from '../ruleWidget';
 import type {Snippet} from '../../../types/Snippet';
 import type {Rule} from '../../../types/Rule';
 import {addSnippet} from '../../snippet/snippetAction';
@@ -138,7 +138,7 @@ export default function FormInsert(): JSX.Element {
   }
 
   React.useEffect(() => {
-    dispatch(loadRules());
+    // dispatch(loadRules());
   }, []);
 
   return (

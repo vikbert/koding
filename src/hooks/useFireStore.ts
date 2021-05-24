@@ -1,6 +1,7 @@
 import Auth from 'firebase-auth-lite';
 import {Database} from 'firebase-firestore-lite';
 
+export const MAX_LIST_ITEMS = 50;
 const getDatabase = () => {
   const auth = new Auth({apiKey: process.env.REACT_APP_FIREBASE_API_KEY});
 
@@ -17,6 +18,7 @@ const getDatabaseEmulator = () => {
     ssl: false,
   });
 };
+
 const useFireStore = (): Database => {
   return process.env.REACT_APP_ENV === 'prod'
     ? getDatabase()

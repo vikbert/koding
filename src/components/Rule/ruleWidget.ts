@@ -1,19 +1,22 @@
 import type {Rule} from '../../types/Rule';
 import {Reference} from 'firebase-firestore-lite';
 import RuleReference, {COLLECTION_RULES} from '../../http/RuleReference';
-import {List} from 'firebase-firestore-lite/dist/List';
 import {setError, unsetError} from '../error/errorWidget';
+import {FirebaseDocument} from 'firebase-firestore-lite/dist/Document';
+import {Document} from 'firebase-firestore-lite/dist/Document';
 
 export const RULE_ADDED = 'rule.rule_added';
 export const RULE_FETCHED = 'rule.rule_fetched';
 export const RULE_DELETED = 'rule.rule_deleted';
 export const RULE_UPDATED = 'rule.rule_updated';
 export const RULES_RECEIVED = 'rule.rules_received';
+export const MORE_RULES_RECEIVED = 'rule.more_rules_received';
 export const SHOW_RULES = 'rule.show_wrapper';
 export const HIDE_RULES = 'rule.hide_wrapper';
 export const SHOW_POPUP = 'rule.show_popup';
 export const HIDE_POPUP = 'rule.hide_popup';
 export const TARGET_CLEANUP = 'rule.target_cleanup';
+export const LAST_DOCUMENT_MARKED = 'rule.last_document_marked';
 
 export const showRules = () => ({
   type: SHOW_RULES,
@@ -56,12 +59,35 @@ export const rulesReceived = (rules: any) => ({
   rules,
 });
 
+export const moreRulesReceived = (rules: any) => ({
+  type: MORE_RULES_RECEIVED,
+  rules,
+});
+
+export const lastDocumentMarked = (rule: FirebaseDocument) => ({
+  type: LAST_DOCUMENT_MARKED,
+  rule,
+});
+
 export const loadRules = () => {
   return function (dispatch: any) {
     const ruleRef = new RuleReference();
 
-    return ruleRef.list().then((list: List) => {
-      dispatch(rulesReceived(list.documents));
+    return ruleRef.list().then((documents: any) => {
+      dispatch(rulesReceived(documents));
+      dispatch(lastDocumentMarked(documents.slice(-1).pop()));
+    });
+  };
+};
+
+export const loadMoreRules = (rule: Document, limit: number) => {
+  console.log('🔥', rule);
+  return function (dispatch: any) {
+    const ruleRef = new RuleReference();
+
+    return ruleRef.loadMore(rule, limit).then((documents: any) => {
+      dispatch(moreRulesReceived(documents));
+      dispatch(lastDocumentMarked(documents.slice(-1).pop()));
     });
   };
 };
@@ -120,6 +146,7 @@ export const ruleState = {
   showWrapper: false,
   showPopup: false,
   rules: [],
+  lastDocument: null,
   targetRule: null,
 };
 
@@ -152,6 +179,9 @@ export const ruleReducer = (state = ruleState, action: any) => {
     case RULE_FETCHED:
       return {...state, targetRule: action.rule};
 
+    case LAST_DOCUMENT_MARKED:
+      return {...state, lastDocument: action.rule};
+
     case RULES_RECEIVED:
       const enriched = action.rules.map((rule: any) => {
         return {
@@ -162,6 +192,17 @@ export const ruleReducer = (state = ruleState, action: any) => {
       });
 
       return {...state, rules: enriched};
+
+    case MORE_RULES_RECEIVED:
+      const enrichedRules = action.rules.map((rule: any) => {
+        return {
+          ...rule,
+          path: rule.__meta__.path,
+          documentId: rule.__meta__.id,
+        };
+      });
+
+      return {...state, rules: [...state.rules, ...enrichedRules]};
 
     case SHOW_RULES:
       return {...state, showWrapper: true};
