@@ -1,7 +1,7 @@
 import {Database, Reference} from 'firebase-firestore-lite';
 import {List} from 'firebase-firestore-lite/dist/List';
 import {Tag} from '../types/Tag';
-import useFireStore from "../hooks/useFireStore";
+import useFireStore from '../hooks/useFireStore';
 
 const COLLECTION_SNIPPET = 'KODING_TAGS';
 

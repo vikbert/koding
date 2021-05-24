@@ -1,7 +1,7 @@
 import {Database, Reference} from 'firebase-firestore-lite';
 import {List} from 'firebase-firestore-lite/dist/List';
 import {Rule} from '../types/Rule';
-import useFireStore from "../hooks/useFireStore";
+import useFireStore from '../hooks/useFireStore';
 
 export const COLLECTION_RULES = 'KODING_RULES';
 

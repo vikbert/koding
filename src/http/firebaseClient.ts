@@ -1,5 +1,5 @@
 import {Snippet} from '../types/Snippet';
-import useFireStore from "../hooks/useFireStore";
+import useFireStore from '../hooks/useFireStore';
 
 export const insertSnippet = async (snippet: Snippet) => {
   const db = useFireStore();

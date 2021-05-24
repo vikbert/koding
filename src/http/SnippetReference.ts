@@ -1,7 +1,7 @@
 import {Database, Reference} from 'firebase-firestore-lite';
 import {List} from 'firebase-firestore-lite/dist/List';
 import {Snippet} from '../types/Snippet';
-import useFireStore from "../hooks/useFireStore";
+import useFireStore from '../hooks/useFireStore';
 
 const COLLECTION_SNIPPET = 'KODING_SNIPPETS';
 
