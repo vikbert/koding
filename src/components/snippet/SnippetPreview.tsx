@@ -31,7 +31,11 @@ export default function SnippetPreview(props: PropsT): JSX.Element {
   return (
     <>
       <div
-        className={classNames('editor-wrapper', {'list-item': !fullView})}
+        className={classNames(
+          'editor-wrapper',
+          {'list-item': !fullView},
+          {'rule-detail': fullView},
+        )}
         onClick={toggleFullView}
       >
         <BaseEditor code={snippet.body} disabled={false} placeholder={''} />
