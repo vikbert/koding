@@ -9,23 +9,23 @@ type PropsType = {
 
 export default function PreviewWrapper(props: PropsType) {
   const snippetState = useSelector((state: any) => state.reduxSnippet);
-  const target = snippetState.find(
-    (code: Snippet) => code.id === props.snippetId,
-  );
-  const [targetSnippet, setTargetSnippet] = React.useState(target);
 
-  if (!targetSnippet) {
+  const badSnippet = snippetState.find(
+    (snippet: Snippet) => snippet.id === props.snippetId,
+  );
+
+  if (!badSnippet) {
     return null;
   }
 
   const goodSnippet = snippetState.find(
-    (element: Snippet) => element.id === target.suggestion,
+    (element: Snippet) => element.id === badSnippet.suggestion,
   );
 
   // @ts-ignore
   return (
     <>
-      <SnippetPreview snippet={target} autoHeight={true} />
+      <SnippetPreview snippet={badSnippet} autoHeight={true} />
       <SnippetPreview snippet={goodSnippet} autoHeight={true} />
     </>
   );

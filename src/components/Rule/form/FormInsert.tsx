@@ -1,22 +1,22 @@
 import React from 'react';
-import useDocumentTitle from '../../../hooks/useDocumentTitle';
 import {useDispatch} from 'react-redux';
-import {useHistory, Link} from 'react-router-dom';
-import useNotify from '../../../hooks/useToast';
-import {loadRules, addRule} from '../ruleWidget';
-import {nanoid} from 'nanoid';
-import type {Snippet} from '../../../types/Snippet';
-import {addSnippet} from '../../snippet/snippetAction';
-import type {Rule} from '../../../types/Rule';
 import './formInsert.css';
-import useVisibility from '../../../hooks/useVisibility';
 import classNames from 'classnames';
-import FormPreview from './FormPreview';
+import {Link} from 'react-router-dom';
+import {nanoid} from 'nanoid';
+import {loadRules, addRule} from '../ruleWidget';
+import type {Snippet} from '../../../types/Snippet';
+import type {Rule} from '../../../types/Rule';
+import {addSnippet} from '../../snippet/snippetAction';
+import useDocumentTitle from '../../../hooks/useDocumentTitle';
+import useNotify from '../../../hooks/useToast';
+import useVisibility from '../../../hooks/useVisibility';
 import useKeypress from '../../../hooks/useKeyPress';
+import FormPreview from './FormPreview';
 import Bubble from '../../bubble/Bubble';
 import IconEye from '../../icons/IconEye';
-import TagsField from '../../tag/TagsField';
 import {createAndUpdateTag} from '../../tag/tagWidget';
+import TagItem from '../../tag/TagItem';
 
 export default function FormInsert(): JSX.Element {
   const initState = {
@@ -28,25 +28,40 @@ export default function FormInsert(): JSX.Element {
     ruleDescription: '',
   };
 
-  useDocumentTitle('new snippet and convention');
+  useDocumentTitle('New convention with snippets');
 
   const dispatch = useDispatch();
   const {visible, show, hide} = useVisibility();
   const notify = useNotify();
   const [editorState, setEditorState] = React.useState(initState);
-  const history = useHistory();
+  const [tags, setTags] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
 
   useKeypress('Escape', () => {
     hide();
   });
 
+  function handleChangeTags(event: any) {
+    const value = event.target.value;
+    setInputValue(value);
+    const lastChar = value.slice(-1);
+    if (lastChar === ',' && tags.length < 5) {
+      setInputValue('');
+
+      const tag = value.replace(/,/g, '');
+      if (!tags.includes(tag)) {
+        setTags([...tags, tag]);
+      }
+    }
+  }
+
+  function handleRemoveTag(tag: string) {
+    setTags(tags.filter((item: string) => item !== tag));
+  }
+
   React.useEffect(() => {
     dispatch(loadRules());
   }, []);
-
-  function resetEditor() {
-    setEditorState(initState);
-  }
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -108,8 +123,10 @@ export default function FormInsert(): JSX.Element {
     });
 
     dispatch(addRule(rule));
-    resetEditor();
-    notify({message: 'Saving coding convention done!', type: 'success'});
+    notify({message: 'Saving this coding convention done!', type: 'success'});
+    setTimeout(() => {
+      window.location.reload();
+    }, 800);
   }
 
   function handleChangeRule(event: any) {
@@ -304,7 +321,70 @@ export default function FormInsert(): JSX.Element {
               </div>
             </div>
             <div className="ps-relative" id="tag-editor">
-              <TagsField updateTags={(tags) => handleUpdateTags(tags)} />
+              {/*<TagsField updateTags={(tags) => handleUpdateTags(tags)} />*/}
+              <div className="ps-relative">
+                <div className="form-item p0 js-stacks-validation js-tag-editor-container">
+                  <div className="grid ai-center jc-space-between">
+                    <label
+                      htmlFor="tageditor-replacing-tagnames--input"
+                      className="s-label mb4 d-block grid--cell fl1"
+                    >
+                      Tags
+                      <div className="s-description mt2">
+                        Max. 5 tags that are separated by a comma
+                      </div>
+                    </label>
+                  </div>
+                  <div className="ps-relative">
+                    <div>
+                      <input
+                        id="tagnames"
+                        className="s-input box-border js-post-tags-field"
+                        name="tagnames"
+                        type="text"
+                        size={60}
+                        tabIndex={103}
+                        placeholder="e.g. (regex android node.js)"
+                        style={{display: 'none'}}
+                      />
+                      <div
+                        className="js-tag-editor tag-editor multi-line s-input"
+                        style={{
+                          padding: '0px 9.1px',
+                          boxSizing: 'border-box',
+                          marginTop: '0px',
+                          marginBottom: '0px',
+                          width: '100%',
+                        }}
+                      >
+                        <span>
+                          {tags.map((item: string, index: number) => (
+                            <TagItem
+                              key={index}
+                              name={item}
+                              editable={true}
+                              onClickCallback={() => handleRemoveTag(item)}
+                            />
+                          ))}
+                        </span>
+                        <input
+                          type="text"
+                          disabled={tags.length === 5}
+                          onChange={handleChangeTags}
+                          value={inputValue}
+                          autoComplete="off"
+                          className="s-input js-tageditor-replacing"
+                          style={{
+                            width: tags.length === 0 ? '100%' : '80px',
+                            minWidth: 'inherit',
+                          }}
+                        />
+                        <span />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               id="question-answer-section"

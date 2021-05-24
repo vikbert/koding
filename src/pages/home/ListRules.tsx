@@ -1,14 +1,14 @@
 import React from 'react';
 import RuleItem from '../../components/Rule/RuleItem';
 import type {Rule} from '../../types/Rule';
-import NoContent from '../../components/error/NoContent';
+import LoadingContent from '../../components/loading/LoadingContent';
 
 type PropsType = {
   rules: Rule[];
 };
 export default function ListRules({rules}: PropsType): JSX.Element {
   if (rules.length === 0) {
-    return <NoContent info="Would you like to add a new one?" />;
+    return <LoadingContent />;
   }
 
   return (

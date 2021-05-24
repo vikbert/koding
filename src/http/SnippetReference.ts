@@ -18,6 +18,14 @@ export default class SnippetReference {
     return await this.ref.list();
   }
 
+  async getBySnippetId(snippetId: string): Promise<any> {
+    const query = this.ref.query({
+      where: [['id', '==', snippetId]],
+    });
+
+    return await query.run();
+  }
+
   async add(snippet: Snippet): Promise<Reference> {
     const ref = await this.ref.add(snippet);
     if (ref instanceof Reference) {

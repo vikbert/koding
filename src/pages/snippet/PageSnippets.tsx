@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {loadSnippets} from '../../components/snippet/snippetAction';
 import ListSnippets from '../../components/snippet/ListSnippets';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
-import NoContent from '../../components/error/NoContent';
+import LoadingContent from "../../components/loading/LoadingContent";
 
 export default function PageSnippets(): null | JSX.Element {
   const reduxSnippet = useSelector((state: any) => state.reduxSnippet);
@@ -20,7 +20,7 @@ export default function PageSnippets(): null | JSX.Element {
           <h1 className={'grid-cell fl1'}>Snippets</h1>
         </div>
         {reduxSnippet.length === 0 ? (
-          <NoContent />
+          <LoadingContent />
         ) : (
           <ListSnippets snippets={reduxSnippet} />
         )}

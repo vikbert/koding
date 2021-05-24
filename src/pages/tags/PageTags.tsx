@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {loadTags} from '../../components/tag/tagWidget';
 import TagList from '../../components/tag/TagList';
 import TagLink from '../../components/tag/TagLink';
+import LoadingContent from "../../components/loading/LoadingContent";
 
 type PropsT = {
   name?: string;
@@ -27,7 +28,7 @@ export default function PageTags(props: PropsT): JSX.Element {
         <div className="grid">
           <div className="grid--cell12">
             {reduxTag.length === 0 ? (
-              <NoContent />
+              <LoadingContent/>
             ) : (
               <TagList>
                 {reduxTag.map((item: string) => (

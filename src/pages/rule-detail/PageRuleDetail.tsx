@@ -1,12 +1,9 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
 import VotingRule from '../../components/voting/VotingRule';
 import TagList from '../../components/tag/TagList';
 import Bubble from '../../components/bubble/Bubble';
-import NotFound from '../../components/error/NotFound';
-import {loadSnippets} from '../../components/snippet/snippetAction';
 import {fetchRule, cleanUpTargetRule} from '../../components/Rule/ruleWidget';
 import classNames from 'classnames';
 import useVisibility from '../../hooks/useVisibility';
@@ -14,21 +11,17 @@ import FormUpdate from '../../components/Rule/form/FormUpdate';
 import PreviewWrapper from '../../components/snippet/PreviewWrapper';
 import AsideInformation from '../../components/aside/AsideInformation';
 import TagItem from '../../components/tag/TagItem';
+import LoadingContent from '../../components/loading/LoadingContent';
 
 export default function PageRuleDetail(): JSX.Element | null {
   const {documentId} = useParams<{documentId?: string}>();
   const {visible, show, hide} = useVisibility();
   const dispatch = useDispatch();
   const targetRule = useSelector((state: any) => state.reduxRule.targetRule);
-  const errorRedux = useSelector((state: any) => state.reduxError);
 
   if (!documentId) {
     return null;
   }
-
-  React.useEffect(() => {
-    dispatch(loadSnippets());
-  }, []);
 
   React.useEffect(() => {
     try {
@@ -40,10 +33,8 @@ export default function PageRuleDetail(): JSX.Element | null {
     };
   }, [documentId]);
 
-  React.useEffect(() => {}, [documentId, targetRule]);
-
-  if (errorRedux.hasError || undefined === targetRule) {
-    return <NotFound />;
+  if (!targetRule) {
+    return <LoadingContent />;
   }
 
   return (
@@ -77,8 +68,8 @@ export default function PageRuleDetail(): JSX.Element | null {
                 <a className="s-btn pt0 pb16 fc-light" onClick={() => show()}>
                   {'✐ Edit the convention'}
                 </a>
-                {targetRule.snippets.map((id: string) => (
-                  <PreviewWrapper snippetId={id} key={id} />
+                {targetRule.snippets.map((snippetId: string) => (
+                  <PreviewWrapper snippetId={snippetId} key={snippetId} />
                 ))}
 
                 <div className="mt24 mb12">

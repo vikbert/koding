@@ -12,7 +12,7 @@ export default function TagList(props: PropsT): JSX.Element | null {
   return (
     <>
       <div className="post-taglist grid gs4 gsy fd-column">
-        <div className="grid ps-relative">{props.children}</div>
+        <div className="ps-relative">{props.children}</div>
       </div>
     </>
   );
