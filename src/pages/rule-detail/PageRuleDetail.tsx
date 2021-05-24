@@ -63,7 +63,7 @@ export default function PageRuleDetail(): JSX.Element | null {
                   title={targetRule.title}
                   description={targetRule.description}
                 />
-                <a className="s-btn pt0 pb16 fc-light" onClick={() => show()}>
+                <a className="s-btn pt6 pb6 fc-light" onClick={() => show()}>
                   {'✐ Edit the convention'}
                 </a>
                 {targetRule.snippets.map((snippetId: string) => (

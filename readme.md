@@ -34,12 +34,8 @@ pnpm run build
 ```
 
 ## Todos
-
-- close preview popup, if form is submitted
-- reset the tag field, if form is submitted
-- remove the edit link in rule preview popup
 - auto-suggestion white insert the tags
-- tag list => responsive
+- load more to load all documents
 
 ## bundle size change log
 
