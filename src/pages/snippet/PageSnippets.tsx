@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {loadSnippets} from '../../components/snippet/snippetAction';
 import ListSnippets from '../../components/snippet/ListSnippets';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
-import LoadingContent from "../../components/loading/LoadingContent";
+import LoadingContent from '../../components/loading/LoadingContent';
 
 export default function PageSnippets(): null | JSX.Element {
   const reduxSnippet = useSelector((state: any) => state.reduxSnippet);

@@ -14,7 +14,7 @@ import TagItem from '../../components/tag/TagItem';
 import LoadingContent from '../../components/loading/LoadingContent';
 
 export default function PageRuleDetail(): JSX.Element | null {
-  const {documentId} = useParams<{documentId?: string}>();
+  const {documentId} = useParams<{ documentId?: string }>();
   const {visible, show, hide} = useVisibility();
   const dispatch = useDispatch();
   const targetRule = useSelector((state: any) => state.reduxRule.targetRule);
@@ -26,66 +26,66 @@ export default function PageRuleDetail(): JSX.Element | null {
   React.useEffect(() => {
     try {
       dispatch(fetchRule(documentId));
-    } catch (error) {}
+    } catch (error) {
+    }
 
     return function () {
       dispatch(cleanUpTargetRule());
     };
   }, [documentId]);
 
-  if (!targetRule) {
-    return <LoadingContent />;
-  }
-
   return (
-    targetRule && (
       <>
         <div id="mainbar">
-          <div className="question" id="question">
-            <div id="question-header" className="grid jc-end">
-              <Link to="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
-                {'✚ Add another coding convention'}
-              </Link>
-            </div>
-            <div className="post-layout rule-detail">
-              <div className="votecell post-layout--left">
-                <VotingRule />
-              </div>
-              <div className="postcell post-layout--right">
-                {targetRule.tags.map((tagName: string) => (
-                  <Link to={`/tag/${tagName}`}>
-                    <TagItem
-                      name={tagName}
-                      onClickCallback={() => null}
-                      editable={false}
-                    />
+          {!targetRule ? (
+              <LoadingContent/>
+          ) : (
+              <div className="question" id="question">
+                <div id="question-header" className="grid jc-end">
+                  <Link to="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
+                    {'✚ Add another coding convention'}
                   </Link>
-                ))}
-                <Bubble
-                  title={targetRule.title}
-                  description={targetRule.description}
-                />
-                <a className="s-btn pt0 pb16 fc-light" onClick={() => show()}>
-                  {'✐ Edit the convention'}
-                </a>
-                {targetRule.snippets.map((snippetId: string) => (
-                  <PreviewWrapper snippetId={snippetId} key={snippetId} />
-                ))}
-
-                <div className="mt24 mb12">
-                  <TagList />
                 </div>
-              </div>
-              <div className={classNames('overlay', {open: visible})}>
-                <div className="popup">
-                  <div className="title">Update the current convention:</div>
-                  <div className="content">
-                    <FormUpdate rule={targetRule} closePopup={() => hide()} />
+                <div className="post-layout rule-detail">
+                  <div className="votecell post-layout--left">
+                    <VotingRule/>
+                  </div>
+                  <div className="postcell post-layout--right">
+                    {targetRule.tags.map((tagName: string) => (
+                        <Link to={`/tag/${tagName}`}>
+                          <TagItem
+                              name={tagName}
+                              onClickCallback={() => null}
+                              editable={false}
+                          />
+                        </Link>
+                    ))}
+                    <Bubble
+                        title={targetRule.title}
+                        description={targetRule.description}
+                    />
+                    <a className="s-btn pt0 pb16 fc-light" onClick={() => show()}>
+                      {'✐ Edit the convention'}
+                    </a>
+                    {targetRule.snippets.map((snippetId: string) => (
+                        <PreviewWrapper snippetId={snippetId} key={snippetId}/>
+                    ))}
+
+                    <div className="mt24 mb12">
+                      <TagList/>
+                    </div>
+                  </div>
+                  <div className={classNames('overlay', {open: visible})}>
+                    <div className="popup">
+                      <div className="title">Update the current convention:</div>
+                      <div className="content">
+                        <FormUpdate rule={targetRule} closePopup={() => hide()}/>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+          )}
         </div>
         <div id="sidebar">
           <AsideInformation title={'Toggle code preview view'}>
@@ -93,6 +93,5 @@ export default function PageRuleDetail(): JSX.Element | null {
           </AsideInformation>
         </div>
       </>
-    )
   );
 }

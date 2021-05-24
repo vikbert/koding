@@ -1,32 +1,23 @@
 import React from 'react';
-import type {Snippet} from '../../types/Snippet';
-import {useSelector} from 'react-redux';
 import SnippetPreview from './SnippetPreview';
+import useSnippetResolver from '../../hooks/useSnippetResolver';
 
 type PropsType = {
   snippetId: string;
 };
 
-export default function PreviewWrapper(props: PropsType) {
-  const snippetState = useSelector((state: any) => state.reduxSnippet);
+export default function PreviewWrapper({snippetId}: PropsType) {
+  const {bad, good} = useSnippetResolver(snippetId);
 
-  const badSnippet = snippetState.find(
-    (snippet: Snippet) => snippet.id === props.snippetId,
-  );
-
-  if (!badSnippet) {
+  if (!bad || !good) {
     return null;
   }
-
-  const goodSnippet = snippetState.find(
-    (element: Snippet) => element.id === badSnippet.suggestion,
-  );
 
   // @ts-ignore
   return (
     <>
-      <SnippetPreview snippet={badSnippet} autoHeight={true} />
-      <SnippetPreview snippet={goodSnippet} autoHeight={true} />
+      <SnippetPreview snippet={bad} autoHeight={true} />
+      <SnippetPreview snippet={good} autoHeight={true} />
     </>
   );
 }

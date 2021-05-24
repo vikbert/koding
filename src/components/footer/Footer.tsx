@@ -25,23 +25,53 @@ export default function Footer(): JSX.Element {
               className="site-footer--col site-footer--col__visible fs-fine"
               data-name="default"
             >
-              <h5 className="-title">Koding</h5>
-              <p>
-                This website uses the stylesheet from{' '}
-                <a href="https://stackoverflow.com/">StackOverflow</a> and was
-                built in a Coding Dojo for self-training and self-study.
-              </p>
+              <h5 className="-title">Technologies</h5>
+              <div
+                style={{
+                  fontSize: '40px',
+                  display: 'flex',
+                  justifyContent: 'space-start',
+                  gap: '30px',
+                }}
+              >
+                <span
+                  className="iconify"
+                  data-icon="vscode-icons:file-type-reacttemplate"
+                  data-inline="false"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="logos:redux"
+                  data-inline="false"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="vscode-icons:file-type-firebase"
+                  data-inline="false"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="logos:prismic-icon"
+                  data-inline="false"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="logos:react-router"
+                  data-inline="false"
+                ></span>
+                <span
+                  className="iconify"
+                  data-icon="vscode-icons:file-type-light-prettier"
+                  data-inline="false"
+                ></span>
+              </div>
             </div>
             <div className="site-footer--copyright fs-fine">
               <h5 className="-title">Web Design</h5>
               <p>
-                Site Design © 2021{' '}
-                <a href="https://stackexchange.com/" target={'_blank'}>
-                  Stack Exchange Inc
-                </a>
-                ; Publicly available user contributions licensed under cc by-sa.
-                Stack Overflow for Teams user contributions licensed under Teams
-                user terms.
+                This website borrows the ideas from{' '}
+                <a href="https://stackoverflow.com/">StackOverflow</a> and was
+                built in a Coding Dojo for self-training and self-study.
               </p>
             </div>
           </nav>
