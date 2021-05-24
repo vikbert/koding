@@ -8,7 +8,7 @@ export default function LoadingContent(): JSX.Element {
   React.useEffect(() => {
     setTimeout(() => {
       setShowNoData(true);
-    }, 3000);
+    }, 1500);
   }, []);
 
   if (showNoData) {

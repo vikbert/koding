@@ -18,9 +18,9 @@ const getDatabaseEmulator = () => {
   });
 };
 const useFirebase = (): Database => {
-  return process.env.REACT_APP_ENV === 'development'
-    ? getDatabaseEmulator()
-    : getDatabase();
+  return process.env.REACT_APP_ENV === 'prod'
+    ? getDatabase()
+    : getDatabaseEmulator();
 };
 
 export default useFirebase;

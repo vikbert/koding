@@ -51,7 +51,7 @@ export default function PageRuleDetail(): JSX.Element | null {
               </div>
               <div className="postcell post-layout--right">
                 {targetRule.tags.map((tagName: string) => (
-                  <Link to={`/tag/${tagName}`}>
+                  <Link to={`/tag/${tagName}`} key={tagName}>
                     <TagItem
                       name={tagName}
                       onClickCallback={() => null}
