@@ -4,19 +4,19 @@ import SnippetPreview from '../../snippet/SnippetPreview';
 
 type PropsT = {
   rule: string;
-  ruleDescription?: string;
+  description?: string;
   badSnippet: string;
   goodSnippet: string;
 };
 
 export default function FormPreview(props: PropsT): JSX.Element {
-  const {rule, badSnippet, goodSnippet, ruleDescription = ''} = props;
+  const {rule, badSnippet, goodSnippet, description = ''} = props;
 
   return (
     <>
       <div className="post-layout">
         <div className="postcell post-layout--right">
-          <Bubble title={rule} description={ruleDescription} />
+          <Bubble title={rule} description={description} />
           <SnippetPreview
             snippet={{id: '', body: badSnippet, isBad: true}}
             editable={false}

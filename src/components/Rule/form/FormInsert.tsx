@@ -18,102 +18,104 @@ import IconEye from '../../icons/IconEye';
 import {createAndUpdateTag} from '../../tag/tagWidget';
 import TagItem from '../../tag/TagItem';
 
+const initState = {
+  rule: '',
+  description: '',
+  bad: '',
+  good: '',
+};
 export default function FormInsert(): JSX.Element {
-  const initState = {
-    id: nanoid(),
-    bad: '',
-    good: '',
-    rule: '',
-    tags: [''],
-    ruleDescription: '',
-  };
-
   useDocumentTitle('New convention with snippets');
 
   const dispatch = useDispatch();
-  const {visible, show, hide} = useVisibility();
   const notify = useNotify();
-  const [editorState, setEditorState] = React.useState(initState);
-  const [tags, setTags] = React.useState<string[]>([]);
-  const [inputValue, setInputValue] = React.useState('');
+  const {visible, show, hide} = useVisibility();
+  const [formData, setFormData] = React.useState(initState);
+  const [tagItems, setTagItems] = React.useState<string[]>([]);
+  const [tagInput, setTagInput] = React.useState('');
 
   useKeypress('Escape', () => {
     hide();
   });
 
+  const isLastCharComma = (value: string) => {
+    return value.slice(-1) === ',';
+  };
+
+  const addToTagItems = (value: string) => {
+    const newTag = value.trim().replace(/,/g, '');
+    if (!tagItems.includes(newTag)) {
+      setTagItems([...tagItems, newTag]);
+    }
+  };
+
   function handleChangeTags(event: any) {
     const value = event.target.value;
-    setInputValue(value);
-    const lastChar = value.slice(-1);
-    if (lastChar === ',' && tags.length < 5) {
-      setInputValue('');
+    setTagInput(value);
 
-      const tag = value.replace(/,/g, '');
-      if (!tags.includes(tag)) {
-        setTags([...tags, tag]);
-      }
+    if (isLastCharComma(value)) {
+      addToTagItems(value);
+      setTagInput('');
     }
   }
 
   function handleRemoveTag(tag: string) {
-    setTags(tags.filter((item: string) => item !== tag));
+    setTagItems(tagItems.filter((item: string) => item !== tag));
   }
-
-  React.useEffect(() => {
-    dispatch(loadRules());
-  }, []);
 
   function handleSubmit(event: any) {
     event.preventDefault();
 
     if (
-      editorState.bad.length === 0 ||
-      editorState.good.length === 0 ||
-      editorState.rule.length === 0
+      formData.rule.length === 0 ||
+      formData.bad.length === 0 ||
+      formData.good.length === 0 ||
+      tagItems.length === 0
     ) {
       notify({
         type: 'error',
-        message: 'Both Code snippets should not be empty!',
+        message: 'title, tags and code snippets should not be empty!',
       });
       return;
     }
 
     const goodSnippet: Snippet = {
       id: nanoid(),
-      body: editorState.good,
+      body: formData.good,
       isBad: false,
       lang: 'php',
       path: '',
       suggestion: '',
       rules: [],
     };
+    dispatch(addSnippet(goodSnippet));
 
     const badSnippet: Snippet = {
-      id: initState.id,
-      body: editorState.bad,
+      id: nanoid(),
+      body: formData.bad,
       isBad: true,
       lang: 'php',
       suggestion: goodSnippet.id,
       path: '',
       rules: [],
     };
+    dispatch(addSnippet(badSnippet));
 
     const rule: Rule = {
       id: nanoid(),
-      title: editorState.rule,
-      description: editorState.ruleDescription,
-      snippets: [initState.id],
-      tags: editorState.tags,
+      title: formData.rule,
+      description: formData.description,
+      snippets: [badSnippet.id],
+      tags: tagItems,
       votes: 0,
       views: 0,
       isPublic: true,
       editors: [],
       createdAt: +new Date(),
     };
+    dispatch(addRule(rule));
 
-    dispatch(addSnippet(goodSnippet));
-    dispatch(addSnippet(badSnippet));
-    editorState.tags.map((tagString: string) => {
+    tagItems.map((tagString: string) => {
       dispatch(
         createAndUpdateTag({
           name: tagString,
@@ -122,57 +124,22 @@ export default function FormInsert(): JSX.Element {
       );
     });
 
-    dispatch(addRule(rule));
     notify({message: 'Saving this coding convention done!', type: 'success'});
     setTimeout(() => {
       window.location.reload();
     }, 800);
   }
 
-  function handleChangeRule(event: any) {
-    setEditorState({
-      ...editorState,
-      rule: event.target.value,
+  function handleChangeFormData(event: any, name: string) {
+    setFormData({
+      ...formData,
+      [name]: event.target.value,
     });
   }
 
-  function handleChangeRuleDescription(event: any) {
-    setEditorState({
-      ...editorState,
-      ruleDescription: event.target.value,
-    });
-  }
-
-  function handleChangeBadSnippet(event: any) {
-    const codeWithoutTab = event.target.value.replace(/\t/g, '');
-    setEditorState({
-      ...editorState,
-      bad: codeWithoutTab,
-    });
-  }
-
-  function handleChangeGoodSnippet(event: any) {
-    const codeWithoutTab = event.target.value.replace(/\t/g, '');
-    setEditorState({
-      ...editorState,
-      good: codeWithoutTab,
-    });
-  }
-
-  function handleUpdateTags(tags: any) {
-    setEditorState({
-      ...editorState,
-      tags: tags,
-    });
-  }
-
-  function handleOpenPreview() {
-    show();
-  }
-
-  function handleClosePreview() {
-    hide();
-  }
+  React.useEffect(() => {
+    dispatch(loadRules());
+  }, []);
 
   return (
     <div className="grid--cell fl1 wmn0">
@@ -181,16 +148,16 @@ export default function FormInsert(): JSX.Element {
           <div className="title">Coding convention preview</div>
           <div className="content">
             <FormPreview
-              rule={editorState.rule}
-              ruleDescription={editorState.ruleDescription}
-              badSnippet={editorState.bad}
-              goodSnippet={editorState.good}
+              rule={formData.rule}
+              description={formData.description}
+              badSnippet={formData.bad}
+              goodSnippet={formData.good}
             />
           </div>
           <div className="action mb16 mr12">
             <button
               className="grid--cell s-btn s-btn__link"
-              onClick={handleClosePreview}
+              onClick={() => hide()}
             >
               Close the preview
             </button>
@@ -224,15 +191,14 @@ export default function FormInsert(): JSX.Element {
                 </label>
                 <div className="fl1 ps-relative">
                   <input
-                    id="title"
-                    name="title"
+                    name="rule"
                     type="text"
                     maxLength={300}
                     placeholder="e.g. Use always constant instead of magic number and string"
                     className="s-input js-post-title-field"
                     autoComplete="off"
-                    value={editorState.rule}
-                    onChange={handleChangeRule}
+                    value={formData.rule}
+                    onChange={(event) => handleChangeFormData(event, 'rule')}
                   />
                 </div>
               </div>
@@ -257,20 +223,22 @@ export default function FormInsert(): JSX.Element {
                     className="s-input js-post-title-field"
                     autoComplete="off"
                     rows={10}
-                    value={editorState.ruleDescription}
-                    onChange={handleChangeRuleDescription}
+                    value={formData.description}
+                    onChange={(event: any) =>
+                      handleChangeFormData(event, 'description')
+                    }
                   />
                 </div>
               </div>
             </div>
 
-            {editorState.rule.length > 0 && (
+            {formData.rule.length > 0 && (
               <div className="ps-relative mb16">
                 <div className="grid fl1 fd-column js-stacks-validation">
                   <div className="fl1 ps-relative">
                     <Bubble
-                      title={editorState.rule}
-                      description={editorState.ruleDescription}
+                      title={formData.rule}
+                      description={formData.description}
                     />
                   </div>
                 </div>
@@ -292,8 +260,8 @@ export default function FormInsert(): JSX.Element {
                   className="snippet"
                   name={'bad'}
                   placeholder={'Bad snippet'}
-                  value={editorState.bad}
-                  onChange={handleChangeBadSnippet}
+                  value={formData.bad}
+                  onChange={(event: any) => handleChangeFormData(event, 'bad')}
                 />
               </div>
               <div className="mt24">
@@ -307,8 +275,8 @@ export default function FormInsert(): JSX.Element {
                   className="snippet"
                   name={'good'}
                   placeholder={'Good snippet'}
-                  value={editorState.good}
-                  onChange={handleChangeGoodSnippet}
+                  value={formData.good}
+                  onChange={(event: any) => handleChangeFormData(event, 'good')}
                 />
               </div>
               <div className="edit-block">
@@ -321,7 +289,6 @@ export default function FormInsert(): JSX.Element {
               </div>
             </div>
             <div className="ps-relative" id="tag-editor">
-              {/*<TagsField updateTags={(tags) => handleUpdateTags(tags)} />*/}
               <div className="ps-relative">
                 <div className="form-item p0 js-stacks-validation js-tag-editor-container">
                   <div className="grid ai-center jc-space-between">
@@ -331,20 +298,18 @@ export default function FormInsert(): JSX.Element {
                     >
                       Tags
                       <div className="s-description mt2">
-                        Max. 5 tags that are separated by a comma
+                        Max. 5 tagItems that are separated by a comma
                       </div>
                     </label>
                   </div>
                   <div className="ps-relative">
                     <div>
                       <input
-                        id="tagnames"
-                        className="s-input box-border js-post-tags-field"
-                        name="tagnames"
+                        className="s-input box-border js-post-tagItems-field"
+                        name="tag-names"
                         type="text"
                         size={60}
                         tabIndex={103}
-                        placeholder="e.g. (regex android node.js)"
                         style={{display: 'none'}}
                       />
                       <div
@@ -358,24 +323,24 @@ export default function FormInsert(): JSX.Element {
                         }}
                       >
                         <span>
-                          {tags.map((item: string, index: number) => (
+                          {tagItems.map((tagName: string, index: number) => (
                             <TagItem
                               key={index}
-                              name={item}
+                              name={tagName}
                               editable={true}
-                              onClickCallback={() => handleRemoveTag(item)}
+                              onClickCallback={() => handleRemoveTag(tagName)}
                             />
                           ))}
                         </span>
                         <input
                           type="text"
-                          disabled={tags.length === 5}
+                          disabled={tagItems.length === 5}
                           onChange={handleChangeTags}
-                          value={inputValue}
+                          value={tagInput}
                           autoComplete="off"
                           className="s-input js-tageditor-replacing"
                           style={{
-                            width: tags.length === 0 ? '100%' : '80px',
+                            width: tagItems.length === 0 ? '100%' : '80px',
                             minWidth: 'inherit',
                           }}
                         />
@@ -405,7 +370,6 @@ export default function FormInsert(): JSX.Element {
                             cols={92}
                             rows={15}
                             tabIndex={103}
-                            data-min-length
                             defaultValue={''}
                           />
                         </div>
@@ -422,11 +386,11 @@ export default function FormInsert(): JSX.Element {
           <Link to={'/'} className="grid--cell s-btn s-btn__muted">
             Cancel
           </Link>
-          {editorState.rule.length > 0 && editorState.bad.length > 0 && (
+          {formData.rule.length > 0 && formData.bad.length > 0 && (
             <button
               className="grid--cell s-btn s-btn__outlined s-btn__icon"
               type="button"
-              onClick={handleOpenPreview}
+              onClick={() => show()}
             >
               <IconEye />
               {' Preview'}
