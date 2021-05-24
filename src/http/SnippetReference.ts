@@ -1,7 +1,7 @@
 import {Database, Reference} from 'firebase-firestore-lite';
-import useFirebase from '../hooks/useFirebase';
 import {List} from 'firebase-firestore-lite/dist/List';
 import {Snippet} from '../types/Snippet';
+import useFireStore from "../hooks/useFireStore";
 
 const COLLECTION_SNIPPET = 'KODING_SNIPPETS';
 
@@ -10,7 +10,7 @@ export default class SnippetReference {
   ref: Reference;
 
   constructor(path?: string) {
-    this.db = useFirebase();
+    this.db = useFireStore();
     this.ref = this.db.ref(path || COLLECTION_SNIPPET);
   }
 
