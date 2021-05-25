@@ -127,14 +127,14 @@ export const updateRule = (rule: Rule) => {
 
   return function (dispatch: any) {
     return ruleRef
-        .update(rule)
-        .then(() => {
-          dispatch(ruleUpdated(rule));
-          dispatch(unsetError());
-        })
-        .catch(() => {
-          dispatch(setError('Document can not be updated!'));
-        });
+      .update(rule)
+      .then(() => {
+        dispatch(ruleUpdated(rule));
+        dispatch(unsetError());
+      })
+      .catch(() => {
+        dispatch(setError('Document can not be updated!'));
+      });
   };
 };
 
@@ -143,14 +143,14 @@ export const fetchRule = (documentId: string) => {
 
   return function (dispatch: any) {
     return ruleRef
-        .get()
-        .then((document) => {
-          dispatch(ruleFetched({...document, documentId}));
-          dispatch(unsetError());
-        })
-        .catch(() => {
-          dispatch(setError('Document was not found!'));
-        });
+      .get()
+      .then((document) => {
+        dispatch(ruleFetched({...document, documentId}));
+        dispatch(unsetError());
+      })
+      .catch(() => {
+        dispatch(setError('Document was not found!'));
+      });
   };
 };
 
@@ -172,7 +172,7 @@ const enrichRuleMetaData = (rule: any) => {
   }
 
   return rule;
-}
+};
 
 export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
