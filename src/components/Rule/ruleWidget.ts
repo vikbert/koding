@@ -127,14 +127,14 @@ export const updateRule = (rule: Rule) => {
 
   return function (dispatch: any) {
     return ruleRef
-      .update(rule)
-      .then(() => {
-        dispatch(ruleUpdated(rule));
-        dispatch(unsetError());
-      })
-      .catch(() => {
-        dispatch(setError('Document can not be updated!'));
-      });
+        .update(rule)
+        .then(() => {
+          dispatch(ruleUpdated(rule));
+          dispatch(unsetError());
+        })
+        .catch(() => {
+          dispatch(setError('Document can not be updated!'));
+        });
   };
 };
 
@@ -143,14 +143,14 @@ export const fetchRule = (documentId: string) => {
 
   return function (dispatch: any) {
     return ruleRef
-      .get()
-      .then((document) => {
-        dispatch(ruleFetched({...document, documentId}));
-        dispatch(unsetError());
-      })
-      .catch(() => {
-        dispatch(setError('Document was not found!'));
-      });
+        .get()
+        .then((document) => {
+          dispatch(ruleFetched({...document, documentId}));
+          dispatch(unsetError());
+        })
+        .catch(() => {
+          dispatch(setError('Document was not found!'));
+        });
   };
 };
 
@@ -161,6 +161,18 @@ export const ruleState = {
   lastDocument: null,
   targetRule: null,
 };
+
+const enrichRuleMetaData = (rule: any) => {
+  if (rule.hasOwnProperty('__meta__')) {
+    return {
+      ...rule,
+      path: rule.__meta__.path,
+      documentId: rule.__meta__.id,
+    };
+  }
+
+  return rule;
+}
 
 export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
@@ -189,7 +201,7 @@ export const ruleReducer = (state = ruleState, action: any) => {
       return {...state, rules: reducedRules};
 
     case RULE_FETCHED:
-      return {...state, targetRule: action.rule};
+      return {...state, targetRule: enrichRuleMetaData(action.rule)};
 
     case LAST_DOCUMENT_MARKED:
       return {...state, lastDocument: action.rule};
