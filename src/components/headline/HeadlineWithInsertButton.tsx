@@ -2,9 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 type PropsT = {
-  headline: string,
-}
-export default function HeadlineWithInsertButton({headline}: PropsT): JSX.Element {
+  headline: string;
+};
+
+export default function HeadlineWithInsertButton({
+  headline,
+}: PropsT): JSX.Element {
   return (
     <>
       <div className="grid">

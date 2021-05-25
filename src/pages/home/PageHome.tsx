@@ -17,19 +17,19 @@ const PageHome = () => {
   }, []);
 
   return (
-      <>
-        <div id="mainbar">
-          <Headline headline="The newest Coding Convention"/>
-          {!reduxRule || !reduxRule.targetRule ? (
-              <LoadingContent/>
-          ) : (
-              <RuleDetail targetRule={reduxRule.targetRule}/>
-          )}
-        </div>
-        <div id="sidebar">
-          <AsideReadingTips/>
-        </div>
-      </>
+    <>
+      <div id="mainbar">
+        <Headline headline="The newest Coding Convention" />
+        {!reduxRule || !reduxRule.targetRule ? (
+          <LoadingContent />
+        ) : (
+          <RuleDetail targetRule={reduxRule.targetRule} />
+        )}
+      </div>
+      <div id="sidebar">
+        <AsideReadingTips />
+      </div>
+    </>
   );
 };
 
