@@ -1,7 +1,7 @@
 import React from 'react';
-import RuleItem from '../../components/Rule/RuleItem';
+import RuleItem from './RuleItem';
 import type {Rule} from '../../types/Rule';
-import LoadingContent from '../../components/loading/LoadingContent';
+import LoadingContent from '../loading/LoadingContent';
 
 type PropsType = {
   rules: Rule[];

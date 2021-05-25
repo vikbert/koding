@@ -1,8 +1,6 @@
 import type {Rule} from '../../types/Rule';
-import {Reference} from 'firebase-firestore-lite';
 import RuleReference, {COLLECTION_RULES} from '../../http/RuleReference';
 import {setError, unsetError} from '../error/errorWidget';
-import {FirebaseDocument} from 'firebase-firestore-lite/dist/Document';
 import {Document} from 'firebase-firestore-lite/dist/Document';
 
 export const RULE_ADDED = 'rule.rule_added';
@@ -43,7 +41,7 @@ export const ruleAdded = (rule: Rule) => ({
 export const addRule = (rule: Rule) => {
   return function (dispatch: any) {
     const ruleRef = new RuleReference();
-    return ruleRef.add(rule).then((ref: Reference) => {
+    return ruleRef.add(rule).then(() => {
       dispatch(ruleAdded(rule));
     });
   };
@@ -64,7 +62,7 @@ export const moreRulesReceived = (rules: any) => ({
   rules,
 });
 
-export const lastDocumentMarked = (rule: FirebaseDocument) => ({
+export const lastDocumentMarked = (rule: any) => ({
   type: LAST_DOCUMENT_MARKED,
   rule,
 });
@@ -80,8 +78,22 @@ export const loadRules = () => {
   };
 };
 
+export const loadLastRule = () => {
+  return function (dispatch: any) {
+    const ruleRef = new RuleReference();
+
+    return ruleRef.loadLastRule().then((documents: any) => {
+      if (documents.length > 0) {
+        dispatch(ruleFetched(documents[0]));
+        dispatch(lastDocumentMarked(documents[0]));
+      } else {
+        dispatch(setError('No data found!'));
+      }
+    });
+  };
+};
+
 export const loadMoreRules = (rule: Document, limit: number) => {
-  console.log('🔥', rule);
   return function (dispatch: any) {
     const ruleRef = new RuleReference();
 
@@ -116,7 +128,7 @@ export const updateRule = (rule: Rule) => {
   return function (dispatch: any) {
     return ruleRef
       .update(rule)
-      .then((document) => {
+      .then(() => {
         dispatch(ruleUpdated(rule));
         dispatch(unsetError());
       })

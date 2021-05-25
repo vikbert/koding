@@ -23,6 +23,15 @@ export default class RuleReference {
     return await topRulesQuery.run();
   }
 
+  async loadLastRule(): Promise<any> {
+    const topRulesQuery = this.ref.query({
+      orderBy: {field: 'createdAt', direction: 'desc'},
+      limit: 1,
+    });
+
+    return await topRulesQuery.run();
+  }
+
   async loadMore(rule: Document, limit: number): Promise<any> {
     const topRulesQuery = this.ref.query({
       orderBy: {field: 'views', direction: 'desc'},

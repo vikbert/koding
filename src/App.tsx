@@ -10,6 +10,7 @@ import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
 import NotFound from './components/error/NotFound';
 import PageTagDetail from './pages/tags/PageTagDetail';
 import Layout from './pages/Layout';
+import PageTopRules from "./pages/rules/PageTopRules";
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -62,14 +63,20 @@ const App = () => {
             layout={Layout}
           />
           <RouteWrapper
-            exact
-            path="/404"
-            component={NotFound}
-            layout={Layout}
+              exact
+              path="/conventions/top"
+              component={PageTopRules}
+              layout={Layout}
           />
           <RouteWrapper
             path="/convention/:documentId"
             component={PageRuleDetail}
+            layout={Layout}
+          />
+          <RouteWrapper
+            exact
+            path="/404"
+            component={NotFound}
             layout={Layout}
           />
           <Redirect to="/404" />

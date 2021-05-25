@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {loadRules} from '../../components/Rule/ruleWidget';
 import TagReference from '../../http/TAGReference';
 import {Rule} from '../../types/Rule';
-import ListRules from '../home/ListRules';
+import ListRules from '../../components/Rule/ListRules';
 
 export default function PageTagDetail(): JSX.Element | null {
   const dispatch = useDispatch();
