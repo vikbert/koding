@@ -14,9 +14,9 @@ export default function PageTagDetail(): JSX.Element | null {
   const reduxRule = useSelector((state: any) => state.reduxRule);
   const [rules, setRules] = React.useState<any[]>([]);
   const tagRef = new TagReference();
+  const name = reduxRule.targetTag;
 
-  const {name} = useParams<{name?: string}>();
-  if (!name) {
+  if (!reduxRule.targetTag) {
     return null;
   }
 

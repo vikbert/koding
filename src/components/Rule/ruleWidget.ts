@@ -15,6 +15,7 @@ export const SHOW_POPUP = 'rule.show_popup';
 export const HIDE_POPUP = 'rule.hide_popup';
 export const TARGET_CLEANUP = 'rule.target_cleanup';
 export const LAST_DOCUMENT_MARKED = 'rule.last_document_marked';
+export const SET_TARGET_TAG = 'rule.target_tag';
 
 export const showRules = () => ({
   type: SHOW_RULES,
@@ -122,6 +123,11 @@ export const cleanUpTargetRule = () => ({
   type: TARGET_CLEANUP,
 });
 
+export const setTargetTag = (targetTag: string) => ({
+  type: SET_TARGET_TAG,
+  targetTag,
+});
+
 export const updateRule = (rule: Rule) => {
   const ruleRef = new RuleReference(`${COLLECTION_RULES}/${rule.documentId}`);
 
@@ -160,6 +166,7 @@ export const ruleState = {
   rules: [],
   lastDocument: null,
   targetRule: null,
+  targetTag: null,
 };
 
 const enrichRuleMetaData = (rule: any) => {
@@ -181,6 +188,12 @@ export const ruleReducer = (state = ruleState, action: any) => {
         ...state,
         rules: [action.rule, ...state.rules],
         targetRule: action.rule,
+      };
+
+    case SET_TARGET_TAG:
+      return {
+        ...state,
+        targetTag: action.targetTag,
       };
 
     case RULE_UPDATED:
