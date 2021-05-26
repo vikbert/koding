@@ -1,17 +1,13 @@
 import React from 'react';
-import NoContent from '../../components/error/NoContent';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadTags} from '../../components/tag/tagWidget';
 import TagList from '../../components/tag/TagList';
 import TagLink from '../../components/tag/TagLink';
 import LoadingContent from '../../components/loading/LoadingContent';
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 
-type PropsT = {
-  name?: string;
-};
-
-export default function PageTags(props: PropsT): JSX.Element {
+export default function PageTags(): JSX.Element {
   const dispatch = useDispatch();
   const reduxTag = useSelector((state: any) => state.reduxTag);
 
@@ -22,16 +18,14 @@ export default function PageTags(props: PropsT): JSX.Element {
   return (
     <>
       <div id="mainbar">
-        <div className="grid">
-          <h1 className={'grid-cell fl1'}>Tags</h1>
-        </div>
-        <div className="grid">
+        <HeadlineWithInsertButton headline={'Tags'} />
+        <div className="grid page__tag-list">
           <div className="grid--cell12">
             {reduxTag.length === 0 ? (
               <LoadingContent />
             ) : (
               <TagList>
-                {reduxTag.map((item: string) => (
+                {reduxTag.sort().map((item: string) => (
                   <TagLink path={`/tag/${item}`} name={item} key={item} />
                 ))}
               </TagList>

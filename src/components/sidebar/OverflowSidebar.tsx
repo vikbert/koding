@@ -2,28 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './sidebar.css';
 
-type PropsT = {
-  name?: string;
-};
-
-export default function OverflowSidebar(props: PropsT): JSX.Element {
-  const {name} = props;
-
+export default function OverflowSidebar(): JSX.Element {
   type LinkProps = {
     path: string;
     title: string;
     children?: any;
-  };
-  const LinkItem = (props: LinkProps) => {
-    return (
-      <li>
-        <Link to={props.path} className="nav-links--link">
-          <div className="grid ai-center">
-            <div className="grid--cell truncate">{props.title}</div>
-          </div>
-        </Link>
-      </li>
-    );
   };
 
   const LinkActive = (props: LinkProps) => {
@@ -43,8 +26,8 @@ export default function OverflowSidebar(props: PropsT): JSX.Element {
       <li>
         <Link
           to={props.path}
+          title={'foo'}
           className="pl8 js-gps-track nav-links--link -link__with-icon"
-          id="nav-questions"
         >
           {props.children}
           <span className="-link--channel-name">{props.title}</span>

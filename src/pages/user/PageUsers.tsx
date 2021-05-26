@@ -2,13 +2,7 @@ import React from 'react';
 import NoContent from '../../components/error/NoContent';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
 
-type PropsT = {
-  name?: string;
-};
-
-export default function PageUsers(props: PropsT): JSX.Element {
-  const {name} = props;
-
+export default function PageUsers(): JSX.Element {
   return (
     <>
       <div id="mainbar">

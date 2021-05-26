@@ -13,7 +13,6 @@ import useNotify from '../../../hooks/useToast';
 import useVisibility from '../../../hooks/useVisibility';
 import useKeypress from '../../../hooks/useKeyPress';
 import FormPreview from './FormPreview';
-import Bubble from '../../bubble/Bubble';
 import IconEye from '../../icons/IconEye';
 import {createAndUpdateTag} from '../../tag/tagWidget';
 import TagItem from '../../tag/TagItem';
@@ -24,7 +23,7 @@ const initState = {
   bad: '',
   good: '',
 };
-export default function FormInsert(): JSX.Element {
+export default function RuleInsertForm(): JSX.Element {
   useDocumentTitle('New convention with snippets');
 
   const dispatch = useDispatch();
@@ -137,10 +136,6 @@ export default function FormInsert(): JSX.Element {
     });
   }
 
-  React.useEffect(() => {
-    // dispatch(loadRules());
-  }, []);
-
   return (
     <div className="grid--cell fl1 wmn0">
       <div className={classNames('overlay', {open: visible})}>
@@ -152,6 +147,7 @@ export default function FormInsert(): JSX.Element {
               description={formData.description}
               badSnippet={formData.bad}
               goodSnippet={formData.good}
+              tags={tagItems}
             />
           </div>
           <div className="action mb16 mr12">
@@ -231,20 +227,6 @@ export default function FormInsert(): JSX.Element {
                 </div>
               </div>
             </div>
-
-            {formData.rule.length > 0 && (
-              <div className="ps-relative mb16">
-                <div className="grid fl1 fd-column js-stacks-validation">
-                  <div className="fl1 ps-relative">
-                    <Bubble
-                      title={formData.rule}
-                      description={formData.description}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
             <div
               id="post-editor"
               className="post-editor js-post-editor mt0 mb16"
@@ -277,14 +259,6 @@ export default function FormInsert(): JSX.Element {
                   placeholder={'Good snippet'}
                   value={formData.good}
                   onChange={(event: any) => handleChangeFormData(event, 'good')}
-                />
-              </div>
-              <div className="edit-block">
-                <input id="author" name="author" type="text" />
-                <input
-                  type="hidden"
-                  name="i1l"
-                  defaultValue="tKgzJZNt6tbfm4umbxTugXzCeW1yrrQvtLngOkno3nA="
                 />
               </div>
             </div>

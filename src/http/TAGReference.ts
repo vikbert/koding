@@ -14,8 +14,8 @@ export default class TagReference {
     this.ref = this.db.ref(path || COLLECTION_SNIPPET);
   }
 
-  async list(): Promise<List> {
-    return await this.ref.list();
+  async list(): Promise<any> {
+    return await this.ref.query({}).run();
   }
 
   async listByName(tagName: string): Promise<any> {

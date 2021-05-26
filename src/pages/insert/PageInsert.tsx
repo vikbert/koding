@@ -1,29 +1,22 @@
 import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import '../../components/header/header.css';
-import FormInsert from '../../components/Rule/form/FormInsert';
+import RuleInsertForm from '../../components/Rule/form/RuleInsertForm';
 import AsideInformation from '../../components/aside/AsideInformation';
+import HeadlineWithBg from '../../components/headline/HeadlineWithBg';
 
 const PageInsert = () => {
   useDocumentTitle('Insert new coding convention');
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${
-            process.env.PUBLIC_URL + '/img/bg-robot.svg'
-          })`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'bottom',
-        }}
-        className="grid ai-center py24 bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background"
-      >
-        <div className="fs-headline1">Add a new coding convention</div>
-      </div>
+      <HeadlineWithBg
+        headline="Add a new coding convention"
+        imagePath="/img/chat.svg"
+      />
       <div id="mainbar">
         <div className="grid">
-          <FormInsert />
+          <RuleInsertForm />
         </div>
       </div>
       <div id="sidebar">

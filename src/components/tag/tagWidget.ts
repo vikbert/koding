@@ -46,8 +46,8 @@ export const loadTags = () => {
   return function (dispatch: any) {
     const tagRef = new TagReference();
 
-    return tagRef.list().then((list: List) => {
-      dispatch(tagsLoaded(list.documents));
+    return tagRef.list().then((list: any) => {
+      dispatch(tagsLoaded(list));
     });
   };
 };

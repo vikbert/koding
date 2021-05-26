@@ -6,6 +6,8 @@ import {loadRules} from '../../components/Rule/ruleWidget';
 import TagReference from '../../http/TAGReference';
 import {Rule} from '../../types/Rule';
 import ListRules from '../../components/Rule/ListRules';
+import {removeDuplicatedTags} from '../../utils/Array';
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 
 export default function PageTagDetail(): JSX.Element | null {
   const dispatch = useDispatch();
@@ -31,7 +33,9 @@ export default function PageTagDetail(): JSX.Element | null {
 
     tagRef.listByName(name).then((list: any) => {
       let rules: any[] = [];
-      list.forEach((item: any) => {
+
+      const cleaned = removeDuplicatedTags(list);
+      cleaned.forEach((item: any) => {
         const found = reduxRule.rules.find(
           (rule: Rule) => rule.id === item.rule,
         );
@@ -51,9 +55,7 @@ export default function PageTagDetail(): JSX.Element | null {
   return (
     <>
       <div id="mainbar">
-        <div className="grid">
-          <h1 className={'grid-cell fl1'}>Tag: {name}</h1>
-        </div>
+        <HeadlineWithInsertButton headline={`Tag: ${name}`} />
         <ListRules rules={rules} />
       </div>
       <div id="sidebar">

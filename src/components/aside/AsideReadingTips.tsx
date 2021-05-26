@@ -26,10 +26,10 @@ export default function AsideReadingTips(): JSX.Element {
         className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16"
         data-tracker="cb=1"
       >
+        <div className="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
+          Reading Tips
+        </div>
         <ul className="d-block p0 m0">
-          <div className="s-sidebarwidget--header s-sidebarwidget__small-bold-text fc-light d:fc-black-900 bb bbw1">
-            Reading Tips
-          </div>
           <ArticleLink
             title="Clean Code PHP"
             url="https://github.com/jupeter/clean-code-php"

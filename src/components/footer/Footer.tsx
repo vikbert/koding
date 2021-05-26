@@ -11,7 +11,8 @@ export default function Footer(): JSX.Element {
               data-name="default"
             >
               <a
-                href="https://koding.vercel.ap"
+                href="https://koding.vercel.app"
+                title="koding"
                 style={{color: '#f57b10', fontSize: '4rem'}}
               >
                 <span

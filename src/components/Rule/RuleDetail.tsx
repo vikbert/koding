@@ -6,7 +6,7 @@ import Bubble from '../bubble/Bubble';
 import PreviewWrapper from '../snippet/PreviewWrapper';
 import TagList from '../tag/TagList';
 import classNames from 'classnames';
-import FormUpdate from './form/FormUpdate';
+import RuleUpdateForm from './form/RuleUpdateForm';
 import {Rule} from '../../types/Rule';
 import useVisibility from '../../hooks/useVisibility';
 
@@ -58,7 +58,7 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
             <div className="popup">
               <div className="title">Update the current convention:</div>
               <div className="content">
-                <FormUpdate rule={targetRule} closePopup={() => hide()} />
+                <RuleUpdateForm rule={targetRule} closePopup={() => hide()} />
               </div>
             </div>
           </div>

@@ -12,7 +12,7 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
   return (
     <>
       <header className="top-bar js-top-bar top-bar__network">
-        <div className="wmx12 mx-auto grid ai-center h100" role="menubar">
+        <div className="wmx12 mx-auto grid ai-center h100">
           <div className="-main grid--cell">
             <a
               href="#"
@@ -20,7 +20,7 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
               role="menuitem"
               aria-haspopup="true"
               aria-controls="left-sidebar"
-              aria-expanded="false"
+              aria-expanded="true"
             >
               <span className="ps-relative" />
             </a>
@@ -37,7 +37,11 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
           </div>
           <ol className="list-reset grid gs4" role="presentation">
             <li className="grid--cell">
-              <a href="#" className="-marketing-link js-products-menu">
+              <a
+                href="#"
+                title="koding beta version"
+                className="-marketing-link js-products-menu"
+              >
                 Beta
               </a>
             </li>
@@ -83,9 +87,6 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
                 href="#"
                 className="-link js-searchbar-trigger"
                 role="button"
-                aria-label="Search"
-                aria-haspopup="true"
-                aria-controls="search"
                 title="Click to show search"
               >
                 <svg

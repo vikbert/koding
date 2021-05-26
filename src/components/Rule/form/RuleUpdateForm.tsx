@@ -4,19 +4,29 @@ import useNotify from '../../../hooks/useToast';
 import {updateRule} from '../ruleWidget';
 import type {Rule} from '../../../types/Rule';
 import './formInsert.css';
-import Bubble from '../../bubble/Bubble';
+import {createAndUpdateTag} from '../../tag/tagWidget';
+import TagInput from '../../tag/TagInput';
 
 type PropsType = {
   rule: Rule;
   closePopup: () => void;
 };
 
-export default function FormUpdate({rule, closePopup}: PropsType): JSX.Element {
+export default function RuleUpdateForm({
+  rule,
+  closePopup,
+}: PropsType): JSX.Element {
   const dispatch = useDispatch();
   const notify = useNotify();
   const [targetRule, setTargetRule] = React.useState(rule);
+  const [tagItems, setTagItems] = React.useState(rule.tags);
 
-  function handleSubmitUpdate(event: any) {
+  function handleUpdateTags(tags: string[]) {
+    setTagItems(tags);
+    setTargetRule({...targetRule, tags});
+  }
+
+  function handleSubmit(event: any) {
     event.preventDefault();
 
     if (targetRule.title.length === 0) {
@@ -28,6 +38,17 @@ export default function FormUpdate({rule, closePopup}: PropsType): JSX.Element {
     }
 
     dispatch(updateRule(targetRule));
+
+    tagItems
+      .filter((item: string) => !rule.tags.includes(item))
+      .forEach((tagString: string) => {
+        dispatch(
+          createAndUpdateTag({
+            name: tagString,
+            rule: targetRule.id,
+          }),
+        );
+      });
 
     closePopup();
     notify({type: 'success', message: 'Updating content done!'});
@@ -54,7 +75,7 @@ export default function FormUpdate({rule, closePopup}: PropsType): JSX.Element {
 
   return (
     <div className="grid--cell fl1 wmn0">
-      <form onSubmit={handleSubmitUpdate}>
+      <form onSubmit={handleSubmit}>
         <div className="ps-relative mb16">
           <div className="grid fl1 fd-column js-stacks-validation">
             <label className="d-block s-label mb4" htmlFor="rule">
@@ -104,12 +125,11 @@ export default function FormUpdate({rule, closePopup}: PropsType): JSX.Element {
           </div>
         </div>
 
-        {targetRule.title.length > 0 && (
-          <Bubble
-            title={targetRule.title}
-            description={targetRule.description}
-          />
-        )}
+        <TagInput
+          tags={targetRule.tags}
+          updateTags={(tags) => handleUpdateTags(tags)}
+        />
+
         <div className="grid gsx gs4 mt32 float-right">
           <button
             className="grid--cell s-btn s-btn__muted"
@@ -121,7 +141,7 @@ export default function FormUpdate({rule, closePopup}: PropsType): JSX.Element {
           <button
             className="grid--cell s-btn s-btn__filled"
             type="submit"
-            onClick={handleSubmitUpdate}
+            onClick={handleSubmit}
           >
             Update the convention
           </button>
