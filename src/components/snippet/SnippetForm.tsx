@@ -25,7 +25,7 @@ export default function SnippetForm(props: PropsT): JSX.Element {
       ...props.snippet,
       // @ts-ignore
       path: props.snippet.__meta__.path,
-    }
+    };
 
     dispatch(
       updateSnippet({
