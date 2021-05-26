@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {loadLastRule} from '../../components/Rule/ruleWidget';
 import LoadingContent from '../../components/loading/LoadingContent';
 import RuleDetail from '../../components/Rule/RuleDetail';
-import Headline from '../../components/headline/Headline';
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 
 const PageHome = () => {
   useDocumentTitle('The newest');
@@ -19,7 +19,7 @@ const PageHome = () => {
   return (
     <>
       <div id="mainbar">
-        <Headline headline="The newest Coding Convention" />
+        <HeadlineWithInsertButton headline="The newest Coding Convention" />
         {!reduxRule || !reduxRule.targetRule ? (
           <LoadingContent />
         ) : (

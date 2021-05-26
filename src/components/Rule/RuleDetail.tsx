@@ -20,11 +20,6 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
   return (
     <>
       <div className="question" id="question">
-        <div id="question-header" className="grid jc-end">
-          <Link to="/insert" className="ws-nowrap s-btn s-btn__filled mb16">
-            {'✚ Add another coding convention'}
-          </Link>
-        </div>
         <div className="post-layout rule-detail">
           <div className="votecell post-layout--left">
             <VotingRule />

@@ -12,10 +12,9 @@ type PropsType = {
   closePopup: () => void;
 };
 
-export default function RuleUpdateForm({
-  rule,
-  closePopup,
-}: PropsType): JSX.Element {
+export default function RuleUpdateForm(props: PropsType): JSX.Element {
+  const {rule, closePopup} = props;
+
   const dispatch = useDispatch();
   const notify = useNotify();
   const [targetRule, setTargetRule] = React.useState(rule);

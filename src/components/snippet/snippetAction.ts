@@ -29,6 +29,7 @@ export const snippetAdded = (snippet: Snippet) => ({
 export const addSnippet = (snippet: Snippet) => {
   return function (dispatch: any) {
     const snippetRef = new SnippetReference();
+
     return snippetRef.add(snippet).then((ref) => {
       const withDocumentPath = {...snippet, ...{path: ref.path}};
       dispatch(snippetAdded(withDocumentPath));
@@ -43,7 +44,12 @@ export const snippetUpdated = (snippet: Snippet) => ({
 
 export const updateSnippet = (snippet: Snippet) => {
   return function (dispatch: any) {
+    if (!snippet.path) {
+      throw new Error('Snippet has no path defined!');
+    }
+
     const snippetRef = new SnippetReference(snippet.path);
+
     return snippetRef.update(snippet.body).then((ref) => {
       dispatch(snippetUpdated(snippet));
     });
