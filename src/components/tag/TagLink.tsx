@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {useDispatch} from "react-redux";
-import {setTargetTag} from "../Rule/ruleWidget";
+import {useDispatch} from 'react-redux';
+import {setTargetTag} from '../Rule/ruleWidget';
 
 type PropsT = {
   path: string;
@@ -10,14 +10,14 @@ type PropsT = {
 
 export default function TagLink(props: PropsT): JSX.Element {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleOnClick = (event: any) => {
     event.preventDefault();
 
-    dispatch(setTargetTag(props.name))
+    dispatch(setTargetTag(props.name));
     history.push(props.path);
-  }
+  };
   return (
     <>
       <Link
