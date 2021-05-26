@@ -1,5 +1,4 @@
 import {Database, Reference} from 'firebase-firestore-lite';
-import {List} from 'firebase-firestore-lite/dist/List';
 import {Tag} from '../types/Tag';
 import useFireStore from '../hooks/useFireStore';
 
@@ -14,7 +13,7 @@ export default class TagReference {
     this.ref = this.db.ref(path || COLLECTION_SNIPPET);
   }
 
-  async list(): Promise<any> {
+  async listAll(): Promise<any> {
     return await this.ref.query({}).run();
   }
 

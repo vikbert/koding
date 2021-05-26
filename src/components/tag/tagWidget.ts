@@ -1,7 +1,6 @@
 import {Tag} from '../../types/Tag';
-import TagReference from '../../http/TAGReference';
+import TagReference from '../../http/TagReference';
 import {Reference} from 'firebase-firestore-lite';
-import {List} from 'firebase-firestore-lite/dist/List';
 
 export const TAG_ADDED = 'tags.tags_added';
 export const TAGS_LOADED = 'tags.tags_loaded';
@@ -46,7 +45,7 @@ export const loadTags = () => {
   return function (dispatch: any) {
     const tagRef = new TagReference();
 
-    return tagRef.list().then((list: any) => {
+    return tagRef.listAll().then((list: any) => {
       dispatch(tagsLoaded(list));
     });
   };

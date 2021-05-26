@@ -65,3 +65,8 @@
   font-size: 16px;
   margin: .4rem;
 }
+.page__tag-list .ps-relative {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

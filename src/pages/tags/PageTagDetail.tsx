@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
 import {useDispatch, useSelector} from 'react-redux';
 import {loadRules} from '../../components/Rule/ruleWidget';
-import TagReference from '../../http/TAGReference';
+import TagReference from '../../http/TagReference';
 import {Rule} from '../../types/Rule';
 import ListRules from '../../components/Rule/ListRules';
 import {removeDuplicatedTags} from '../../utils/Array';
