@@ -70,9 +70,12 @@ export default function Footer(): JSX.Element {
             <div className="site-footer--copyright fs-fine">
               <h5 className="-title">Web Design</h5>
               <p>
-                This website borrows the ideas from{' '}
-                <a href="https://stackoverflow.com/">StackOverflow</a> and was
-                built in a Coding Dojo for self-training and self-study.
+                This design clones the ideas from{' '}
+                <a href="https://stackoverflow.com/">
+                  <strong className="fc-orange-500">StackOverflow</strong>
+                </a>{' '}
+                and is built for coding-training and self-study. It is built
+                only for desktop.
               </p>
             </div>
           </nav>

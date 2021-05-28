@@ -11,7 +11,8 @@ import NotFound from './components/error/NotFound';
 import PageTagDetail from './pages/tags/PageTagDetail';
 import Layout from './pages/Layout';
 import PageTopRules from './pages/rules/PageTopRules';
-import PageTeam from "./pages/team/PageTeam";
+import PageTeam from './pages/team/PageTeam';
+import PageLanding from './pages/home/PageLanding';
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -32,7 +33,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <RouteWrapper exact path="/" component={PageHome} layout={Layout} />
+          <Route exact path="/" component={PageLanding} />
           <RouteWrapper
             exact
             path="/snippets"
@@ -74,10 +75,7 @@ const App = () => {
             component={PageRuleDetail}
             layout={Layout}
           />
-          <Route
-            path="/teams"
-            component={PageTeam}
-          />
+          <RouteWrapper path="/teams" component={PageTeam} layout={Layout} />
           <RouteWrapper
             exact
             path="/404"

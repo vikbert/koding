@@ -65,10 +65,7 @@ export default function RuleInsertForm(): JSX.Element {
   function handleSubmit(event: any) {
     event.preventDefault();
 
-    if (
-      formData.rule.length === 0 ||
-      tagItems.length === 0
-    ) {
+    if (formData.rule.length === 0 || tagItems.length === 0) {
       notify({
         type: 'error',
         message: 'title, tags should not be empty!',
