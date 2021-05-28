@@ -2,83 +2,73 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './sidebar.css';
 
+type BasicItemProps = {
+  title: string;
+  path: string;
+  iconName: string;
+};
+const basicItems: BasicItemProps[] = [
+  {
+    title: 'Top',
+    path: '/conventions/top',
+    iconName: 'fluent:align-top-24-filled',
+  },
+  {
+    title: 'Tags',
+    path: '/Tags',
+    iconName: 'fluent:tag-24-filled',
+  },
+  {
+    title: 'Teams',
+    path: '/Teams',
+    iconName: 'bx:bxs-user-circle',
+  },
+];
 export default function OverflowSidebar(): JSX.Element {
-  type LinkProps = {
-    path: string;
-    title: string;
-    children?: any;
-  };
-
-  const LinkActive = (props: LinkProps) => {
+  const LinkActive = (props: any) => {
     return (
-      <li className="youarehere">
-        <Link to={props.path} className="pl8 nav-links--link">
-          <div className="grid ai-center">
-            <div className="grid--cell truncate">{props.title}</div>
-          </div>
-        </Link>
-      </li>
+      <Link to={props.path} className="pl8 nav-links--link">
+        <div className="grid ai-center">
+          <div className="grid--cell truncate">{props.title}</div>
+        </div>
+      </Link>
     );
   };
 
-  const LinkWithIcon = (props: LinkProps) => {
+  const LinkBasicItem = ({title, path, iconName}: BasicItemProps) => {
     return (
-      <li>
-        <Link
-          to={props.path}
-          title={'foo'}
-          className="pl8 js-gps-track nav-links--link -link__with-icon"
-        >
-          {props.children}
-          <span className="-link--channel-name">{props.title}</span>
-        </Link>
-      </li>
+      <Link
+        to={path}
+        title={title}
+        className="pl8 js-gps-track nav-links--link -link__with-icon"
+      >
+        <span className="iconify" data-icon={iconName} data-inline="false" />
+        <span className="-link--channel-name">{title}</span>
+      </Link>
     );
   };
 
   return (
     <>
-      <div
-        className="left-sidebar js-pinned-left-sidebar ps-relative"
-        id="left-sidebar"
-      >
+      <div className="left-sidebar js-pinned-left-sidebar ps-relative">
         <div className="left-sidebar--sticky-container js-sticky-leftnav">
           <nav role="navigation">
             <ol className="nav-links">
-              <LinkActive path={'/'} title={'Home'} />
+              <li className="youarehere">
+                <LinkActive path={'/'} title={'Home'} />
+              </li>
+              <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
+                Public
+              </li>
               <li>
                 <ol className="nav-links">
-                  <li className="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">
-                    Public
-                  </li>
-                  <LinkWithIcon path={'/conventions/top'} title={'Top'}>
-                    <span
-                      className="iconify"
-                      data-icon="fluent:align-top-24-filled"
-                      data-inline="false"
+                  {basicItems.map((item, index) => (
+                    <LinkBasicItem
+                      title={item.title}
+                      path={item.path}
+                      iconName={item.iconName}
                     />
-                  </LinkWithIcon>
-                  <LinkWithIcon path={'/snippets'} title={'Snippets'}>
-                    <span
-                      className="iconify"
-                      data-icon="ant-design:code-sandbox-outlined"
-                      data-inline="false"
-                    />
-                  </LinkWithIcon>
-                  <LinkWithIcon path={'/tags'} title={'Tags'}>
-                    <span
-                      className="iconify"
-                      data-icon="fluent:tag-24-filled"
-                      data-inline="false"
-                    />
-                  </LinkWithIcon>
-                  <LinkWithIcon path={'/users'} title={'Users'}>
-                    <span
-                      className="iconify"
-                      data-icon="bx:bxs-user-circle"
-                      data-inline="false"
-                    />
-                  </LinkWithIcon>
+                  ))}
                 </ol>
               </li>
             </ol>

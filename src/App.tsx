@@ -11,6 +11,7 @@ import NotFound from './components/error/NotFound';
 import PageTagDetail from './pages/tags/PageTagDetail';
 import Layout from './pages/Layout';
 import PageTopRules from './pages/rules/PageTopRules';
+import PageTeam from "./pages/team/PageTeam";
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -72,6 +73,10 @@ const App = () => {
             path="/convention/:documentId"
             component={PageRuleDetail}
             layout={Layout}
+          />
+          <Route
+            path="/teams"
+            component={PageTeam}
           />
           <RouteWrapper
             exact

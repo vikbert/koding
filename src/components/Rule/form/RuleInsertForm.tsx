@@ -67,13 +67,11 @@ export default function RuleInsertForm(): JSX.Element {
 
     if (
       formData.rule.length === 0 ||
-      formData.bad.length === 0 ||
-      formData.good.length === 0 ||
       tagItems.length === 0
     ) {
       notify({
         type: 'error',
-        message: 'title, tags and code snippets should not be empty!',
+        message: 'title, tags should not be empty!',
       });
       return;
     }

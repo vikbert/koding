@@ -70,3 +70,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.p-bg-dark-gradient {
+  background: linear-gradient(
+    180deg
+    , var(--black-800) 0%, var(--black-600) 130%);
+}
