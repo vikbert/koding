@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 type PropsT = {
-  children?: any;
-};
+  children?: any,
+}
 
 export default function TagList(props: PropsT): JSX.Element | null {
   if (!props.children) {
-    return null;
+    return null
   }
 
   return (
@@ -15,5 +15,5 @@ export default function TagList(props: PropsT): JSX.Element | null {
         <div className="ps-relative">{props.children}</div>
       </div>
     </>
-  );
+  )
 }

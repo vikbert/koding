@@ -1,11 +1,11 @@
-import React from 'react';
-import {Rule} from '../../types/Rule';
-import {Link} from 'react-router-dom';
+import React from 'react'
+import {Rule} from '../../types/Rule'
+import {Link} from 'react-router-dom'
 
 type PropsT = {
-  rule: Rule;
-  incrementViews: () => void;
-};
+  rule: Rule,
+  incrementViews: () => void,
+}
 
 export default function Votes({rule, incrementViews}: PropsT): JSX.Element {
   return (
@@ -31,5 +31,5 @@ export default function Votes({rule, incrementViews}: PropsT): JSX.Element {
         </div>
       </div>
     </Link>
-  );
+  )
 }

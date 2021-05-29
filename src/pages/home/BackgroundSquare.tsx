@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function BackgroundSquare(): JSX.Element {
   return (
@@ -33,5 +33,5 @@ export default function BackgroundSquare(): JSX.Element {
         className="p-bits fc-orange-400 b128 r128 w64 h64"
       />
     </>
-  );
+  )
 }

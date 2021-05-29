@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 type PropsT = {
-  name?: string;
-};
+  name?: string
+}
 
 export default function Profile(props: PropsT): JSX.Element {
-  const {name} = props;
+  const {name} = props
 
   return (
     <>
@@ -47,5 +47,5 @@ export default function Profile(props: PropsT): JSX.Element {
         </div>
       </a>
     </>
-  );
+  )
 }

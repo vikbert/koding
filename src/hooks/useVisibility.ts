@@ -1,19 +1,19 @@
-import {useState} from 'react';
+import {useState} from 'react'
 
 export default function useVisibility(): {
-  visible: boolean;
-  show: () => void;
-  hide: () => void;
+  visible: boolean,
+  show: () => void,
+  hide: () => void,
 } {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const show = (): void => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
 
   const hide = (): void => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
-  return {visible, show, hide};
+  return {visible, show, hide}
 }

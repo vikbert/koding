@@ -1,12 +1,12 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
 type PropsT = {
-  isOwner?: boolean;
-};
+  isOwner?: boolean,
+}
 
 export default function UserSignature(props: PropsT): JSX.Element {
-  const {isOwner = true} = props;
+  const {isOwner = true} = props
 
   return (
     <>
@@ -70,5 +70,5 @@ export default function UserSignature(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  );
+  )
 }

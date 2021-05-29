@@ -1,76 +1,76 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
-import './formInsert.css';
-import classNames from 'classnames';
-import {Link} from 'react-router-dom';
-import {nanoid} from 'nanoid';
-import {addRule} from '../ruleWidget';
-import type {Snippet} from '../../../types/Snippet';
-import type {Rule} from '../../../types/Rule';
-import {addSnippet} from '../../snippet/snippetAction';
-import useDocumentTitle from '../../../hooks/useDocumentTitle';
-import useNotify from '../../../hooks/useToast';
-import useVisibility from '../../../hooks/useVisibility';
-import useKeypress from '../../../hooks/useKeyPress';
-import FormPreview from './FormPreview';
-import IconEye from '../../icons/IconEye';
-import {createAndUpdateTag} from '../../tag/tagWidget';
-import TagItem from '../../tag/TagItem';
+import React from 'react'
+import {useDispatch} from 'react-redux'
+import './formInsert.css'
+import classNames from 'classnames'
+import {Link} from 'react-router-dom'
+import {nanoid} from 'nanoid'
+import {addRule} from '../ruleWidget'
+import type {Snippet} from '../../../types/Snippet'
+import type {Rule} from '../../../types/Rule'
+import {addSnippet} from '../../snippet/snippetAction'
+import useDocumentTitle from '../../../hooks/useDocumentTitle'
+import useNotify from '../../../hooks/useToast'
+import useVisibility from '../../../hooks/useVisibility'
+import useKeypress from '../../../hooks/useKeyPress'
+import FormPreview from './FormPreview'
+import IconEye from '../../icons/IconEye'
+import {createAndUpdateTag} from '../../tag/tagWidget'
+import TagItem from '../../tag/TagItem'
 
 const initState = {
   rule: '',
   description: '',
   bad: '',
   good: '',
-};
+}
 export default function RuleInsertForm(): JSX.Element {
-  useDocumentTitle('New convention with snippets');
+  useDocumentTitle('New convention with snippets')
 
-  const dispatch = useDispatch();
-  const notify = useNotify();
-  const {visible, show, hide} = useVisibility();
-  const [formData, setFormData] = React.useState(initState);
-  const [tagItems, setTagItems] = React.useState<string[]>([]);
-  const [tagInput, setTagInput] = React.useState('');
+  const dispatch = useDispatch()
+  const notify = useNotify()
+  const {visible, show, hide} = useVisibility()
+  const [formData, setFormData] = React.useState(initState)
+  const [tagItems, setTagItems] = React.useState<string[]>([])
+  const [tagInput, setTagInput] = React.useState('')
 
   useKeypress('Escape', () => {
-    hide();
-  });
+    hide()
+  })
 
   const isLastCharComma = (value: string) => {
-    return value.slice(-1) === ',';
-  };
+    return value.slice(-1) === ','
+  }
 
   const addToTagItems = (value: string) => {
-    const newTag = value.trim().replace(/,/g, '');
+    const newTag = value.trim().replace(/,/g, '')
     if (!tagItems.includes(newTag)) {
-      setTagItems([...tagItems, newTag]);
+      setTagItems([...tagItems, newTag])
     }
-  };
+  }
 
   function handleChangeTags(event: any) {
-    const value = event.target.value;
-    setTagInput(value);
+    const value = event.target.value
+    setTagInput(value)
 
     if (isLastCharComma(value)) {
-      addToTagItems(value);
-      setTagInput('');
+      addToTagItems(value)
+      setTagInput('')
     }
   }
 
   function handleRemoveTag(tag: string) {
-    setTagItems(tagItems.filter((item: string) => item !== tag));
+    setTagItems(tagItems.filter((item: string) => item !== tag))
   }
 
   function handleSubmit(event: any) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (formData.rule.length === 0 || tagItems.length === 0) {
       notify({
         type: 'error',
         message: 'title, tags should not be empty!',
-      });
-      return;
+      })
+      return
     }
 
     const goodSnippet: Snippet = {
@@ -81,8 +81,8 @@ export default function RuleInsertForm(): JSX.Element {
       path: '',
       suggestion: '',
       rules: [],
-    };
-    dispatch(addSnippet(goodSnippet));
+    }
+    dispatch(addSnippet(goodSnippet))
 
     const badSnippet: Snippet = {
       id: nanoid(),
@@ -92,8 +92,8 @@ export default function RuleInsertForm(): JSX.Element {
       suggestion: goodSnippet.id,
       path: '',
       rules: [],
-    };
-    dispatch(addSnippet(badSnippet));
+    }
+    dispatch(addSnippet(badSnippet))
 
     const rule: Rule = {
       id: nanoid(),
@@ -106,8 +106,8 @@ export default function RuleInsertForm(): JSX.Element {
       isPublic: true,
       editors: [],
       createdAt: +new Date(),
-    };
-    dispatch(addRule(rule));
+    }
+    dispatch(addRule(rule))
 
     tagItems.map((tagString: string) => {
       dispatch(
@@ -115,20 +115,20 @@ export default function RuleInsertForm(): JSX.Element {
           name: tagString,
           rule: rule.id,
         }),
-      );
-    });
+      )
+    })
 
-    notify({message: 'Saving this coding convention done!', type: 'success'});
+    notify({message: 'Saving this coding convention done!', type: 'success'})
     setTimeout(() => {
-      window.location.reload();
-    }, 800);
+      window.location.reload()
+    }, 800)
   }
 
   function handleChangeFormData(event: any, name: string) {
     setFormData({
       ...formData,
       [name]: event.target.value,
-    });
+    })
   }
 
   return (
@@ -375,5 +375,5 @@ export default function RuleInsertForm(): JSX.Element {
         </div>
       </form>
     </div>
-  );
+  )
 }

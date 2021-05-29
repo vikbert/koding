@@ -1,39 +1,40 @@
-import React from 'react';
-import {Snippet} from '../../types/Snippet';
-import {useDispatch} from 'react-redux';
-import {updateSnippet} from './snippetAction';
+import React from 'react'
+import {Snippet} from '../../types/Snippet'
+import {useDispatch} from 'react-redux'
+import {updateSnippet} from './snippetAction'
 
 type PropsT = {
-  snippet: Snippet;
-  closePopup: () => void;
-};
+  snippet: Snippet,
+  closePopup: () => void,
+}
 
 export default function SnippetForm(props: PropsT): JSX.Element {
-  const {snippet, closePopup} = props;
+  const {snippet, closePopup} = props
 
-  const [code, setCode] = React.useState(snippet.body);
-  const dispatch = useDispatch();
+  const [code, setCode] = React.useState(snippet.body)
+  const dispatch = useDispatch()
 
   function handleChangeCode(event: any) {
-    setCode(event.target.value);
+    setCode(event.target.value)
   }
 
   function handleSubmit(event: any) {
-    event.preventDefault();
+    event.preventDefault()
 
     const snippetWithPath: Snippet = {
       ...props.snippet,
       // @ts-ignore
       path: props.snippet.__meta__.path,
-    };
+    }
 
     dispatch(
       updateSnippet({
         ...snippetWithPath,
         body: code,
       }),
-    );
-    closePopup();
+    )
+
+    window.location.reload()
   }
 
   return (
@@ -68,5 +69,5 @@ export default function SnippetForm(props: PropsT): JSX.Element {
         </form>
       </div>
     </>
-  );
+  )
 }

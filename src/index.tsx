@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Provider as ReduxProvider} from 'react-redux';
-import './assets/css/stacks.css';
-import './assets/css/primary.css';
-import './assets/css/index.css';
-import './assets/css/app.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Provider as ReduxProvider} from 'react-redux'
+import './assets/css/stacks.css'
+import './assets/css/primary.css'
+import './assets/css/index.css'
+import './assets/css/app.css'
 
 // @ts-ignore
-import configureStore from './redux/configureStore';
-import App from './App';
+import configureStore from './redux/configureStore'
+import App from './App'
 
-const store = configureStore();
+const store = configureStore()
 
 ReactDOM.render(
   <ReduxProvider store={store}>
@@ -19,4 +19,4 @@ ReactDOM.render(
     </React.StrictMode>
   </ReduxProvider>,
   document.body,
-);
+)

@@ -1,13 +1,13 @@
-import React from 'react';
-import Thumb from './Thumb';
+import React from 'react'
+import Thumb from './Thumb'
 
 type PropsT = {
-  isBad: boolean;
-  lang?: string;
-};
+  isBad: boolean,
+  lang?: string,
+}
 
 export default function PreviewOption(props: PropsT): JSX.Element {
-  const {isBad} = props;
+  const {isBad} = props
 
   return (
     <>
@@ -17,5 +17,5 @@ export default function PreviewOption(props: PropsT): JSX.Element {
         <span></span>
       </div>
     </>
-  );
+  )
 }

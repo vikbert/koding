@@ -1,18 +1,19 @@
-import React from 'react';
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
-import 'native-toast/dist/native-toast.css';
-import PageInsert from './pages/insert/PageInsert';
-import PageTags from './pages/tags/PageTags';
-import PageUsers from './pages/user/PageUsers';
-import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
-import NotFound from './components/error/NotFound';
-import PageTagDetail from './pages/tags/PageTagDetail';
-import Layout from './pages/Layout';
-import PageTopRules from './pages/rules/PageTopRules';
-import PageTeam from './pages/team/PageTeam';
-import PageLanding from './pages/home/PageLanding';
-import PageHome from './pages/home/PageHome';
-import PageSearch from './pages/rules/PageSearch';
+import React from 'react'
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom'
+import 'native-toast/dist/native-toast.css'
+import PageInsert from './pages/insert/PageInsert'
+import PageTags from './pages/tags/PageTags'
+import PageUsers from './pages/user/PageUsers'
+import PageRuleDetail from './pages/rule-detail/PageRuleDetail'
+import NotFound from './components/error/NotFound'
+import PageTagDetail from './pages/tags/PageTagDetail'
+import Layout from './pages/Layout'
+import PageTopRules from './pages/rules/PageTopRules'
+import PageTeams from './pages/team/PageTeams'
+import PageLanding from './pages/home/PageLanding'
+import PageHome from './pages/home/PageHome'
+import PageSearch from './pages/rules/PageSearch'
+import TeamInsertForm from './pages/team/TeamInsertForm'
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -25,7 +26,7 @@ function RouteWrapper({component: Component, layout: Layout, ...rest}) {
         </Layout>
       )}
     />
-  );
+  )
 }
 
 const App = () => {
@@ -48,7 +49,7 @@ const App = () => {
           />
           <RouteWrapper
             exact
-            path="/conventions/search/:keyword"
+            path="/search/:keyword"
             component={PageSearch}
             layout={Layout}
           />
@@ -81,7 +82,18 @@ const App = () => {
             component={PageUsers}
             layout={Layout}
           />
-          <RouteWrapper path="/teams" component={PageTeam} layout={Layout} />
+          <RouteWrapper
+            exact
+            path="/teams"
+            component={PageTeams}
+            layout={Layout}
+          />
+          <RouteWrapper
+            exact
+            path="/teams/insert"
+            component={TeamInsertForm}
+            layout={Layout}
+          />
           <RouteWrapper
             exact
             path="/404"
@@ -92,7 +104,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

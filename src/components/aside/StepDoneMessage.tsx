@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 type PropsT = {
-  title: string;
-  message?: string;
-};
+  title: string,
+  message?: string,
+}
 
 export default function StepDoneMessage(props: PropsT): JSX.Element {
-  const {title, message = ''} = props;
+  const {title, message = ''} = props
 
   return (
     <>
@@ -32,5 +32,5 @@ export default function StepDoneMessage(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  );
+  )
 }

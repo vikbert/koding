@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 type PropsT = {
-  children: any;
-};
+  children: any
+}
 
 export default function ActionContainer(props: PropsT): JSX.Element {
   return (
@@ -16,5 +16,5 @@ export default function ActionContainer(props: PropsT): JSX.Element {
       </div>
       <div className="js-menu-popup-container" />
     </div>
-  );
+  )
 }

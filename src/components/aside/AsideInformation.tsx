@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 type PropsType = {
-  title: string;
-  children?: any;
-};
+  title: string,
+  children?: any,
+}
 
 export default function AsideInformation({
   title,
@@ -24,5 +24,5 @@ export default function AsideInformation({
         </div>
       </div>
     </aside>
-  );
+  )
 }

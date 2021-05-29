@@ -1,17 +1,21 @@
-import React from 'react';
-import Logo from './logo.png';
-import './header.css';
-import {useHistory} from 'react-router-dom';
-import {slugify} from '../../utils/String';
+import React from 'react'
+import Logo from './logo.png'
+import './header.css'
+import {useHistory} from 'react-router-dom'
+import {slugify} from '../../utils/String'
+import {useDispatch} from 'react-redux'
+import {SEARCH_TAGES_RESET} from '../search/searchWidget'
 
-export default function OverflowHeader(): JSX.Element {
-  const history = useHistory();
-  const [search, setSearch] = React.useState('');
+export default function LayoutHeader(): JSX.Element {
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const [search, setSearch] = React.useState('')
 
   function handleSubmitSearch(event: any) {
-    event.preventDefault();
+    event.preventDefault()
+    dispatch({type: SEARCH_TAGES_RESET})
 
-    history.push(`/conventions/search/${slugify(search.trim())}`);
+    history.push(`/search/${slugify(search.trim()).replaceAll('-', '+')}`)
   }
 
   return (
@@ -134,5 +138,5 @@ export default function OverflowHeader(): JSX.Element {
         </div>
       </header>
     </>
-  );
+  )
 }

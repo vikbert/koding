@@ -1,14 +1,14 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
 type PropsT = {
-  name: string;
-  onClickCallback: () => void;
-  editable: boolean;
-};
+  name: string,
+  onClickCallback: () => void,
+  editable: boolean,
+}
 
 export default function TagItem(props: PropsT): JSX.Element {
-  const {name, onClickCallback, editable} = props;
+  const {name, onClickCallback, editable} = props
 
   return (
     <>
@@ -32,5 +32,5 @@ export default function TagItem(props: PropsT): JSX.Element {
         </span>
       </span>
     </>
-  );
+  )
 }

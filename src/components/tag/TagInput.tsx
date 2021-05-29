@@ -1,44 +1,44 @@
-import React from 'react';
-import TagItem from './TagItem';
+import React from 'react'
+import TagItem from './TagItem'
 
 type PropsT = {
-  tags: string[];
-  updateTags: (tags: string[]) => void;
-};
+  tags: string[],
+  updateTags: (tags: string[]) => void,
+}
 
 export default function TagInput({tags, updateTags}: PropsT): JSX.Element {
-  const [tagItems, setTagItems] = React.useState(tags);
-  const [tagInput, setTagInput] = React.useState('');
+  const [tagItems, setTagItems] = React.useState(tags)
+  const [tagInput, setTagInput] = React.useState('')
 
   const isLastCharComma = (value: string) => {
-    return value.slice(-1) === ',';
-  };
+    return value.slice(-1) === ','
+  }
 
   const addToTagItems = (value: string) => {
-    const newTag = value.trim().replace(/,/g, '');
+    const newTag = value.trim().replace(/,/g, '')
     if (!tagItems.includes(newTag)) {
-      const updated = [...tagItems, newTag];
-      setTagItems(updated);
+      const updated = [...tagItems, newTag]
+      setTagItems(updated)
     }
-  };
+  }
 
   function handleChangeTags(event: any) {
-    const value = event.target.value;
-    setTagInput(value);
+    const value = event.target.value
+    setTagInput(value)
 
     if (isLastCharComma(value)) {
-      addToTagItems(value);
-      setTagInput('');
+      addToTagItems(value)
+      setTagInput('')
     }
   }
 
   function handleRemoveTag(tag: string) {
-    setTagItems(tagItems.filter((item: string) => item !== tag));
+    setTagItems(tagItems.filter((item: string) => item !== tag))
   }
 
   React.useEffect(() => {
-    updateTags(tagItems);
-  }, [tagItems]);
+    updateTags(tagItems)
+  }, [tagItems])
 
   return (
     <>
@@ -106,5 +106,5 @@ export default function TagInput({tags, updateTags}: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  );
+  )
 }

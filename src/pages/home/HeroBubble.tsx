@@ -1,7 +1,7 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import IconSearch from '../../components/icons/IconSearch';
-import IconTeam from '../../components/icons/IconTeam';
+import React from 'react'
+import {Link} from 'react-router-dom'
+import IconSearch from '../../components/icons/IconSearch'
+import IconTeam from '../../components/icons/IconTeam'
 
 export default function HeroBubble(): JSX.Element {
   return (
@@ -37,7 +37,7 @@ export default function HeroBubble(): JSX.Element {
             Want a team space for your coding knowledge?
           </h2>
           <Link
-            to={'/teams'}
+            to={'/teams/insert'}
             className="s-btn w100 wmx2 fs-body2 px32 bar-md bg-blue-500 h:bg-blue-600 fc-white d:fc-black-900 p-ff-source-bold mt-auto"
           >
             Create a free Team
@@ -54,5 +54,5 @@ export default function HeroBubble(): JSX.Element {
         </div>
       </div>
     </>
-  );
+  )
 }

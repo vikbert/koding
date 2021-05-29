@@ -1,6 +1,7 @@
-import React from 'react';
-import Team1 from '../../components/svg/Team1';
-import Team2 from '../../components/svg/Team2';
+import React from 'react'
+import Team1 from '../../components/svg/Team1'
+import Team2 from '../../components/svg/Team2'
+import {Link} from 'react-router-dom'
 
 export default function HeroBody(): JSX.Element {
   return (
@@ -26,6 +27,21 @@ export default function HeroBody(): JSX.Element {
                 A community-based space to find and contribute coding
                 conventions, and share other your best.
               </p>
+              <Link
+                to={'/convention/newest'}
+                className="s-btn w100 wmx2 fs-body2 px32 bar-md bg-orange-500 h:bg-orange-600 fc-white d:fc-black-900 p-ff-source-bold mt-auto"
+              >
+                Let's go
+              </Link>
+              <p className="mb0 mt12 fc-black-600">
+                or{' '}
+                <Link
+                  to={'/convention/newest'}
+                  className="s-link s-link__underlined fc-black-700 h:fc-orange-600"
+                >
+                  search conventions
+                </Link>
+              </p>
             </div>
           </div>
           <div className="grid--cell p16">
@@ -47,6 +63,22 @@ export default function HeroBody(): JSX.Element {
                 A web-based platform to increase the knowledge transparency for
                 developers and teams.
               </p>
+
+              <Link
+                to={'/teams/insert'}
+                className="s-btn w100 wmx2 fs-body2 px32 bar-md bg-blue-500 h:bg-blue-600 fc-white d:fc-black-900 p-ff-source-bold mt-auto"
+              >
+                Create a free Team
+              </Link>
+              <p className="mb0 mt12 fc-black-600">
+                or{' '}
+                <Link
+                  to={'/teams'}
+                  className="s-link s-link__underlined fc-black-700 h:fc-blue-600"
+                >
+                  discover Teams
+                </Link>
+              </p>
             </div>
           </div>
           <span
@@ -56,5 +88,5 @@ export default function HeroBody(): JSX.Element {
         </div>
       </section>
     </>
-  );
+  )
 }

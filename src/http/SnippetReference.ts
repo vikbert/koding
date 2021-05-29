@@ -1,47 +1,47 @@
-import {Database, Reference} from 'firebase-firestore-lite';
-import {List} from 'firebase-firestore-lite/dist/List';
-import {Snippet} from '../types/Snippet';
-import useFireStore from '../hooks/useFireStore';
+import {Database, Reference} from 'firebase-firestore-lite'
+import {List} from 'firebase-firestore-lite/dist/List'
+import {Snippet} from '../types/Snippet'
+import useFireStore from '../hooks/useFireStore'
 
-const COLLECTION_SNIPPET = 'KODING_SNIPPETS';
+const COLLECTION_SNIPPET = 'KODING_SNIPPETS'
 
 export default class SnippetReference {
-  db: Database;
-  ref: Reference;
+  db: Database
+  ref: Reference
 
   constructor(path?: string) {
-    this.db = useFireStore();
-    this.ref = this.db.ref(path || COLLECTION_SNIPPET);
+    this.db = useFireStore()
+    this.ref = this.db.ref(path || COLLECTION_SNIPPET)
   }
 
   async list(): Promise<List> {
-    return await this.ref.list();
+    return await this.ref.list()
   }
 
   async getBySnippetId(snippetId: string): Promise<any> {
     const query = this.ref.query({
       where: [['id', '==', snippetId]],
-    });
+    })
 
-    return await query.run();
+    return await query.run()
   }
 
   async add(snippet: Snippet): Promise<Reference> {
-    const ref = await this.ref.add(snippet);
+    const ref = await this.ref.add(snippet)
     if (ref instanceof Reference) {
-      return ref;
+      return ref
     }
 
-    throw new Error('Add a new snippet to firebase failed!');
+    throw new Error('Add a new snippet to firebase failed!')
   }
 
   async update(codeBody: string): Promise<void> {
-    const ref = await this.ref.update({body: codeBody});
+    const ref = await this.ref.update({body: codeBody})
 
     if (undefined === ref) {
-      return;
+      return
     }
 
-    throw new Error('Update the snippet to firebase failed!');
+    throw new Error('Update the snippet to firebase failed!')
   }
 }

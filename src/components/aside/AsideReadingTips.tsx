@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 export default function AsideReadingTips(): JSX.Element {
   type LinkProps = {
-    title: string;
-    url: string;
-  };
+    title: string,
+    url: string,
+  }
 
   class ArticleLink extends React.Component<LinkProps> {
     render() {
-      let {title, url} = this.props;
+      let {title, url} = this.props
       return (
         <li className="s-sidebarwidget--item grid px16">
           <div className="grid--cell1">🔗</div>
@@ -16,7 +16,7 @@ export default function AsideReadingTips(): JSX.Element {
             <a href={url}>{title}</a>
           </div>
         </li>
-      );
+      )
     }
   }
 
@@ -61,5 +61,5 @@ export default function AsideReadingTips(): JSX.Element {
         className="p-bits fc-black-300 sm:d-none b128 r96 w48 h48"
       />
     </>
-  );
+  )
 }

@@ -1,42 +1,42 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
-import useNotify from '../../../hooks/useToast';
-import {updateRule} from '../ruleWidget';
-import type {Rule} from '../../../types/Rule';
-import './formInsert.css';
-import {createAndUpdateTag} from '../../tag/tagWidget';
-import TagInput from '../../tag/TagInput';
+import React from 'react'
+import {useDispatch} from 'react-redux'
+import useNotify from '../../../hooks/useToast'
+import {updateRule} from '../ruleWidget'
+import type {Rule} from '../../../types/Rule'
+import './formInsert.css'
+import {createAndUpdateTag} from '../../tag/tagWidget'
+import TagInput from '../../tag/TagInput'
 
 type PropsType = {
-  rule: Rule;
-  closePopup: () => void;
-};
+  rule: Rule,
+  closePopup: () => void,
+}
 
 export default function RuleUpdateForm(props: PropsType): JSX.Element {
-  const {rule, closePopup} = props;
+  const {rule, closePopup} = props
 
-  const dispatch = useDispatch();
-  const notify = useNotify();
-  const [targetRule, setTargetRule] = React.useState(rule);
-  const [tagItems, setTagItems] = React.useState(rule.tags);
+  const dispatch = useDispatch()
+  const notify = useNotify()
+  const [targetRule, setTargetRule] = React.useState(rule)
+  const [tagItems, setTagItems] = React.useState(rule.tags)
 
   function handleUpdateTags(tags: string[]) {
-    setTagItems(tags);
-    setTargetRule({...targetRule, tags});
+    setTagItems(tags)
+    setTargetRule({...targetRule, tags})
   }
 
   function handleSubmit(event: any) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (targetRule.title.length === 0) {
       notify({
         type: 'error',
         message: 'Title of a coding convention can not be empty!',
-      });
-      return;
+      })
+      return
     }
 
-    dispatch(updateRule(targetRule));
+    dispatch(updateRule(targetRule))
 
     tagItems
       .filter((item: string) => !rule.tags.includes(item))
@@ -46,30 +46,30 @@ export default function RuleUpdateForm(props: PropsType): JSX.Element {
             name: tagString,
             rule: targetRule.id,
           }),
-        );
-      });
+        )
+      })
 
-    closePopup();
-    notify({type: 'success', message: 'Updating content done!'});
+    closePopup()
+    notify({type: 'success', message: 'Updating content done!'})
   }
 
   function handleCancelUpdate(event: any) {
-    event.preventDefault();
-    closePopup();
+    event.preventDefault()
+    closePopup()
   }
 
   function handleChangeRule(event: any) {
     setTargetRule({
       ...targetRule,
       title: event.target.value,
-    });
+    })
   }
 
   function handleChangeRuleDescription(event: any) {
     setTargetRule({
       ...targetRule,
       description: event.target.value,
-    });
+    })
   }
 
   return (
@@ -147,5 +147,5 @@ export default function RuleUpdateForm(props: PropsType): JSX.Element {
         </div>
       </form>
     </div>
-  );
+  )
 }

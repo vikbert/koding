@@ -1,31 +1,31 @@
-import React from 'react';
-import './snippetPreview.css';
-import Thumb from './Thumb';
-import BaseEditor from '../editor/BaseEditor';
-import classNames from 'classnames';
-import useVisibility from '../../hooks/useVisibility';
-import SnippetForm from './SnippetForm';
+import React from 'react'
+import './snippetPreview.css'
+import Thumb from './Thumb'
+import BaseEditor from '../editor/BaseEditor'
+import classNames from 'classnames'
+import useVisibility from '../../hooks/useVisibility'
+import SnippetForm from './SnippetForm'
 
 type PreviewSnippet = {
-  id: string;
-  body: string;
-  isBad: boolean;
-};
+  id: string,
+  body: string,
+  isBad: boolean,
+}
 type PropsT = {
-  snippet: PreviewSnippet;
-  autoHeight?: boolean;
-  editable?: boolean;
-};
+  snippet: PreviewSnippet,
+  autoHeight?: boolean,
+  editable?: boolean,
+}
 
 export default function SnippetPreview(props: PropsT): JSX.Element {
-  const {snippet, autoHeight = false, editable = true} = props;
-  const [fullView, setFullView] = React.useState(autoHeight);
-  const {visible, show, hide} = useVisibility();
+  const {snippet, autoHeight = false, editable = true} = props
+  const [fullView, setFullView] = React.useState(autoHeight)
+  const {visible, show, hide} = useVisibility()
 
   function toggleFullView() {
     setFullView((prev) => {
-      return !prev;
-    });
+      return !prev
+    })
   }
 
   return (
@@ -60,5 +60,5 @@ export default function SnippetPreview(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,29 +1,29 @@
-import React from 'react';
-import {useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchRule, cleanUpTargetRule} from '../../components/Rule/ruleWidget';
-import AsideInformation from '../../components/aside/AsideInformation';
-import LoadingContent from '../../components/loading/LoadingContent';
-import RuleDetail from '../../components/Rule/RuleDetail';
+import React from 'react'
+import {useParams} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchRule, cleanUpTargetRule} from '../../components/Rule/ruleWidget'
+import AsideInformation from '../../components/aside/AsideInformation'
+import LoadingContent from '../../components/loading/LoadingContent'
+import RuleDetail from '../../components/Rule/RuleDetail'
 
 export default function PageRuleDetail(): JSX.Element | null {
-  const {documentId} = useParams<{documentId?: string}>();
-  const dispatch = useDispatch();
-  const targetRule = useSelector((state: any) => state.reduxRule.targetRule);
+  const {documentId} = useParams<{documentId?: string}>()
+  const dispatch = useDispatch()
+  const targetRule = useSelector((state: any) => state.reduxRule.targetRule)
 
   if (!documentId) {
-    return null;
+    return null
   }
 
   React.useEffect(() => {
     try {
-      dispatch(fetchRule(documentId));
+      dispatch(fetchRule(documentId))
     } catch (error) {}
 
     return function () {
-      dispatch(cleanUpTargetRule());
-    };
-  }, [documentId]);
+      dispatch(cleanUpTargetRule())
+    }
+  }, [documentId])
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function PageRuleDetail(): JSX.Element | null {
         </AsideInformation>
       </div>
     </>
-  );
+  )
 }

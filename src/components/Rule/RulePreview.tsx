@@ -1,13 +1,13 @@
-import React from 'react';
-import type {Rule} from '../../types/Rule';
-import './rule.css';
+import React from 'react'
+import type {Rule} from '../../types/Rule'
+import './rule.css'
 
 type PropsT = {
-  rule: Rule;
-};
+  rule: Rule,
+}
 
 export default function RulePreview(props: PropsT): JSX.Element {
-  const {rule} = props;
+  const {rule} = props
 
   return (
     <>
@@ -29,5 +29,5 @@ export default function RulePreview(props: PropsT): JSX.Element {
         <div>{rule.title}</div>
       </div>
     </>
-  );
+  )
 }

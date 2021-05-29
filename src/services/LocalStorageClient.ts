@@ -1,25 +1,25 @@
-import type {Snippet} from '../types/Snippet';
-import type {Rule} from '../types/Rule';
-import {Tag} from '../types/Tag';
+import type {Snippet} from '../types/Snippet'
+import type {Rule} from '../types/Rule'
+import {Tag} from '../types/Tag'
 
 class LocalStorageClient {
-  KEY_SNIPPETS = 'APP_SNIPPETS';
-  KEY_RULES = 'APP_RULES';
-  KEY_TAGES = 'APP_TAGES';
+  KEY_SNIPPETS = 'APP_SNIPPETS'
+  KEY_RULES = 'APP_RULES'
+  KEY_TAGES = 'APP_TAGES'
 
   _setValue(key: string, value: Snippet[]): void {
-    window.localStorage.setItem(key, JSON.stringify(value));
+    window.localStorage.setItem(key, JSON.stringify(value))
   }
 
   _list(key: string, initValue?: any): any {
     try {
-      const item = window.localStorage.getItem(key);
+      const item = window.localStorage.getItem(key)
       // Parse stored json or if none return initialValue
-      return item ? JSON.parse(item) : initValue;
+      return item ? JSON.parse(item) : initValue
     } catch (error) {
       // If error also return initialValue
-      console.log(error);
-      return [];
+      console.log(error)
+      return []
     }
   }
 
@@ -29,30 +29,30 @@ class LocalStorageClient {
 
   insertSnippet(code: Snippet): void {
     try {
-      const list = this.listSnippets();
-      this._setValue(this.KEY_SNIPPETS, [code, ...list]);
+      const list = this.listSnippets()
+      this._setValue(this.KEY_SNIPPETS, [code, ...list])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   updateSnippet(snippet: Snippet): void {
     try {
-      const list = this.listSnippets();
+      const list = this.listSnippets()
 
       this._setValue(
         this.KEY_SNIPPETS,
         list.map((item: Snippet, index: number) => {
-          return item.id === snippet.id ? snippet : item;
+          return item.id === snippet.id ? snippet : item
         }),
-      );
+      )
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   listSnippets(): any {
-    return this._list(this.KEY_SNIPPETS, []);
+    return this._list(this.KEY_SNIPPETS, [])
   }
 
   //-----------------------
@@ -61,56 +61,56 @@ class LocalStorageClient {
 
   insertRule(rule: Rule): void {
     try {
-      const list = this.listRules();
-      this._setValue(this.KEY_RULES, [rule, ...list]);
+      const list = this.listRules()
+      this._setValue(this.KEY_RULES, [rule, ...list])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   fetchRule(id: string): any {
     try {
-      const list = this.listRules();
+      const list = this.listRules()
 
-      return list.find((rule: Rule) => rule.id === id);
+      return list.find((rule: Rule) => rule.id === id)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   updateRule(rule: Rule): void {
     try {
-      const list = this.listRules();
+      const list = this.listRules()
 
       this._setValue(
         this.KEY_RULES,
         list.map((item: Rule, index: number) => {
-          return item.id === rule.id ? rule : item;
+          return item.id === rule.id ? rule : item
         }),
-      );
+      )
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   listRules(): any {
-    return this._list(this.KEY_RULES, []);
+    return this._list(this.KEY_RULES, [])
   }
 
   deleteRule(rule: Rule): any {
     try {
-      const list = this._list(this.KEY_RULES);
+      const list = this._list(this.KEY_RULES)
 
       this._setValue(
         this.KEY_RULES,
         list.filter((item: Rule, index: number) => {
-          return item.id !== rule.id;
+          return item.id !== rule.id
         }),
-      );
+      )
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
 }
 
-export default LocalStorageClient;
+export default LocalStorageClient

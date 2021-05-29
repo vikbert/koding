@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function Team1(): JSX.Element {
   return (
@@ -274,5 +274,5 @@ export default function Team1(): JSX.Element {
         />
       </svg>
     </>
-  );
+  )
 }

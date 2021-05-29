@@ -1,13 +1,13 @@
 export function slugify(str: string) {
-  str = str.replace(/^\s+|\s+$/g, '');
-  str = str.toLowerCase();
+  str = str.replace(/^\s+|\s+$/g, '')
+  str = str.toLowerCase()
 
   const from =
-    'ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;';
+    'ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;'
   const to =
-    'AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------';
+    'AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------'
   for (let i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
   }
 
   str = str
@@ -15,7 +15,7 @@ export function slugify(str: string) {
     // Collapse whitespace and replace by -
     .replace(/\s+/g, '-')
     // Collapse dashes
-    .replace(/-+/g, '-');
+    .replace(/-+/g, '-')
 
-  return str;
+  return str
 }

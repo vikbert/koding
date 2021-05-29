@@ -1,20 +1,20 @@
-import React from 'react';
-import AsideReadingTips from '../../components/aside/AsideReadingTips';
-import {useSelector, useDispatch} from 'react-redux';
-import {loadTags} from '../../components/tag/tagWidget';
-import TagList from '../../components/tag/TagList';
-import TagLink from '../../components/tag/TagLink';
-import LoadingContent from '../../components/loading/LoadingContent';
-import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
-import {slugify} from '../../utils/String';
+import React from 'react'
+import AsideReadingTips from '../../components/aside/AsideReadingTips'
+import {useSelector, useDispatch} from 'react-redux'
+import {loadTags} from '../../components/tag/tagWidget'
+import TagList from '../../components/tag/TagList'
+import TagLink from '../../components/tag/TagLink'
+import LoadingContent from '../../components/loading/LoadingContent'
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton'
+import {slugify} from '../../utils/String'
 
 export default function PageTags(): JSX.Element {
-  const dispatch = useDispatch();
-  const reduxTag = useSelector((state: any) => state.reduxTag);
+  const dispatch = useDispatch()
+  const reduxTag = useSelector((state: any) => state.reduxTag)
 
   React.useEffect(() => {
-    dispatch(loadTags());
-  }, []);
+    dispatch(loadTags())
+  }, [])
 
   return (
     <>
@@ -42,5 +42,5 @@ export default function PageTags(): JSX.Element {
         <AsideReadingTips />
       </div>
     </>
-  );
+  )
 }

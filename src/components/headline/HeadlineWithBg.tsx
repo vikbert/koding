@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 type PropsT = {
-  headline: string;
-  imagePath: string;
-};
+  headline: string,
+  imagePath: string,
+}
 
 export default function HeadlineWithBg({
   imagePath,
@@ -23,5 +23,5 @@ export default function HeadlineWithBg({
         <div className="fs-headline1">{headline}</div>
       </div>
     </>
-  );
+  )
 }
