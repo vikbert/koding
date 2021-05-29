@@ -10,7 +10,10 @@ export default function PageTeam(): JSX.Element {
         <Headline headline={'Teams'} />
         <div className="grid page__tag-list">
           <div className="grid--cell12">
-            <NoContent />
+            <NoContent
+              info="I can not find any team. Do you wanna create a new one?"
+              fallbackTitle="✚ Create a new team"
+            />
           </div>
         </div>
       </div>

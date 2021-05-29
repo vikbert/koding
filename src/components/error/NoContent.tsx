@@ -3,11 +3,13 @@ import NoContentSvg from '../svg/NoContent';
 
 type PropsType = {
   info?: string;
+  fallbackTitle?: string;
   fallbackPath?: string;
 };
 
 export default function NoContent({
   info = "I can't find any data!",
+  fallbackTitle = 'back',
   fallbackPath = '/',
 }: PropsType): JSX.Element {
   return (
@@ -20,7 +22,7 @@ export default function NoContent({
           <h1 className="fs-headline1 mb4">Ops</h1>
           <p>{info}</p>
           <a href={fallbackPath} className="s-btn s-btn__filled">
-            Back
+            {fallbackTitle}
           </a>
         </div>
       </div>
