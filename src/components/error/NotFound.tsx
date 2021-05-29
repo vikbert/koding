@@ -1,5 +1,5 @@
-import React from 'react'
-import NotFoundSvg from '../svg/NotFound'
+import React from 'react';
+import NotFoundSvg from '../svg/NotFound';
 
 export default function NotFound(): JSX.Element {
   return (
@@ -23,5 +23,5 @@ export default function NotFound(): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

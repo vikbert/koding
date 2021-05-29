@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  size?: number
-  color?: string
-}
+  size?: number;
+  color?: string;
+};
 
 export default function IconSearch(props: PropsT): JSX.Element {
-  const {size = 2, color = '#f2720c'} = props
+  const {size = 2, color = '#f2720c'} = props;
   return (
     <div style={{color: color}}>
       <span
@@ -16,5 +16,5 @@ export default function IconSearch(props: PropsT): JSX.Element {
         data-inline="false"
       />
     </div>
-  )
+  );
 }

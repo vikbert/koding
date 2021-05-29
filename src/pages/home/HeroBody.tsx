@@ -1,7 +1,7 @@
-import React from 'react'
-import Team1 from '../../components/svg/Team1'
-import Team2 from '../../components/svg/Team2'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import Team1 from '../../components/svg/Team1';
+import Team2 from '../../components/svg/Team2';
+import {Link} from 'react-router-dom';
 
 export default function HeroBody(): JSX.Element {
   return (
@@ -88,5 +88,5 @@ export default function HeroBody(): JSX.Element {
         </div>
       </section>
     </>
-  )
+  );
 }

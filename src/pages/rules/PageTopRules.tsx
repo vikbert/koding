@@ -1,21 +1,21 @@
-import React from 'react'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
-import ListRules from '../../components/Rule/ListRules'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
-import {useSelector, useDispatch} from 'react-redux'
-import {loadRules} from '../../components/Rule/ruleWidget'
-import {loadSnippets} from '../../components/snippet/snippetAction'
-import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton'
+import React from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import ListRules from '../../components/Rule/ListRules';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import {useSelector, useDispatch} from 'react-redux';
+import {loadRules} from '../../components/Rule/ruleWidget';
+import {loadSnippets} from '../../components/snippet/snippetAction';
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 
 const PageHome = () => {
-  useDocumentTitle('Top coding conventions')
-  const reduxRule = useSelector((state: any) => state.reduxRule)
-  const dispatch = useDispatch()
+  useDocumentTitle('Top coding conventions');
+  const reduxRule = useSelector((state: any) => state.reduxRule);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(loadRules())
-    dispatch(loadSnippets())
-  }, [])
+    dispatch(loadRules());
+    dispatch(loadSnippets());
+  }, []);
 
   return (
     <>
@@ -27,7 +27,7 @@ const PageHome = () => {
         <AsideReadingTips />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PageHome
+export default PageHome;

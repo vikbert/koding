@@ -1,15 +1,15 @@
-import {highlight, languages} from 'prismjs/components/prism-core'
-import 'prismjs/components/prism-clike'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/themes/prism.css'
-import React from 'react'
-import Editor from 'react-simple-code-editor'
+import {highlight, languages} from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/themes/prism.css';
+import React from 'react';
+import Editor from 'react-simple-code-editor';
 
 type BaseEditorProps = {
-  code: string,
-  placeholder: string,
-  disabled?: boolean,
-}
+  code: string;
+  placeholder: string;
+  disabled?: boolean;
+};
 
 export default function BaseEditor(props: BaseEditorProps) {
   return (
@@ -30,5 +30,5 @@ export default function BaseEditor(props: BaseEditorProps) {
         color: '#4c4b4b',
       }}
     />
-  )
+  );
 }

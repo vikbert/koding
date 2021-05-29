@@ -1,12 +1,12 @@
-import React from 'react'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
-import '../../components/header/header.css'
-import RuleInsertForm from '../../components/Rule/form/RuleInsertForm'
-import AsideInformation from '../../components/aside/AsideInformation'
-import HeadlineWithBg from '../../components/headline/HeadlineWithBg'
+import React from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import '../../components/header/header.css';
+import RuleInsertForm from '../../components/Rule/form/RuleInsertForm';
+import AsideInformation from '../../components/aside/AsideInformation';
+import HeadlineWithBg from '../../components/headline/HeadlineWithBg';
 
 const PageInsert = () => {
-  useDocumentTitle('Insert new coding convention')
+  useDocumentTitle('Insert new coding convention');
 
   return (
     <>
@@ -36,7 +36,7 @@ const PageInsert = () => {
         </AsideInformation>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PageInsert
+export default PageInsert;

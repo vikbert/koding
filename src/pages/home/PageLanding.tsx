@@ -1,9 +1,9 @@
-import React from 'react'
-import LayoutHeader from '../../components/header/LayoutHeader'
-import HeroHeader from './HeroHeader'
-import HeroFooter from './HeroFooter'
-import HeroBody from './HeroBody'
-import Footer from '../../components/footer/Footer'
+import React from 'react';
+import LayoutHeader from '../../components/header/LayoutHeader';
+import HeroHeader from './HeroHeader';
+import HeroFooter from './HeroFooter';
+import HeroBody from './HeroBody';
+import Footer from '../../components/footer/Footer';
 
 export default function PageLanding(): JSX.Element {
   return (
@@ -21,5 +21,5 @@ export default function PageLanding(): JSX.Element {
       </div>
       <Footer />
     </>
-  )
+  );
 }

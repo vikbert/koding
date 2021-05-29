@@ -1,20 +1,20 @@
-export const ERROR_SET = 'error_set'
-export const ERROR_UNSET = 'error_unset'
+export const ERROR_SET = 'error_set';
+export const ERROR_UNSET = 'error_unset';
 
 export const setError = (message: string) => ({
   type: ERROR_SET,
   message,
-})
+});
 
 export const unsetError = () => ({
   type: ERROR_UNSET,
-})
+});
 
 type StateErrorType = {
-  hasError: boolean,
-  message: string,
-}
-export const errorState = {hasError: false, message: ''}
+  hasError: boolean;
+  message: string;
+};
+export const errorState = {hasError: false, message: ''};
 
 export const errorReducer = (
   state: StateErrorType = errorState,
@@ -22,10 +22,10 @@ export const errorReducer = (
 ) => {
   switch (action.type) {
     case ERROR_SET:
-      return {hasError: true, message: action.message}
+      return {hasError: true, message: action.message};
     case ERROR_UNSET:
-      return {hasError: false, message: ''}
+      return {hasError: false, message: ''};
     default:
-      return state
+      return state;
   }
-}
+};

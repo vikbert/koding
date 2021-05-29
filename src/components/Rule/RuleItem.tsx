@@ -1,25 +1,25 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import TagList from '../tag/TagList'
-import TagLink from '../tag/TagLink'
-import type {Rule} from '../../types/Rule'
-import Votes from '../voting/Votes'
-import {slugify} from '../../utils/String'
-import {useDispatch} from 'react-redux'
-import {updateRule} from './ruleWidget'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import TagList from '../tag/TagList';
+import TagLink from '../tag/TagLink';
+import type {Rule} from '../../types/Rule';
+import Votes from '../voting/Votes';
+import {slugify} from '../../utils/String';
+import {useDispatch} from 'react-redux';
+import {updateRule} from './ruleWidget';
 
 type PropsT = {
-  rule: Rule,
-}
+  rule: Rule;
+};
 
 export default function RuleItem(props: PropsT): JSX.Element {
-  const {rule} = props
-  const dispatch = useDispatch()
-  const pathDetail = `/convention/${rule.documentId}/${slugify(rule.title)}`
+  const {rule} = props;
+  const dispatch = useDispatch();
+  const pathDetail = `/convention/${rule.documentId}/${slugify(rule.title)}`;
 
   const handleIncrementViews = () => {
-    dispatch(updateRule({...rule, views: ++rule.views}))
-  }
+    dispatch(updateRule({...rule, views: ++rule.views}));
+  };
 
   return (
     <>
@@ -41,5 +41,5 @@ export default function RuleItem(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

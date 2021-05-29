@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function PreviewHeader() {
   return (
@@ -7,5 +7,5 @@ export default function PreviewHeader() {
       <div className={'yellow'} />
       <div className={'green'} />
     </div>
-  )
+  );
 }

@@ -1,22 +1,22 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from 'react';
+import classNames from 'classnames';
 
 type PropsT = {
-  updateFilter: (filter: string) => void
-}
+  updateFilter: (filter: string) => void;
+};
 
 export default function FilterSnippet(props: PropsT): JSX.Element {
-  const {updateFilter} = props
-  const [filter, setFilter] = React.useState<string>('all')
+  const {updateFilter} = props;
+  const [filter, setFilter] = React.useState<string>('all');
 
   // @ts-ignore
   function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   React.useEffect(() => {
-    updateFilter(filter)
-  }, [filter])
+    updateFilter(filter);
+  }, [filter]);
 
   return (
     <>
@@ -62,5 +62,5 @@ export default function FilterSnippet(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

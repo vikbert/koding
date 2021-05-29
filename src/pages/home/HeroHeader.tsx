@@ -1,8 +1,8 @@
-import React from 'react'
-import HeroBubble from './HeroBubble'
-import HeroShowcases from './HeroShowcases'
-import BackgroundSquare from './BackgroundSquare'
-import HeroHeadline from './HeroHeadline'
+import React from 'react';
+import HeroBubble from './HeroBubble';
+import HeroShowcases from './HeroShowcases';
+import BackgroundSquare from './BackgroundSquare';
+import HeroHeadline from './HeroHeadline';
 
 export default function HeroHeader(): JSX.Element {
   return (
@@ -19,5 +19,5 @@ export default function HeroHeader(): JSX.Element {
         <BackgroundSquare />
       </header>
     </>
-  )
+  );
 }

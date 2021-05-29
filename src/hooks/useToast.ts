@@ -1,4 +1,4 @@
-import nativeToast, {ToastOptions} from 'native-toast'
+import nativeToast, {ToastOptions} from 'native-toast';
 
 const useNotify = () => {
   const notify = (options: ToastOptions) => {
@@ -8,10 +8,10 @@ const useNotify = () => {
       position: 'north',
       timeout: 3000,
       edge: true,
-    })
-  }
+    });
+  };
 
-  return notify
-}
+  return notify;
+};
 
-export default useNotify
+export default useNotify;

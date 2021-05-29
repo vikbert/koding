@@ -1,6 +1,6 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import IconAlert from '../../components/icons/IconAlert'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import IconAlert from '../../components/icons/IconAlert';
 
 export default function HeroFooter(): JSX.Element {
   return (
@@ -21,5 +21,5 @@ export default function HeroFooter(): JSX.Element {
         </Link>
       </section>
     </>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 type PropsT = {
-  path: string
-  name: string
-  onClick?: () => void
-}
+  path: string;
+  name: string;
+  onClick?: () => void;
+};
 
 export default function ActionLink(props: PropsT): JSX.Element {
   return (
@@ -14,5 +14,5 @@ export default function ActionLink(props: PropsT): JSX.Element {
         {props.name}
       </Link>
     </>
-  )
+  );
 }

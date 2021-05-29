@@ -1,19 +1,19 @@
-import React from 'react'
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom'
-import 'native-toast/dist/native-toast.css'
-import PageInsert from './pages/insert/PageInsert'
-import PageTags from './pages/tags/PageTags'
-import PageUsers from './pages/user/PageUsers'
-import PageRuleDetail from './pages/rule-detail/PageRuleDetail'
-import NotFound from './components/error/NotFound'
-import PageTagDetail from './pages/tags/PageTagDetail'
-import Layout from './pages/Layout'
-import PageTopRules from './pages/rules/PageTopRules'
-import PageTeams from './pages/team/PageTeams'
-import PageLanding from './pages/home/PageLanding'
-import PageHome from './pages/home/PageHome'
-import PageSearch from './pages/rules/PageSearch'
-import TeamInsertForm from './pages/team/TeamInsertForm'
+import React from 'react';
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
+import 'native-toast/dist/native-toast.css';
+import PageInsert from './pages/insert/PageInsert';
+import PageTags from './pages/tags/PageTags';
+import PageUsers from './pages/user/PageUsers';
+import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
+import NotFound from './components/error/NotFound';
+import PageTagDetail from './pages/tags/PageTagDetail';
+import Layout from './pages/Layout';
+import PageTopRules from './pages/rules/PageTopRules';
+import PageTeams from './pages/team/PageTeams';
+import PageLanding from './pages/home/PageLanding';
+import PageHome from './pages/home/PageHome';
+import PageSearch from './pages/rules/PageSearch';
+import TeamInsertForm from './pages/team/TeamInsertForm';
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -26,7 +26,7 @@ function RouteWrapper({component: Component, layout: Layout, ...rest}) {
         </Layout>
       )}
     />
-  )
+  );
 }
 
 const App = () => {
@@ -104,7 +104,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  name: string,
-  value: string,
-  label: string,
-  description?: string,
-  placeholder?: string,
-  maxLength?: number,
-  autoComplete?: string,
-  onChangeSync: (value: string) => void,
-}
+  name: string;
+  value: string;
+  label: string;
+  description?: string;
+  placeholder?: string;
+  maxLength?: number;
+  autoComplete?: string;
+  onChangeSync: (value: string) => void;
+};
 
 export default function InputTextField(props: PropsT): JSX.Element {
   const {
@@ -20,17 +20,17 @@ export default function InputTextField(props: PropsT): JSX.Element {
     placeholder = `enter the ${name}`,
     autoComplete = 'off',
     onChangeSync,
-  } = props
+  } = props;
 
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState('');
 
   const handleOnChange = (event: any) => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   React.useEffect(() => {
-    onChangeSync(value)
-  }, [value])
+    onChangeSync(value);
+  }, [value]);
 
   return (
     <>
@@ -59,5 +59,5 @@ export default function InputTextField(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -1,35 +1,35 @@
-import React from 'react'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
-import ListRules from '../../components/Rule/ListRules'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
-import {useSelector, useDispatch} from 'react-redux'
-import {useParams} from 'react-router-dom'
-import TagList from '../../components/tag/TagList'
-import {Tag} from '../../types/Tag'
-import TagLink from '../../components/tag/TagLink'
-import {searchTags, searchRules} from '../../components/search/searchWidget'
-import {removeDuplicatedRules, removeDuplicatedTags} from '../../utils/Array'
-import Headline from '../../components/headline/Headline'
-import {slugify} from '../../utils/String'
+import React from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import ListRules from '../../components/Rule/ListRules';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import {useSelector, useDispatch} from 'react-redux';
+import {useParams} from 'react-router-dom';
+import TagList from '../../components/tag/TagList';
+import {Tag} from '../../types/Tag';
+import TagLink from '../../components/tag/TagLink';
+import {searchTags, searchRules} from '../../components/search/searchWidget';
+import {removeDuplicatedRules, removeDuplicatedTags} from '../../utils/Array';
+import Headline from '../../components/headline/Headline';
+import {slugify} from '../../utils/String';
 
 const PageSearch = () => {
-  const {keyword} = useParams<{keyword?: string}>()
+  const {keyword} = useParams<{keyword?: string}>();
 
-  useDocumentTitle(`Search: ${keyword}`)
-  const reduxSearch = useSelector((state: any) => state.reduxSearch)
+  useDocumentTitle(`Search: ${keyword}`);
+  const reduxSearch = useSelector((state: any) => state.reduxSearch);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   React.useEffect(() => {
     if (keyword) {
       keyword.split('+').forEach((item: string) => {
-        dispatch(searchTags(item.toLowerCase()))
-        dispatch(searchRules(item.toLowerCase()))
-      })
+        dispatch(searchTags(item.toLowerCase()));
+        dispatch(searchRules(item.toLowerCase()));
+      });
     }
-  }, [keyword])
+  }, [keyword]);
 
-  const rulesFound = reduxSearch.rules.length > 0
-  const tagsFound = reduxSearch.tags.length > 0
+  const rulesFound = reduxSearch.rules.length > 0;
+  const tagsFound = reduxSearch.tags.length > 0;
 
   return (
     <>
@@ -62,7 +62,7 @@ const PageSearch = () => {
         <AsideReadingTips />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PageSearch
+export default PageSearch;

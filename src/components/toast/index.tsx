@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react'
-import done from './svg/check.svg'
-import error from './svg/error.svg'
-import info from './svg/info.svg'
-import warning from './svg/warning.svg'
-import close from './svg/close.svg'
-import Style from './styles.module.css'
+import React, {useEffect, useState} from 'react';
+import done from './svg/check.svg';
+import error from './svg/error.svg';
+import info from './svg/info.svg';
+import warning from './svg/warning.svg';
+import close from './svg/close.svg';
+import Style from './styles.module.css';
 
 type ComponentProps = {
-  type: string,
-  title: string,
-  description: string,
-  position?: string,
-  duration?: number,
-  closeButton?: boolean,
-}
+  type: string;
+  title: string;
+  description: string;
+  position?: string;
+  duration?: number;
+  closeButton?: boolean;
+};
 
 type StateProps = {
-  title: string,
-  description: string,
-  backgroundColor: string,
-  icon: string,
-}
+  title: string;
+  description: string;
+  backgroundColor: string;
+  icon: string;
+};
 
 const Toast = (props: ComponentProps): JSX.Element => {
   const {
@@ -30,25 +30,25 @@ const Toast = (props: ComponentProps): JSX.Element => {
     position = 'topdown',
     duration = 2500,
     closeButton = false,
-  } = props
-  const [toast, setToast] = useState<StateProps[]>([])
+  } = props;
+  const [toast, setToast] = useState<StateProps[]>([]);
 
   useEffect(() => {
-    setToastType(type)
+    setToastType(type);
     // eslint-disable-next-line
-  }, [type])
+  }, [type]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (toast.length) {
-        closeToast(toast[0].title)
+        closeToast(toast[0].title);
       }
-    }, duration)
+    }, duration);
     return () => {
-      clearInterval(interval)
-    }
+      clearInterval(interval);
+    };
     // eslint-disable-next-line
-  }, [toast])
+  }, [toast]);
 
   const setToastType = (type: string) => {
     switch (type) {
@@ -56,20 +56,20 @@ const Toast = (props: ComponentProps): JSX.Element => {
         setToast([
           ...toast,
           {title, description, backgroundColor: '#666565', icon: done},
-        ])
-        break
+        ]);
+        break;
       case 'error':
         setToast([
           ...toast,
           {title, description, backgroundColor: '#E53E3E', icon: error},
-        ])
-        break
+        ]);
+        break;
       case 'info':
         setToast([
           ...toast,
           {title, description, backgroundColor: '#3182ce', icon: info},
-        ])
-        break
+        ]);
+        break;
       case 'warning':
         setToast([
           {
@@ -79,18 +79,18 @@ const Toast = (props: ComponentProps): JSX.Element => {
             backgroundColor: '#DD6B20',
             icon: warning,
           },
-        ])
-        break
+        ]);
+        break;
       default:
-        break
+        break;
     }
-  }
+  };
 
   const closeToast = (title: string) => {
-    const index = toast.findIndex((e) => e.title === title)
-    toast.splice(index, 1)
-    setToast([...toast])
-  }
+    const index = toast.findIndex((e) => e.title === title);
+    toast.splice(index, 1);
+    setToast([...toast]);
+  };
 
   return (
     <div
@@ -126,7 +126,7 @@ const Toast = (props: ComponentProps): JSX.Element => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Toast
+export default Toast;

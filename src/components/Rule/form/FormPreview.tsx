@@ -1,19 +1,19 @@
-import React from 'react'
-import Bubble from '../../bubble/Bubble'
-import SnippetPreview from '../../snippet/SnippetPreview'
-import TagList from '../../tag/TagList'
-import TagItem from '../../tag/TagItem'
+import React from 'react';
+import Bubble from '../../bubble/Bubble';
+import SnippetPreview from '../../snippet/SnippetPreview';
+import TagList from '../../tag/TagList';
+import TagItem from '../../tag/TagItem';
 
 type PropsT = {
-  rule: string,
-  description?: string,
-  badSnippet: string,
-  goodSnippet: string,
-  tags: string[],
-}
+  rule: string;
+  description?: string;
+  badSnippet: string;
+  goodSnippet: string;
+  tags: string[];
+};
 
 export default function FormPreview(props: PropsT): JSX.Element {
-  const {rule, badSnippet, goodSnippet, description = '', tags = []} = props
+  const {rule, badSnippet, goodSnippet, description = '', tags = []} = props;
 
   return (
     <>
@@ -41,5 +41,5 @@ export default function FormPreview(props: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

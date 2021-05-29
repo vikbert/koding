@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  size?: number
-}
+  size?: number;
+};
 
 export default function IconTeam(props: PropsT): JSX.Element {
-  const {size = 2} = props
+  const {size = 2} = props;
   return (
     <span
       style={{fontSize: `${size}rem`}}
@@ -13,5 +13,5 @@ export default function IconTeam(props: PropsT): JSX.Element {
       data-icon="fluent:people-team-16-regular"
       data-inline="false"
     />
-  )
+  );
 }

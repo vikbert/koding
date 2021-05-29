@@ -1,18 +1,18 @@
-import React from 'react'
-import './loading.css'
-import NoContent from '../error/NoContent'
+import React from 'react';
+import './loading.css';
+import NoContent from '../error/NoContent';
 
 export default function LoadingContent(): JSX.Element {
-  const [showNoData, setShowNoData] = React.useState(false)
+  const [showNoData, setShowNoData] = React.useState(false);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setShowNoData(true)
-    }, 1500)
-  }, [])
+      setShowNoData(true);
+    }, 1500);
+  }, []);
 
   if (showNoData) {
-    return <NoContent />
+    return <NoContent />;
   }
 
   return (
@@ -26,5 +26,5 @@ export default function LoadingContent(): JSX.Element {
         </div>
       </div>
     </div>
-  )
+  );
 }

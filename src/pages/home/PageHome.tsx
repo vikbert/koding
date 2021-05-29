@@ -1,20 +1,20 @@
-import React from 'react'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
-import {useSelector, useDispatch} from 'react-redux'
-import {loadLastRule} from '../../components/Rule/ruleWidget'
-import LoadingContent from '../../components/loading/LoadingContent'
-import RuleDetail from '../../components/Rule/RuleDetail'
-import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton'
+import React from 'react';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import {useSelector, useDispatch} from 'react-redux';
+import {loadLastRule} from '../../components/Rule/ruleWidget';
+import LoadingContent from '../../components/loading/LoadingContent';
+import RuleDetail from '../../components/Rule/RuleDetail';
+import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 
 const PageHome = () => {
-  useDocumentTitle('The newest')
-  const reduxRule = useSelector((state: any) => state.reduxRule)
-  const dispatch = useDispatch()
+  useDocumentTitle('The newest');
+  const reduxRule = useSelector((state: any) => state.reduxRule);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(loadLastRule())
-  }, [])
+    dispatch(loadLastRule());
+  }, []);
 
   return (
     <>
@@ -30,7 +30,7 @@ const PageHome = () => {
         <AsideReadingTips />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PageHome
+export default PageHome;

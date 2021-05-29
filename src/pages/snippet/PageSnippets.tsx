@@ -1,17 +1,17 @@
-import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {loadSnippets} from '../../components/snippet/snippetAction'
-import ListSnippets from '../../components/snippet/ListSnippets'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
-import LoadingContent from '../../components/loading/LoadingContent'
+import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {loadSnippets} from '../../components/snippet/snippetAction';
+import ListSnippets from '../../components/snippet/ListSnippets';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import LoadingContent from '../../components/loading/LoadingContent';
 
 export default function PageSnippets(): null | JSX.Element {
-  const reduxSnippet = useSelector((state: any) => state.reduxSnippet)
-  const dispatch = useDispatch()
+  const reduxSnippet = useSelector((state: any) => state.reduxSnippet);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(loadSnippets())
-  }, [])
+    dispatch(loadSnippets());
+  }, []);
 
   return (
     <>
@@ -29,5 +29,5 @@ export default function PageSnippets(): null | JSX.Element {
         <AsideReadingTips />
       </div>
     </>
-  )
+  );
 }

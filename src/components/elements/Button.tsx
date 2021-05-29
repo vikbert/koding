@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  name: string,
-  variantClass?: string,
-  onClickHandler: (event: any) => void,
-}
+  name: string;
+  variantClass?: string;
+  onClickHandler: (event: any) => void;
+};
 
 export default function Button(props: PropsT): JSX.Element {
-  const {name, variantClass = 's-btn__filled', onClickHandler} = props
+  const {name, variantClass = 's-btn__filled', onClickHandler} = props;
 
   return (
     <>
@@ -18,5 +18,5 @@ export default function Button(props: PropsT): JSX.Element {
         {name}
       </button>
     </>
-  )
+  );
 }

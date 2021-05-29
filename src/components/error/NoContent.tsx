@@ -1,11 +1,11 @@
-import React from 'react'
-import NoContentSvg from '../svg/NoContent'
+import React from 'react';
+import NoContentSvg from '../svg/NoContent';
 
 type PropsType = {
-  info?: string,
-  fallbackTitle?: string,
-  fallbackPath?: string,
-}
+  info?: string;
+  fallbackTitle?: string;
+  fallbackPath?: string;
+};
 
 export default function NoContent({
   info = "I can't find any data!",
@@ -27,5 +27,5 @@ export default function NoContent({
         </div>
       </div>
     </>
-  )
+  );
 }

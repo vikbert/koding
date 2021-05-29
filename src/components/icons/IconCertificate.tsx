@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  size?: number
-}
+  size?: number;
+};
 
 export default function IconCertificate(props: PropsT): JSX.Element {
-  const {size = 2} = props
+  const {size = 2} = props;
 
   return (
     <span
@@ -14,5 +14,5 @@ export default function IconCertificate(props: PropsT): JSX.Element {
       data-icon="grommet-icons:certificate"
       data-inline="false"
     />
-  )
+  );
 }

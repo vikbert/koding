@@ -1,12 +1,12 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './sidebar.css'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './sidebar.css';
 
 type BasicItemProps = {
-  title: string,
-  path: string,
-  iconName: string,
-}
+  title: string;
+  path: string;
+  iconName: string;
+};
 const basicItems: BasicItemProps[] = [
   {
     title: 'Top',
@@ -23,7 +23,7 @@ const basicItems: BasicItemProps[] = [
     path: '/teams',
     iconName: 'bx:bxs-user-circle',
   },
-]
+];
 export default function OverflowSidebar(): JSX.Element {
   const LinkActive = (props: any) => {
     return (
@@ -32,8 +32,8 @@ export default function OverflowSidebar(): JSX.Element {
           <div className="grid--cell truncate">{props.title}</div>
         </div>
       </Link>
-    )
-  }
+    );
+  };
 
   const LinkBasicItem = ({title, path, iconName}: BasicItemProps) => {
     return (
@@ -45,8 +45,8 @@ export default function OverflowSidebar(): JSX.Element {
         <span className="iconify" data-icon={iconName} data-inline="false" />
         <span className="-link--channel-name">{title}</span>
       </Link>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -77,5 +77,5 @@ export default function OverflowSidebar(): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

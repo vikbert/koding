@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 type PropsT = {
-  name?: string,
-}
+  name?: string;
+};
 
 export default function RuleBubble(props: PropsT): JSX.Element {
-  const {name} = props
+  const {name} = props;
 
-  return <></>
+  return <></>;
 }

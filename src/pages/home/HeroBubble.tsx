@@ -1,7 +1,7 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import IconSearch from '../../components/icons/IconSearch'
-import IconTeam from '../../components/icons/IconTeam'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import IconSearch from '../../components/icons/IconSearch';
+import IconTeam from '../../components/icons/IconTeam';
 
 export default function HeroBubble(): JSX.Element {
   return (
@@ -54,5 +54,5 @@ export default function HeroBubble(): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }

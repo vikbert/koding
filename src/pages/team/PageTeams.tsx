@@ -1,7 +1,7 @@
-import React from 'react'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
-import NoContent from '../../components/error/NoContent'
-import Headline from '../../components/headline/Headline'
+import React from 'react';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
+import NoContent from '../../components/error/NoContent';
+import Headline from '../../components/headline/Headline';
 
 export default function PageTeams(): JSX.Element {
   return (
@@ -21,5 +21,5 @@ export default function PageTeams(): JSX.Element {
         <AsideReadingTips />
       </div>
     </>
-  )
+  );
 }

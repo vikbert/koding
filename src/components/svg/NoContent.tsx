@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function NoContentSvg(): JSX.Element {
   return (
@@ -186,5 +186,5 @@ export default function NoContentSvg(): JSX.Element {
         />
       </svg>
     </>
-  )
+  );
 }

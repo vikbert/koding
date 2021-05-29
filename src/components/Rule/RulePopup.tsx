@@ -1,46 +1,46 @@
-import React from 'react'
-import type {Rule} from '../../types/Rule'
-import {useDispatch, useSelector} from 'react-redux'
-import {hidePopup, updateRule, deleteRule} from './ruleWidget'
-import useNotify from '../../hooks/useToast'
+import React from 'react';
+import type {Rule} from '../../types/Rule';
+import {useDispatch, useSelector} from 'react-redux';
+import {hidePopup, updateRule, deleteRule} from './ruleWidget';
+import useNotify from '../../hooks/useToast';
 
 type RulePopupProps = {
-  rule: Rule | null,
-}
+  rule: Rule | null;
+};
 
 export default function RulePopup(props: RulePopupProps) {
-  const dispatch = useDispatch()
-  const notify = useNotify()
-  const [rule, setRule] = React.useState<any>(props.rule)
-  const editorState = useSelector((state: any) => state.reduxEditor)
+  const dispatch = useDispatch();
+  const notify = useNotify();
+  const [rule, setRule] = React.useState<any>(props.rule);
+  const editorState = useSelector((state: any) => state.reduxEditor);
 
   function handleOnChange(event: any) {
-    setRule({...rule, body: event.target.value})
+    setRule({...rule, body: event.target.value});
   }
 
   function handleCancel() {
-    dispatch(hidePopup())
+    dispatch(hidePopup());
   }
 
   function handleSave() {
-    dispatch(updateRule(rule))
-    dispatch(hidePopup())
-    notify({type: 'success', message: 'updated!'})
+    dispatch(updateRule(rule));
+    dispatch(hidePopup());
+    notify({type: 'success', message: 'updated!'});
   }
 
   function handleDelete() {
-    dispatch(deleteRule(rule))
-    dispatch(hidePopup())
-    notify({type: 'success', message: 'This convention is deleted!'})
+    dispatch(deleteRule(rule));
+    dispatch(hidePopup());
+    notify({type: 'success', message: 'This convention is deleted!'});
   }
 
   function handleAddSnippet() {
     const updatedRule = {
       ...rule,
       snippets: [editorState.snippetId, ...(rule.snippets || [])],
-    }
-    dispatch(updateRule(updatedRule))
-    notify({type: 'success', message: 'snippet added!'})
+    };
+    dispatch(updateRule(updatedRule));
+    notify({type: 'success', message: 'snippet added!'});
   }
 
   return (
@@ -94,5 +94,5 @@ export default function RulePopup(props: RulePopupProps) {
         </div>
       </div>
     )
-  )
+  );
 }

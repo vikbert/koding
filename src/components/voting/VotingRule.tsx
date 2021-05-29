@@ -1,30 +1,30 @@
-import React from 'react'
-import {Rule} from '../../types/Rule'
-import {useDispatch, useSelector} from 'react-redux'
-import {updateRule} from '../Rule/ruleWidget'
-import classNames from 'classnames'
+import React from 'react';
+import {Rule} from '../../types/Rule';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateRule} from '../Rule/ruleWidget';
+import classNames from 'classnames';
 
 export default function VotingRule(): JSX.Element {
-  const reduxRule = useSelector((state: any) => state.reduxRule)
-  const target: Rule = reduxRule.targetRule
-  const dispatch = useDispatch()
-  const [isDisabled, setIsDisabled] = React.useState(false)
+  const reduxRule = useSelector((state: any) => state.reduxRule);
+  const target: Rule = reduxRule.targetRule;
+  const dispatch = useDispatch();
+  const [isDisabled, setIsDisabled] = React.useState(false);
 
   function setVotingTemporaryDisabled() {
-    setIsDisabled(true)
+    setIsDisabled(true);
     setTimeout(() => {
-      setIsDisabled(false)
-    }, 5000)
+      setIsDisabled(false);
+    }, 5000);
   }
 
   function handleVoteUp() {
-    setVotingTemporaryDisabled()
-    dispatch(updateRule({...target, votes: target.votes + 1}))
+    setVotingTemporaryDisabled();
+    dispatch(updateRule({...target, votes: target.votes + 1}));
   }
 
   function handleVoteDown() {
-    setVotingTemporaryDisabled()
-    dispatch(updateRule({...target, votes: target.votes - 1}))
+    setVotingTemporaryDisabled();
+    dispatch(updateRule({...target, votes: target.votes - 1}));
   }
 
   return (
@@ -79,5 +79,5 @@ export default function VotingRule(): JSX.Element {
         </button>
       </div>
     </>
-  )
+  );
 }

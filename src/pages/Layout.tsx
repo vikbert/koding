@@ -1,11 +1,11 @@
-import React from 'react'
-import LayoutHeader from '../components/header/LayoutHeader'
-import OverflowSidebar from '../components/sidebar/OverflowSidebar'
-import Footer from '../components/footer/Footer'
+import React from 'react';
+import LayoutHeader from '../components/header/LayoutHeader';
+import OverflowSidebar from '../components/sidebar/OverflowSidebar';
+import Footer from '../components/footer/Footer';
 
 type PropsT = {
-  children: any,
-}
+  children: any;
+};
 
 export default function Layout(props: PropsT): JSX.Element {
   return (
@@ -19,5 +19,5 @@ export default function Layout(props: PropsT): JSX.Element {
       </div>
       <Footer />
     </>
-  )
+  );
 }

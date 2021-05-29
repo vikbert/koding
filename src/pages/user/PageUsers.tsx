@@ -1,6 +1,6 @@
-import React from 'react'
-import NoContent from '../../components/error/NoContent'
-import AsideReadingTips from '../../components/aside/AsideReadingTips'
+import React from 'react';
+import NoContent from '../../components/error/NoContent';
+import AsideReadingTips from '../../components/aside/AsideReadingTips';
 
 export default function PageUsers(): JSX.Element {
   return (
@@ -19,5 +19,5 @@ export default function PageUsers(): JSX.Element {
         <AsideReadingTips />
       </div>
     </>
-  )
+  );
 }

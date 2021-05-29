@@ -1,16 +1,16 @@
-import React from 'react'
-import SnippetPreview from './SnippetPreview'
-import useSnippetResolver from '../../hooks/useSnippetResolver'
+import React from 'react';
+import SnippetPreview from './SnippetPreview';
+import useSnippetResolver from '../../hooks/useSnippetResolver';
 
 type PropsType = {
-  snippetId: string
-}
+  snippetId: string;
+};
 
 export default function PreviewWrapper({snippetId}: PropsType) {
-  const {bad, good} = useSnippetResolver(snippetId)
+  const {bad, good} = useSnippetResolver(snippetId);
 
   if (!bad || !good) {
-    return null
+    return null;
   }
 
   // @ts-ignore
@@ -19,5 +19,5 @@ export default function PreviewWrapper({snippetId}: PropsType) {
       <SnippetPreview snippet={bad} autoHeight={true} />
       <SnippetPreview snippet={good} autoHeight={true} />
     </>
-  )
+  );
 }

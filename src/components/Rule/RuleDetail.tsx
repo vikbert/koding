@@ -1,21 +1,21 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import VotingRule from '../voting/VotingRule'
-import TagItem from '../tag/TagItem'
-import Bubble from '../bubble/Bubble'
-import PreviewWrapper from '../snippet/PreviewWrapper'
-import TagList from '../tag/TagList'
-import classNames from 'classnames'
-import RuleUpdateForm from './form/RuleUpdateForm'
-import {Rule} from '../../types/Rule'
-import useVisibility from '../../hooks/useVisibility'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import VotingRule from '../voting/VotingRule';
+import TagItem from '../tag/TagItem';
+import Bubble from '../bubble/Bubble';
+import PreviewWrapper from '../snippet/PreviewWrapper';
+import TagList from '../tag/TagList';
+import classNames from 'classnames';
+import RuleUpdateForm from './form/RuleUpdateForm';
+import {Rule} from '../../types/Rule';
+import useVisibility from '../../hooks/useVisibility';
 
 type PropsT = {
-  targetRule: Rule,
-}
+  targetRule: Rule;
+};
 
 export default function RuleDetail({targetRule}: PropsT): JSX.Element {
-  const {visible, show, hide} = useVisibility()
+  const {visible, show, hide} = useVisibility();
 
   return (
     <>
@@ -60,5 +60,5 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
         </div>
       </div>
     </>
-  )
+  );
 }
