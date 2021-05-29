@@ -2,6 +2,7 @@ import {Database, Reference} from 'firebase-firestore-lite';
 import {Rule} from '../types/Rule';
 import useFireStore, {MAX_LIST_ITEMS} from '../hooks/useFireStore';
 import {Document} from 'firebase-firestore-lite/dist/Document';
+import {slugify} from '../utils/String';
 
 export const COLLECTION_RULES = 'KODING_RULES';
 
@@ -12,6 +13,16 @@ export default class RuleReference {
   constructor(path?: string) {
     this.db = useFireStore();
     this.ref = this.db.ref(path || COLLECTION_RULES);
+  }
+
+  async search(keyword: string): Promise<any> {
+    const searchQuery = this.ref.query({
+      where: [['search', 'contains', keyword]],
+      orderBy: {field: 'views', direction: 'desc'},
+      limit: MAX_LIST_ITEMS,
+    });
+
+    return await searchQuery.run();
   }
 
   async list(): Promise<any> {
@@ -52,7 +63,11 @@ export default class RuleReference {
   }
 
   async add(rule: Rule): Promise<Reference> {
-    const ref = await this.ref.add(rule);
+    const ref = await this.ref.add({
+      ...rule,
+      search: slugify(rule.title).split('-'),
+    });
+
     if (ref instanceof Reference) {
       return ref;
     }
@@ -61,7 +76,12 @@ export default class RuleReference {
   }
 
   async update(rule: Rule): Promise<void> {
-    const ref = await this.ref.update(rule);
+    const updatedRule = {
+      ...rule,
+      search: slugify(rule.title).split('-'),
+    };
+
+    const ref = await this.ref.update(updatedRule);
 
     if (undefined === ref) {
       return;

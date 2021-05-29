@@ -14,10 +14,10 @@ type StateErrorType = {
   hasError: boolean;
   message: string;
 };
-export const stateError = {hasError: false, message: ''};
+export const errorState = {hasError: false, message: ''};
 
 export const errorReducer = (
-  state: StateErrorType = stateError,
+  state: StateErrorType = errorState,
   action: any,
 ) => {
   switch (action.type) {

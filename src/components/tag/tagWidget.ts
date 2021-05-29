@@ -4,9 +4,9 @@ import {Reference} from 'firebase-firestore-lite';
 
 export const TAG_ADDED = 'tags.tags_added';
 export const TAGS_LOADED = 'tags.tags_loaded';
-export const TAG_STATE: string[] = [];
+export const tagState: string[] = [];
 
-export const tagReducer = (state = TAG_STATE, action: any) => {
+export const tagReducer = (state = tagState, action: any) => {
   switch (action.type) {
     case TAG_ADDED:
       if (state.includes(action.tag.name)) {

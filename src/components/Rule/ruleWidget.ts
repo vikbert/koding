@@ -7,7 +7,7 @@ export const RULE_ADDED = 'rule.rule_added';
 export const RULE_FETCHED = 'rule.rule_fetched';
 export const RULE_DELETED = 'rule.rule_deleted';
 export const RULE_UPDATED = 'rule.rule_updated';
-export const RULES_RECEIVED = 'rule.rules_received';
+export const RULES_LOADED = 'rule.rules_loaded';
 export const MORE_RULES_RECEIVED = 'rule.more_rules_received';
 export const SHOW_RULES = 'rule.show_wrapper';
 export const HIDE_RULES = 'rule.hide_wrapper';
@@ -53,8 +53,8 @@ export const ruleUpdated = (rule: Rule) => ({
   rule,
 });
 
-export const rulesReceived = (rules: any) => ({
-  type: RULES_RECEIVED,
+export const rulesLoaded = (rules: any) => ({
+  type: RULES_LOADED,
   rules,
 });
 
@@ -73,7 +73,7 @@ export const loadRules = () => {
     const ruleRef = new RuleReference();
 
     return ruleRef.list().then((documents: any) => {
-      dispatch(rulesReceived(documents));
+      dispatch(rulesLoaded(documents));
       dispatch(lastDocumentMarked(documents.slice(-1).pop()));
     });
   };
@@ -219,7 +219,7 @@ export const ruleReducer = (state = ruleState, action: any) => {
     case LAST_DOCUMENT_MARKED:
       return {...state, lastDocument: action.rule};
 
-    case RULES_RECEIVED:
+    case RULES_LOADED:
       const enriched = action.rules.map((rule: any) => {
         return {
           ...rule,

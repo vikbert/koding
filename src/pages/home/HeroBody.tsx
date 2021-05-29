@@ -16,10 +16,10 @@ export default function HeroBody(): JSX.Element {
               className="h100 py48 sm:py32 bg-orange-050 bar-lg p-bs-wrapper"
             >
               <div className="d-block my32 w100 h-auto">
-                <Team1 />
+                <Team2 />
               </div>
               <h2 className="mx48 sm:ml32 sm:mr32 mb12 p-ff-roboto-slab-bold fs-headline1">
-                A internal platform building the definitive collection of coding
+                A public platform building the definitive collection of coding
                 conventions
               </h2>
               <p className="mx48 sm:ml32 sm:mr32 mb32 fc-black-600 fs-subheading">
@@ -37,11 +37,11 @@ export default function HeroBody(): JSX.Element {
               className="h100 py48 sm:py32 bg-blue-050 bar-lg p-bs-wrapper"
             >
               <div className="d-block my32 w100 h-auto">
-                <Team2 />
+                <Team1 />
               </div>
               <h2 className="mx48 sm:ml32 sm:mr32 mb12 p-ff-roboto-slab-bold fs-headline1">
-                A private collaboration &amp; coding conventions sharing and
-                ranking
+                A private team collaboration &amp; coding conventions sharing
+                and voting
               </h2>
               <p className="mx48 sm:ml32 sm:mr32 mb32 fc-black-600 fs-subheading">
                 A web-based platform to increase the knowledge transparency for
@@ -49,6 +49,10 @@ export default function HeroBody(): JSX.Element {
               </p>
             </div>
           </div>
+          <span
+            aria-hidden="true"
+            className="p-bits fc-green-500 sm:d-none t50 r0 w128 h128"
+          />
         </div>
       </section>
     </>

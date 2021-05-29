@@ -11,4 +11,5 @@ export type Rule = {
   createdAt: number;
   documentId?: string;
   path?: string;
+  search?: string[];
 };

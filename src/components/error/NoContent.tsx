@@ -3,8 +3,13 @@ import NoContentSvg from '../svg/NoContent';
 
 type PropsType = {
   info?: string;
+  fallbackPath?: string;
 };
-export default function NoContent({info}: PropsType): JSX.Element {
+
+export default function NoContent({
+  info = "I can't find any data!",
+  fallbackPath = '/',
+}: PropsType): JSX.Element {
   return (
     <>
       <div className="grid ai-center jc-center gs32 md:fd-column">
@@ -13,9 +18,9 @@ export default function NoContent({info}: PropsType): JSX.Element {
         </div>
         <div className="grid--cell wmx5">
           <h1 className="fs-headline1 mb4">Ops</h1>
-          <p>I can't find any data on this page!</p>
-          <a href={'/'} className="s-btn s-btn__filled">
-            Back to home
+          <p>{info}</p>
+          <a href={fallbackPath} className="s-btn s-btn__filled">
+            Back
           </a>
         </div>
       </div>

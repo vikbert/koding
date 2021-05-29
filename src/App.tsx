@@ -2,8 +2,6 @@ import React from 'react';
 import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 import 'native-toast/dist/native-toast.css';
 import PageInsert from './pages/insert/PageInsert';
-import PageHome from './pages/home/PageHome';
-import PageSnippets from './pages/snippet/PageSnippets';
 import PageTags from './pages/tags/PageTags';
 import PageUsers from './pages/user/PageUsers';
 import PageRuleDetail from './pages/rule-detail/PageRuleDetail';
@@ -13,6 +11,8 @@ import Layout from './pages/Layout';
 import PageTopRules from './pages/rules/PageTopRules';
 import PageTeam from './pages/team/PageTeam';
 import PageLanding from './pages/home/PageLanding';
+import PageHome from './pages/home/PageHome';
+import PageSearch from './pages/rules/PageSearch';
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -36,13 +36,30 @@ const App = () => {
           <Route exact path="/" component={PageLanding} />
           <RouteWrapper
             exact
-            path="/snippets"
-            component={PageSnippets}
+            path="/convention/newest"
+            component={PageHome}
             layout={Layout}
           />
           <RouteWrapper
             exact
-            path="/insert"
+            path="/conventions/top"
+            component={PageTopRules}
+            layout={Layout}
+          />
+          <RouteWrapper
+            exact
+            path="/conventions/search/:keyword"
+            component={PageSearch}
+            layout={Layout}
+          />
+          <RouteWrapper
+            path="/convention/:documentId"
+            component={PageRuleDetail}
+            layout={Layout}
+          />
+          <RouteWrapper
+            exact
+            path="/conventions/insert"
             component={PageInsert}
             layout={Layout}
           />
@@ -62,17 +79,6 @@ const App = () => {
             exact
             path="/users"
             component={PageUsers}
-            layout={Layout}
-          />
-          <RouteWrapper
-            exact
-            path="/conventions/top"
-            component={PageTopRules}
-            layout={Layout}
-          />
-          <RouteWrapper
-            path="/convention/:documentId"
-            component={PageRuleDetail}
             layout={Layout}
           />
           <RouteWrapper path="/teams" component={PageTeam} layout={Layout} />

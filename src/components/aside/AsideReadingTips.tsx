@@ -52,6 +52,14 @@ export default function AsideReadingTips(): JSX.Element {
           />
         </ul>
       </div>
+      <span
+        aria-hidden="true"
+        className="p-bits fc-orange-300 sm:d-none t50 r12 w128 h128"
+      />{' '}
+      <span
+        aria-hidden="true"
+        className="p-bits fc-black-300 sm:d-none b128 r96 w48 h48"
+      />
     </>
   );
 }

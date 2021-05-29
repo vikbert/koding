@@ -13,7 +13,10 @@ export default function HeadlineWithInsertButton({
       <div className="grid">
         <h1 className="grid--cell fl1 fs-headline1">{headline}</h1>
         <div className="ml12 aside-cta grid--cell print:d-none">
-          <Link className="ws-nowrap s-btn s-btn__filled" to={'/insert'}>
+          <Link
+            className="ws-nowrap s-btn s-btn__filled"
+            to={'/conventions/insert'}
+          >
             {'✚ New Coding Convention'}
           </Link>
         </div>

@@ -20,7 +20,7 @@ const basicItems: BasicItemProps[] = [
   },
   {
     title: 'Teams',
-    path: '/Teams',
+    path: '/teams',
     iconName: 'bx:bxs-user-circle',
   },
 ];
@@ -64,6 +64,7 @@ export default function OverflowSidebar(): JSX.Element {
                 <ol className="nav-links">
                   {basicItems.map((item, index) => (
                     <LinkBasicItem
+                      key={index}
                       title={item.title}
                       path={item.path}
                       iconName={item.iconName}

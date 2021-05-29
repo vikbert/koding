@@ -24,7 +24,7 @@ export default function HeroBubble(): JSX.Element {
             best
           </h2>
           <Link
-            to={'/conventions/top'}
+            to={'/convention/newest'}
             className="s-btn w100 wmx2 fs-body2 px32 bar-md bg-orange-500 h:bg-orange-600 fc-white d:fc-black-900 p-ff-source-bold mt-auto"
           >
             Let's go
@@ -32,7 +32,7 @@ export default function HeroBubble(): JSX.Element {
           <p className="mb0 mt12 fc-black-600">
             or{' '}
             <Link
-              to={'/conventions/top'}
+              to={'/convention/newest'}
               className="s-link s-link__underlined fc-black-700 h:fc-orange-600"
             >
               search conventions

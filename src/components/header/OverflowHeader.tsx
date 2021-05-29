@@ -1,13 +1,18 @@
 import React from 'react';
 import Logo from './logo.png';
 import './header.css';
+import {useHistory} from 'react-router-dom';
+import {slugify} from '../../utils/String';
 
-type PropsT = {
-  name?: string;
-};
+export default function OverflowHeader(): JSX.Element {
+  const history = useHistory();
+  const [search, setSearch] = React.useState('');
 
-export default function OverflowHeader(props: PropsT): JSX.Element {
-  const {name} = props;
+  function handleSubmitSearch(event: any) {
+    event.preventDefault();
+
+    history.push(`/conventions/search/${slugify(search.trim())}`);
+  }
 
   return (
     <>
@@ -25,11 +30,7 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
               <span className="ps-relative" />
             </a>
             <div className="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
-              <div
-                className="left-sidebar js-unpinned-left-sidebar"
-                data-is-here-when="sm"
-                data-can-be="left-sidebar"
-              />
+              <div className="left-sidebar js-unpinned-left-sidebar" />
             </div>
             <a href="/" className="-logo">
               <img className={'-img'} src={Logo} alt="koding" />
@@ -49,23 +50,20 @@ export default function OverflowHeader(props: PropsT): JSX.Element {
           <form
             id="search"
             role="search"
-            action="/search"
+            onSubmit={handleSubmitSearch}
             className="grid--cell fl-grow1 searchbar px12 js-searchbar "
             autoComplete="off"
           >
             <div className="ps-relative">
               <input
-                name="q"
+                name="query"
                 type="text"
-                placeholder="Search…"
+                placeholder="Search convention …"
                 autoComplete="off"
                 maxLength={240}
                 className="s-input s-input__search js-search-field "
                 aria-label="Search"
-                aria-controls="top-search"
-                data-controller="s-popover"
-                data-action="focus->s-popover#show"
-                data-s-popover-placement="bottom-start"
+                onChange={(event) => setSearch(event.target.value)}
               />
               <svg
                 aria-hidden="true"

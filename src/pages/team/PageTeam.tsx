@@ -1,5 +1,4 @@
 import React from 'react';
-import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
 import NoContent from '../../components/error/NoContent';
 import Headline from '../../components/headline/Headline';

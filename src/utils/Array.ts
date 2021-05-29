@@ -10,7 +10,7 @@ export const removeDuplicatedTags = (list: Tag[]): Tag[] => {
   const cache: {[key: string]: Tag} = {};
 
   list.forEach((item: Tag) => {
-    cache[item.rule] = item;
+    cache[item.name] = item;
   });
 
   return Object.values(cache);

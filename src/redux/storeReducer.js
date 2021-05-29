@@ -5,8 +5,9 @@ import {
 } from '../components/snippet/snippetReducer';
 import {editorReducer, editorState} from '../components/editor/editorReducer';
 import {ruleReducer, ruleState} from '../components/Rule/ruleWidget';
-import {tagReducer, TAG_STATE} from '../components/tag/tagWidget';
-import {errorReducer, stateError} from '../components/error/errorWidget';
+import {tagReducer, tagState} from '../components/tag/tagWidget';
+import {errorReducer, errorState} from '../components/error/errorWidget';
+import {searchReducer, searchState} from '../components/search/searchWidget';
 
 const allReducers = combineReducers({
   reduxSnippet: snippetReducer,
@@ -14,14 +15,16 @@ const allReducers = combineReducers({
   reduxRule: ruleReducer,
   reduxTag: tagReducer,
   reduxError: errorReducer,
+  reduxSearch: searchReducer,
 });
 
 export const rootState = {
   reduxSnippet: snippetState,
   reduxEditor: editorState,
   reduxRule: ruleState,
-  reduxTag: TAG_STATE,
-  reduxError: stateError,
+  reduxTag: tagState,
+  reduxError: errorState,
+  reduxSearch: searchState,
 };
 
 export default function rootReducer(state, action) {
