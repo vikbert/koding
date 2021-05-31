@@ -5,7 +5,7 @@ type PropsT = {
   imagePath: string;
 };
 
-export default function HeadlineWithBg({
+export default function HeadlineTeam({
   imagePath,
   headline,
 }: PropsT): JSX.Element {
@@ -16,14 +16,14 @@ export default function HeadlineWithBg({
           backgroundImage: `url(${
             process.env.PUBLIC_URL + '/img/' + imagePath
           })`,
-          backgroundSize: 'cover',
+          backgroundSize: '50%',
           backgroundRepeat: 'no-repeat',
-          // backgroundColor: 'rgb(244 128 36)',
+          backgroundColor: 'rgb(244 128 36)',
           backgroundPosition: 'bottom',
         }}
         className="grid ai-center pt12 bar-sm bg-no-repeat bg-right-bottom wide:bg-image-ask-v2 wide:h-ask-v2-background"
       >
-        <div className="fs-headline1 pl24 p-ff-roboto-slab-bold">
+        <div className="fs-headline1 pl24 fc-white p-ff-roboto-slab-bold">
           {headline}
         </div>
       </div>

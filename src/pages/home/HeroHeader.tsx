@@ -1,8 +1,8 @@
 import React from 'react';
-import HeroBubble from './HeroBubble';
 import HeroShowcases from './HeroShowcases';
 import BackgroundSquare from './BackgroundSquare';
 import HeroHeadline from './HeroHeadline';
+import Divider from '../../components/elements/Divider';
 
 export default function HeroHeader(): JSX.Element {
   return (
@@ -13,7 +13,7 @@ export default function HeroHeader(): JSX.Element {
           className="p32 sm:p12 bar-lg p-bg-dark-gradient d:fc-black-750 ps-relative z-selected fc-black-025 p-font-smooth mbn128 pb128"
         >
           <HeroHeadline />
-          <span className="w64 h8 bar-pill d-block bg-black-500 mx-auto" />
+          <Divider color={'black'} />
           <HeroShowcases />
         </div>
         <BackgroundSquare />

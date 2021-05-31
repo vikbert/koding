@@ -1,18 +1,22 @@
-import {Database, Reference} from 'firebase-firestore-lite';
-import useFireStore from '../hooks/useFireStore';
+import {Team} from '../types/Team';
+import BaseReference from './BaseReference';
 
-const COLLECTION_TEAM = 'KODING_TEAMS';
+export const COLLECTION_TEAM = 'KODING_TEAMS';
 
-export default class TeamReference {
-  db: Database;
-  ref: Reference;
-
+export default class TeamReference extends BaseReference {
   constructor(path?: string) {
-    this.db = useFireStore();
-    this.ref = this.db.ref(path || COLLECTION_TEAM);
+    super(path || COLLECTION_TEAM);
   }
 
-  async listAll(): Promise<any> {
-    return await this.ref.query({}).run();
+  async add(newTeam: Team): Promise<any> {
+    const instance = this.db.transaction();
+
+    instance.add(COLLECTION_TEAM, newTeam);
+
+    try {
+      return await instance.commit();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

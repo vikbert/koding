@@ -1,19 +1,13 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
 import AsideReadingTips from '../../components/aside/AsideReadingTips';
-import {useDispatch, useSelector} from 'react-redux';
-import {loadRules} from '../../components/Rule/ruleWidget';
-import TagReference from '../../http/TagReference';
-import {Rule} from '../../types/Rule';
+import {useSelector} from 'react-redux';
 import ListRules from '../../components/Rule/ListRules';
-import {removeDuplicatedTags} from '../../utils/Array';
 import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
+import RuleReference from '../../http/RuleReference';
 
 export default function PageTagDetail(): JSX.Element | null {
-  const dispatch = useDispatch();
   const reduxRule = useSelector((state: any) => state.reduxRule);
   const [rules, setRules] = React.useState<any[]>([]);
-  const tagRef = new TagReference();
   const name = reduxRule.targetTag;
 
   if (!reduxRule.targetTag) {
@@ -22,31 +16,12 @@ export default function PageTagDetail(): JSX.Element | null {
 
   React.useEffect(() => {
     if (name) {
-      dispatch(loadRules());
+      const ruleRef = new RuleReference();
+      ruleRef.listByTag(name).then((documents: any[]) => {
+        setRules(documents);
+      });
     }
   }, [name]);
-
-  React.useEffect(() => {
-    if (!reduxRule || reduxRule.rules.length === 0) {
-      return;
-    }
-
-    tagRef.listByName(name).then((list: any) => {
-      let rules: any[] = [];
-
-      const cleaned = removeDuplicatedTags(list);
-      cleaned.forEach((item: any) => {
-        const found = reduxRule.rules.find(
-          (rule: Rule) => rule.id === item.rule,
-        );
-        if (found) {
-          rules = [found, ...rules];
-        }
-      });
-
-      setRules(rules);
-    });
-  }, [reduxRule, name]);
 
   if (rules.length === 0) {
     return null;

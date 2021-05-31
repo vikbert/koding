@@ -14,6 +14,9 @@ import PageLanding from './pages/home/PageLanding';
 import PageHome from './pages/home/PageHome';
 import PageSearch from './pages/rules/PageSearch';
 import TeamInsertForm from './pages/team/TeamInsertForm';
+import PageTeamDetail from './pages/team/PageTeamDetail';
+import LayoutTeam from './pages/LayoutTeam';
+import PageTeamConventions from './pages/team/PageTeamConventions';
 
 // @ts-ignore
 function RouteWrapper({component: Component, layout: Layout, ...rest}) {
@@ -87,6 +90,18 @@ const App = () => {
             path="/teams"
             component={PageTeams}
             layout={Layout}
+          />
+          <RouteWrapper
+            exact
+            path="/team/:documentId"
+            component={PageTeamDetail}
+            layout={LayoutTeam}
+          />
+          <RouteWrapper
+            exact
+            path="/team/:documentId/conventions"
+            component={PageTeamConventions}
+            layout={LayoutTeam}
           />
           <RouteWrapper
             exact

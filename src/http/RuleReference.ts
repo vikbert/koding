@@ -34,6 +34,16 @@ export default class RuleReference {
     return await topRulesQuery.run();
   }
 
+  async listByTag(tagName: string): Promise<any> {
+    const topRulesQuery = this.ref.query({
+      where: [['tags', 'contains', tagName]],
+      orderBy: {field: 'views', direction: 'desc'},
+      limit: MAX_LIST_ITEMS,
+    });
+
+    return await topRulesQuery.run();
+  }
+
   async loadLastRule(): Promise<any> {
     const topRulesQuery = this.ref.query({
       orderBy: {field: 'createdAt', direction: 'desc'},
@@ -52,10 +62,6 @@ export default class RuleReference {
     });
 
     return await topRulesQuery.run();
-  }
-
-  async listBatch(documentPaths: string[]): Promise<any> {
-    return await this.db.batchGet(documentPaths);
   }
 
   async get(): Promise<any> {

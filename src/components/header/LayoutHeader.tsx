@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './logo.png';
 import './header.css';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {slugify} from '../../utils/String';
 import {useDispatch} from 'react-redux';
 import {SEARCH_TAGES_RESET} from '../search/searchWidget';
@@ -36,9 +36,9 @@ export default function LayoutHeader(): JSX.Element {
             <div className="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
               <div className="left-sidebar js-unpinned-left-sidebar" />
             </div>
-            <a href="/" className="-logo">
+            <Link to="/convention/newest" className="-logo">
               <img className={'-img'} src={Logo} alt="koding" />
-            </a>
+            </Link>
           </div>
           <ol className="list-reset grid gs4" role="presentation">
             <li className="grid--cell">

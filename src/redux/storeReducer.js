@@ -8,6 +8,7 @@ import {ruleReducer, ruleState} from '../components/Rule/ruleWidget';
 import {tagReducer, tagState} from '../components/tag/tagWidget';
 import {errorReducer, errorState} from '../components/error/errorWidget';
 import {searchReducer, searchState} from '../components/search/searchWidget';
+import {teamReducer, teamState} from '../components/team/teamWidget';
 
 const allReducers = combineReducers({
   reduxSnippet: snippetReducer,
@@ -16,6 +17,7 @@ const allReducers = combineReducers({
   reduxTag: tagReducer,
   reduxError: errorReducer,
   reduxSearch: searchReducer,
+  reduxTeam: teamReducer,
 });
 
 export const rootState = {
@@ -25,6 +27,7 @@ export const rootState = {
   reduxTag: tagState,
   reduxError: errorState,
   reduxSearch: searchState,
+  reduxTeam: teamState,
 };
 
 export default function rootReducer(state, action) {

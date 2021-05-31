@@ -12,7 +12,7 @@ const PageInsert = () => {
     <>
       <HeadlineWithBg
         headline="Add a new coding convention"
-        imagePath="/img/chat.svg"
+        imagePath="bg_chat.svg"
       />
       <div id="mainbar">
         <div className="grid">

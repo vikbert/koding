@@ -10,7 +10,7 @@ export default function AsideInformation({
 }: PropsType): JSX.Element {
   return (
     <aside className="fl-shrink0">
-      <div className="ws3 ml24 md:d-none">
+      <div className="ml24 md:d-none">
         <div className="s-sidebarwidget s-sidebarwidget__yellow s-anchors mb24">
           <div className="s-sidebarwidget--header grid">
             <div className="grid--cell grid--cell1 vertical-center">{'🔔'}</div>

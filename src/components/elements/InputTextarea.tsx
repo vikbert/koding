@@ -48,6 +48,7 @@ export default function InputTextarea(props: PropsT): JSX.Element {
             className="s-input js-post-title-field"
             autoComplete={autoComplete}
             rows={rows}
+            maxLength={300}
             value={value}
             onChange={handleOnChange}
           />
