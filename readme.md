@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://1.bp.blogspot.com/-dBoGxQMuDpA/YFb8qV9LM5I/AAAAAAAAARQ/ImtGfZRZQ9kweL0OJwnI0mtM_udBtZCqwCNcBGAsYHQ/w680/coding%2Bskils%2Bto%2Bget%2Bjob.jpeg" width="480px" alt="aino" />
+  <img src="docs/logo.png" width="480px" alt="Koding" />
   <h3>Vite React TypeScript Starter</h3>
 
 

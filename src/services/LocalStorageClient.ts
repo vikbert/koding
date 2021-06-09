@@ -1,11 +1,8 @@
 import type {Snippet} from '../types/Snippet';
 import type {Rule} from '../types/Rule';
-import {Tag} from '../types/Tag';
 
 class LocalStorageClient {
-  KEY_SNIPPETS = 'APP_SNIPPETS';
-  KEY_RULES = 'APP_RULES';
-  KEY_TAGES = 'APP_TAGES';
+  KEY_RULES_BOOKMARKED = 'KODING_RULES_BOOKMARKED';
 
   _setValue(key: string, value: Snippet[]): void {
     window.localStorage.setItem(key, JSON.stringify(value));
@@ -24,87 +21,30 @@ class LocalStorageClient {
   }
 
   //-----------------------
-  // snippets
+  // bookmarked rules
   //-----------------------
 
-  insertSnippet(code: Snippet): void {
-    try {
-      const list = this.listSnippets();
-      this._setValue(this.KEY_SNIPPETS, [code, ...list]);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  updateSnippet(snippet: Snippet): void {
-    try {
-      const list = this.listSnippets();
-
-      this._setValue(
-        this.KEY_SNIPPETS,
-        list.map((item: Snippet, index: number) => {
-          return item.id === snippet.id ? snippet : item;
-        }),
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  listSnippets(): any {
-    return this._list(this.KEY_SNIPPETS, []);
-  }
-
-  //-----------------------
-  // rules
-  //-----------------------
-
-  insertRule(rule: Rule): void {
+  bookmarkRule(rule: Rule): void {
     try {
       const list = this.listRules();
-      this._setValue(this.KEY_RULES, [rule, ...list]);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  fetchRule(id: string): any {
-    try {
-      const list = this.listRules();
-
-      return list.find((rule: Rule) => rule.id === id);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  updateRule(rule: Rule): void {
-    try {
-      const list = this.listRules();
-
-      this._setValue(
-        this.KEY_RULES,
-        list.map((item: Rule, index: number) => {
-          return item.id === rule.id ? rule : item;
-        }),
-      );
+      this._setValue(this.KEY_RULES_BOOKMARKED, [rule.documentId, ...list]);
     } catch (error) {
       console.log(error);
     }
   }
 
   listRules(): any {
-    return this._list(this.KEY_RULES, []);
+    return this._list(this.KEY_RULES_BOOKMARKED, []);
   }
 
-  deleteRule(rule: Rule): any {
+  unBookmarkRule(rule: Rule): any {
     try {
-      const list = this._list(this.KEY_RULES);
+      const list = this._list(this.KEY_RULES_BOOKMARKED);
 
       this._setValue(
-        this.KEY_RULES,
+        this.KEY_RULES_BOOKMARKED,
         list.filter((item: Rule, index: number) => {
-          return item.id !== rule.id;
+          return item.documentId !== rule.documentId;
         }),
       );
     } catch (e) {
