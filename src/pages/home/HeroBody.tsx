@@ -20,7 +20,7 @@ export default function HeroBody(): JSX.Element {
                 <Team2 />
               </div>
               <h2 className="mx48 sm:ml32 sm:mr32 mb12 p-ff-roboto-slab-bold fs-headline1">
-                A public platform building the definitive collection of coding
+                A public platform to build the definitive collection of coding
                 conventions
               </h2>
               <p className="mx48 sm:ml32 sm:mr32 mb32 fc-black-600 fs-subheading">

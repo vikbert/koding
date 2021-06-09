@@ -1,6 +1,7 @@
 <div align="center">
   <img src="docs/logo.png" width="480px" alt="Koding" />
-  <h3>Vite React TypeScript Starter</h3>
+  <h3>Koding: clean coding</h3>
+  <p>A platform for building the definitive collection of coding conventions</p>
 
 
   <p>
