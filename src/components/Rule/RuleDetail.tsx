@@ -58,6 +58,10 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
               </div>
             </div>
           </div>
+
+          <div className="grid--cell grid--cell12 grid__fl0">
+            <Button name={'✚ Add new snippets'} onClickHandler={() => null}/>
+          </div>
         </div>
       </div>
     </>

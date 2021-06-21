@@ -6,7 +6,6 @@ import TagList from '../../components/tag/TagList';
 import TagLink from '../../components/tag/TagLink';
 import LoadingContent from '../../components/loading/LoadingContent';
 import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
-import {slugify} from '../../utils/String';
 
 export default function PageTags(): JSX.Element {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ export default function PageTags(): JSX.Element {
               <TagList>
                 {reduxTag.sort().map((item: string) => (
                   <TagLink
-                    path={`/tag/${slugify(item)}`}
+                    path={`/tag/${item}`}
                     name={item}
                     key={item}
                   />
