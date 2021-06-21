@@ -9,7 +9,8 @@ import classNames from 'classnames';
 import RuleUpdateForm from './form/RuleUpdateForm';
 import {Rule} from '../../types/Rule';
 import useVisibility from '../../hooks/useVisibility';
-import Button from "../elements/Button";
+import {useDispatch} from 'react-redux';
+import {switchFormWithSnippets} from './ruleWidget';
 
 type PropsT = {
   targetRule: Rule;
@@ -17,6 +18,17 @@ type PropsT = {
 
 export default function RuleDetail({targetRule}: PropsT): JSX.Element {
   const {visible, show, hide} = useVisibility();
+  const dispatch = useDispatch();
+
+  const editConventionDescriptionAndTags = () => {
+    dispatch(switchFormWithSnippets(false));
+    show();
+  };
+
+  const insertSnippetsToConvention = () => {
+    dispatch(switchFormWithSnippets(true));
+    show();
+  };
 
   return (
     <>
@@ -39,9 +51,20 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
               title={targetRule.title}
               description={targetRule.description}
             />
-            <a className="s-btn pt6 pb6 fc-light" onClick={() => show()}>
+
+            <a
+              className="s-btn pt6 pb6 fc-light"
+              onClick={editConventionDescriptionAndTags}
+            >
               {'✐ Edit the convention'}
             </a>
+            <a
+              className="s-btn pt6 pb6 fc-light"
+              onClick={insertSnippetsToConvention}
+            >
+              {'✚ new snippets to the convention'}
+            </a>
+
             {targetRule.snippets.map((snippetId: string) => (
               <PreviewWrapper snippetId={snippetId} key={snippetId} />
             ))}
@@ -57,10 +80,6 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
                 <RuleUpdateForm rule={targetRule} closePopup={() => hide()} />
               </div>
             </div>
-          </div>
-
-          <div className="grid--cell grid--cell12 grid__fl0">
-            <Button name={'✚ Add new snippets'} onClickHandler={() => null}/>
           </div>
         </div>
       </div>

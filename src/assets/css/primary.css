@@ -8417,7 +8417,7 @@ span.CodeMirror-selectedtext {
 .post-layout {
   display: grid;
   grid-template-columns:-webkit-max-content 1fr;
-  grid-template-columns:max-content 1fr
+  grid-template-columns:80px 1fr
 }
 
 .post-layout--left {

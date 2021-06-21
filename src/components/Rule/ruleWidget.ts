@@ -16,6 +16,7 @@ export const HIDE_POPUP = 'rule.hide_popup';
 export const TARGET_CLEANUP = 'rule.target_cleanup';
 export const LAST_DOCUMENT_MARKED = 'rule.last_document_marked';
 export const SET_TARGET_TAG = 'rule.target_tag';
+export const SWITCH_FORM_WITH_SNIPPETS = 'rule.form_with_new_snippets';
 
 export const showRules = () => ({
   type: SHOW_RULES,
@@ -66,6 +67,11 @@ export const moreRulesReceived = (rules: any) => ({
 export const lastDocumentMarked = (rule: any) => ({
   type: LAST_DOCUMENT_MARKED,
   rule,
+});
+
+export const switchFormWithSnippets = (withSnippets: boolean) => ({
+  type: SWITCH_FORM_WITH_SNIPPETS,
+  withSnippets,
 });
 
 export const loadRules = () => {
@@ -163,6 +169,7 @@ export const fetchRule = (documentId: string) => {
 export const ruleState = {
   showWrapper: false,
   showPopup: false,
+  withSnippets: false,
   rules: [],
   lastDocument: null,
   targetRule: null,
@@ -183,6 +190,11 @@ const enrichRuleMetaData = (rule: any) => {
 
 export const ruleReducer = (state = ruleState, action: any) => {
   switch (action.type) {
+    case SWITCH_FORM_WITH_SNIPPETS:
+      return {
+        ...state,
+        withSnippets: action.withSnippets,
+      };
     case RULE_ADDED:
       return {
         ...state,

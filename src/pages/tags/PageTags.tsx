@@ -26,11 +26,7 @@ export default function PageTags(): JSX.Element {
             ) : (
               <TagList>
                 {reduxTag.sort().map((item: string) => (
-                  <TagLink
-                    path={`/tag/${item}`}
-                    name={item}
-                    key={item}
-                  />
+                  <TagLink path={`/tag/${item}`} name={item} key={item} />
                 ))}
               </TagList>
             )}
