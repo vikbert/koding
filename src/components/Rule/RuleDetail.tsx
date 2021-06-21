@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import RuleUpdateForm from './form/RuleUpdateForm';
 import {Rule} from '../../types/Rule';
 import useVisibility from '../../hooks/useVisibility';
+import Button from "../elements/Button";
 
 type PropsT = {
   targetRule: Rule;

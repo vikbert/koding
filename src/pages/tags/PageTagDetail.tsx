@@ -4,24 +4,20 @@ import {useSelector} from 'react-redux';
 import ListRules from '../../components/Rule/ListRules';
 import HeadlineWithInsertButton from '../../components/headline/HeadlineWithInsertButton';
 import RuleReference from '../../http/RuleReference';
+import {useParams} from "react-router-dom";
 
 export default function PageTagDetail(): JSX.Element | null {
-  const reduxRule = useSelector((state: any) => state.reduxRule);
   const [rules, setRules] = React.useState<any[]>([]);
-  const name = reduxRule.targetTag;
-
-  if (!reduxRule.targetTag) {
-    return null;
-  }
+  const {tagName} = useParams<{tagName?: string}>();
 
   React.useEffect(() => {
-    if (name) {
+    if (tagName) {
       const ruleRef = new RuleReference();
-      ruleRef.listByTag(name).then((documents: any[]) => {
+      ruleRef.listByTag(tagName).then((documents: any[]) => {
         setRules(documents);
       });
     }
-  }, [name]);
+  }, [tagName]);
 
   if (rules.length === 0) {
     return null;
@@ -30,7 +26,7 @@ export default function PageTagDetail(): JSX.Element | null {
   return (
     <>
       <div id="mainbar">
-        <HeadlineWithInsertButton headline={`Tag: ${name}`} />
+        <HeadlineWithInsertButton headline={`Tag: ${tagName}`} />
         <ListRules rules={rules} />
       </div>
       <div id="sidebar">

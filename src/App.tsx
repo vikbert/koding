@@ -75,7 +75,7 @@ const App = () => {
           />
           <RouteWrapper
             exact
-            path="/tag/:name"
+            path="/tag/:tagName"
             component={PageTagDetail}
             layout={Layout}
           />
