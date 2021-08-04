@@ -15,7 +15,7 @@ export default function PreviewWrapper({snippetId}: PropsType) {
   const [current, setCurrent] = useState(CODE_BAD);
 
   if (!bad || !good) {
-    return null;
+    return (<h5>Loading snippets ...</h5>);
   }
 
   const showGoodSnippet = () => {

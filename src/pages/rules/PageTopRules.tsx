@@ -20,7 +20,7 @@ const PageHome = () => {
   return (
     <>
       <div id="mainbar">
-        <HeadlineWithInsertButton headline="Top Coding Convention" />
+        <HeadlineWithInsertButton headline={`Top Coding Convention (${reduxRule.rules.length})`} />
         <ListRules rules={reduxRule.rules} />
       </div>
       <div id="sidebar">
