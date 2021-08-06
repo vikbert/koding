@@ -1,4 +1,7 @@
 import React from 'react';
+import useVisibility from "../../hooks/useVisibility";
+import Beta from "../beta/Beta";
+import Popup from "../popup";
 import Logo from './logo.png';
 import './header.css';
 import {useHistory, Link} from 'react-router-dom';
@@ -7,6 +10,7 @@ import {useDispatch} from 'react-redux';
 import {SEARCH_TAGES_RESET} from '../search/searchWidget';
 
 export default function LayoutHeader(): JSX.Element {
+  const {visible, hide, show} = useVisibility();
   const history = useHistory();
   const dispatch = useDispatch();
   const [search, setSearch] = React.useState('');
@@ -20,6 +24,11 @@ export default function LayoutHeader(): JSX.Element {
 
   return (
     <>
+      {visible && (
+          <Popup visible={true} hide={hide}>
+            <Beta/>
+          </Popup>
+      )}
       <header className="top-bar js-top-bar top-bar__network">
         <div className="wmx12 mx-auto grid ai-center h100">
           <div className="-main grid--cell">
@@ -46,6 +55,7 @@ export default function LayoutHeader(): JSX.Element {
                 href="#"
                 title="koding beta version"
                 className="-marketing-link js-products-menu"
+                onClick={show}
               >
                 Beta
               </a>
