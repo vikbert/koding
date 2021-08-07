@@ -5,7 +5,7 @@
   position: relative;
   min-height: 100px;
   background: rgb(241 241 240 / 28%);
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   border: 1px solid #dedede;
 }
 .editor-wrapper:hover {
@@ -55,6 +55,7 @@ textarea:focus {
   position: absolute;
   bottom: 0px;
   right: 25px;
+  height: 37px;
 }
 .editor-options svg {
   margin: .3rem;

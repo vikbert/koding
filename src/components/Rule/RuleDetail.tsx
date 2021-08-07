@@ -71,9 +71,6 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
               <PreviewWrapper snippetId={snippetId} key={snippetId} />
             ))}
 
-            <div className="mt24 mb12">
-              <TagList />
-            </div>
           </div>
           <div className={classNames('overlay', {open: visible})}>
             <div className="popup">

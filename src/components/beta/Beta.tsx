@@ -6,9 +6,9 @@ function Beta() {
             <h1>Beta Version</h1>
             <h2>Basic list view</h2>
             <ul>
-                <li>✅ list the top coding rules</li>
-                <li>✅ list the tags </li>
-                <li>✅ list the teams </li>
+                <li>✅ list of top coding rules</li>
+                <li>✅ list of tags </li>
+                <li>✅ list of teams </li>
                 <li>✅ filter the rules by tag</li>
                 <li>✅ sort the rules by votes</li>
             </ul>
