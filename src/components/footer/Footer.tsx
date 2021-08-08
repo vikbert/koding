@@ -39,31 +39,37 @@ export default function Footer(): JSX.Element {
                   className="iconify"
                   data-icon="vscode-icons:file-type-reacttemplate"
                   data-inline="false"
+                  title="react"
                 ></span>
                 <span
                   className="iconify"
                   data-icon="logos:redux"
                   data-inline="false"
+                  title="redux"
                 ></span>
                 <span
                   className="iconify"
                   data-icon="vscode-icons:file-type-firebase"
                   data-inline="false"
+                  title="firebase"
                 ></span>
                 <span
                   className="iconify"
                   data-icon="logos:prismic-icon"
                   data-inline="false"
+                  title="prismic"
                 ></span>
                 <span
                   className="iconify"
                   data-icon="logos:react-router"
                   data-inline="false"
+                  title="react-router"
                 ></span>
                 <span
                   className="iconify"
                   data-icon="vscode-icons:file-type-light-prettier"
                   data-inline="false"
+                  title="prettier"
                 ></span>
               </div>
             </div>
