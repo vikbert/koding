@@ -53,8 +53,8 @@ textarea:focus {
 }
 .editor-options {
   position: absolute;
-  bottom: 0px;
-  right: 25px;
+  top: 0px;
+  right: 2px;
   height: 37px;
 }
 .editor-options svg {
