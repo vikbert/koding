@@ -1,33 +1,64 @@
 import React from 'react';
 
+const listSegmentData = {
+  'Basic list view': [
+    '✅ list of top coding rules',
+    '✅ list of tags',
+    '✅ list of teams',
+    '✅ filter the rules by tag',
+    '✅ sort the rules by votes',
+  ],
+  'Basic Detail View': [
+    '✅ Detail of the coding rule',
+    '✅ switch between good and bad snippet',
+  ],
+  'Basic Modification': [
+    '✅ insert a new rule',
+    '✅ insert a new code snippet',
+    '✅ edit the existing coding rule',
+    '✅ edit the code snippet',
+  ],
+  'Registration & Login': ['⬜️ register', '⬜️ login', '⬜️ Single Sign On'],
+  'Permission Management': [
+    '⬜️ Permission to manage the rules',
+    '⬜️ Permission to manage the team',
+  ],
+};
+const listSegmentDataItems = Object.values(listSegmentData);
+const listSegmentDataKeys = Object.keys(listSegmentData);
+
+type PropT = {
+  title: string;
+  items: string[];
+};
+
 function Beta() {
-    return (
-        <>
-            <h1>Beta Version</h1>
-            <h2>Basic list view</h2>
-            <ul>
-                <li>✅ list of top coding rules</li>
-                <li>✅ list of tags </li>
-                <li>✅ list of teams </li>
-                <li>✅ filter the rules by tag</li>
-                <li>✅ sort the rules by votes</li>
-            </ul>
+  const ListSegment = (props: PropT) => (
+    <div>
+      <h4 className="bold">{props.title}</h4>
+      <ul>
+        {props.items.map((item: string, index: any) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 
-            <h4>Basic detail view</h4>
-            <ul>
-                <li>✅ Detail of the coding rule </li>
-                <li>✅ switch between good and bad snippet</li>
-            </ul>
+  return (
+    <>
+      <h1 className="p-ff-roboto-slab-bold fs-title mb8 d:fc-white">
+        Beta Version
+      </h1>
 
-            <h4>Basic modification</h4>
-            <ul>
-                <li>✅ insert a new rule </li>
-                <li>✅ insert a new code snippet </li>
-                <li>✅ edit the existing coding rule </li>
-                <li>✅ edit the code snippet </li>
-            </ul>
-        </>
-    );
+      {listSegmentDataKeys.map((title, index) => (
+        <ListSegment
+          key={index}
+          title={title}
+          items={listSegmentDataItems[index]}
+        />
+      ))}
+    </>
+  );
 }
 
 export default Beta;
