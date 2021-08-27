@@ -1,15 +1,15 @@
+import classNames from 'classnames';
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import VotingRule from '../voting/VotingRule';
-import TagItem from '../tag/TagItem';
+import useVisibility from '../../hooks/useVisibility';
+import {Rule} from '../../types/Rule';
 import Bubble from '../bubble/Bubble';
 import PreviewWrapper from '../snippet/PreviewWrapper';
+import TagItem from '../tag/TagItem';
 import TagList from '../tag/TagList';
-import classNames from 'classnames';
+import VotingRule from '../voting/VotingRule';
 import RuleUpdateForm from './form/RuleUpdateForm';
-import {Rule} from '../../types/Rule';
-import useVisibility from '../../hooks/useVisibility';
-import {useDispatch} from 'react-redux';
 import {switchFormWithSnippets} from './ruleWidget';
 
 type PropsT = {
@@ -52,18 +52,20 @@ export default function RuleDetail({targetRule}: PropsT): JSX.Element {
               description={targetRule.description}
             />
 
-            <a
-              className="s-btn pt6 pb6 fc-light"
-              onClick={editConventionDescriptionAndTags}
-            >
-              {'✐ Edit the convention'}
-            </a>
-            <a
-              className="s-btn pt6 pb6 fc-light"
-              onClick={insertSnippetsToConvention}
-            >
-              {'✚ new snippets to the convention'}
-            </a>
+            <div className="s-modal--body">
+              <a
+                className="s-btn pt6 pb6 fc-light"
+                onClick={editConventionDescriptionAndTags}
+              >
+                {'✐ Edit the convention'}
+              </a>
+              <a
+                className="s-btn pt6 pb6 fc-light"
+                onClick={insertSnippetsToConvention}
+              >
+                {'✚ new snippets to the convention'}
+              </a>
+            </div>
 
             {targetRule.snippets.map((snippetId: string) => (
               <PreviewWrapper snippetId={snippetId} key={snippetId} />
